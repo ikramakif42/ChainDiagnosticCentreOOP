@@ -35,6 +35,7 @@ public class ChainDiagnosticCentre extends Application {
     public static void main(String[] args) {
         launch(args);
         //LOOK A CHANGE
+        // Another test, hope it works
     }
     
 }

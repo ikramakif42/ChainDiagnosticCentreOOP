@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="223.0" layoutY="52.0" />
@@ -23,5 +22,10 @@
       <Label layoutX="52.0" layoutY="95.0" prefHeight="18.0" prefWidth="127.0" text="Current Designation" />
       <Label layoutX="52.0" layoutY="137.0" prefHeight="18.0" prefWidth="127.0" text="New Department" />
       <Label layoutX="52.0" layoutY="173.0" prefHeight="18.0" prefWidth="127.0" text="New Department" />
+      <Button layoutX="14.0" layoutY="275.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

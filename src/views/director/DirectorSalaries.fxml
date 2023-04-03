@@ -31,5 +31,10 @@
       </Button>
       <TextField fx:id="addSubtractSalaryAmount" layoutX="232.0" layoutY="485.0" />
       <Label layoutX="62.0" layoutY="489.0" prefHeight="18.0" prefWidth="142.0" text="Amount to Add/Subtract:" />
+      <Button layoutX="14.0" layoutY="533.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

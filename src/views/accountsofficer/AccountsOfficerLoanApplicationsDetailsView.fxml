@@ -13,14 +13,19 @@
       <TextField fx:id="loanApplicationDetailsViewNameloanApplicationDetailsViewDateApplied" editable="false" layoutX="152.0" layoutY="40.0" promptText="Date Applied" />
       <TextField fx:id="loanApplicationDetailsViewRequestedAmount" editable="false" layoutX="14.0" layoutY="246.0" prefHeight="26.0" prefWidth="161.0" promptText="Requested Amount" />
       <TextField fx:id="loanApplicationDetailsViewRepaymentDate" layoutX="14.0" layoutY="288.0" prefHeight="26.0" prefWidth="161.0" promptText="Repayment Date" />
-      <Button layoutX="176.0" layoutY="331.0" mnemonicParsing="false" onAction="#acceptLoanApplicationOnClick" prefHeight="37.0" prefWidth="88.0" text="Accept">
+      <Button layoutX="214.0" layoutY="331.0" mnemonicParsing="false" onAction="#acceptLoanApplicationOnClick" prefHeight="37.0" prefWidth="88.0" text="Accept">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <Button layoutX="323.0" layoutY="331.0" mnemonicParsing="false" onAction="#denyLoanApplicationOnClick" prefHeight="37.0" prefWidth="88.0" text="Deny">
+      <Button layoutX="310.0" layoutY="331.0" mnemonicParsing="false" onAction="#denyLoanApplicationOnClick" prefHeight="37.0" prefWidth="88.0" text="Deny">
          <font>
             <Font size="19.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="328.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
+         <font>
+            <Font size="21.0" />
          </font>
       </Button>
    </children>

@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="directorPolicyTable" prefHeight="553.0" prefWidth="593.0">
          <columns>
@@ -16,7 +15,7 @@
             <TableColumn prefWidth="528.7999877929688" text="Policy" />
          </columns>
       </TableView>
-      <Button layoutX="44.0" layoutY="569.0" mnemonicParsing="false" onAction="#directorSavePolicyEditOnClick" prefHeight="38.0" prefWidth="142.0" text="Save Edit">
+      <Button layoutX="269.0" layoutY="569.0" mnemonicParsing="false" onAction="#directorSavePolicyEditOnClick" prefHeight="38.0" prefWidth="142.0" text="Save Edit">
          <font>
             <Font size="17.0" />
          </font>
@@ -27,9 +26,14 @@
          </font>
       </Button>
       <TextField fx:id="directorPolicyCreationTextField" layoutX="44.0" layoutY="622.0" prefHeight="54.0" prefWidth="312.0" />
-      <Button layoutX="213.0" layoutY="569.0" mnemonicParsing="false" onAction="#directorOpenBranchReportDetailsOnClick" prefHeight="38.0" prefWidth="142.0" text="Delete Policy">
+      <Button layoutX="437.0" layoutY="569.0" mnemonicParsing="false" onAction="#directorOpenBranchReportDetailsOnClick" prefHeight="38.0" prefWidth="142.0" text="Delete Policy">
          <font>
             <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="565.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
+         <font>
+            <Font size="21.0" />
          </font>
       </Button>
    </children>

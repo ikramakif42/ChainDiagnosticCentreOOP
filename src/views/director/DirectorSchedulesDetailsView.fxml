@@ -15,9 +15,14 @@
             <TableColumn prefWidth="247.20001220703125" text="Task" />
          </columns>
       </TableView>
-      <Button layoutX="263.0" layoutY="478.0" mnemonicParsing="false" onAction="#editScheduleOnClick" prefHeight="50.0" prefWidth="143.0" text="Save Changes" wrapText="true">
+      <Button layoutX="245.0" layoutY="476.0" mnemonicParsing="false" onAction="#editScheduleOnClick" prefHeight="50.0" prefWidth="143.0" text="Save Changes" wrapText="true">
          <font>
             <Font size="19.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="534.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
+         <font>
+            <Font size="21.0" />
          </font>
       </Button>
    </children>

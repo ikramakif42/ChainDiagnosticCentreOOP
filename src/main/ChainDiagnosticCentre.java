@@ -23,8 +23,7 @@ public class ChainDiagnosticCentre extends Application {
                 System.out.println("Hello World!");
                 LocalDate date = LocalDate.of(2020, 1, 8);
                 User a = new User("a", 12, "aa", "aa", "aa", "aa", date);
-                a.setID(2235);
-                System.out.println(Integer.toString(a.getID()));
+                System.out.println(a.getID());
             }
         });
         
@@ -41,6 +40,7 @@ public class ChainDiagnosticCentre extends Application {
     public static void main(String[] args) {
         launch(args);
         //LOOK A CHANGE
+        // Another test, hope it works THIS time
     }
     
 }

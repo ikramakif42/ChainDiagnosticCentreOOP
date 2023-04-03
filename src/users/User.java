@@ -3,12 +3,14 @@ package users;
 import java.time.LocalDate;
 
 public class User {
-    String name;
-    int ID;
-    String password, email, contactNo, address;
-    LocalDate DOB;
+    public String name;
+    public final int ID;
+    private String password;
+    public String email;
+    private String contactNo, address;
+    protected LocalDate DOB;
 
-    public User(String name, final int ID, String password, String email, String contactNo, String address, LocalDate DOB) {
+    public User(String name, int ID, String password, String email, String contactNo, String address, LocalDate DOB) {
         this.name = name;
         this.ID = ID;
         this.password = password;
@@ -28,10 +30,6 @@ public class User {
 
     public int getID() {
         return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public String getPassword() {
@@ -74,4 +72,11 @@ public class User {
         this.DOB = DOB;
     }
     
+    public boolean userLogin(int ID, String pass){
+        return true;
+    }
+    
+    public void viewPolicies(){
+        
+    }
 }

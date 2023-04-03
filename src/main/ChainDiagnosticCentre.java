@@ -1,5 +1,6 @@
 package main;
 
+import java.time.LocalDate;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import users.User;
 
 public class ChainDiagnosticCentre extends Application {
     
@@ -19,6 +21,10 @@ public class ChainDiagnosticCentre extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
+                LocalDate date = LocalDate.of(2020, 1, 8);
+                User a = new User("a", 12, "aa", "aa", "aa", "aa", date);
+                a.setID(2235);
+                System.out.println(Integer.toString(a.getID()));
             }
         });
         

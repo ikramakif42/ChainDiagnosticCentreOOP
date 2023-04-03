@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="230.0" layoutY="49.0" text="My Workplace">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="90.0" layoutY="131.0" mnemonicParsing="false" text="Apply for leave">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="362.0" layoutY="131.0" mnemonicParsing="false" text="Apply for loan">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="79.0" layoutY="207.0" mnemonicParsing="false" text="Submit Complaint">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="343.0" layoutY="207.0" mnemonicParsing="false" text="Submit Resignation">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="221.0" layoutY="311.0" mnemonicParsing="false" text="Return to Dashboard" />
+   </children>
+</AnchorPane>

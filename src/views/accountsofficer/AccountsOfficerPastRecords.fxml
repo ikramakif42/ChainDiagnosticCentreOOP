@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="accountsOfficerPastRecordsTable" prefHeight="427.0" prefWidth="876.0">
+         <columns>
+            <TableColumn prefWidth="144.79999387264252" text="Patient" />
+            <TableColumn minWidth="6.39996337890625" prefWidth="120.79998779296875" text="Amount" />
+            <TableColumn minWidth="0.0" prefWidth="100.79998779296875" text="Due Date" />
+            <TableColumn minWidth="6.39996337890625" prefWidth="120.79998779296875" text="Date Paid" />
+            <TableColumn minWidth="6.39996337890625" prefWidth="380.80000610351567" text="Description" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

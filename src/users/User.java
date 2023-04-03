@@ -1,8 +1,9 @@
 package users;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class User {
+public class User implements Serializable{
     public String name;
     public final int ID;
     private String password;
@@ -70,6 +71,11 @@ public class User {
 
     public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "name=" + name + ", ID=" + ID + ", password=" + password + ", email=" + email + ", contactNo=" + contactNo + ", address=" + address + ", DOB=" + DOB + '}';
     }
     
     public boolean userLogin(int ID, String pass){

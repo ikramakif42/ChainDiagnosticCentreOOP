@@ -1,0 +1,77 @@
+//        Button btn = new Button();
+//        btn.setText("Say 'Hello World'");
+//        btn.setOnAction(new EventHandler<ActionEvent>() {
+//            
+//            @Override
+//            public void handle(ActionEvent event) {
+//                System.out.println("Hello World!");
+                
+                
+//                File f = null;
+//                FileInputStream fis = null;      
+//                ObjectInputStream ois = null;
+//
+//                try {
+//                    f = new File("EmpObjects.bin");
+//                    fis = new FileInputStream(f);
+//                    ois = new ObjectInputStream(fis);
+//                    User tempUser;
+//                    try{
+//                        while(true){
+//                            System.out.println("Printing objects.");
+//                            tempUser = (User) ois.readObject();
+//                            System.out.println(tempUser.toString());
+//                        }
+//                    }//end of nested try
+//                    catch(IOException | ClassNotFoundException e){
+//                        //
+//                    }//nested catch     
+//                    System.out.println("All objects are loaded successfully...\n");            
+//                } catch (IOException ex) {} 
+//                finally {
+//                    try {
+//                        if(ois != null) ois.close();
+//                    } catch (IOException ex) { }
+//                }
+                
+                
+                
+                //
+                // Test - delet this
+                //
+//                File f = null;
+//                FileOutputStream fos = null;      
+//                ObjectOutputStream oos = null;
+//                try {
+//                    f = new File("EmpObjects.bin");
+//                    if(f.exists()){
+//                        fos = new FileOutputStream(f,true);
+//                        oos = new AppendableObjectOutputStream(fos);                
+//                    }
+//                    else{
+//                        fos = new FileOutputStream(f);
+//                        oos = new ObjectOutputStream(fos);               
+//                    }
+//                    LocalDate date1 = LocalDate.of(2020, 2, 1);
+//                    User tempUser = new User("Test", 123, "Pass", "Email", "Contact", "Address", date1);
+//                    oos.writeObject(tempUser);
+//
+//                } catch (IOException ex) {
+//                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//                } finally {
+//                    try {
+//                        if(oos != null) oos.close();
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+                //
+                //Upto here
+                //
+                
+                
+//                System.out.println("Hello World2!");
+//                
+//                
+//            }
+//        });

@@ -8,10 +8,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import users.User;
 
 public class LoginController implements Initializable {
@@ -29,7 +34,10 @@ public class LoginController implements Initializable {
     
     @FXML
     private void userLogin(ActionEvent event) {
-        
+        if (userIDTextField.getText() == null || userIDTextField.getText().trim().isEmpty()){
+            errorLabel.setText("Error, enter a User ID");
+        }
+        else {
         int id = Integer.parseInt(userIDTextField.getText());
         String pass = passwordField.getText();
         
@@ -46,6 +54,7 @@ public class LoginController implements Initializable {
             try{
                 System.out.println("Printing objects");
                 while(true){
+                    if (idflag==1){break;}
                     tempUser = (User) ois.readObject();
                     System.out.println(tempUser.toString());
                     if (id==tempUser.ID){
@@ -60,13 +69,16 @@ public class LoginController implements Initializable {
             catch(IOException | ClassNotFoundException e){
                 System.out.println("IOException | ClassNotFoundException in reading bin file");
             }
-            System.out.println("All objects are loaded successfully...\n");
+            System.out.println("End of file\n");
             
             if (idflag==1){
-                if(passflag==1){System.out.println("Yay");}
-                else{System.out.println("Wrong password");}
+                if(passflag==1){
+                    errorLabel.setText("Login Successful");
+                    //Stuff goes here
+                }
+                else{errorLabel.setText("Error, wrong password");}
             }
-            else{System.out.println("User not found");}
+            else{errorLabel.setText("Error, user not found");}
         
         } catch (IOException ex) {System.out.println("IOException on entire file handling");}
         finally {
@@ -76,5 +88,5 @@ public class LoginController implements Initializable {
         }
         
     }
-    
+  }
 }

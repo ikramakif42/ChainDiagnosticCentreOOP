@@ -110,8 +110,8 @@ public abstract class User implements Serializable{
                             else if (tempUser instanceof Patient){userType=4;}
 //                            else if (tempUser instanceof Pharmacist){userType=5;}
 //                            else if (tempUser instanceof Nurse){userType=6;}
-//                            else if (tempUser instanceof Director){userType=7;}
-//                            else if (tempUser instanceof Accounts){userType=8;}
+                            else if (tempUser instanceof Director){userType=7;}
+                            else if (tempUser instanceof AccountsOfficer){userType=8;}
 //                            else if (tempUser instanceof HR){userType=9;}
 //                            else {userType=10;}
                             break;

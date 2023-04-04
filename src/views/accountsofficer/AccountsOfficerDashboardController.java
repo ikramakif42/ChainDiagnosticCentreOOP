@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.director;
+package views.accountsofficer;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author Kazi
  */
-public class DirectorDashboardController implements Initializable {
+public class AccountsOfficerDashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -33,23 +32,9 @@ public class DirectorDashboardController implements Initializable {
     }    
 
     @FXML
-    private void directorEmployeeListOnClick(ActionEvent event) {
-    try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorEmployeeList.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-    }
-
-    @FXML
-    private void directorSchedulesOnClick(ActionEvent event) {
+    private void accountsOfficerRestockRequestsOnClick(ActionEvent event) {
         try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorSchedules.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerRestockOrders.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
         stg.setScene(scene);
@@ -61,9 +46,9 @@ public class DirectorDashboardController implements Initializable {
     }
 
     @FXML
-    private void directorPromoteTransferOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorPromotionOrTransfer.fxml"));
+    private void accountsOfficerPastRecordsOnClick(ActionEvent event) {
+        try{
+        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerPastRecords.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
         stg.setScene(scene);
@@ -75,9 +60,9 @@ public class DirectorDashboardController implements Initializable {
     }
 
     @FXML
-    private void directorFinanceHRReportsOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorHRAndFinanceReports.fxml"));
+    private void accountsOfficerPatientBillingOnClick(ActionEvent event) {
+        try{
+        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerPatientBilling.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
         stg.setScene(scene);
@@ -89,9 +74,9 @@ public class DirectorDashboardController implements Initializable {
     }
 
     @FXML
-    private void directorSalaryOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorSalaries.fxml"));
+    private void accountsOfficerReportsOnClick(ActionEvent event) {
+        try{
+        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerReports.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
         stg.setScene(scene);
@@ -103,24 +88,9 @@ public class DirectorDashboardController implements Initializable {
     }
 
     @FXML
-    private void directorBranchReportsOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorBranchReports.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-    }
-
-
-    @FXML
-    private void directorPastRecordsOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorPastRecords.fxml"));
+    private void accountsOfficerLoanApplicationsOnClick(ActionEvent event) {
+                try{
+        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerLoanApplications.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
         stg.setScene(scene);
@@ -132,9 +102,9 @@ public class DirectorDashboardController implements Initializable {
     }
 
     @FXML
-    private void directorPoliciesOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorPolicies.fxml"));
+    private void accountsOfficerSalariesOnClick(ActionEvent event) {
+                try{
+        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerRestockOrders.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
         stg.setScene(scene);

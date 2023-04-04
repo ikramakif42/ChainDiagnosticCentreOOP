@@ -113,8 +113,32 @@ public class LoginController implements Initializable {
             case 4: errorLabel.setText("Login Successful - Patient"); break;             //Patient authenticated
 //            case 5: errorLabel.setText("Login Successful - Pharmacist"); break;          //Pharmacist authenticated
 //            case 6: errorLabel.setText("Login Successful - Nurse"); break;               //Nurse authenticated
-            case 7: errorLabel.setText("Login Successful - Managing Director"); break;   //Managing Director authenticated
-            case 8: errorLabel.setText("Login Successful - Accounts Officer"); break;    //Accounts Officer authenticated
+            case 7: 
+                errorLabel.setText("Login Successful - Managing Director"); 
+                Parent directorDashboard = null;
+                try {
+                    directorDashboard = FXMLLoader.load(getClass().getResource("director/DirectorDashboard.fxml"));
+                } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene7 = new Scene(directorDashboard);
+                Stage stg7 = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+                stg7.setScene(scene7);
+                stg7.show();            
+            break;   //Managing Director authenticated
+            case 8: 
+                errorLabel.setText("Login Successful - Accounts Officer"); 
+                Parent accountsOfficerDashboard = null;
+                try {
+                    accountsOfficerDashboard = FXMLLoader.load(getClass().getResource("accountsofficer/AccountsOfficerDashboard.fxml"));
+                } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene8 = new Scene(accountsOfficerDashboard);
+                Stage stg8 = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+                stg8.setScene(scene8);
+                stg8.show();          
+                break;    //Accounts Officer authenticated
 //            case 9: errorLabel.setText("Login Successful - HR Officer"); break;          //HR Officer authenticated
 //            case 10: errorLabel.setText("Login Successful - Lab Technician"); break;     //Lab Technician authenticated
         }

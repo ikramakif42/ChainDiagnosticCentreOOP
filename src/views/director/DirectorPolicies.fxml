@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorPoliciesController">
    <children>
       <TableView fx:id="directorPolicyTable" prefHeight="553.0" prefWidth="593.0">
          <columns>
@@ -26,7 +26,7 @@
          </font>
       </Button>
       <TextField fx:id="directorPolicyCreationTextField" layoutX="44.0" layoutY="622.0" prefHeight="54.0" prefWidth="312.0" />
-      <Button layoutX="437.0" layoutY="569.0" mnemonicParsing="false" onAction="#directorOpenBranchReportDetailsOnClick" prefHeight="38.0" prefWidth="142.0" text="Delete Policy">
+      <Button layoutX="437.0" layoutY="569.0" mnemonicParsing="false" onAction="#directorDeletePolicyOnClick" prefHeight="38.0" prefWidth="142.0" text="Delete Policy">
          <font>
             <Font size="17.0" />
          </font>

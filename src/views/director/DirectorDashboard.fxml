@@ -16,7 +16,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="94.0" layoutY="291.0" mnemonicParsing="false" onAction="#directorPromoteTransferOnClick" prefHeight="40.0" prefWidth="226.0" style="-fx-background-color: #abc4ff;" text="Promote/Transfer">
+      <Button layoutX="100.0" layoutY="291.0" mnemonicParsing="false" onAction="#directorPromoteTransferOnClick" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: #abc4ff;" text="Promote/Transfer">
          <font>
             <Font size="18.0" />
          </font>
@@ -36,7 +36,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="431.0" layoutY="291.0" mnemonicParsing="false" onAction="#direcotr" prefHeight="40.0" prefWidth="226.0" style="-fx-background-color: #abc4ff;" text="Policies">
+      <Button layoutX="431.0" layoutY="291.0" mnemonicParsing="false" onAction="#directorPoliciesOnClick" prefHeight="40.0" prefWidth="226.0" style="-fx-background-color: #abc4ff;" text="Policies">
          <font>
             <Font size="18.0" />
          </font>

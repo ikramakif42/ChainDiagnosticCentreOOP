@@ -6,24 +6,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="228.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorEmployeeListFilterViewController">
    <children>
-      <ComboBox fx:id="directorFilterViewField" layoutX="99.0" layoutY="38.0" prefWidth="150.0" />
-      <Label layoutX="20.0" layoutY="38.0" prefHeight="26.0" prefWidth="70.0" text="Filter by:" />
-      <Label layoutX="290.0" layoutY="37.0" prefHeight="38.0" prefWidth="70.0" text="Filter by DOB (start date)" wrapText="true" />
-      <DatePicker fx:id="directorFilterDOBStart" layoutX="369.0" layoutY="43.0" />
-      <Label layoutX="290.0" layoutY="86.0" prefHeight="38.0" prefWidth="70.0" text="Filter by DOB (end date)" wrapText="true" />
-      <DatePicker fx:id="directorFilterDOBEnd" layoutX="369.0" layoutY="92.0" />
-      <TextField fx:id="directorFilterViewCriteria" layoutX="100.0" layoutY="81.0" />
-      <Label layoutX="20.0" layoutY="80.0" prefHeight="26.0" prefWidth="70.0" text="Criteria" />
-      <Button layoutX="180.0" layoutY="148.0" mnemonicParsing="false" onAction="#directorRunFilter" prefHeight="38.0" prefWidth="70.0" text="Run Filter" />
-      <Button layoutX="290.0" layoutY="148.0" mnemonicParsing="false" onAction="#directorResetFilter" prefHeight="38.0" prefWidth="78.0" text="Reset Filter" />
-      <Button layoutX="11.0" layoutY="167.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Button>
+      <ComboBox fx:id="directorFilterViewField" layoutX="133.0" layoutY="42.0" prefWidth="150.0" />
+      <Label layoutX="20.0" layoutY="42.0" prefHeight="26.0" prefWidth="70.0" text="Filter by:" />
+      <Label layoutX="329.0" layoutY="36.0" prefHeight="38.0" prefWidth="70.0" text="Filter by DOB (start date)" wrapText="true" />
+      <DatePicker fx:id="directorFilterDOBStart" layoutX="425.0" layoutY="42.0" />
+      <Label layoutX="333.0" layoutY="105.0" prefHeight="38.0" prefWidth="70.0" text="Filter by DOB (end date)" wrapText="true" />
+      <DatePicker fx:id="directorFilterDOBEnd" layoutX="425.0" layoutY="111.0" />
+      <TextField fx:id="directorFilterViewCriteria" layoutX="134.0" layoutY="111.0" />
+      <Label layoutX="20.0" layoutY="110.0" prefHeight="26.0" prefWidth="70.0" text="Criteria" />
+      <Button layoutX="214.0" layoutY="216.0" mnemonicParsing="false" onAction="#directorRunFilter" prefHeight="38.0" prefWidth="70.0" text="Run Filter" />
+      <Button layoutX="329.0" layoutY="216.0" mnemonicParsing="false" onAction="#directorResetFilter" prefHeight="38.0" prefWidth="78.0" text="Reset Filter" />
    </children>
 </AnchorPane>

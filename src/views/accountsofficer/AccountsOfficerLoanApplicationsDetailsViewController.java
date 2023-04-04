@@ -47,8 +47,5 @@ public class AccountsOfficerLoanApplicationsDetailsViewController implements Ini
     private void denyLoanApplicationOnClick(ActionEvent event) {
     }
 
-    @FXML
-    private void backButton(ActionEvent event) {
-    }
     
 }

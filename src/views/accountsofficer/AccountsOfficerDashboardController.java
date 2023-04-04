@@ -104,7 +104,7 @@ public class AccountsOfficerDashboardController implements Initializable {
     @FXML
     private void accountsOfficerSalariesOnClick(ActionEvent event) {
                 try{
-        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerRestockOrders.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerSalaries.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
         stg.setScene(scene);

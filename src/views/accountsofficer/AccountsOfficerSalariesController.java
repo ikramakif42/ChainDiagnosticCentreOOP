@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -22,10 +23,12 @@ import javafx.stage.Stage;
  *
  * @author Kazi
  */
-public class AccountsOfficerPatientBillingController implements Initializable {
+public class AccountsOfficerSalariesController implements Initializable {
 
     @FXML
-    private TableView<?> accountsOfficerBillingTable;
+    private TableView<?> accountsOfficerSalaryTable;
+    @FXML
+    private TextField addSubtractSalaryAmount;
 
     /**
      * Initializes the controller class.
@@ -36,22 +39,16 @@ public class AccountsOfficerPatientBillingController implements Initializable {
     }    
 
     @FXML
-    private void accountsOfficerEditBillingInfoOnClick(ActionEvent event) {
-                try{
-        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerPatientBillingEditView.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = new Stage();
-        stg.setScene(scene);
-        stg.show();
+    private void addSalary(ActionEvent event) {
     }
-    catch(Exception e){
-        e.printStackTrace();
-    }
+
+    @FXML
+    private void subtractSalary(ActionEvent event) {
     }
 
     @FXML
     private void backButton(ActionEvent event) {
-                try{
+        try{
         Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerDashboard.fxml"));
         Scene scene = new Scene(root);
         Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();

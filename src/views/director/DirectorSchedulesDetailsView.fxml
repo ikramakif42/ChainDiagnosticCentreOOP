@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorSchedulesDetailsViewController">
    <children>
       <TableView fx:id="directorDetailedScheduleTable" editable="true" layoutY="-1.0" prefHeight="458.0" prefWidth="650.0">
          <columns>
@@ -18,11 +18,6 @@
       <Button layoutX="245.0" layoutY="476.0" mnemonicParsing="false" onAction="#editScheduleOnClick" prefHeight="50.0" prefWidth="143.0" text="Save Changes" wrapText="true">
          <font>
             <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="14.0" layoutY="534.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
-         <font>
-            <Font size="21.0" />
          </font>
       </Button>
    </children>

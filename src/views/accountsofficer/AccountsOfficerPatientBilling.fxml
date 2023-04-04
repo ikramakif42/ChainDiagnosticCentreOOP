@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerPatientBillingController">
    <children>
       <TableView fx:id="accountsOfficerBillingTable" prefHeight="456.0" prefWidth="747.0">
          <columns>
@@ -16,9 +16,14 @@
             <TableColumn minWidth="6.39996337890625" prefWidth="380.80000610351567" text="Description" />
          </columns>
       </TableView>
-      <Button layoutX="63.0" layoutY="479.0" mnemonicParsing="false" onAction="#accountsOfficerEditBillingInfoOnClick" prefHeight="38.0" prefWidth="124.0" text="Edit">
+      <Button layoutX="301.0" layoutY="478.0" mnemonicParsing="false" onAction="#accountsOfficerEditBillingInfoOnClick" prefHeight="38.0" prefWidth="124.0" text="Edit">
          <font>
             <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="533.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
+         <font>
+            <Font size="21.0" />
          </font>
       </Button>
    </children>

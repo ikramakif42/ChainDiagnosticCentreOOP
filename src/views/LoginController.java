@@ -28,6 +28,7 @@ import users.Director;
 import users.Doctor;
 import users.Patient;
 import users.User;
+import views.doctor.DoctorDashboardController;
 
 public class LoginController implements Initializable {
 
@@ -84,7 +85,7 @@ public class LoginController implements Initializable {
     }
     
     @FXML
-    private void userLogin(ActionEvent event) {
+    private void userLogin(ActionEvent event) throws IOException {
         if (userIDTextField.getText() == null || userIDTextField.getText().trim().isEmpty()){
             errorLabel.setText("Error, enter a User ID");                                //Empty text field for User ID
         }
@@ -93,19 +94,20 @@ public class LoginController implements Initializable {
         int id = Integer.parseInt(userIDTextField.getText());
         String pass = passwordField.getText();
         int login = User.userLogin(id, pass);
+        Parent dashboard = null;
         switch(login){
             case 0: errorLabel.setText("Error, enter proper login info!"); break;        //Unhandled exception
             case 1: errorLabel.setText("Error, user not found"); break;                  //User not found in database
             case 2: errorLabel.setText("Error, wrong password"); break;                  //Authorisation failed
             case 3: 
                 errorLabel.setText("Login Successful - Doctor");                         //Doctor authenticated
-                Parent dashboard = null;
-                try {
-                    dashboard = FXMLLoader.load(getClass().getResource("doctor/DoctorDashboard.fxml"));
-                } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("doctor/DoctorDashboard.fxml"));
+                dashboard = (Parent) loader.load();
                 Scene scene2 = new Scene(dashboard);
+                
+                DoctorDashboardController d = loader.getController();
+                d.setDoc((Doctor) getInstance(id, pass));
+                
                 Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow(); 
                 stg2.setScene(scene2);
                 stg2.show();
@@ -119,5 +121,44 @@ public class LoginController implements Initializable {
 //            case 10: errorLabel.setText("Login Successful - Lab Technician"); break;     //Lab Technician authenticated
         }
     }
+  }
+    
+  private User getInstance(int id, String pass){
+    File f = null;
+    FileInputStream fis = null;      
+    ObjectInputStream ois = null;
+    try {
+        f = new File("UserObjects.bin");
+        fis = new FileInputStream(f);
+        ois = new ObjectInputStream(fis);
+        User tempUser;
+        try{
+            System.out.println("Printing objects");
+            while(true){
+                tempUser = (User) ois.readObject();
+                System.out.println(tempUser.toString());
+                if (id==tempUser.ID){
+                    if (pass.equals(tempUser.getPassword())){
+                        System.out.println("User found");
+                        System.out.print("tempUser:");
+                        System.out.println(tempUser);
+                        return tempUser;
+                    }
+                }
+            }
+        }
+        catch(IOException | ClassNotFoundException e){
+            System.out.println("IOException | ClassNotFoundException in reading bin file");
+        }
+        System.out.println("End of file\n");
+    } catch (IOException ex) {
+        System.out.println("IOException on entire file handling");
+    }
+    finally {
+        try {
+            if(ois != null) ois.close();
+        } catch (IOException ex) { }
+    }
+    return null;
   }
 }

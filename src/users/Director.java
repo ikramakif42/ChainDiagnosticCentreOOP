@@ -13,6 +13,14 @@ public class Director extends Employee implements Serializable {
         super(designation, department, salary, DOJ, branchName, name, ID, password, email, contactNo, address, DOB);
     }
 
+    public LocalDate getDOJ() {
+        return DOJ;
+    }
+
+    public int getID() {
+        return ID;
+    }
+    
     public int getStockOptions() {
         return stockOptions;
     }
@@ -108,7 +116,7 @@ public class Director extends Employee implements Serializable {
     public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
     }
-
+    
     @Override
     public String toString() {
         return "Director: " + "Desig="+designation+" Dept= "+department+" Salary= "+salary+" DOJ= "+DOJ+" branch= "+branchName+" Name= "+name+" ID= "+ID+" pass= "+password+" mail= "+email+" contact= "+contactNo+" addr= "+address+" DOJ= "+DOB;

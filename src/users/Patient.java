@@ -32,6 +32,11 @@ public class Patient extends User implements Serializable{
     public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
     }
+
+    @Override
+    public String toString() {
+        return "Patient: name="+name+" ID="+ID+" pass="+password+" mail="+email+" contact="+contactNo+" addr="+address+" DOB="+DOB;
+    }
     
     public void makeAppt(){}
     public void cancelAppt(){}

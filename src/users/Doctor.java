@@ -4,20 +4,10 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import model.Schedule;
 
-public abstract class Employee extends User implements Serializable{
-    public String designation, department;
-    protected Float salary;
-    final LocalDate DOJ;
-    public String branchName;
-    protected Schedule[] scheduleRoster;
-
-    public Employee(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String contactNo, String address, LocalDate DOB) {
-        super(name, ID, password, email, contactNo, address, DOB);
-        this.designation = designation;
-        this.department = department;
-        this.salary = salary;
-        this.DOJ = DOJ;
-        this.branchName = branchName;
+public class Doctor extends Employee implements Serializable{
+    
+    public Doctor(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String contactNo, String address, LocalDate DOB) {
+        super(designation, department, salary, DOJ, branchName, name, ID, password, email, contactNo, address, DOB);
     }
 
     public String getDesignation() {
@@ -34,14 +24,6 @@ public abstract class Employee extends User implements Serializable{
 
     public void setDepartment(String department) {
         this.department = department;
-    }
-
-    public Float getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Float salary) {
-        this.salary = salary;
     }
 
     public String getBranchName() {
@@ -84,5 +66,17 @@ public abstract class Employee extends User implements Serializable{
         this.DOB = DOB;
     }
     
+    @Override
+    public String toString() {
+        return "Doctor: " + "Desig="+designation+" Dept= "+department+" Salary= "+salary+" DOJ= "+DOJ+" branch= "+branchName+" Name= "+name+" ID= "+ID+" pass= "+password+" mail= "+email+" contact= "+contactNo+" addr= "+address+" DOJ= "+DOB;
+    }
     
+    public void checkAppt(){}
+    public void cancelAppt(){}    
+    public void prescribeMeds(){}
+    public void viewEditRecords(int PatientID){}
+    public void viewPatientBillingInfo(int PatientID){}
+//    + trackLabTests(PatientID): void
+//    + assignTask(EmpID): void
+//    + answerTeleQuery(): void
 }

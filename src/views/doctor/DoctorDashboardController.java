@@ -27,13 +27,8 @@ public class DoctorDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
     }    
-
-    @FXML
-    private void viewMySchedule(ActionEvent event) {
-    }
-
+    
     @FXML
     private void viewMyPatients(ActionEvent event) {
     }
@@ -41,6 +36,11 @@ public class DoctorDashboardController implements Initializable {
     @FXML
     private void viewMyWorkplace(ActionEvent event) {
     }
+
+    @FXML
+    private void viewMySchedule(ActionEvent event) {
+    }
+
 
     @FXML
     private void logOut(ActionEvent event) {
@@ -66,6 +66,22 @@ public class DoctorDashboardController implements Initializable {
         doctorIDLabel.setText(String.valueOf(this.doc.ID));
         doctorNameLabel.setText(this.doc.name);
     }
+
+    @FXML
+    private void assignTasksOnClick(ActionEvent event) {
+        Parent login=null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("AssignTask.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
+    }
+
+
     
     
 }

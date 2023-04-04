@@ -29,6 +29,7 @@ import users.Doctor;
 import users.Patient;
 import users.User;
 import views.doctor.DoctorDashboardController;
+import views.patient.PatientDashboardController;
 
 public class LoginController implements Initializable {
 
@@ -94,25 +95,39 @@ public class LoginController implements Initializable {
         int id = Integer.parseInt(userIDTextField.getText());
         String pass = passwordField.getText();
         int login = User.userLogin(id, pass);
-        Parent dashboard = null;
+        
         switch(login){
             case 0: errorLabel.setText("Error, enter proper login info!"); break;        //Unhandled exception
             case 1: errorLabel.setText("Error, user not found"); break;                  //User not found in database
             case 2: errorLabel.setText("Error, wrong password"); break;                  //Authorisation failed
             case 3: 
                 errorLabel.setText("Login Successful - Doctor");                         //Doctor authenticated
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("doctor/DoctorDashboard.fxml"));
-                dashboard = (Parent) loader.load();
-                Scene scene2 = new Scene(dashboard);
+                Parent doctorDashboard = null;
+                FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("doctor/DoctorDashboard.fxml"));
+                doctorDashboard = (Parent) doctorLoader.load();
+                Scene doctorScene = new Scene(doctorDashboard);
                 
-                DoctorDashboardController d = loader.getController();
+                DoctorDashboardController d = doctorLoader.getController();
                 d.setDoc((Doctor) getInstance(id, pass));
                 
-                Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-                stg2.setScene(scene2);
-                stg2.show();
+                Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+                doctorStage.setScene(doctorScene);
+                doctorStage.show();
                 break;
-            case 4: errorLabel.setText("Login Successful - Patient"); break;             //Patient authenticated
+            case 4: 
+                errorLabel.setText("Login Successful - Patient");                          //Patient authenticated
+                Parent patientDashboard = null;
+                FXMLLoader patientLoader = new FXMLLoader(getClass().getResource("patient/PatientDashboard.fxml"));
+                patientDashboard = (Parent) patientLoader.load();
+                Scene patientScene = new Scene(patientDashboard);
+                
+                PatientDashboardController p = patientLoader.getController();
+                p.setPatient((Patient) getInstance(id, pass));
+                
+                Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+                stg2.setScene(patientScene);
+                stg2.show();
+                break;             
 //            case 5: errorLabel.setText("Login Successful - Pharmacist"); break;          //Pharmacist authenticated
 //            case 6: errorLabel.setText("Login Successful - Nurse"); break;               //Nurse authenticated
             case 7: 

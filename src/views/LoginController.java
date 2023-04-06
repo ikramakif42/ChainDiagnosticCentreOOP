@@ -108,7 +108,7 @@ public class LoginController implements Initializable {
                 Scene doctorScene = new Scene(doctorDashboard);
                 
                 DoctorDashboardController d = doctorLoader.getController();
-                d.setDoc((Doctor) getInstance(id, pass));
+                d.setDoc((Doctor) getInstance(id));
                 
                 Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
                 doctorStage.setScene(doctorScene);
@@ -122,7 +122,7 @@ public class LoginController implements Initializable {
                 Scene patientScene = new Scene(patientDashboard);
                 
                 PatientDashboardController p = patientLoader.getController();
-                p.setPatient((Patient) getInstance(id, pass));
+                p.setPatient((Patient) getInstance(id));
                 
                 Stage stg2 = (Stage)((Node)event.getSource()).getScene().getWindow(); 
                 stg2.setScene(patientScene);
@@ -162,7 +162,7 @@ public class LoginController implements Initializable {
     }
   }
     
-  private User getInstance(int id, String pass){
+  public static User getInstance(int id){
     File f = null;
     FileInputStream fis = null;      
     ObjectInputStream ois = null;
@@ -177,12 +177,10 @@ public class LoginController implements Initializable {
                 tempUser = (User) ois.readObject();
                 System.out.println(tempUser.toString());
                 if (id==tempUser.ID){
-                    if (pass.equals(tempUser.getPassword())){
-                        System.out.println("User found");
-                        System.out.print("tempUser:");
-                        System.out.println(tempUser);
-                        return tempUser;
-                    }
+                    System.out.println("User found");
+                    System.out.print("tempUser:");
+                    System.out.println(tempUser);
+                    return tempUser;
                 }
             }
         }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="369.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <DatePicker fx:id="nurseDocAppointmentDateChange" layoutX="115.0" layoutY="132.0" />
+      <Label layoutX="55.0" layoutY="134.0" text="Date:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="181.0" text="Time:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nurseDocAppointmentTimeChange" layoutX="115.0" layoutY="179.0" prefHeight="25.0" prefWidth="174.0" />
+      <Button fx:id="nurseDocAppointmentSaveEdit" layoutX="154.0" layoutY="262.0" mnemonicParsing="false" onAction="#nurseDocAppointmentSaveEditOnClick" style="-fx-background-color: orange;" text="Save" textFill="#3f7eba">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

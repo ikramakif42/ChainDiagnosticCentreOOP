@@ -28,7 +28,7 @@
          <children>
             <Button fx:id="UpdateCompensationButton" layoutX="428.0" layoutY="299.0" mnemonicParsing="false" onAction="#UpdateCompensationButtonOnClick" prefHeight="36.0" prefWidth="205.0" text="Update Compensation" />
             <TextArea layoutX="428.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" />
-            <TextField layoutX="37.0" layoutY="61.0" prefHeight="39.0" prefWidth="171.0" promptText="New Salary Information" />
+            <TextField fx:id="newSalaryInfo" layoutX="37.0" layoutY="61.0" prefHeight="39.0" prefWidth="171.0" promptText="New Salary Information" />
             <MenuButton fx:id="CurrentEmployeeButton" layoutX="39.0" layoutY="147.0" mnemonicParsing="false" onAction="#CurrentEmployeeButtonOnClick" prefHeight="39.0" prefWidth="166.0" text="Current Employee">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />

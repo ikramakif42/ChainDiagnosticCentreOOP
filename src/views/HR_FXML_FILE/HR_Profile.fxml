@@ -22,42 +22,42 @@
                   <Font size="18.0" />
                </font>
             </MenuButton>
-            <Button mnemonicParsing="false" onAction="#updatepolicesonclick" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update hospital policies and procedures" textAlignment="CENTER" textFill="#382020" wrapText="true">
+            <Button mnemonicParsing="false" onAction="#updatePoliciesOnclick" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update hospital policies and procedures" textAlignment="CENTER" textFill="#382020" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="49.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Manage applications " textFill="#382020">
+            <Button layoutX="10.0" layoutY="49.0" mnemonicParsing="false" onAction="#manageApplicationsOnClick" prefHeight="57.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Manage applications " textFill="#382020">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="83.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update employee records and profiles" textAlignment="CENTER" textFill="#382020" wrapText="true">
+            <Button layoutX="10.0" layoutY="83.0" mnemonicParsing="false" onAction="#updateEmployeesOnClick" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update employee records and profiles" textAlignment="CENTER" textFill="#382020" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="117.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="View employee complaints" textAlignment="CENTER" textFill="#382020" wrapText="true">
+            <Button layoutX="10.0" layoutY="117.0" mnemonicParsing="false" onAction="#viewComplaints" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="View employee complaints" textAlignment="CENTER" textFill="#382020" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="340.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Handle resignations" textAlignment="CENTER" textFill="#382020" wrapText="true">
+            <Button layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleResignations" prefHeight="49.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Handle resignations" textAlignment="CENTER" textFill="#382020" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="151.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Hire new employee" textAlignment="CENTER" textFill="#382020" wrapText="true">
+            <Button layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#addNewEmployee" prefHeight="57.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Hire new employee" textAlignment="CENTER" textFill="#382020" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="185.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Create reports on employees" textAlignment="CENTER" textFill="#382020" wrapText="true">
+            <Button layoutX="10.0" layoutY="185.0" mnemonicParsing="false" onAction="#createReport" prefHeight="60.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Create reports on employees" textAlignment="CENTER" textFill="#382020" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="219.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update employee compensation" textAlignment="CENTER" textFill="#382020" wrapText="true">
+            <Button layoutX="10.0" layoutY="219.0" mnemonicParsing="false" onAction="#updateSalary" prefHeight="55.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update employee compensation" textAlignment="CENTER" textFill="#382020" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

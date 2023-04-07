@@ -28,13 +28,13 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="BillingInformationButton" layoutX="45.0" layoutY="82.0" mnemonicParsing="false" onAction="#BillingInformationButtonOnClick" prefHeight="37.0" prefWidth="159.0" text="Billing Information" />
-            <TableView layoutX="380.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="billingInfoTable" layoutX="380.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn prefWidth="195.99996948242188" text="Billing Information" />
               </columns>
             </TableView>
             <Button fx:id="ReturnPatientbillingInfoButton" layoutX="32.0" layoutY="442.0" mnemonicParsing="false" onAction="#ReturnPatientbillingInfoButtonOnClick" text="Return" textFill="#ff1414" />
-            <DatePicker layoutX="39.0" layoutY="221.0" promptText="Date" />
+            <DatePicker fx:id="date" layoutX="39.0" layoutY="221.0" promptText="Date" />
             <MenuButton fx:id="TypeOfTestBButton" layoutX="40.0" layoutY="173.0" mnemonicParsing="false" onAction="#TypeOfTestBButtonOnClick" prefHeight="25.0" prefWidth="165.0" text="Type Of Test">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />

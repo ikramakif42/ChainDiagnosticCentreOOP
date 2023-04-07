@@ -25,12 +25,12 @@
    <bottom>
       <AnchorPane prefHeight="495.0" prefWidth="660.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="437.0" layoutY="41.0" prefHeight="200.0" prefWidth="161.0">
+            <TableView fx:id="inventoryData" layoutX="437.0" layoutY="41.0" prefHeight="200.0" prefWidth="161.0">
               <columns>
                 <TableColumn prefWidth="160.0000203450521" text="Inventory Data" />
               </columns>
             </TableView>
-            <TextField alignment="CENTER" layoutX="41.0" layoutY="115.0" prefHeight="45.0" prefWidth="176.0" promptText="Change Inventory">
+            <TextField fx:id="changeInventory" alignment="CENTER" layoutX="41.0" layoutY="115.0" prefHeight="45.0" prefWidth="176.0" promptText="Change Inventory">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

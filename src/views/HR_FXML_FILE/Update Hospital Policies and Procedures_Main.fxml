@@ -42,7 +42,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="54.0" layoutY="65.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="193.0" text="POLICY  Number" />
+            <Button layoutX="54.0" layoutY="65.0" mnemonicParsing="false" onAction="#policyNumber" prefHeight="44.0" prefWidth="193.0" text="POLICY  Number" />
          </children>
       </AnchorPane>
    </center>

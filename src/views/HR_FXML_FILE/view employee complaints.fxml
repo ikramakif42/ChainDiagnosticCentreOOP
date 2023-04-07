@@ -28,18 +28,18 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="EmployeeComplaintsButton" layoutX="301.0" layoutY="339.0" mnemonicParsing="false" onAction="#EmployeeComplaintsButtonOnClick" prefHeight="35.0" prefWidth="161.0" text="Employee Complaints" />
-            <TreeTableView layoutX="335.0" layoutY="61.0" prefHeight="200.0" prefWidth="234.0">
+            <TreeTableView fx:id="complaintTable" layoutX="335.0" layoutY="61.0" prefHeight="200.0" prefWidth="234.0">
                <columns>
                   <TreeTableColumn prefWidth="75.0" text="Name" />
                   <TreeTableColumn prefWidth="75.0" text="Department" />
                   <TreeTableColumn prefWidth="75.0" text="Date" />
                </columns>
             </TreeTableView>
-            <TextField layoutX="40.0" layoutY="80.0" prefHeight="25.0" prefWidth="169.0" promptText="Name" />
-            <TextField layoutX="42.0" layoutY="135.0" prefHeight="25.0" prefWidth="170.0" promptText="Department" />
-            <DatePicker layoutX="40.0" layoutY="205.0" promptText="Date" />
+            <TextField fx:id="complaintName" layoutX="40.0" layoutY="80.0" prefHeight="25.0" prefWidth="169.0" promptText="Name" />
+            <TextField fx:id="complaintDepartment" layoutX="42.0" layoutY="135.0" prefHeight="25.0" prefWidth="170.0" promptText="Department" />
+            <DatePicker fx:id="complaintDate" layoutX="40.0" layoutY="205.0" promptText="Date" />
             <Line endX="-75.66665649414062" endY="-39.000030517578125" layoutX="353.0" layoutY="102.0" startX="-75.66667175292969" startY="180.6666259765625" stroke="WHITE" strokeWidth="3.0" />
-            <CheckBox layoutX="508.0" layoutY="348.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" text="Resolved" textFill="WHITE" />
+            <CheckBox fx:id="resolvedCheckbock" layoutX="508.0" layoutY="348.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" text="Resolved" textFill="WHITE" />
             <Button layoutX="42.0" layoutY="440.0" mnemonicParsing="false" text="Return" textFill="#ff1111" />
          </children>
       </AnchorPane>

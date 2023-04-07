@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="527.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="pharmaDrugsDisplayTableList" layoutY="76.0" prefHeight="298.0" prefWidth="600.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
+        <columns>
+          <TableColumn prefWidth="203.0" text="Medicine's Name " />
+            <TableColumn prefWidth="146.0" text="Quantity" />
+            <TableColumn prefWidth="177.0" text="Expiration Date" />
+        </columns>
+      </TableView>
+      <Label layoutX="61.0" layoutY="23.0" prefHeight="17.0" prefWidth="371.0" text="                   Drugs Inventory" textAlignment="CENTER" textFill="#0c6379" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="pharmaDrugsExpiryDateFilter" layoutX="28.0" layoutY="406.0" mnemonicParsing="false" onAction="#pharmaDrugsExpiryDateFilterOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Filter By Expiry Date" textAlignment="CENTER" textFill="#076d86" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="pharmaDrugsInventoryUpdate" layoutX="196.0" layoutY="406.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryUpdateOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Update" textAlignment="CENTER" textFill="#076d86" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="pharmaDrugsInventoryRestock" layoutX="365.0" layoutY="406.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryRestockOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Restock" textAlignment="CENTER" textFill="#076d86" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

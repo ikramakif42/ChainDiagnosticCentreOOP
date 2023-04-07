@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="50.0" layoutY="30.0" prefHeight="43.0" prefWidth="243.0" text="         Drugs Restock">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="105.0" text="Medicine's Name:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="170.0" prefHeight="17.0" prefWidth="85.0" text="Quantity:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="pharmaDrugNameRestock" layoutX="196.0" layoutY="106.0" />
+      <TextField fx:id="pharmaDrugQuantityRestock" layoutX="196.0" layoutY="171.0" />
+      <Button fx:id="pharmaDrugRestockPlaceOrder" layoutX="130.0" layoutY="246.0" mnemonicParsing="false" onAction="#pharmaDrugRestockPlaceOrderOnCLick" style="-fx-background-color: orange;" text="Place Order">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

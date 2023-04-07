@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="453.0" layoutY="14.0" text="Stock" textFill="#184363">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TableView fx:id="nurseStockTableList" prefHeight="450.0" prefWidth="401.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Drugs" />
+          <TableColumn prefWidth="75.0" text="Serial ID" />
+            <TableColumn prefWidth="111.0" text="Quantity" />
+            <TableColumn prefWidth="138.0" text="Expiration Date" />
+        </columns>
+      </TableView>
+      <Button fx:id="nurseStockRequest" layoutX="446.0" layoutY="206.0" mnemonicParsing="false" onAction="#nurseStockRequestOnClick" style="-fx-background-color: orange;" text="Request">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

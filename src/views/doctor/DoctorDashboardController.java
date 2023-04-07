@@ -30,7 +30,18 @@ public class DoctorDashboardController implements Initializable {
     }    
     
     @FXML
-    private void viewMyPatients(ActionEvent event) {
+    private void viewMyPatients(ActionEvent event) throws IOException {
+        Parent doctorMyPatients = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorMyPatients.fxml"));
+        doctorMyPatients = (Parent) doctorLoader.load();
+        Scene doctorMyPatientsScene = new Scene(doctorMyPatients);
+
+        DoctorMyPatientsController d = doctorLoader.getController();
+        d.setDoc(this.doc);
+
+        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        doctorStage.setScene(doctorMyPatientsScene);
+        doctorStage.show();
     }
 
     @FXML
@@ -38,9 +49,22 @@ public class DoctorDashboardController implements Initializable {
     }
 
     @FXML
-    private void viewMySchedule(ActionEvent event) {
+    private void viewMySchedule(ActionEvent event) throws IOException {
+        Parent doctorMySchedule = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorMySchedule.fxml"));
+        doctorMySchedule = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(doctorMySchedule);
+
+        DoctorMyScheduleController d = doctorLoader.getController();
+        d.setDoc(this.doc);
+
+        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
     }
 
+    //check medical records, prescribe medication, add/track lab test, view bill info
+            
 
     @FXML
     private void logOut(ActionEvent event) {
@@ -68,20 +92,18 @@ public class DoctorDashboardController implements Initializable {
     }
 
     @FXML
-    private void assignTasksOnClick(ActionEvent event) {
-        Parent login=null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("AssignTask.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void assignTasksOnClick(ActionEvent event) throws IOException {
+        Parent assignTask=null;
+        FXMLLoader assignTaskLoader = new FXMLLoader(getClass().getResource("AssignTask.fxml"));
+        assignTask = (Parent) assignTaskLoader.load();
+        Scene assignTaskScene = new Scene(assignTask);
+        
+        AssignTaskController a = assignTaskLoader.getController();
+        a.setDoc(this.doc);
+        
+        Stage assignTaskStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        assignTaskStage.setScene(assignTaskScene);
+        assignTaskStage.show();
     }
 
-
-    
-    
 }

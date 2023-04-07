@@ -15,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -28,7 +27,7 @@ import users.Doctor;
  *
  * @author Asus
  */
-public class DoctorMyPatientsController implements Initializable {
+public class DoctorMyScheduleController implements Initializable {
 
     @FXML
     private TableView<?> patientTableView;
@@ -39,7 +38,11 @@ public class DoctorMyPatientsController implements Initializable {
     @FXML
     private TableColumn<?, ?> patientAgeTableColumn;
     @FXML
-    private TableColumn<?, ?> latestApptTableColumn;
+    private TableColumn<?, ?> apptDateTableColumn;
+    @FXML
+    private TableColumn<?, ?> apptTimeTableColumn;
+    @FXML
+    private TableColumn<?, ?> lastApptTableColumn;
     @FXML
     private TextField nameSearchTextField;
     @FXML
@@ -48,8 +51,6 @@ public class DoctorMyPatientsController implements Initializable {
     private DatePicker endDatePicker;
     @FXML
     private TextField IDSearchTextField;
-    @FXML
-    private ComboBox<?> criteriaComboBox;
     private Doctor doc;
 
     /**
@@ -88,56 +89,11 @@ public class DoctorMyPatientsController implements Initializable {
     }
 
     @FXML
-    private void applyFiltersOnClick(ActionEvent event) {
+    private void applyFIltersOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void medicalRecordsOnClick(ActionEvent event) throws IOException {
-        Parent parent = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("ViewAddPatientRecords.fxml"));
-        parent = (Parent) doctorLoader.load();
-        Scene doctorScene = new Scene(parent);
-
-        ViewAddPatientRecordsController d = doctorLoader.getController();
-        d.setDoc(this.doc);
-
-        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        doctorStage.setScene(doctorScene);
-        doctorStage.show();
-    }
-
-    @FXML
-    private void prescribeMedsOnClick(ActionEvent event) throws IOException {
-        Parent parent = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("PrescribeMedicine.fxml"));
-        parent = (Parent) doctorLoader.load();
-        Scene doctorScene = new Scene(parent);
-
-        PrescribeMedicineController d = doctorLoader.getController();
-        d.setDoc(this.doc);
-
-        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        doctorStage.setScene(doctorScene);
-        doctorStage.show();
-    }
-
-    @FXML
-    private void labResultsOnClick(ActionEvent event) throws IOException {
-        Parent parent = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("AddTrackLabTests.fxml"));
-        parent = (Parent) doctorLoader.load();
-        Scene doctorScene = new Scene(parent);
-
-        AddTrackLabTestsController d = doctorLoader.getController();
-        d.setDoc(this.doc);
-
-        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        doctorStage.setScene(doctorScene);
-        doctorStage.show();
-    }
-
-    @FXML
-    private void billInfoOnClick(ActionEvent event) {
+    private void confirmCancelOnClick(ActionEvent event) {
     }
     
 }

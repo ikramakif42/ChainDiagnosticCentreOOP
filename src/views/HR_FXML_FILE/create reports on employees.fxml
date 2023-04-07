@@ -29,12 +29,12 @@
             <TreeTableView layoutX="439.0" layoutY="46.0" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TreeTableColumn prefWidth="98.6666259765625" text="Attendence" />
-                <TreeTableColumn prefWidth="97.3333740234375" text="Performance" />
+                <TreeTableColumn fx:id="reportTable" prefWidth="97.3333740234375" text="Performance" />
               </columns>
             </TreeTableView>
-            <TextField layoutX="53.0" layoutY="213.0" promptText="Date Range" />
-            <TextField layoutX="53.0" layoutY="146.0" promptText="Department" />
-            <TextField layoutX="53.0" layoutY="85.0" promptText="Employee Name" />
+            <TextField fx:id="dateRange" layoutX="53.0" layoutY="213.0" promptText="Date Range" />
+            <TextField fx:id="employeeDepartment" layoutX="53.0" layoutY="146.0" promptText="Department" />
+            <TextField fx:id="employeeName" layoutX="53.0" layoutY="85.0" promptText="Employee Name" />
             <Line endX="-0.999969482421875" endY="164.00003051757812" layoutX="329.0" layoutY="85.0" startX="-0.999969482421875" startY="-16.666641235351562" stroke="WHITE" strokeWidth="3.0" />
             <Button layoutX="35.0" layoutY="422.0" mnemonicParsing="false" text="Return" textFill="#fb1313" />
             <Button fx:id="SubmitCreateReportButton" layoutX="479.0" layoutY="396.0" mnemonicParsing="false" onAction="#SubmitCreateReportButtonOnClick" prefHeight="25.0" prefWidth="141.0" text="Submit" />

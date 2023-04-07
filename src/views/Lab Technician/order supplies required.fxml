@@ -25,19 +25,19 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="OrderSupplyButton" layoutX="39.0" layoutY="51.0" mnemonicParsing="false" onAction="#OrderSupplyButtonOnClick" prefHeight="50.0" prefWidth="167.0" text="Order Supply" />
-            <TextField layoutX="43.0" layoutY="216.0" promptText="Required Supplies">
+            <TextField fx:id="requiredSupplies" layoutX="43.0" layoutY="216.0" promptText="Required Supplies">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <TextField layoutX="43.0" layoutY="273.0" promptText="Quantity">
+            <TextField fx:id="quantity" layoutX="43.0" layoutY="273.0" promptText="Quantity">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
             <Button fx:id="ConfirmOrderSupReqButton" layoutX="268.0" layoutY="345.0" mnemonicParsing="false" onAction="#ConfirmOrderSupReqButtonOnClick" prefHeight="37.0" prefWidth="90.0" text="Confirm" />
             <Button fx:id="SubmitOrderSupliesButton" layoutX="71.0" layoutY="120.0" mnemonicParsing="false" onAction="#SubmitOrderSupliesButtonOnClick" prefHeight="35.0" prefWidth="121.0" text="Submit" />
-            <TextArea layoutX="379.0" layoutY="55.0" prefHeight="147.0" prefWidth="200.0" promptText="Confirm message" />
+            <TextArea fx:id="confirmMessage" layoutX="379.0" layoutY="55.0" prefHeight="147.0" prefWidth="200.0" promptText="Confirm message" />
             <Button fx:id="ReturnOderSupReqButton" layoutX="26.0" layoutY="420.0" mnemonicParsing="false" onAction="#ReturnOderSupReqButtonOnClick" text="Return" textFill="#ff0f0f" />
             <Line endX="-32.33331298828125" endY="121.00001525878906" layoutX="302.0" layoutY="101.0" startX="-32.33331298828125" startY="-65.66667175292969" stroke="WHITE" strokeWidth="3.0" />
          </children></AnchorPane>

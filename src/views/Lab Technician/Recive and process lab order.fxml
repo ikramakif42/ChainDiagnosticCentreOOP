@@ -25,13 +25,13 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="48.0" layoutY="56.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="151.0" text="Lab order">
+            <MenuButton fx:id="labOrderDropdown" layoutX="48.0" layoutY="56.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="151.0" text="Lab order">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
-            <TreeTableView layoutX="323.0" layoutY="39.0" prefHeight="217.0" prefWidth="297.0">
+            <TreeTableView fx:id="labOrdersTable" layoutX="323.0" layoutY="39.0" prefHeight="217.0" prefWidth="297.0">
               <columns>
                 <TreeTableColumn prefWidth="96.6666259765625" text="Patient ID" />
                 <TreeTableColumn prefWidth="97.99996948242188" text="Serial Number" />

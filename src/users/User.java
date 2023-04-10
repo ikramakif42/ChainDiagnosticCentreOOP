@@ -150,4 +150,40 @@ public abstract class User implements Serializable{
     public void viewPolicies(){
         
     }
+    public static User getInstance(int id){
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        try {
+            f = new File("UserObjects.bin");
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            User tempUser;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempUser = (User) ois.readObject();
+                    System.out.println(tempUser.toString());
+                    if (id==tempUser.ID){
+                        System.out.println("User found");
+                        System.out.print("tempUser:");
+                        System.out.println(tempUser);
+                        return tempUser;
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        return null;
+    }
 }

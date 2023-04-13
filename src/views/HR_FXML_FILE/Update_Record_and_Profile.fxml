@@ -28,13 +28,13 @@
             <Button fx:id="EmployeeRecordButton" layoutX="445.0" layoutY="312.0" mnemonicParsing="false" onAction="#EmployeeRecordButtonOnClick" prefHeight="37.0" prefWidth="163.0" text="Employee Record" />
             <Button fx:id="UpdateRecordButton" layoutX="446.0" layoutY="245.0" mnemonicParsing="false" onAction="#UpdateRecordButtonOnClick" prefHeight="39.0" prefWidth="161.0" text="Update Record" />
             <Button fx:id="SaveButton" layoutX="446.0" layoutY="365.0" mnemonicParsing="false" onAction="#SaveButtonOnClick" prefHeight="40.0" prefWidth="161.0" text="Save" />
-            <TextField layoutX="44.0" layoutY="36.0" promptText="Information" />
-            <TextField layoutX="44.0" layoutY="97.0" promptText="Job Title" />
-            <TextField layoutX="44.0" layoutY="159.0" promptText="Salary" />
+            <TextField fx:id="information" layoutX="44.0" layoutY="36.0" promptText="Information" />
+            <TextField fx:id="jobTitle" layoutX="44.0" layoutY="97.0" promptText="Job Title" />
+            <TextField fx:id="salary" layoutX="44.0" layoutY="159.0" promptText="Salary" />
             <Button layoutX="29.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Return" textFill="#fd0707" />
             <TreeTableView layoutX="366.0" layoutY="22.0" prefHeight="200.0" prefWidth="242.0">
               <columns>
-                  <TreeTableColumn prefWidth="75.0" text="Information" />
+                  <TreeTableColumn fx:id="updateEmployeeTable" prefWidth="75.0" text="Information" />
                   <TreeTableColumn prefWidth="75.0" text="Job Title" />
                   <TreeTableColumn prefWidth="75.0" text="Salary" />
               </columns>

@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 import users.Doctor;
 import users.User;
 import views.LoginController;
-import static views.LoginController.getInstance;
 
 public class AssignTaskController implements Initializable {
 
@@ -76,7 +75,7 @@ public class AssignTaskController implements Initializable {
         else if (username.isEmpty()){errorLabel.setText("Error, select user name");return;}
         else if (task.isEmpty()){errorLabel.setText("Error, enter task");return;}
         String[] nameID = username.split(" ");System.out.println(nameID);
-        User assigned = LoginController.getInstance(Integer.parseInt(nameID[nameID.length-1]));
+        User assigned = User.getInstance(Integer.parseInt(nameID[nameID.length-1]));
         System.out.println(assigned.toString());
     }
 

@@ -19,7 +19,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import users.AccountsOfficer;
+import users.Director;
 import users.Doctor;
+import users.Patient;
 import users.User;
 import views.LoginController;
 
@@ -67,15 +70,16 @@ public class AssignTaskController implements Initializable {
 
     @FXML
     private void assignTaskOnClick(ActionEvent event) {
+        errorLabel.setText("");
         String usertype = userTypeComboBox.getSelectionModel().getSelectedItem();
         String username = userNameComboBox.getSelectionModel().getSelectedItem();
         String task = taskTextArea.getText();
-        System.out.println(usertype+username+task);
-        if (usertype.isEmpty()){errorLabel.setText("Error, select user type");return;}
-        else if (username.isEmpty()){errorLabel.setText("Error, select user name");return;}
+        if (usertype==null){errorLabel.setText("Error, select user type");return;}
+        else if (username==null){errorLabel.setText("Error, select user name");return;}
         else if (task.isEmpty()){errorLabel.setText("Error, enter task");return;}
+        System.out.println(usertype+username+task);
         String[] nameID = username.split(" ");System.out.println(nameID);
-        User assigned = User.getInstance(Integer.parseInt(nameID[nameID.length-1]));
+        User assigned = User.getInstance(Integer.parseInt(nameID[nameID.length-1]), usertype);
         System.out.println(assigned.toString());
     }
 
@@ -88,15 +92,51 @@ public class AssignTaskController implements Initializable {
             File f = null;
             FileInputStream fis = null;      
             ObjectInputStream ois = null;
+            String path = "";
+            switch(usertype){
+                case "Doctor":
+                    path="DoctorObjects.bin";
+                    break;
+                case "Patient":
+                    path="PatientObjects.bin";
+                    break;
+                case "Director":
+                    path="DirectorObjects.bin";
+                    break;
+                case "Accounts Officer":
+                    path="AccountsOfficerObjects.bin";
+                    break;
+            }
             try {
-                f = new File("UserObjects.bin");
+                f = new File(path);
                 fis = new FileInputStream(f);
                 ois = new ObjectInputStream(fis);
-                User tempUser;
+                User tempUser = null;
                 try{
                     System.out.println("Printing objects");
                     while(true){
-                        tempUser = (User) ois.readObject();
+                        switch(usertype){
+                            case "Doctor": 
+                                tempUser = (Doctor) ois.readObject();
+                                System.out.println("Uh well");
+                                System.out.println(tempUser.toString());
+                                break;
+                            case "Patient": 
+                                tempUser = (Patient) ois.readObject();
+                                System.out.println("Hmm");
+                                System.out.println(tempUser.toString());
+                                break;
+                            case "Director": 
+                                tempUser = (Director) ois.readObject();                            
+                                System.out.println("Eh");
+                                System.out.println(tempUser.toString());
+                                break;
+                            case "Accounts Officer": 
+                                tempUser = (AccountsOfficer) ois.readObject();
+                                System.out.println("Oh");
+                                System.out.println(tempUser.toString());
+                                break;
+                        }
                         System.out.println(tempUser.toString());
                         if (tempUser.getClass().getSimpleName().equals(usertype)){
                             System.out.println("User found");
@@ -105,6 +145,7 @@ public class AssignTaskController implements Initializable {
                     }
                 }
                 catch(IOException | ClassNotFoundException e){
+                    System.out.println(e.toString());
                     System.out.println("IOException | ClassNotFoundException in reading bin file");
                 }
                 System.out.println("End of file\n");

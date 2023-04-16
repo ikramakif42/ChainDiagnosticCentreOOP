@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import model.LoginInfo;
 
 public abstract class User implements Serializable{
     
@@ -91,27 +92,26 @@ public abstract class User implements Serializable{
         int passflag=0;
         int userType=0;
         try {
-            f = new File("UserObjects.bin");
+            f = new File("LoginInfoObjects.bin");
             fis = new FileInputStream(f);
             ois = new ObjectInputStream(fis);
-            User tempUser;
+            LoginInfo tempLogin;
             try{
                 System.out.println("Printing objects");
                 while(true){
                     if (idflag==1){break;}
-                    tempUser = (User) ois.readObject();
-                    System.out.println(tempUser.toString());
-                    System.out.println("Instanceof test (doc):"+ (tempUser instanceof Doctor));
-                    if (idcheck==tempUser.ID){
+                    tempLogin = (LoginInfo) ois.readObject();
+                    System.out.println(tempLogin.toString());
+                    if (idcheck==tempLogin.getId()){
                         idflag=1;
-                        if (passcheck.equals(tempUser.getPassword())){
+                        if (passcheck.equals(tempLogin.getPass())){
                             passflag=1;
-                            if (tempUser instanceof Doctor){userType=3;}
-                            else if (tempUser instanceof Patient){userType=4;}
+                            if (tempLogin.getType().equals("Doctor")){userType=3;}
+                            else if (tempLogin.getType().equals("Patient")){userType=4;}
 //                            else if (tempUser instanceof Pharmacist){userType=5;}
 //                            else if (tempUser instanceof Nurse){userType=6;}
-                            else if (tempUser instanceof Director){userType=7;}
-                            else if (tempUser instanceof AccountsOfficer){userType=8;}
+                            else if (tempLogin.getType().equals("Director")){userType=7;}
+                            else if (tempLogin.getType().equals("Accounts Officer")){userType=8;}
 //                            else if (tempUser instanceof HR){userType=9;}
 //                            else {userType=10;}
                             break;
@@ -120,6 +120,7 @@ public abstract class User implements Serializable{
                 }
             }
             catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
                 System.out.println("IOException | ClassNotFoundException in reading bin file");
             }
             System.out.println("End of file\n");
@@ -150,29 +151,66 @@ public abstract class User implements Serializable{
     public void viewPolicies(){
         
     }
-    public static User getInstance(int id){
+    public static User getInstance(int id, String type){
         File f = null;
         FileInputStream fis = null;      
         ObjectInputStream ois = null;
+        String path = "";
+        switch(type){
+            case "Doctor":
+                path="DoctorObjects.bin";
+                break;
+            case "Patient":
+                path="PatientObjects.bin";
+                break;
+            case "Director":
+                path="DirectorObjects.bin";
+                break;
+            case "Accounts Officer":
+                path="AccountsOfficerObjects.bin";
+                break;
+        }
+        
         try {
-            f = new File("UserObjects.bin");
+            f = new File(path);
             fis = new FileInputStream(f);
             ois = new ObjectInputStream(fis);
-            User tempUser;
+            User tempUser = null;
             try{
                 System.out.println("Printing objects");
                 while(true){
-                    tempUser = (User) ois.readObject();
-                    System.out.println(tempUser.toString());
-                    if (id==tempUser.ID){
+                    switch(type){
+                        case "Doctor": 
+                            tempUser = (Doctor) ois.readObject();
+                            System.out.println("Uh well");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "Patient": 
+                            tempUser = (Patient) ois.readObject();
+                            System.out.println("Hmm");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "Director": 
+                            tempUser = (Director) ois.readObject();                            
+                            System.out.println("Eh");
+                            System.out.println(tempUser.toString());
+                            break;
+                        case "Accounts Officer": 
+                            tempUser = (AccountsOfficer) ois.readObject();
+                            System.out.println("Oh");
+                            System.out.println(tempUser.toString());
+                            break;
+                    }
+                    if (id==tempUser.getID()){
                         System.out.println("User found");
                         System.out.print("tempUser:");
-                        System.out.println(tempUser);
+                        System.out.println(tempUser.toString());
                         return tempUser;
                     }
                 }
             }
             catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
                 System.out.println("IOException | ClassNotFoundException in reading bin file");
             }
             System.out.println("End of file\n");

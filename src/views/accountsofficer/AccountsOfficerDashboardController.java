@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import users.AccountsOfficer;
 
 /**
  * FXML Controller class
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
  */
 public class AccountsOfficerDashboardController implements Initializable {
 
+    private AccountsOfficer officer;
     /**
      * Initializes the controller class.
      */
@@ -31,6 +33,18 @@ public class AccountsOfficerDashboardController implements Initializable {
         // TODO
     }    
 
+    public AccountsOfficer getOfficer() {
+        return officer;
+    }
+
+    public void setOfficer(AccountsOfficer officer) {
+        this.officer = officer;
+//        System.out.println("What's up doc");
+//        doctorIDLabel.setText(String.valueOf(this.doc.ID));
+//        doctorNameLabel.setText(this.doc.name);
+    }
+    
+    
     @FXML
     private void accountsOfficerRestockRequestsOnClick(ActionEvent event) {
         try{

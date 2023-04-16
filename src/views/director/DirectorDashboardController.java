@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import users.Director;
 
 /**
  * FXML Controller class
@@ -23,7 +24,8 @@ import javafx.stage.Stage;
  * @author Kazi
  */
 public class DirectorDashboardController implements Initializable {
-
+    
+    private Director director;
     /**
      * Initializes the controller class.
      */
@@ -32,6 +34,17 @@ public class DirectorDashboardController implements Initializable {
         // TODO
     }    
 
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+//        System.out.println("What's up doc");
+//        doctorIDLabel.setText(String.valueOf(this.doc.ID));
+//        doctorNameLabel.setText(this.doc.name);
+    }
+    
     @FXML
     private void directorEmployeeListOnClick(ActionEvent event) {
     try{

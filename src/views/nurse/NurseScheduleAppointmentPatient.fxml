@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="148.0" layoutY="29.0" text="Schedule Appointment" textFill="#205080">
@@ -24,12 +23,17 @@
             <TableColumn prefWidth="183.0" text="Time" />
         </columns>
       </TableView>
-      <Button fx:id="nurseSheduleAppointmentPatientConfirm" layoutX="203.0" layoutY="326.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientConfirmOnClick" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Confirm" textFill="#133151">
+      <Button fx:id="nurseSheduleAppointmentPatientConfirm" layoutX="73.0" layoutY="324.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientConfirmOnClick" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Confirm" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Button fx:id="nurseSheduleAppointmentPatientSearch" layoutX="315.0" layoutY="76.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientSearchOnClick" text="Search" />
       <TextField fx:id="nurseSheduleAppointmentPatientSearchTextField" layoutX="367.0" layoutY="76.0" />
+      <Button fx:id="nurseSheduleAppointmentPatientBack" layoutX="298.0" layoutY="324.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientBackOnClick" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Back To Patient List" textFill="#133151">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

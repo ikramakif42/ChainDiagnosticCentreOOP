@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="644.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="142.0" layoutY="32.0" text="Update Patient Medical Records" textFill="#0d2751">
@@ -27,11 +26,16 @@
       </Label>
       <TextField fx:id="nurseUpdatePatientName" layoutX="181.0" layoutY="122.0" />
       <TextField fx:id="nurseUpdatePatientId" layoutX="181.0" layoutY="169.0" />
-      <Button fx:id="nurseUpdatePatientSave" layoutX="255.0" layoutY="449.0" mnemonicParsing="false" onAction="#nurseUpdatePatientSaveOnClick" style="-fx-background-color: orange;" text="Save Changes" textFill="#0a2743">
+      <Button fx:id="nurseUpdatePatientSave" layoutX="98.0" layoutY="447.0" mnemonicParsing="false" onAction="#nurseUpdatePatientSaveOnClick" style="-fx-background-color: orange;" text="Save Changes" textFill="#0a2743">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
       <TextArea fx:id="nurseUpdatePatientMedicalRecordTextArea" layoutX="53.0" layoutY="229.0" prefHeight="191.0" prefWidth="539.0" />
+      <Button fx:id="nurseUpdatePatientBackToPatientList" layoutX="312.0" layoutY="447.0" mnemonicParsing="false" onAction="#nurseUpdatePatientBackToPatientListOnClick" style="-fx-background-color: orange;" text="Back To Patient List" textFill="#0a2743">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="534.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="pharmaBillStatusTableList" layoutY="72.0" prefHeight="356.0" prefWidth="534.0" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
@@ -29,5 +28,10 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Button fx:id="pharmaBillInfoBackToPatient" layoutX="324.0" layoutY="446.0" mnemonicParsing="false" onAction="#pharmaBillInfoBackToPatientOnClick" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: orange;" text="Back" textFill="#2c0303" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

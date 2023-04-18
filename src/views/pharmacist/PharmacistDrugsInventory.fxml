@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="527.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="527.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="pharmaDrugsDisplayTableList" layoutY="76.0" prefHeight="298.0" prefWidth="600.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
         <columns>
@@ -22,20 +21,21 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="pharmaDrugsExpiryDateFilter" layoutX="28.0" layoutY="406.0" mnemonicParsing="false" onAction="#pharmaDrugsExpiryDateFilterOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Filter By Expiry Date" textAlignment="CENTER" textFill="#076d86" wrapText="true">
+      <Button fx:id="pharmaDrugsExpiryDateFilter" layoutX="22.0" layoutY="428.0" mnemonicParsing="false" onAction="#pharmaDrugsExpiryDateFilterOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Filter By Expiry Date" textAlignment="CENTER" textFill="#076d86" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="pharmaDrugsInventoryUpdate" layoutX="196.0" layoutY="406.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryUpdateOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Update" textAlignment="CENTER" textFill="#076d86" wrapText="true">
+      <Button fx:id="pharmaDrugsInventoryUpdate" layoutX="196.0" layoutY="428.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryUpdateOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Update" textAlignment="CENTER" textFill="#076d86" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="pharmaDrugsInventoryRestock" layoutX="365.0" layoutY="406.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryRestockOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Restock" textAlignment="CENTER" textFill="#076d86" wrapText="true">
+      <Button fx:id="pharmaDrugsInventoryRestock" layoutX="365.0" layoutY="428.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryRestockOnClick" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Restock" textAlignment="CENTER" textFill="#076d86" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Button fx:id="pharmaDrugInvtBackToDash" layoutX="22.0" layoutY="505.0" mnemonicParsing="false" onAction="#pharmaDrugInvtBackToDashOnClick" text="Go Back To Dashboard" />
    </children>
 </AnchorPane>

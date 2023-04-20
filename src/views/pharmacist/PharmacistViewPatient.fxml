@@ -12,18 +12,17 @@
       <TableView fx:id="pharmaViewPatientListTable" prefHeight="554.0" prefWidth="497.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="0.0">
         <columns>
           <TableColumn prefWidth="110.0" text="Patient's Name" />
-          <TableColumn prefWidth="40.0" text="ID" />
-            <TableColumn prefWidth="121.0" text="Admission Date" />
-            <TableColumn prefWidth="112.0" text="Contact" />
-            <TableColumn prefWidth="121.0" text="DOB" />
+          <TableColumn prefWidth="84.79998779296875" text="ID" />
+            <TableColumn prefWidth="75.0" text="Age" />
+            <TableColumn prefWidth="225.79998779296875" text="Latest Appointments" />
         </columns>
       </TableView>
-      <Button fx:id="pharmaMedOrderPending" layoutX="550.0" layoutY="166.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingOnClick" prefHeight="66.0" prefWidth="177.0" style="-fx-background-color: orange;" text="Medications Order Pending" textAlignment="CENTER" textFill="#16595b" wrapText="true">
+      <Button layoutX="550.0" layoutY="166.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingOnClick" prefHeight="82.0" prefWidth="193.0" style="-fx-background-color: orange;" text="Medications Order Pending" textAlignment="CENTER" textFill="#16595b" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="pharmaViewBill" layoutX="550.0" layoutY="327.0" mnemonicParsing="false" onAction="#pharmaViewBillOnClick" prefHeight="66.0" prefWidth="177.0" style="-fx-background-color: orange;" text="View Billing Information" textAlignment="CENTER" textFill="#15898d" wrapText="true">
+      <Button layoutX="550.0" layoutY="327.0" mnemonicParsing="false" onAction="#pharmaViewBillOnClick" prefHeight="82.0" prefWidth="194.0" style="-fx-background-color: orange;" text="View Billing Information" textAlignment="CENTER" textFill="#15898d" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -33,6 +32,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="pharmaGoBackToDash" layoutX="588.0" layoutY="490.0" mnemonicParsing="false" onAction="#pharmaGoBackToDashOnClick" prefHeight="25.0" prefWidth="139.0" text="Go Back to Dashboard" />
+      <Button layoutX="588.0" layoutY="490.0" mnemonicParsing="false" onAction="#pharmaGoBackToDashOnClick" prefHeight="25.0" prefWidth="139.0" text="Go Back to Dashboard" />
    </children>
 </AnchorPane>

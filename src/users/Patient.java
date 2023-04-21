@@ -49,5 +49,9 @@ public class Patient extends User implements Serializable{
 //    + viewLabReports(): void
 //    + viewPayBills(): void
 //    + requestRefills(): void
+
+    public String getAge() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

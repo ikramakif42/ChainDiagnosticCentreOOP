@@ -97,7 +97,7 @@ public abstract class User implements Serializable{
             ois = new ObjectInputStream(fis);
             LoginInfo tempLogin;
             try{
-                System.out.println("Printing objects");
+                System.out.println("Printing login objects");
                 while(true){
                     if (idflag==1){break;}
                     tempLogin = (LoginInfo) ois.readObject();

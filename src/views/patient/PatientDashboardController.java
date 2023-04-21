@@ -27,20 +27,8 @@ public class PatientDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-
-    @FXML
-    private void viewMySchedule(ActionEvent event) {
     }
-
-    @FXML
-    private void viewMyProfile(ActionEvent event) {
-    }
-
-    @FXML
-    private void viewQueryOnClick(ActionEvent event) {
-    }
-
+    
     public Patient getPatient() {
         return patient;
     }
@@ -51,23 +39,65 @@ public class PatientDashboardController implements Initializable {
         patientIDLabel.setText(String.valueOf(patient.ID));
         patientNameLabel.setText(patient.name);
     }
-    
+
     @FXML
-    private void logOut(ActionEvent event) {
-        Parent login=null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
+    private void viewMySchedule(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("PatientMySchedule.fxml"));
+        root = (Parent) scheduleLoader.load();
+        Scene doctorScene = new Scene(root);
+
+        PatientMyScheduleController p = scheduleLoader.getController();
+        p.setPatient(this.patient);
+
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(doctorScene);
+        scheduleStage.show();
     }
 
     @FXML
-    private void makeQueryOnClick(ActionEvent event) {
+    private void viewMyProfile(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader profileLoader = new FXMLLoader(getClass().getResource("PatientMyProfile.fxml"));
+        root = (Parent) profileLoader.load();
+        Scene profileScene = new Scene(root);
+
+        PatientMyProfileController p = profileLoader.getController();
+        p.setPatient(this.patient);
+
+        Stage profileStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        profileStage.setScene(profileScene);
+        profileStage.show();
+    }
+
+    @FXML
+    private void viewQueryOnClick(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader queryLoader = new FXMLLoader(getClass().getResource("ViewQuery.fxml"));
+        root = (Parent) queryLoader.load();
+        Scene queryScene = new Scene(root);
+
+        ViewQueryController q = queryLoader.getController();
+        q.setPatient(this.patient);
+
+        Stage queryStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        queryStage.setScene(queryScene);
+        queryStage.show();
+    }
+
+    @FXML
+    private void makeQueryOnClick(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader queryLoader = new FXMLLoader(getClass().getResource("MakeTelequery.fxml"));
+        root = (Parent) queryLoader.load();
+        Scene queryScene = new Scene(root);
+
+        MakeTelequeryController q = queryLoader.getController();
+        q.setPatient(this.patient);
+
+        Stage queryStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        queryStage.setScene(queryScene);
+        queryStage.show();
     }
 
     @FXML
@@ -84,6 +114,20 @@ public class PatientDashboardController implements Initializable {
 
     @FXML
     private void viewReportOnClick(ActionEvent event) {
+    }
+    
+    @FXML
+    private void logOut(ActionEvent event) {
+        Parent login=null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
     
 }

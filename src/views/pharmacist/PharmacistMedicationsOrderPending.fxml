@@ -17,12 +17,12 @@
             <TableColumn prefWidth="112.0" text="Contact" />
          </columns>
       </TableView>
-      <Button fx:id="pharmaMedOrderApproveAll" layoutX="440.0" layoutY="82.0" mnemonicParsing="false" onAction="#pharmaMedOrderApproveAllOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Approve All" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
+      <Button layoutX="440.0" layoutY="120.0" mnemonicParsing="false" onAction="#pharmaMedOrderApproveSelectedOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Approve Selected" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="pharmaMedOrderDeclineAll" layoutX="440.0" layoutY="183.0" mnemonicParsing="false" onAction="#pharmaMedOrderDeclineAllOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Decline All" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
+      <Button fx:id="pharmaMedOrderDeclineAll" layoutX="440.0" layoutY="261.0" mnemonicParsing="false" onAction="#pharmaMedOrderDeclineSelectedOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Decline Selected" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -32,11 +32,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="pharmaMedOrderSelect" layoutX="440.0" layoutY="290.0" mnemonicParsing="false" onAction="#pharmaMedOrderSelectOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Select Individually" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="pharmaMedOrderPendingBackToPatient" layoutX="569.0" layoutY="381.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingBackToPatientOnClick" text="Back" />
+      <Button layoutX="569.0" layoutY="381.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingBackToPatientOnClick" text="Back" />
    </children>
 </AnchorPane>

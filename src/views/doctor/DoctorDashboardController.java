@@ -27,7 +27,18 @@ public class DoctorDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
+    }
+    
+    public Doctor getDoc() {
+        return doc;
+    }
+
+    public void setDoc(Doctor doc) {
+        this.doc = doc;
+        System.out.println("What's up doc");
+        doctorIDLabel.setText(String.valueOf(this.doc.ID));
+        doctorNameLabel.setText(this.doc.name);
+    }
     
     @FXML
     private void viewMyPatients(ActionEvent event) throws IOException {
@@ -64,33 +75,7 @@ public class DoctorDashboardController implements Initializable {
     }
 
     //check medical records, prescribe medication, add/track lab test, view bill info
-            
-
-    @FXML
-    private void logOut(ActionEvent event) {
-        Parent login=null;
-        try {
-            login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene1 = new Scene(login);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene1);
-        window.show();
-    }
-
-    public Doctor getDoc() {
-        return doc;
-    }
-
-    public void setDoc(Doctor doc) {
-        this.doc = doc;
-        System.out.println("What's up doc");
-        doctorIDLabel.setText(String.valueOf(this.doc.ID));
-        doctorNameLabel.setText(this.doc.name);
-    }
-
+    
     @FXML
     private void assignTasksOnClick(ActionEvent event) throws IOException {
         Parent assignTask=null;
@@ -104,6 +89,35 @@ public class DoctorDashboardController implements Initializable {
         Stage assignTaskStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         assignTaskStage.setScene(assignTaskScene);
         assignTaskStage.show();
+    }
+
+    @FXML
+    private void viewTeleQueryOnClick(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader teleQueryLoader = new FXMLLoader(getClass().getResource("ViewTelequeryList.fxml"));
+        root = (Parent) teleQueryLoader.load();
+        Scene teleQueryScene = new Scene(root);
+        
+        ViewTelequeryListController t = teleQueryLoader.getController();
+        t.setDoc(this.doc);
+        
+        Stage teleQueryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        teleQueryStage.setScene(teleQueryScene);
+        teleQueryStage.show();
+    }
+    
+    @FXML
+    private void logOut(ActionEvent event) {
+        Parent login=null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
 
 }

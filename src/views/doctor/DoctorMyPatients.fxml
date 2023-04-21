@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.doctor.DoctorMyPatientsController">
    <children>
@@ -32,9 +33,21 @@
       <Label layoutX="77.0" layoutY="93.0" text="Search by ID:" />
       <Label layoutX="432.0" layoutY="93.0" text="Filter by special criteria:" />
       <ComboBox fx:id="criteriaComboBox" layoutX="624.0" layoutY="88.0" prefHeight="31.0" prefWidth="232.0" />
-      <Button layoutX="757.0" layoutY="275.0" mnemonicParsing="false" onAction="#medicalRecordsOnClick" text="View/Add Medical Records" textAlignment="CENTER" />
-      <Button layoutX="777.0" layoutY="362.0" mnemonicParsing="false" onAction="#prescribeMedsOnClick" text="Prescribe Medication" textAlignment="CENTER" />
-      <Button layoutX="773.0" layoutY="459.0" mnemonicParsing="false" onAction="#labResultsOnClick" text="Add/Track Lab Results" textAlignment="CENTER" />
-      <Button layoutX="767.0" layoutY="561.0" mnemonicParsing="false" onAction="#billInfoOnClick" text="View Billing Information" textAlignment="CENTER" />
+      <Button layoutX="737.0" layoutY="250.0" mnemonicParsing="false" onAction="#medicalRecordsOnClick" text="View/Add Medical Records" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="761.0" layoutY="355.0" mnemonicParsing="false" onAction="#prescribeMedsOnClick" text="Prescribe Medication" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="755.0" layoutY="454.0" mnemonicParsing="false" onAction="#labResultsOnClick" text="Add/Track Lab Results" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="749.0" layoutY="556.0" mnemonicParsing="false" onAction="#billInfoOnClick" text="View Billing Information" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -25,12 +25,12 @@
       </Label>
       <TextField fx:id="pharmaDrugNameRestock" layoutX="196.0" layoutY="106.0" />
       <TextField fx:id="pharmaDrugQuantityRestock" layoutX="196.0" layoutY="171.0" />
-      <Button fx:id="pharmaDrugRestockPlaceOrder" layoutX="34.0" layoutY="251.0" mnemonicParsing="false" onAction="#pharmaDrugRestockPlaceOrderOnCLick" style="-fx-background-color: orange;" text="Place Order">
+      <Button layoutX="34.0" layoutY="251.0" mnemonicParsing="false" onAction="#pharmaDrugRestockPlaceOrderOnCLick" style="-fx-background-color: orange;" text="Place Order">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="pharmaDrugRestockBackToDrugInvt" layoutX="212.0" layoutY="251.0" mnemonicParsing="false" onAction="#pharmaDrugRestockBackToDrugInvtOnClick" prefHeight="39.0" prefWidth="105.0" style="-fx-background-color: orange;" text="Back">
+      <Button layoutX="212.0" layoutY="251.0" mnemonicParsing="false" onAction="#pharmaDrugRestockBackToDrugInvtOnClick" prefHeight="39.0" prefWidth="105.0" style="-fx-background-color: orange;" text="Back">
          <font>
             <Font size="18.0" />
          </font>

@@ -42,7 +42,6 @@ public class AssignTaskController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         String[] temp = {"Nurse", "Technician", "Pharmacist", "Patient"};
         userTypeComboBox.getItems().addAll(temp);
-        userNameComboBox.getItems().add("Select User Type");
     }
 
     public Doctor getDoc() {

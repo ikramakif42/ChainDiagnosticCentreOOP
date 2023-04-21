@@ -5,9 +5,24 @@
  */
 package views.doctor;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,11 +32,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import users.AccountsOfficer;
+import users.Director;
 import users.Doctor;
+import users.Patient;
+import users.User;
 
 /**
  * FXML Controller class
@@ -31,15 +54,15 @@ import users.Doctor;
 public class DoctorMyPatientsController implements Initializable {
 
     @FXML
-    private TableView<?> patientTableView;
+    private TableView<Patient> patientTableView;
     @FXML
-    private TableColumn<?, ?> patientIDTableColumn;
+    private TableColumn<Patient, Integer> patientIDTableColumn;
     @FXML
-    private TableColumn<?, ?> patientNameTableColumn;
+    private TableColumn<Patient, String> patientNameTableColumn;
     @FXML
-    private TableColumn<?, ?> patientAgeTableColumn;
+    private TableColumn<Patient, Integer> patientAgeTableColumn;
     @FXML
-    private TableColumn<?, ?> latestApptTableColumn;
+    private TableColumn<Patient, String> latestApptTableColumn;
     @FXML
     private TextField nameSearchTextField;
     @FXML
@@ -57,10 +80,22 @@ public class DoctorMyPatientsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //set up the columns in the table
+        Callback<TableColumn.CellDataFeatures<Patient, Integer>, ObservableValue<Integer>> newCVF = feature -> {
+            Patient pat = feature.getValue();
+            LocalDate birthdate = pat.getDOB();
+            int age = Period.between(birthdate, LocalDate.now()).getYears();
+            return new SimpleObjectProperty<Integer>(age);
+        };
+        
+        patientIDTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("ID"));
+        patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,String>("name"));
+        patientAgeTableColumn.setCellValueFactory(newCVF);
+        latestApptTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,String>("email"));
+        patientTableView.setItems(getPatients());
     }    
 
-    public Doctor getDoc() {
+    public Doctor getDoc(){
         return doc;
     }
 
@@ -140,4 +175,40 @@ public class DoctorMyPatientsController implements Initializable {
     private void billInfoOnClick(ActionEvent event) {
     }
     
+    public ObservableList<Patient> getPatients(){
+        ObservableList<Patient> patientList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "PatientObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            User tempUser = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempUser = (Patient) ois.readObject();
+                    System.out.println("Populate patient:");
+                    System.out.println(tempUser.toString());
+                    patientList.add((Patient)tempUser);
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(patientList);
+        return patientList;
+    }   
 }

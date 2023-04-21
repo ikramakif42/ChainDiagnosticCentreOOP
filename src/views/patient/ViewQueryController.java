@@ -25,7 +25,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.TeleQuery;
 import users.Patient;
-import users.User;
 
 public class ViewQueryController implements Initializable {
 
@@ -37,8 +36,13 @@ public class ViewQueryController implements Initializable {
     private TableColumn<TeleQuery, String> statusTableColumn;
     private Patient patient;
 
+    public ViewQueryController(Patient patient) {
+        this.patient = patient;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("Loaded "+this.patient.toString());
         Callback<TableColumn.CellDataFeatures<TeleQuery, String>, ObservableValue<String>> newCVF = feature -> {
             TeleQuery tq = feature.getValue();
             String status = "";
@@ -54,13 +58,14 @@ public class ViewQueryController implements Initializable {
         
         sentToTableColumn.setCellValueFactory(new PropertyValueFactory<>("usertype"));
         statusTableColumn.setCellValueFactory(newCVF);
-        queryTableView.setItems(getQuery());
+        if(this.patient!=null){queryTableView.setItems(getQuery());}
     }
 
     public Patient getPatient() {
         return patient;
     }
 
+    @FXML
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
@@ -99,11 +104,14 @@ public class ViewQueryController implements Initializable {
             ois = new ObjectInputStream(fis);
             TeleQuery tempQuery = null;
             try{
-                System.out.println("Printing objects");
+                System.out.println("Printing TQ objects");
                 while(true){
                     tempQuery = (TeleQuery) ois.readObject();
                     System.out.println("Populate query: "+tempQuery.getSenderID()+", "+tempQuery.getQuery());
-                    queryList.add((TeleQuery)tempQuery);
+                    System.out.println(this.patient.getID());
+//                    if (tempQuery.getSenderID()==this.patient.getID()){
+                        queryList.add((TeleQuery)tempQuery);
+//                    }
                 }
             }
             catch(IOException | ClassNotFoundException e){

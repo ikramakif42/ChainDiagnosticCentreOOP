@@ -15,30 +15,33 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import users.Doctor;
+import users.Patient;
 
 /**
  * FXML Controller class
  *
  * @author Asus
  */
-public class AddTrackLabTestsController implements Initializable {
+public class ViewPatientBillingInfoController implements Initializable {
 
     @FXML
-    private TableView<?> reportTableView;
+    private TableView<?> billingInfoTableView;
     @FXML
-    private TableColumn<?, ?> nameTableColumn;
+    private TableColumn<?, ?> billDateTableColumn;
     @FXML
-    private TableColumn<?, ?> orderDateTableColumn;
+    private TableColumn<?, ?> detailsTableColumn;
+    @FXML
+    private TableColumn<?, ?> amountTableColumn;
     @FXML
     private TableColumn<?, ?> statusTableColumn;
-    @FXML
-    private TableColumn<?, ?> viewReportTableColumn;
     @FXML
     private Label patientIDLabel;
     @FXML
@@ -46,10 +49,17 @@ public class AddTrackLabTestsController implements Initializable {
     @FXML
     private Label patientAgeLabel;
     @FXML
-    private ComboBox<?> testNameComboBox;
+    private RadioButton paidStatusRadioButton;
     @FXML
-    private ComboBox<?> testPriorityComboBox;
+    private ToggleGroup billStatusTG;
+    @FXML
+    private RadioButton dueStatusRadioButton;
+    @FXML
+    private DatePicker startDatePicker;
+    @FXML
+    private DatePicker endDatePicker;
     private Doctor doc;
+    private Patient pat;
 
     /**
      * Initializes the controller class.
@@ -57,7 +67,7 @@ public class AddTrackLabTestsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     public Doctor getDoc() {
         return doc;
@@ -66,7 +76,15 @@ public class AddTrackLabTestsController implements Initializable {
     public void setDoc(Doctor doc) {
         this.doc = doc;
     }
-    
+
+    public Patient getPat() {
+        return pat;
+    }
+
+    public void setPat(Patient pat) {
+        this.pat = pat;
+    }
+
     @FXML
     private void returnToMyPatientsOnClick(ActionEvent event) throws IOException {
         Parent parent = null;
@@ -83,7 +101,7 @@ public class AddTrackLabTestsController implements Initializable {
     }
 
     @FXML
-    private void submitLabOrderOnClick(ActionEvent event) {
+    private void applyFiltersOnClick(ActionEvent event) {
     }
     
 }

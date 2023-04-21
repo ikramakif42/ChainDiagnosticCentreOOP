@@ -15,10 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import users.Doctor;
 
@@ -27,37 +28,33 @@ import users.Doctor;
  *
  * @author Asus
  */
-public class AddTrackLabTestsController implements Initializable {
+public class ViewTelequeryListController implements Initializable {
 
     @FXML
-    private TableView<?> reportTableView;
+    private TableView<?> billingInfoTableView;
     @FXML
-    private TableColumn<?, ?> nameTableColumn;
+    private TableColumn<?, ?> billDateTableColumn;
     @FXML
-    private TableColumn<?, ?> orderDateTableColumn;
+    private TableColumn<?, ?> detailsTableColumn;
     @FXML
-    private TableColumn<?, ?> statusTableColumn;
+    private TableColumn<?, ?> amountTableColumn;
     @FXML
-    private TableColumn<?, ?> viewReportTableColumn;
+    private RadioButton paidStatusRadioButton;
     @FXML
-    private Label patientIDLabel;
+    private ToggleGroup billStatusTG;
     @FXML
-    private Label patientNameLabel;
+    private RadioButton dueStatusRadioButton;
     @FXML
-    private Label patientAgeLabel;
+    private RadioButton dueStatusRadioButton1;
     @FXML
-    private ComboBox<?> testNameComboBox;
-    @FXML
-    private ComboBox<?> testPriorityComboBox;
+    private ToggleGroup billStatusTG1;
     private Doctor doc;
-
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Label errorLabel;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    }
 
     public Doctor getDoc() {
         return doc;
@@ -68,13 +65,13 @@ public class AddTrackLabTestsController implements Initializable {
     }
     
     @FXML
-    private void returnToMyPatientsOnClick(ActionEvent event) throws IOException {
-        Parent parent = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorMyPatients.fxml"));
-        parent = (Parent) doctorLoader.load();
-        Scene doctorScene = new Scene(parent);
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent doctorDashboard = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorDashboard.fxml"));
+        doctorDashboard = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(doctorDashboard);
 
-        DoctorMyPatientsController d = doctorLoader.getController();
+        DoctorDashboardController d = doctorLoader.getController();
         d.setDoc(this.doc);
 
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
@@ -82,8 +79,13 @@ public class AddTrackLabTestsController implements Initializable {
         doctorStage.show();
     }
 
+
     @FXML
-    private void submitLabOrderOnClick(ActionEvent event) {
+    private void applyFiltersOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void answerQueryOnClick(ActionEvent event) {
     }
     
 }

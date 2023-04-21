@@ -102,21 +102,6 @@ public class DoctorMyPatientsController implements Initializable {
     public void setDoc(Doctor doc) {
         this.doc = doc;
     }
-    
-    @FXML
-    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
-        Parent doctorDashboard = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorDashboard.fxml"));
-        doctorDashboard = (Parent) doctorLoader.load();
-        Scene doctorScene = new Scene(doctorDashboard);
-
-        DoctorDashboardController d = doctorLoader.getController();
-        d.setDoc(this.doc);
-
-        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        doctorStage.setScene(doctorScene);
-        doctorStage.show();
-    }
 
     @FXML
     private void clearFiltersOnClick(ActionEvent event) {
@@ -172,7 +157,33 @@ public class DoctorMyPatientsController implements Initializable {
     }
 
     @FXML
-    private void billInfoOnClick(ActionEvent event) {
+    private void billInfoOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader billLoader = new FXMLLoader(getClass().getResource("ViewPatientBillingInfo.fxml"));
+        parent = (Parent) billLoader.load();
+        Scene billScene = new Scene(parent);
+
+        ViewPatientBillingInfoController b = billLoader.getController();
+        b.setDoc(this.doc);
+
+        Stage billStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        billStage.setScene(billScene);
+        billStage.show();
+    }
+    
+    @FXML
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent doctorDashboard = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorDashboard.fxml"));
+        doctorDashboard = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(doctorDashboard);
+
+        DoctorDashboardController d = doctorLoader.getController();
+        d.setDoc(this.doc);
+
+        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
     }
     
     public ObservableList<Patient> getPatients(){

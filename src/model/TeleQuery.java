@@ -1,20 +1,34 @@
 package model;
 
-public class TeleQuery {
-    public String email, query, answer;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-    public TeleQuery(String email, String query) {
-        this.email = email;
+public class TeleQuery implements Serializable{
+    public String usertype;
+    private String query, answer;
+    private int senderID;
+    private int answerID;
+
+    public TeleQuery(int id, String usertype, String query) {
+        this.senderID = id;
+        this.usertype = usertype;
         this.query = query;
+
+        this.answerID = 0;
         this.answer = "";
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsertype() {
+        return usertype;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setID(String usertype) {
+        this.usertype = usertype;
     }
 
     public String getQuery() {
@@ -31,6 +45,27 @@ public class TeleQuery {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public int getSenderID() {
+        return senderID;
+    }
+
+    public void setSenderID(int senderID) {
+        this.senderID = senderID;
+    }
+
+    public int getAnswerID() {
+        return answerID;
+    }
+
+    public void setAnswerID(int answerID) {
+        this.answerID = answerID;
+    }
+
+    @Override
+    public String toString() {
+        return "TeleQuery=" + "usertype=" + usertype + ", query=" + query + ", answer=" + answer + ", senderID=" + senderID + ", answerID=" + answerID;
     }
     
     public boolean isPending(){

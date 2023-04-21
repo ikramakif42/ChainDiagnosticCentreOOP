@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package users;
 
 import java.io.Serializable;
@@ -72,9 +67,3 @@ public class Nurse extends Employee implements Serializable{
     public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
     }
-    
-    @Override
-    public String toString() {
-        return "Nurse: " + "Desig="+designation+" Dept= "+department+" Salary= "+salary+" DOJ= "+DOJ+" branch= "+branchName+" Name= "+name+" ID= "+ID+" pass= "+password+" mail= "+email+" contact= "+contactNo+" addr= "+address+" DOJ= "+DOB;
-    }
-}

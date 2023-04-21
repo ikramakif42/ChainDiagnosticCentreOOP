@@ -9,7 +9,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.doctor.ViewPatientBillingInfoController">
    <children>
       <TableView fx:id="billingInfoTableView" layoutX="43.0" layoutY="160.0" prefHeight="385.0" prefWidth="721.0">
          <columns>
@@ -37,6 +37,6 @@
       <DatePicker fx:id="startDatePicker" layoutX="490.0" layoutY="42.0" prefHeight="31.0" prefWidth="112.0" />
       <Label layoutX="611.0" layoutY="47.0" text="- to -" />
       <DatePicker fx:id="endDatePicker" layoutX="655.0" layoutY="42.0" prefHeight="31.0" prefWidth="112.0" />
-      <Button layoutX="660.0" layoutY="95.0" mnemonicParsing="false" onAction="#applyFIltersOnClick" text="Apply Filters" />
+      <Button layoutX="660.0" layoutY="95.0" mnemonicParsing="false" onAction="#applyFiltersOnClick" text="Apply Filters" />
    </children>
 </AnchorPane>

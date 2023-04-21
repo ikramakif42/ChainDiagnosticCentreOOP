@@ -68,10 +68,3 @@ public class Pharmacist extends Employee implements Serializable{
     public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
     }
-    
-    @Override
-    public String toString() {
-        return "Pharmacist: " + "Desig="+designation+" Dept= "+department+" Salary= "+salary+" DOJ= "+DOJ+" branch= "+branchName+" Name= "+name+" ID= "+ID+" pass= "+password+" mail= "+email+" contact= "+contactNo+" addr= "+address+" DOJ= "+DOB;
-    }
-}
-    

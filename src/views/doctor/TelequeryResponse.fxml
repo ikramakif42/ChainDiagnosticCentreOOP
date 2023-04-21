@@ -19,7 +19,5 @@
       <Label layoutX="40.0" layoutY="124.0" text="Query:" />
       <TextArea fx:id="answerTextArea" layoutX="41.0" layoutY="314.0" prefHeight="140.0" prefWidth="509.0" />
       <Label layoutX="41.0" layoutY="285.0" text="Enter response:" />
-      <Label layoutX="255.0" layoutY="67.0" text="Query ID:" />
-      <Label fx:id="queryIDLabel" layoutX="378.0" layoutY="67.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
    </children>
 </AnchorPane>

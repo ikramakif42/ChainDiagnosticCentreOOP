@@ -58,7 +58,7 @@ public class ViewQueryController implements Initializable {
         
         sentToTableColumn.setCellValueFactory(new PropertyValueFactory<>("usertype"));
         statusTableColumn.setCellValueFactory(newCVF);
-        if(this.patient!=null){queryTableView.setItems(getQuery());}
+        queryTableView.setItems(getQuery());
     }
 
     public Patient getPatient() {
@@ -86,9 +86,22 @@ public class ViewQueryController implements Initializable {
     }
 
     @FXML
-    private void viewQueryDetailsOnClick(ActionEvent event) {
+    private void viewQueryDetailsOnClick(ActionEvent event) throws IOException {
         TeleQuery selectedTQ = queryTableView.getSelectionModel().getSelectedItem();
         System.out.println(selectedTQ.toString());
+        
+        Parent root = null;
+        FXMLLoader detailLoader = new FXMLLoader(getClass().getResource("ViewQueryDetails.fxml"));
+        root = (Parent) detailLoader.load();
+        Scene detailScene = new Scene(root);
+
+        ViewQueryDetailsController qd = detailLoader.getController();
+        qd.setPatient(this.patient);
+        qd.setTelequery(selectedTQ);
+
+        Stage detailStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        detailStage.setScene(detailScene);
+        detailStage.show();
     }
 
     private ObservableList<TeleQuery> getQuery() {
@@ -109,9 +122,9 @@ public class ViewQueryController implements Initializable {
                     tempQuery = (TeleQuery) ois.readObject();
                     System.out.println("Populate query: "+tempQuery.getSenderID()+", "+tempQuery.getQuery());
                     System.out.println(this.patient.getID());
-//                    if (tempQuery.getSenderID()==this.patient.getID()){
+                    if (tempQuery.getSenderID()==this.patient.getID()){
                         queryList.add((TeleQuery)tempQuery);
-//                    }
+                    }
                 }
             }
             catch(IOException | ClassNotFoundException e){

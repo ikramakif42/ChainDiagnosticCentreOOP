@@ -68,3 +68,5 @@ public class Pharmacist extends Employee implements Serializable{
     public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
     }
+    
+}

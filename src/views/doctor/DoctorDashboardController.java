@@ -94,16 +94,27 @@ public class DoctorDashboardController implements Initializable {
     @FXML
     private void viewTeleQueryOnClick(ActionEvent event) throws IOException {
         Parent root = null;
-        FXMLLoader teleQueryLoader = new FXMLLoader(getClass().getResource("ViewTelequeryList.fxml"));
-        root = (Parent) teleQueryLoader.load();
-        Scene teleQueryScene = new Scene(root);
+        FXMLLoader queryLoader = new FXMLLoader(getClass().getResource("ViewTelequeryList.fxml"));
+        ViewTelequeryListController q = new ViewTelequeryListController(this.doc);
+        queryLoader.setController(q);
+        root = (Parent) queryLoader.load();
+
+        Scene queryScene = new Scene(root);
+        Stage queryStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        queryStage.setScene(queryScene);
+        queryStage.show();
         
-        ViewTelequeryListController t = teleQueryLoader.getController();
-        t.setDoc(this.doc);
-        
-        Stage teleQueryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        teleQueryStage.setScene(teleQueryScene);
-        teleQueryStage.show();
+//        Parent root = null;
+//        FXMLLoader teleQueryLoader = new FXMLLoader(getClass().getResource("ViewTelequeryList.fxml"));
+//        root = (Parent) teleQueryLoader.load();
+//        Scene teleQueryScene = new Scene(root);
+//        
+//        ViewTelequeryListController t = teleQueryLoader.getController();
+//        t.setDoc(this.doc);
+//        
+//        Stage teleQueryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        teleQueryStage.setScene(teleQueryScene);
+//        teleQueryStage.show();
     }
     
     @FXML

@@ -74,12 +74,11 @@ public class PatientDashboardController implements Initializable {
     private void viewQueryOnClick(ActionEvent event) throws IOException {
         Parent root = null;
         FXMLLoader queryLoader = new FXMLLoader(getClass().getResource("ViewQuery.fxml"));
+        ViewQueryController q = new ViewQueryController(this.patient);
+        queryLoader.setController(q);
         root = (Parent) queryLoader.load();
+
         Scene queryScene = new Scene(root);
-
-        ViewQueryController q = queryLoader.getController();
-        q.setPatient(this.patient);
-
         Stage queryStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         queryStage.setScene(queryScene);
         queryStage.show();

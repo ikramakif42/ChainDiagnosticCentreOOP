@@ -11,32 +11,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.doctor.ViewTelequeryListController">
    <children>
-      <TableView fx:id="billingInfoTableView" layoutX="56.0" layoutY="101.0" prefHeight="385.0" prefWidth="516.0">
+      <TableView fx:id="queryListTableView" layoutX="56.0" layoutY="101.0" prefHeight="385.0" prefWidth="516.0">
          <columns>
-            <TableColumn fx:id="billDateTableColumn" prefWidth="119.0" text="Patient ID" />
-            <TableColumn fx:id="detailsTableColumn" prefWidth="156.0" text="Patient Name" />
-            <TableColumn fx:id="amountTableColumn" prefWidth="81.0" text="Age" />
-            <TableColumn prefWidth="161.0" text="Status" />
+            <TableColumn fx:id="patientIDTableColumn" prefWidth="119.0" text="Patient ID" />
+            <TableColumn fx:id="patientNameTableColumn" prefWidth="156.0" text="Patient Name" />
+            <TableColumn fx:id="patientAgeTableColumn" prefWidth="81.0" text="Age" />
+            <TableColumn fx:id="statusTableColumn" prefWidth="161.0" text="Status" />
          </columns>
       </TableView>
       <Button layoutX="61.0" layoutY="557.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to dashboard" />
       <Label layoutX="56.0" layoutY="46.0" text="Filter by:" />
-      <RadioButton fx:id="paidStatusRadioButton" layoutX="147.0" layoutY="46.0" mnemonicParsing="false" text="Pending">
+      <RadioButton fx:id="pendingStatusRadioButton" layoutX="147.0" layoutY="46.0" mnemonicParsing="false" text="Pending">
          <toggleGroup>
-            <ToggleGroup fx:id="billStatusTG" />
+            <ToggleGroup fx:id="queryStatusTG" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="dueStatusRadioButton" layoutX="258.0" layoutY="46.0" mnemonicParsing="false" text="Resolved">
-         <toggleGroup>
-            <ToggleGroup fx:id="billStatusTG" />
-         </toggleGroup>
-      </RadioButton>
+      <RadioButton fx:id="resolvedStatusRadioButton" layoutX="258.0" layoutY="46.0" mnemonicParsing="false" text="Resolved" toggleGroup="$queryStatusTG" />
       <Button layoutX="470.0" layoutY="41.0" mnemonicParsing="false" onAction="#applyFiltersOnClick" text="Apply Filters" />
-      <RadioButton fx:id="dueStatusRadioButton1" layoutX="371.0" layoutY="46.0" mnemonicParsing="false" text="All">
-         <toggleGroup>
-            <ToggleGroup fx:id="billStatusTG1" />
-         </toggleGroup>
-      </RadioButton>
+      <RadioButton fx:id="noneStatusRadioButton" layoutX="371.0" layoutY="46.0" mnemonicParsing="false" text="All" toggleGroup="$queryStatusTG" />
       <Button layoutX="386.0" layoutY="536.0" mnemonicParsing="false" onAction="#answerQueryOnClick" prefHeight="73.0" prefWidth="181.0" text="Answer Telemedicine Query" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="17.0" />

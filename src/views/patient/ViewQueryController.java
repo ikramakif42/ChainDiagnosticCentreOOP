@@ -46,19 +46,15 @@ public class ViewQueryController implements Initializable {
         Callback<TableColumn.CellDataFeatures<TeleQuery, String>, ObservableValue<String>> newCVF = feature -> {
             TeleQuery tq = feature.getValue();
             String status = "";
-            if(tq.isPending()){
-                status = "Pending";
-            }
-            else{
-                status = "Answered";
-            }
+            if(tq.isPending()) {status = "Pending";}
+            else {status = "Answered";}
             StringProperty statusProperty = new SimpleStringProperty(status);
             return statusProperty;
         };
         
         sentToTableColumn.setCellValueFactory(new PropertyValueFactory<>("usertype"));
         statusTableColumn.setCellValueFactory(newCVF);
-        queryTableView.setItems(getQuery());
+        queryTableView.setItems(TeleQuery.getQueryList(this.patient.getID()));
     }
 
     public Patient getPatient() {
@@ -102,45 +98,6 @@ public class ViewQueryController implements Initializable {
         Stage detailStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         detailStage.setScene(detailScene);
         detailStage.show();
-    }
-
-    private ObservableList<TeleQuery> getQuery() {
-        ObservableList<TeleQuery> queryList = FXCollections.observableArrayList();
-        
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "TeleQueryObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            TeleQuery tempQuery = null;
-            try{
-                System.out.println("Printing TQ objects");
-                while(true){
-                    tempQuery = (TeleQuery) ois.readObject();
-                    System.out.println("Populate query: "+tempQuery.getSenderID()+", "+tempQuery.getQuery());
-                    System.out.println(this.patient.getID());
-                    if (tempQuery.getSenderID()==this.patient.getID()){
-                        queryList.add((TeleQuery)tempQuery);
-                    }
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        return queryList;
     }
     
 }

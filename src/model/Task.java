@@ -49,7 +49,7 @@ public class Task implements Serializable{
     
     public static void writeTask(Task newTask){
         File f = null;
-        FileOutputStream fos = null;      
+        FileOutputStream fos = null; 
         ObjectOutputStream oos = null;
         try {
             f = new File("TaskObjects.bin");

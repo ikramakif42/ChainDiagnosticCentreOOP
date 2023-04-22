@@ -52,7 +52,7 @@ public class Task implements Serializable{
         FileOutputStream fos = null;      
         ObjectOutputStream oos = null;
         try {
-            f = new File("LoginInfoObjects.bin");
+            f = new File("TaskObjects.bin");
             if(f.exists()){
                 fos = new FileOutputStream(f,true);
                 oos = new AppendableObjectOutputStream(fos);                

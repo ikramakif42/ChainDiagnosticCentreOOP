@@ -72,4 +72,6 @@ public class TeleQuery implements Serializable{
         if (this.answer.isEmpty()){return true;}
         else {return false;}
     }
+    
+    
 }

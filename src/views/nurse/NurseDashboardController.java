@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import users.Nurse;
 
 /**
  * FXML Controller class
@@ -31,6 +32,7 @@ public class NurseDashboardController implements Initializable {
     private Button nurseLogOut;
     @FXML
     private Button nurseAssignedTask;
+    private Nurse nurse;
 
     /**
      * Initializes the controller class.
@@ -38,7 +40,17 @@ public class NurseDashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    } 
+
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+    
+    
 
     @FXML
     private void nurseViewPatientListOnClick(ActionEvent event) {

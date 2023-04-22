@@ -1,16 +1,17 @@
 package views;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+//import java.io.File;
+//import java.io.FileInputStream;
+//import java.io.FileOutputStream;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
+//import java.time.LocalDate;
+//import main.AppendableObjectOutputStream;
+//import model.LoginInfo;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,12 +23,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.AppendableObjectOutputStream;
-import model.LoginInfo;
 import users.*;
 import views.accountsofficer.AccountsOfficerDashboardController;
 import views.director.DirectorDashboardController;
 import views.doctor.DoctorDashboardController;
+import views.nurse.NurseDashboardController;
 import views.patient.PatientDashboardController;
 
 public class LoginController implements Initializable {
@@ -186,7 +186,7 @@ public class LoginController implements Initializable {
         int login = User.userLogin(id, pass);
         
         switch(login){
-            case 0: errorLabel.setText("Error, enter proper login info!"); break;        //Unhandled exception
+            case 0: errorLabel.setText("Error, enter proper login info!"); break;        //Some exception
             case 1: errorLabel.setText("Error, user not found"); break;                  //User not found in database
             case 2: errorLabel.setText("Error, wrong password"); break;                  //Authorisation failed
             case 3: 
@@ -217,8 +217,34 @@ public class LoginController implements Initializable {
                 patientStage.setScene(patientScene);
                 patientStage.show();
                 break;             
-//            case 5: errorLabel.setText("Login Successful - Pharmacist"); break;          //Pharmacist authenticated
-//            case 6: errorLabel.setText("Login Successful - Nurse"); break;               //Nurse authenticated
+            case 5: 
+                errorLabel.setText("Login Successful - Pharmacist");                       //Pharmacist authenticated
+//                Parent pharmacistDashboard = null;
+//                FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("pharmacist/PharmacistDashboard.fxml"));
+//                pharmacistDashboard = (Parent) pharmaLoader.load();
+//                Scene pharmaScene = new Scene(pharmacistDashboard);
+//                
+//                PharmacistDashboardController ph = pharmaLoader.getController();
+//                ph.setPharmacist((Pharmacist) User.getInstance(id, "Pharmacist"));
+//                
+//                Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+//                pharmaStage.setScene(pharmaScene);
+//                pharmaStage.show();
+                break;
+            case 6: 
+                errorLabel.setText("Login Successful - Nurse");                            //Nurse authenticated
+                Parent nurseDashboard = null;
+                FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("nurse/NurseDashboard.fxml"));
+                nurseDashboard = (Parent) nurseLoader.load();
+                Scene nurseScene = new Scene(nurseDashboard);
+                
+                NurseDashboardController nu = nurseLoader.getController();
+                nu.setNurse((Nurse) User.getInstance(id, "Nurse"));
+                
+                Stage nurseStage  = (Stage)((Node)event.getSource()).getScene().getWindow();
+                nurseStage.setScene(nurseScene);
+                nurseStage.show();
+                break;
             case 7: 
                 errorLabel.setText("Login Successful - Managing Director");                //Managing Director authenticated
                 Parent directorDashboard = null;
@@ -241,14 +267,40 @@ public class LoginController implements Initializable {
                 Scene accountsScene = new Scene(accountsOfficerDashboard);
                 
                 AccountsOfficerDashboardController a = accountsLoader.getController();
-                a.setOfficer((AccountsOfficer) User.getInstance(id, "Accounts Officer"));
+                a.setOfficer((AccountsOfficer) User.getInstance(id, "AccountsOfficer"));
                 
                 Stage accountsStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
                 accountsStage.setScene(accountsScene);
                 accountsStage.show();
                 break;    
-//            case 9: errorLabel.setText("Login Successful - HR Officer"); break;          //HR Officer authenticated
-//            case 10: errorLabel.setText("Login Successful - Lab Technician"); break;     //Lab Technician authenticated
+            case 9: 
+                errorLabel.setText("Login Successful - HR Officer");                       //HR Officer authenticated
+//                Parent HRDashboard = null;
+//                FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("HROfficer/HR_Profile.fxml"));
+//                HRDashboard = (Parent) HRLoader.load();
+//                Scene HRScene = new Scene(HRDashboard);
+//                
+//                HR_ProfileController hr = HRLoader.getController();
+//                hr.setOfficer((HROfficer) User.getInstance(id, "HROfficer"));
+//                
+//                Stage hrStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+//                hrStage.setScene(HRScene);
+//                hrStage.show();
+                break;
+            case 10: 
+                errorLabel.setText("Login Successful - Lab Technician");                   //Lab Technician authenticated
+//                Parent labTechnicianDashboard = null;
+//                FXMLLoader labLoader = new FXMLLoader(getClass().getResource("???.fxml"));
+//                labTechnicianDashboard = (Parent) labLoader.load();
+//                Scene labScene = new Scene(labTechnicianDashboard);
+//                
+//                AccountsOfficerDashboardController l = labLoader.getController();
+//                l.setLabTechnician((LabTechnician) User.getInstance(id, "LabTechnician"));
+//                
+//                Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+//                labStage.setScene(labScene);
+//                labStage.show();
+                break;
         }
     }
   }

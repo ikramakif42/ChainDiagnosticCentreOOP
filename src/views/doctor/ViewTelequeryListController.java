@@ -7,13 +7,16 @@ import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Iterator;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,12 +53,14 @@ public class ViewTelequeryListController implements Initializable {
     @FXML
     private RadioButton pendingStatusRadioButton;
     @FXML
-    private ToggleGroup queryStatusTG;
-    @FXML
-    private RadioButton resolvedStatusRadioButton;
-    @FXML
     private RadioButton noneStatusRadioButton;
+    @FXML
+    private RadioButton answeredStatusRadioButton;
+    @FXML
+    private ToggleGroup queryStatusTG;
     private Doctor doc;
+//    private ObservableList<TeleQuery> TQL = FXCollections.observableArrayList();
+    private FilteredList<TeleQuery> filterTQL;
 
     ViewTelequeryListController(Doctor doc) {
         this.doc = doc;
@@ -67,36 +72,23 @@ public class ViewTelequeryListController implements Initializable {
         
         Callback<TableColumn.CellDataFeatures<TeleQuery, String>, ObservableValue<String>> nameCVF = feature -> {
             TeleQuery tq = feature.getValue();
-            String status = "";
-            if(tq.isPending()){
-                status = "Pending";
-            }
-            else{
-                status = "Answered";
-            }
-            StringProperty statusProperty = new SimpleStringProperty(status);
-            return statusProperty;
+            String name = ((Patient)User.getInstance(tq.getSenderID(), "Patient")).getName();
+            return new SimpleStringProperty(name);
         };
         
         Callback<TableColumn.CellDataFeatures<TeleQuery, Integer>, ObservableValue<Integer>> ageCVF = feature -> {
             TeleQuery tq = feature.getValue();
-            Patient pat = (Patient) User.getInstance(tq.getSenderID(), "Patient");
-            LocalDate birthdate = pat.getDOB();
-            int age = Period.between(birthdate, LocalDate.now()).getYears();
+            LocalDate tempDOB = ((Patient) User.getInstance(tq.getSenderID(), "Patient")).getDOB();
+            int age = Period.between(tempDOB, LocalDate.now()).getYears();
             return new SimpleObjectProperty<>(age);
         };
         
         Callback<TableColumn.CellDataFeatures<TeleQuery, String>, ObservableValue<String>> statusCVF = feature -> {
             TeleQuery tq = feature.getValue();
             String status = "";
-            if(tq.isPending()){
-                status = "Pending";
-            }
-            else{
-                status = "Answered";
-            }
-            StringProperty statusProperty = new SimpleStringProperty(status);
-            return statusProperty;
+            if(tq.isPending()){status = "Pending";}
+            else{status = "Answered";}
+            return new SimpleStringProperty(status);
         };
         
         patientIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("senderID"));
@@ -104,7 +96,11 @@ public class ViewTelequeryListController implements Initializable {
         patientAgeTableColumn.setCellValueFactory(ageCVF);
         statusTableColumn.setCellValueFactory(statusCVF);
         
-        queryListTableView.setItems(getQuery());
+        ObservableList<TeleQuery> TQL = TeleQuery.getQueryList("Doctor");
+        this.filterTQL = new FilteredList<>(TQL, b -> true);
+        
+        queryListTableView.setItems(filterTQL);
+        noneStatusRadioButton.setSelected(true);
     }
 
     public Doctor getDoc() {
@@ -133,50 +129,44 @@ public class ViewTelequeryListController implements Initializable {
 
     @FXML
     private void applyFiltersOnClick(ActionEvent event) {
+        if (pendingStatusRadioButton.isSelected()){
+            filterTQL.setPredicate(tempTQ ->{
+                if (tempTQ.isPending()){
+                    return true;
+                } else {return false;}
+            }
+            );
+        }
+        else if (answeredStatusRadioButton.isSelected()){
+            filterTQL.setPredicate(tempTQ ->{
+                if (!tempTQ.isPending()){
+                    return true;
+                } else {return false;}
+            }
+            );
+        }
+        else{
+            filterTQL.setPredicate(tempTQ -> true);
+        }
     }
 
     @FXML
-    private void answerQueryOnClick(ActionEvent event) {
+    private void answerQueryOnClick(ActionEvent event) throws IOException {
         TeleQuery selectedTQ = queryListTableView.getSelectionModel().getSelectedItem();
         System.out.println(selectedTQ.toString());
-    }
-    
-    private ObservableList<TeleQuery> getQuery() {
-        ObservableList<TeleQuery> queryList = FXCollections.observableArrayList();
         
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "TeleQueryObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            TeleQuery tempQuery = null;
-            try{
-                System.out.println("Printing TQ objects");
-                while(true){
-                    tempQuery = (TeleQuery) ois.readObject();
-                    System.out.println("Populate query: "+tempQuery.getSenderID()+", "+tempQuery.getQuery());
-                    if (tempQuery.getUsertype().equals("Doctor")){
-                        queryList.add((TeleQuery)tempQuery);
-                    }
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        return queryList;
+        Parent answerQuery=null;
+        FXMLLoader answerLoader = new FXMLLoader(getClass().getResource("TelequeryResponse.fxml"));
+        answerQuery = (Parent) answerLoader.load();
+        Scene answerScene = new Scene(answerQuery);
+        
+        TelequeryResponseController tr = answerLoader.getController();
+        tr.setDoc(this.doc);
+        tr.setTQ(selectedTQ);
+        
+        Stage answerStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        answerStage.setScene(answerScene);
+        answerStage.show();
     }
     
 }

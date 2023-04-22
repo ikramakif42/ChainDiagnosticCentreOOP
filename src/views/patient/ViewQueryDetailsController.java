@@ -15,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import model.TeleQuery;
 import users.Patient;
+import users.User;
 
 public class ViewQueryDetailsController implements Initializable {
 
@@ -26,6 +27,8 @@ public class ViewQueryDetailsController implements Initializable {
     private Label usertypeLabel;
     private Patient patient;
     private TeleQuery telequery;
+    @FXML
+    private Label answerLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,7 +51,10 @@ public class ViewQueryDetailsController implements Initializable {
         usertypeLabel.setText(telequery.usertype);
         queryTextArea.setText(telequery.getQuery());
         if (telequery.isPending()){answerTextArea.setText("No response yet.");}
-        else {answerTextArea.setText(telequery.getAnswer());}
+        else {
+            answerLabel.setText(String.valueOf(telequery.getAnswerID()));
+            answerTextArea.setText(telequery.getAnswer());
+        }
         queryTextArea.setEditable(false);
         answerTextArea.setEditable(false);
     }

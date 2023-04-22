@@ -11,8 +11,8 @@ public abstract class Employee extends User implements Serializable{
     public String branchName;
     protected Schedule[] scheduleRoster;
 
-    public Employee(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String contactNo, String address, LocalDate DOB) {
-        super(name, ID, password, email, contactNo, address, DOB);
+    public Employee(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
+        super(name, ID, password, email, gender, contactNo, address, DOB);
         this.designation = designation;
         this.department = department;
         this.salary = salary;
@@ -44,6 +44,10 @@ public abstract class Employee extends User implements Serializable{
         this.salary = salary;
     }
 
+    public LocalDate getDOJ() {
+        return DOJ;
+    }
+
     public String getBranchName() {
         return branchName;
     }
@@ -58,31 +62,6 @@ public abstract class Employee extends User implements Serializable{
 
     public void setScheduleRoster(Schedule[] scheduleRoster) {
         this.scheduleRoster = scheduleRoster;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(LocalDate DOB) {
-        this.DOB = DOB;
-    }
-    
+    }    
     
 }

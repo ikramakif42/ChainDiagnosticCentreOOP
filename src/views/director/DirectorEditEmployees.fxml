@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorEditEmployeesController">
+   <children>
+      <Label layoutX="145.0" layoutY="92.0" text="Gender" />
+      <Label layoutX="145.0" layoutY="56.0" text="Name:" />
+      <Button layoutX="14.0" layoutY="337.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Label layoutX="145.0" layoutY="129.0" text="Email:" />
+      <TextField fx:id="nameField" layoutX="196.0" layoutY="51.0" />
+      <TextField fx:id="emailField" layoutX="196.0" layoutY="124.0" />
+      <Button layoutX="218.0" layoutY="287.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="26.0" prefWidth="55.0" text="Save" />
+      <Label layoutX="146.0" layoutY="166.0" text="Phone:" />
+      <TextField fx:id="phoneField" layoutX="197.0" layoutY="161.0" />
+      <Label layoutX="146.0" layoutY="205.0" text="DOB:" />
+      <TextField fx:id="dobField" layoutX="197.0" layoutY="200.0" />
+      <Label layoutX="146.0" layoutY="240.0" text="Address:" />
+      <TextField fx:id="addressField" layoutX="197.0" layoutY="235.0" />
+      <ComboBox fx:id="genderPicker" layoutX="198.0" layoutY="88.0" prefHeight="26.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

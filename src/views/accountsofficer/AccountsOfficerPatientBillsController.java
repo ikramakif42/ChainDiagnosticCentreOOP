@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.director;
+package views.accountsofficer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,22 +12,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import users.AccountsOfficer;
 
 /**
  * FXML Controller class
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class AccountsOfficerPatientBillsController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private TableView<?> accountsBillsTableView;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private TableColumn<?, ?> billPatientID;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TableColumn<?, ?> billStart;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TableColumn<?, ?> billDue;
+    @FXML
+    private TableColumn<?, ?> billAmount;
+    @FXML
+    private TableColumn<?, ?> billDescription;
+    private AccountsOfficer officer;
 
     /**
      * Initializes the controller class.
@@ -35,14 +41,18 @@ public class DirectorBranchReportsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void openReportView(ActionEvent event) {
+    }
+    
+    public AccountsOfficer getOfficer() {
+        return officer;
+    }
+        
+    public void setOfficer(AccountsOfficer officer) {
+        this.officer = officer;
     }
 
     @FXML
-    private void openBranchReportCreator(ActionEvent event) {
+    private void ediBill(ActionEvent event) {
     }
 
     @FXML
@@ -50,7 +60,7 @@ public class DirectorBranchReportsController implements Initializable {
     }
 
     @FXML
-    private void editBranchReport(ActionEvent event) {
+    private void acceptBill(ActionEvent event) {
     }
     
 }

@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import users.Director;
 
@@ -26,6 +27,11 @@ import users.Director;
 public class DirectorDashboardController implements Initializable {
     
     private Director director;
+    @FXML
+    private Label directorIDLabel;
+    @FXML
+    private Label directorNameLabel;
+    
     /**
      * Initializes the controller class.
      */
@@ -33,129 +39,47 @@ public class DirectorDashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
     public Director getDirector() {
         return director;
     }
-
+        
     public void setDirector(Director director) {
         this.director = director;
-//        System.out.println("What's up doc");
-//        doctorIDLabel.setText(String.valueOf(this.doc.ID));
-//        doctorNameLabel.setText(this.doc.name);
     }
     
+    
+    
+    
     @FXML
-    private void directorEmployeeListOnClick(ActionEvent event) {
-    try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorEmployeeList.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
+    private void viewEmployees(ActionEvent event) throws IOException {
+        Parent employeeList = null;
+        FXMLLoader directorLoader = new FXMLLoader(
+            getClass().getResource("DirectorViewEmployees.fxml")
+        );
+        employeeList = (Parent) directorLoader.load();
+        Scene employeeListScene = new Scene(employeeList);
+        
+        DirectorViewEmployeesController e = directorLoader.getController();
+        e.setDirector(this.director);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();
+        
+        
     }
 
     @FXML
-    private void directorSchedulesOnClick(ActionEvent event) {
-        try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorSchedules.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
+    private void viewReports(ActionEvent event) {
     }
 
     @FXML
-    private void directorPromoteTransferOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorPromotionOrTransfer.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
+    private void viewPolicies(ActionEvent event) {
     }
 
     @FXML
-    private void directorFinanceHRReportsOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorHRAndFinanceReports.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-    }
-
-    @FXML
-    private void directorSalaryOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorSalaries.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-    }
-
-    @FXML
-    private void directorBranchReportsOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorBranchReports.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-    }
-
-
-    @FXML
-    private void directorPastRecordsOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorPastRecords.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-    }
-
-    @FXML
-    private void directorPoliciesOnClick(ActionEvent event) {
-            try{
-        Parent root = FXMLLoader.load(getClass().getResource("DirectorPolicies.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
+    private void logOut(ActionEvent event) {
     }
     
 }

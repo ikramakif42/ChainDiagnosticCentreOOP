@@ -18,16 +18,16 @@ import javafx.scene.control.TableView;
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class DirectorEmployeeScheduleController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private TableView<?> employeeTaskTableView;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private TableColumn<?, ?> employeeTask;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TableColumn<?, ?> taskDay;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TableColumn<?, ?> taskTime;
 
     /**
      * Initializes the controller class.
@@ -38,19 +38,15 @@ public class DirectorBranchReportsController implements Initializable {
     }    
 
     @FXML
-    private void openReportView(ActionEvent event) {
-    }
-
-    @FXML
-    private void openBranchReportCreator(ActionEvent event) {
-    }
-
-    @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void editBranchReport(ActionEvent event) {
+    private void createNewTask(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteTask(ActionEvent event) {
     }
     
 }

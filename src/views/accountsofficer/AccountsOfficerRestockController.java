@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.director;
+package views.accountsofficer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,16 +18,16 @@ import javafx.scene.control.TableView;
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class AccountsOfficerRestockController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private TableView<?> medRestockTableView;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private TableColumn<?, ?> medName;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TableColumn<?, ?> medQuantity;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TableColumn<?, ?> medQuantity1;
 
     /**
      * Initializes the controller class.
@@ -38,11 +38,7 @@ public class DirectorBranchReportsController implements Initializable {
     }    
 
     @FXML
-    private void openReportView(ActionEvent event) {
-    }
-
-    @FXML
-    private void openBranchReportCreator(ActionEvent event) {
+    private void markAsOrdered(ActionEvent event) {
     }
 
     @FXML
@@ -50,7 +46,7 @@ public class DirectorBranchReportsController implements Initializable {
     }
 
     @FXML
-    private void editBranchReport(ActionEvent event) {
+    private void markAsUnordered(ActionEvent event) {
     }
     
 }

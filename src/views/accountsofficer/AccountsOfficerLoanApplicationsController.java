@@ -9,13 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,7 +21,19 @@ import javafx.stage.Stage;
 public class AccountsOfficerLoanApplicationsController implements Initializable {
 
     @FXML
-    private TableView<?> accountsOfficerLoanApplicationTable;
+    private TableView<?> accountsLoanApplicationTableView;
+    @FXML
+    private TableColumn<?, ?> loanApplicantName;
+    @FXML
+    private TableColumn<?, ?> loanType;
+    @FXML
+    private TableColumn<?, ?> loanAmount;
+    @FXML
+    private TableColumn<?, ?> loanStart;
+    @FXML
+    private TableColumn<?, ?> loanEnd;
+    @FXML
+    private TableColumn<?, ?> loanDetails;
 
     /**
      * Initializes the controller class.
@@ -36,31 +44,15 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
     }    
 
     @FXML
-    private void accountsOfficerOpenLoanApplicatonDetails(ActionEvent event) {
-        try{
-        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerLoanApplicationsDetailsView.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = new Stage();
-        stg.setScene(scene);
-        stg.show();
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
+    private void denyLoan(ActionEvent event) {
     }
 
     @FXML
-    private void backButton(ActionEvent event) {
-        try{
-        Parent root = FXMLLoader.load(getClass().getResource("AccountsOfficerDashboard.fxml"));
-        Scene scene = new Scene(root);
-        Stage stg = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stg.setScene(scene);
-        stg.show();
+    private void returnToDashboardOnClick(ActionEvent event) {
     }
-    catch(Exception e){
-        e.printStackTrace();
-    }
+
+    @FXML
+    private void acceptLoan(ActionEvent event) {
     }
     
 }

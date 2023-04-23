@@ -4,33 +4,19 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorBranchReportsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorBranchReportsController">
    <children>
-      <TableView fx:id="directorBranchReportTable" prefHeight="456.0" prefWidth="747.0">
+      <TableView fx:id="branchReportTableView" layoutX="96.0" layoutY="38.0" prefHeight="550.0" prefWidth="578.0">
          <columns>
-            <TableColumn prefWidth="38.39999234676361" text="#" />
-            <TableColumn prefWidth="190.4000015258789" text="Title" />
-            <TableColumn prefWidth="200.800048828125" text="Date" />
-            <TableColumn prefWidth="175.99996948242188" text="Branch" />
-            <TableColumn prefWidth="140.7999267578125" text="Publisher" />
+            <TableColumn fx:id="branchReportTitle" minWidth="0.0" prefWidth="151.20004272460938" text="Title" />
+            <TableColumn fx:id="branchReportAuthor" prefWidth="211.199951171875" text="Author" />
+            <TableColumn fx:id="branchReportDate" prefWidth="214.39999999999998" text="Date" />
          </columns>
       </TableView>
-      <Button layoutX="188.0" layoutY="490.0" mnemonicParsing="false" onAction="#directorOpenBranchReportDetailsOnClick" prefHeight="38.0" prefWidth="142.0" text="View Details">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Button>
-      <Button layoutX="352.0" layoutY="490.0" mnemonicParsing="false" onAction="#directorCreateBranchReportOnClick" prefHeight="38.0" prefWidth="203.0" text="Create Branch Report">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Button>
-      <Button layoutX="14.0" layoutY="528.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Button>
+      <Button layoutX="96.0" layoutY="602.0" mnemonicParsing="false" onAction="#openReportView" prefHeight="26.0" prefWidth="66.0" text="Details" />
+      <Button layoutX="177.0" layoutY="603.0" mnemonicParsing="false" onAction="#openBranchReportCreator" text="Create Branch Report" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="321.0" layoutY="603.0" mnemonicParsing="false" onAction="#editBranchReport" text="Edit Report" />
    </children>
 </AnchorPane>

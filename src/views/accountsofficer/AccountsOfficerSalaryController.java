@@ -19,20 +19,32 @@ import javafx.scene.control.TextField;
  *
  * @author Kazi
  */
-public class AccountsOfficerPastRecordsController implements Initializable {
+public class AccountsOfficerSalaryController implements Initializable {
 
     @FXML
-    private TableView<?> pastRecordsTableView;
+    private TableView<?> employeeTableView;
     @FXML
-    private TableColumn<?, ?> billPatientID;
+    private TableColumn<?, ?> employeeIDTableColumn;
     @FXML
-    private TableColumn<?, ?> billStart;
+    private TableColumn<?, ?> employeeNameTableColumn;
     @FXML
-    private TableColumn<?, ?> billDue;
+    private TableColumn<?, ?> employeeAddressTableColumn1;
     @FXML
-    private TableColumn<?, ?> billAmount;
+    private TableColumn<?, ?> employeeEmailTableColumn;
     @FXML
-    private TableColumn<?, ?> billDescription;
+    private TableColumn<?, ?> employeePhoneTableColumn;
+    @FXML
+    private TableColumn<?, ?> employeDeptTableColumn;
+    @FXML
+    private TableColumn<?, ?> employeeDesigTableColumn;
+    @FXML
+    private TableColumn<?, ?> employeeDOBTableColumn;
+    @FXML
+    private TableColumn<?, ?> employeeDOJTableColumn;
+    @FXML
+    private TableColumn<?, ?> employeeAddressTableColumn;
+    @FXML
+    private TextField nameSearchTextField;
     @FXML
     private TextField IDSearchTextField;
 
@@ -46,6 +58,10 @@ public class AccountsOfficerPastRecordsController implements Initializable {
 
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void addOrSubtractSalary(ActionEvent event) {
     }
     
 }

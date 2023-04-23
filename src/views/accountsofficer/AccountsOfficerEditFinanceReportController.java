@@ -3,31 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.director;
+package views.accountsofficer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class AccountsOfficerEditFinanceReportController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private TextArea reportBody;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private TextField reportTitle;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TextField reportAuthor;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TextField reportDate;
 
     /**
      * Initializes the controller class.
@@ -38,19 +38,11 @@ public class DirectorBranchReportsController implements Initializable {
     }    
 
     @FXML
-    private void openReportView(ActionEvent event) {
-    }
-
-    @FXML
-    private void openBranchReportCreator(ActionEvent event) {
-    }
-
-    @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void editBranchReport(ActionEvent event) {
+    private void saveFinanceReportEdit(ActionEvent event) {
     }
     
 }

@@ -10,24 +10,28 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class DirectorEditEmployeesController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private TextField nameField;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private TextField emailField;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TextField phoneField;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TextField dobField;
+    @FXML
+    private TextField addressField;
+    @FXML
+    private ComboBox<?> genderPicker;
 
     /**
      * Initializes the controller class.
@@ -38,19 +42,11 @@ public class DirectorBranchReportsController implements Initializable {
     }    
 
     @FXML
-    private void openReportView(ActionEvent event) {
-    }
-
-    @FXML
-    private void openBranchReportCreator(ActionEvent event) {
-    }
-
-    @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void editBranchReport(ActionEvent event) {
+    private void saveEdit(ActionEvent event) {
     }
     
 }

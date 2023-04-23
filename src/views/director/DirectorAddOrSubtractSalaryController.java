@@ -10,24 +10,27 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class DirectorAddOrSubtractSalaryController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private Label employeeSalary;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private Label employeeName;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TextField addOrSubtractAmount;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private CheckBox addCheckbox;
+    @FXML
+    private CheckBox subtractCheckbox;
 
     /**
      * Initializes the controller class.
@@ -38,19 +41,11 @@ public class DirectorBranchReportsController implements Initializable {
     }    
 
     @FXML
-    private void openReportView(ActionEvent event) {
-    }
-
-    @FXML
-    private void openBranchReportCreator(ActionEvent event) {
+    private void confirmAddOrSubtractOnClick(ActionEvent event) {
     }
 
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void editBranchReport(ActionEvent event) {
     }
     
 }

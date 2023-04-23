@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.director;
+package views.accountsofficer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,16 +18,16 @@ import javafx.scene.control.TableView;
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class AccountsOfficerFinanceReportsController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private TableView<?> financeReportTableView;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private TableColumn<?, ?> financeReportTitle;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TableColumn<?, ?> financeReportAuthor;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TableColumn<?, ?> financeReportDate;
 
     /**
      * Initializes the controller class.
@@ -42,15 +42,11 @@ public class DirectorBranchReportsController implements Initializable {
     }
 
     @FXML
-    private void openBranchReportCreator(ActionEvent event) {
+    private void openFinanceReportCreator(ActionEvent event) {
     }
 
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void editBranchReport(ActionEvent event) {
     }
     
 }

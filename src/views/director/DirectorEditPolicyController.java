@@ -10,24 +10,20 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 /**
  * FXML Controller class
  *
  * @author Kazi
  */
-public class DirectorBranchReportsController implements Initializable {
+public class DirectorEditPolicyController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private Label policyNumber;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
-    @FXML
-    private TableColumn<?, ?> branchReportAuthor;
-    @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TextArea policyField;
 
     /**
      * Initializes the controller class.
@@ -38,19 +34,11 @@ public class DirectorBranchReportsController implements Initializable {
     }    
 
     @FXML
-    private void openReportView(ActionEvent event) {
-    }
-
-    @FXML
-    private void openBranchReportCreator(ActionEvent event) {
-    }
-
-    @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void editBranchReport(ActionEvent event) {
+    private void saveEdit(ActionEvent event) {
     }
     
 }

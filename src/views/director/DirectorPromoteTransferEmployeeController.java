@@ -10,22 +10,23 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
  *
  * @author Kazi
  */
-public class DirectorPoliciesController implements Initializable {
+public class DirectorPromoteTransferEmployeeController implements Initializable {
 
     @FXML
-    private TableView<?> policyTableView;
+    private ComboBox<?> currentDesignationSelection;
     @FXML
-    private TableColumn<?, ?> polictNumber;
+    private ComboBox<?> currentDepartmentSelection;
     @FXML
-    private TableColumn<?, ?> policy;
+    private ComboBox<?> newDepartmentSelection;
+    @FXML
+    private ComboBox<?> newDesignationSelection;
 
     /**
      * Initializes the controller class.
@@ -36,11 +37,7 @@ public class DirectorPoliciesController implements Initializable {
     }    
 
     @FXML
-    private void editPolicy(ActionEvent event) {
-    }
-
-    @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    private void saveButton(ActionEvent event) {
     }
     
 }

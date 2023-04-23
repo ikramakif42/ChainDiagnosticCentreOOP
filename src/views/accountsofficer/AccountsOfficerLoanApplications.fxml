@@ -4,31 +4,21 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerLoanApplicationsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerLoanApplicationsController">
    <children>
-      <TableView fx:id="accountsOfficerLoanApplicationTable" prefHeight="456.0" prefWidth="857.0">
+      <TableView fx:id="accountsLoanApplicationTableView" layoutX="56.0" layoutY="33.0" prefHeight="550.0" prefWidth="789.0">
          <columns>
-            <TableColumn prefWidth="47.20001220703125" text="ID" />
-            <TableColumn prefWidth="85.5999984741211" text="Name" />
-            <TableColumn prefWidth="143.20001220703125" text="Email:" />
-            <TableColumn prefWidth="76.79998779296875" text="DOB" />
-            <TableColumn prefWidth="124.80007934570312" text="Contact" />
-            <TableColumn prefWidth="131.20001220703125" text="Date Applied" />
-            <TableColumn prefWidth="127.2000732421875" text="Department" />
-            <TableColumn prefWidth="117.599853515625" text="Designation" />
+            <TableColumn fx:id="loanApplicantName" minWidth="0.0" prefWidth="99.20000839233398" text="Applicant" />
+            <TableColumn fx:id="loanType" prefWidth="86.39999389648438" text="Type" />
+            <TableColumn fx:id="loanAmount" minWidth="0.0" prefWidth="88.80000305175781" text="Amount" />
+            <TableColumn fx:id="loanStart" prefWidth="84.0" text="Start Date" />
+            <TableColumn fx:id="loanEnd" prefWidth="108.79998779296875" text="End Date" />
+            <TableColumn fx:id="loanDetails" prefWidth="322.3999877929688" text="Details" />
          </columns>
       </TableView>
-      <Button layoutX="387.0" layoutY="478.0" mnemonicParsing="false" onAction="#accountsOfficerOpenLoanApplicatonDetails" prefHeight="38.0" prefWidth="84.0" text="Details">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Button>
-      <Button layoutX="14.0" layoutY="534.0" mnemonicParsing="false" onAction="#backButton" prefHeight="46.0" prefWidth="87.0" text="Back">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Button>
+      <Button layoutX="141.0" layoutY="605.0" mnemonicParsing="false" onAction="#denyLoan" prefHeight="26.0" prefWidth="66.0" text="Deny" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="55.0" layoutY="605.0" mnemonicParsing="false" onAction="#acceptLoan" prefHeight="26.0" prefWidth="66.0" text="Accept" />
    </children>
 </AnchorPane>

@@ -181,7 +181,6 @@ public class LoginController implements Initializable {
         if (userIDTextField.getText() == null || userIDTextField.getText().trim().isEmpty()){
             errorLabel.setText("Error, enter a User ID");                                //Empty text field for User ID
         }
-        
         else {
         int id = Integer.parseInt(userIDTextField.getText());
         String pass = passwordField.getText();

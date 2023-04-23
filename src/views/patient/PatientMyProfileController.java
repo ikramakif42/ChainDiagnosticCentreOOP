@@ -41,6 +41,8 @@ public class PatientMyProfileController implements Initializable {
     private TableColumn<?, ?> durationTableColumn;
     @FXML
     private TextArea medicalHistoryTextArea;
+    @FXML
+    private Label genderLabel;
     private Patient patient;
 
     /**

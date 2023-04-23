@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="169.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="169.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorEditPolicyController">
    <children>
       <Button layoutX="14.0" layoutY="129.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
       <Button layoutX="205.0" layoutY="102.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="26.0" prefWidth="55.0" text="Save" />

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import model.Schedule;
 
 public class AccountsOfficer extends Employee implements Serializable {
+    private static final long serialVersionUID = 13L;
     
     public AccountsOfficer(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
         super(designation, department, salary, DOJ, branchName, name, ID, password, email, gender, contactNo, address, DOB);

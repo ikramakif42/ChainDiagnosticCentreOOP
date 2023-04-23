@@ -31,5 +31,7 @@
       <PasswordField fx:id="passwordField" layoutX="342.0" layoutY="322.0" />
       <Button layoutX="52.0" layoutY="310.0" mnemonicParsing="false" onAction="#returnToMyProfileOnClick" prefHeight="54.0" prefWidth="98.0" text="Return to My Profile" textAlignment="CENTER" wrapText="true" />
       <Label fx:id="errorLabel" layoutX="345.0" layoutY="274.0" prefHeight="21.0" prefWidth="187.0" />
+      <Label layoutX="79.0" layoutY="242.0" text="Gender:" />
+      <Label fx:id="genderLabel" layoutX="143.0" layoutY="242.0" prefHeight="21.0" prefWidth="187.0" text="- - - -" />
    </children>
 </AnchorPane>

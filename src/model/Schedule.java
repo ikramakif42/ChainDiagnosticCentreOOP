@@ -1,19 +1,25 @@
 package model;
 
-public class Schedule {
-    String day, time, task;
+import java.io.Serializable;
+import java.time.LocalDate;
 
-    public Schedule(String day, String time, String task) {
+public class Schedule implements Serializable {
+    private static final long serialVersionUID = 13L;
+    
+    private LocalDate day;
+    private String time, task;
+
+    public Schedule(LocalDate day, String time, String task) {
         this.day = day;
         this.time = time;
         this.task = task;
     }
 
-    public String getDay() {
+    public LocalDate getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public void setDay(LocalDate day) {
         this.day = day;
     }
 

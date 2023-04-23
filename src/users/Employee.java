@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import model.Schedule;
 
 public abstract class Employee extends User implements Serializable{
+    private static final long serialVersionUID = 13L;
+    
     public String designation, department;
     protected Float salary;
     final LocalDate DOJ;

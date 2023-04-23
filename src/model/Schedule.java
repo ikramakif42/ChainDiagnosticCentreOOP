@@ -1,19 +1,22 @@
 package model;
 
-public class Schedule {
-    String day, time, task;
+import java.time.LocalDate;
 
-    public Schedule(String day, String time, String task) {
+public class Schedule {
+    LocalDate day; 
+    String time, task;
+
+    public Schedule(LocalDate day, String time, String task) {
         this.day = day;
         this.time = time;
         this.task = task;
     }
 
-    public String getDay() {
+    public LocalDate getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public void setDay(LocalDate day) {
         this.day = day;
     }
 

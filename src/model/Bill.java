@@ -1,10 +1,6 @@
 package model;
 
-import java.io.Serializable;
-
-public class Bill implements Serializable {
-    private static final long serialVersionUID = 13L;
-    
+public class Bill {
     public boolean due;
     private Float amount;
     String details;

@@ -2,9 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class LoginInfo implements Serializable {
-    private static final long serialVersionUID = 13L;
-    
+public class LoginInfo implements Serializable{
     private int id;
     private String pass;
     String type;

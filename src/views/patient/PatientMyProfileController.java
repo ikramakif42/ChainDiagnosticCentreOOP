@@ -41,8 +41,6 @@ public class PatientMyProfileController implements Initializable {
     private TableColumn<?, ?> durationTableColumn;
     @FXML
     private TextArea medicalHistoryTextArea;
-    @FXML
-    private Label genderLabel;
     private Patient patient;
 
     /**
@@ -65,7 +63,6 @@ public class PatientMyProfileController implements Initializable {
         addressLabel.setText(patient.getAddress());
         contactNoLabel.setText(patient.getContactNo());
         DOBLabel.setText(patient.getDOB().toString());
-        genderLabel.setText(patient.getGender());
     }
 
     @FXML

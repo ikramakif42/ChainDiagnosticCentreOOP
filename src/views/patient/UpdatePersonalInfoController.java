@@ -43,8 +43,6 @@ public class UpdatePersonalInfoController implements Initializable {
     private PasswordField passwordField;
     @FXML
     private Label errorLabel;
-    @FXML
-    private Label genderLabel;
     private Patient patient;
 
     @Override
@@ -62,7 +60,6 @@ public class UpdatePersonalInfoController implements Initializable {
         addressTextField.setText(patient.getAddress());
         contactNoTextField.setText(patient.getContactNo());
         DOBLabel.setText(patient.getDOB().toString());
-        genderLabel.setText(patient.getGender());
     }
     
     @FXML
@@ -73,7 +70,6 @@ public class UpdatePersonalInfoController implements Initializable {
             System.out.println(patient.getPassword());
             return;
         }
-        
         String newName = nameTextField.getText();
         String newEmail = emailTextField.getText();
         String newAddr = addressTextField.getText();
@@ -82,13 +78,60 @@ public class UpdatePersonalInfoController implements Initializable {
             errorLabel.setText("Error, enter valid email!");
             return;
         }
-        
         System.out.println("New Info collected: "+newName+", "+newEmail+", "+newAddr+", "+newContactNo+", ");
-        if (this.patient.updatePersonalInfo(newName, newEmail, newAddr, newContactNo)){
-            errorLabel.setText("Info updated successfully!");
-        }
-        else {
-            errorLabel.setText("Error, update info failed!");
+        try {
+            File file = new File("PatientObjects.bin");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Patient> pats = new ArrayList<>();
+            try{
+                while(true){
+                    Patient tempPat = (Patient) ois.readObject();
+                    System.out.println(tempPat);
+                    pats.add(tempPat);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+            System.out.println(pats);
+
+            for (Patient currentPat : pats) {
+                if (currentPat.getID()==this.patient.getID()) {
+                    currentPat.setName(newName);
+                    currentPat.setEmail(newEmail);
+                    currentPat.setAddress(newAddr);
+                    currentPat.setContactNo(newContactNo);
+                }
+            }
+
+            System.out.println(pats);
+            if(file.delete()){
+                System.out.println("Deleted Patients File!");
+                File f = new File("PatientObjects.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (Patient currentPat : pats) {
+                    oos.writeObject(currentPat);
+                }
+                oos.close();
+                System.out.println("Fixed Patients File!");
+            }
+            else{
+                System.out.println("Could not delete file");
+                errorLabel.setText("Error, update info failed!");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(UpdatePersonalInfoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(UpdatePersonalInfoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -17,6 +17,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import main.AppendableObjectOutputStream;
+import model.TeleQuery;
 import users.Patient;
 
 public class MakeTelequeryController implements Initializable {
@@ -51,7 +53,8 @@ public class MakeTelequeryController implements Initializable {
         String query = queryTextArea.getText();
         if (query==null|query.isEmpty()){errorLabel.setText("Error, enter query!");return;}
         System.out.println("Entered info: "+usertype+", "+query);
-        this.patient.writeQuery(usertype, query);
+        TeleQuery q = new TeleQuery(patient.getID(), usertype, query);
+        TeleQuery.writeQuery(q);
     }
 
     @FXML

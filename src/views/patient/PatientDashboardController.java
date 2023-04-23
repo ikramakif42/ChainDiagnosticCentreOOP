@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import users.Patient;
+import views.doctor.DoctorDashboardController;
 
 public class PatientDashboardController implements Initializable {
     
@@ -120,7 +121,7 @@ public class PatientDashboardController implements Initializable {
         try {
             login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene1 = new Scene(login);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

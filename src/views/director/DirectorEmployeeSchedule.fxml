@@ -5,15 +5,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorEmployeeScheduleController">
    <children>
       <Button layoutX="55.0" layoutY="675.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
-      <TableView fx:id="patientTableView" layoutX="55.0" layoutY="45.0" prefHeight="550.0" prefWidth="806.0">
+      <TableView fx:id="employeeTaskTableView" layoutX="55.0" layoutY="45.0" prefHeight="550.0" prefWidth="806.0">
          <columns>
-            <TableColumn fx:id="patientAgeTableColumn" minWidth="0.0" prefWidth="390.4000129699707" text="Task" />
-            <TableColumn fx:id="lastApptTableColumn" prefWidth="416.0" text="Time" />
+            <TableColumn fx:id="employeeTask" minWidth="0.0" prefWidth="404.0" text="Task" />
+            <TableColumn fx:id="taskDay" minWidth="0.0" prefWidth="250.4000244140625" text="Day" />
+            <TableColumn fx:id="taskTime" prefWidth="153.5999755859375" text="Time" />
          </columns>
       </TableView>
+      <Button layoutX="55.0" layoutY="623.0" mnemonicParsing="false" onAction="#createNewTask" text="Create New Task" />
+      <Button layoutX="182.0" layoutY="623.0" mnemonicParsing="false" onAction="#deleteTask" text="Delete Task" />
    </children>
 </AnchorPane>

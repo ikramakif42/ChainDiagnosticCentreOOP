@@ -52,7 +52,7 @@ public class AccountsOfficerDashboardController implements Initializable {
     private void viewBills(ActionEvent event) throws IOException {
         Parent billsList = null;
         FXMLLoader officerLoader = new FXMLLoader(
-            getClass().getResource("accountsofficer/AccountsOfficerPatientBills.fxml")
+            getClass().getResource("AccountsOfficerPatientBills.fxml")
         );
         billsList = (Parent) officerLoader.load();
         Scene employeeListScene = new Scene(billsList);

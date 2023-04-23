@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorScheduleCreatorController">
+   <children>
+      <Button layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Label layoutX="144.0" layoutY="55.0" text="Day:" />
+      <Button layoutX="218.0" layoutY="222.0" mnemonicParsing="false" onAction="#saveTaskInSchedule" prefHeight="26.0" prefWidth="55.0" text="Save" />
+      <Label layoutX="142.0" layoutY="88.0" text="Time:" />
+      <TextArea fx:id="taskBodyField" layoutX="186.0" layoutY="120.0" prefHeight="87.0" prefWidth="274.0" />
+      <Label layoutX="118.0" layoutY="24.0" text="Employee:" />
+      <Label fx:id="accountsIDLabel" layoutX="197.0" layoutY="22.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Label layoutX="142.0" layoutY="120.0" text="Task:" />
+      <DatePicker fx:id="taskDay" layoutX="186.0" layoutY="51.0" />
+      <ComboBox fx:id="taskTime" layoutX="187.0" layoutY="84.0" prefHeight="26.0" prefWidth="175.0" />
+   </children>
+</AnchorPane>

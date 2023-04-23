@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="pastRecordsTableView" layoutX="55.0" layoutY="98.0" prefHeight="550.0" prefWidth="659.0">
+      <TableView fx:id="accountsBillsTableView" layoutX="55.0" layoutY="42.0" prefHeight="550.0" prefWidth="659.0">
          <columns>
             <TableColumn fx:id="billPatientID" minWidth="0.0" prefWidth="84.00000762939453" text="Patient ID" />
             <TableColumn fx:id="billStart" prefWidth="92.0001220703125" text="Start Date" />
@@ -18,8 +16,8 @@
             <TableColumn fx:id="billDescription" prefWidth="277.5999938964844" text="Description" />
          </columns>
       </TableView>
+      <Button layoutX="141.0" layoutY="605.0" mnemonicParsing="false" onAction="#ediBill" prefHeight="26.0" prefWidth="66.0" text="Edit" />
       <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
-      <TextField fx:id="IDSearchTextField" layoutX="186.0" layoutY="40.0" />
-      <Label layoutX="55.0" layoutY="45.0" text="Search by ID:" />
+      <Button layoutX="55.0" layoutY="605.0" mnemonicParsing="false" onAction="#acceptBill" prefHeight="26.0" prefWidth="66.0" text="Accept" />
    </children>
 </AnchorPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="464.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="75.0" layoutY="75.0" text="Current Salary:" />
+      <Label fx:id="employeeSalary" layoutX="197.0" layoutY="73.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Label layoutX="75.0" layoutY="45.0" text="Employee:" />
+      <Label fx:id="employeeName" layoutX="197.0" layoutY="43.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <TextField fx:id="addOrSubtractAmount" layoutX="80.0" layoutY="167.0" promptText="Amount" />
+      <CheckBox fx:id="addCheckbox" layoutX="263.0" layoutY="171.0" mnemonicParsing="false" text="Add" />
+      <CheckBox fx:id="subtractCheckbox" layoutX="322.0" layoutY="171.0" mnemonicParsing="false" text="Subtract" />
+      <Button layoutX="204.0" layoutY="240.0" mnemonicParsing="false" onAction="#confirmAddOrSubtractOnClick" text="Confirm" />
+      <Button layoutX="25.0" layoutY="357.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+   </children>
+</AnchorPane>

@@ -1,12 +1,5 @@
 package model;
 
-<<<<<<< HEAD
-import java.time.LocalDate;
-
-public class Schedule {
-    LocalDate day; 
-    String time, task;
-=======
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -15,7 +8,6 @@ public class Schedule implements Serializable {
     
     private LocalDate day;
     private String time, task;
->>>>>>> parent of 64527af (Fixed SerialUID+abstractions)
 
     public Schedule(LocalDate day, String time, String task) {
         this.day = day;

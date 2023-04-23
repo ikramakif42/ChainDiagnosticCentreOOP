@@ -5,8 +5,7 @@ import java.time.LocalDate;
 import model.Schedule;
 
 public class Director extends Employee implements Serializable {
-    private static final long serialVersionUID = 13L;
-    private int stockOptions;
+    protected int stockOptions;
     
     
     public Director(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {

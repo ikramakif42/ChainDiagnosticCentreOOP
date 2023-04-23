@@ -80,7 +80,7 @@ public class AssignTaskController implements Initializable {
         
         String[] nameID = username.split(" ");
         int receiverID = Integer.parseInt(nameID[nameID.length-1]);
-        this.doc.assignTask(receiverID, task);
+        Task.writeTask(new Task(this.doc.getID(), receiverID, task));
         errorLabel.setText("Task assigned successfully!");
     }
 

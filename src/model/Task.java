@@ -7,9 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import main.AppendableObjectOutputStream;
 
-public class Task implements Serializable {
-    private static final long serialVersionUID = 13L;
-    
+public class Task implements Serializable{
     public int senderID;
     public int receiverID;
     private String taskDetails;
@@ -47,6 +45,33 @@ public class Task implements Serializable {
     @Override
     public String toString() {
         return "Task: " + "senderID=" + senderID + ", receiverID=" + receiverID + ", taskDetails=" + taskDetails;
+    }
+    
+    public static void writeTask(Task newTask){
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("TaskObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+        oos.writeObject(newTask);
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        System.out.println("Task written successfully!");
     }
     
 }

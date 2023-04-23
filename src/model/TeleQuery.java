@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
 
 public class TeleQuery implements Serializable{
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 1795240498792647912L;
     
     public String usertype;
     private String query, answer;
@@ -83,8 +83,122 @@ public class TeleQuery implements Serializable{
         else {return false;}
     }
     
+    public static void writeQuery(TeleQuery q) throws IOException {
+        File f = null;
+        FileOutputStream fos = null;      
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("TeleQueryObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            oos.writeObject(q);
+        }
+        catch (IOException ex){System.out.println(ex);}
+        System.out.println("Query written");
+        oos.close();
+    }
     
-    //Move to doctor and pharmacist
+    public static boolean answerQuery(TeleQuery q){
+        System.out.println("Updated Query: "+q.toString());
+        try {
+            File file = new File("TeleQueryObjects.bin");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<TeleQuery> queryList = new ArrayList<>();
+            try{
+                while(true){
+                    TeleQuery temp = (TeleQuery) ois.readObject();
+                    System.out.println(temp);
+                    queryList.add(temp);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+            System.out.println(queryList);
+
+            for (TeleQuery tempQ : queryList) {
+                if (tempQ.getSenderID()==q.getSenderID() && tempQ.getQuery().equals(q.getQuery())) {
+                    tempQ.setAnswer(q.getAnswer());
+                    tempQ.setAnswerID(q.getAnswerID());
+                }
+            }
+
+            System.out.println(queryList);
+            if(file.delete()){
+                System.out.println("Deleted Telequery File!");
+                File f = new File("TeleQueryObjects.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (TeleQuery tq : queryList) {
+                    oos.writeObject(tq);
+                }
+                oos.close();
+                System.out.println("Fixed Telequery File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(TeleQuery.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(TeleQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public static ObservableList<TeleQuery> getQueryList(int patientID) {
+        ObservableList<TeleQuery> queryList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "TeleQueryObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            TeleQuery tempQuery = null;
+            try{
+                System.out.println("Printing TQ objects");
+                while(true){
+                    tempQuery = (TeleQuery) ois.readObject();
+                    System.out.println("Populated query: "+tempQuery.getSenderID()+", "+tempQuery.getQuery());
+                    System.out.println(patientID);
+                    if (tempQuery.getSenderID()==patientID){
+                        queryList.add(tempQuery);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        return queryList;
+    }
+    
     public static ObservableList<TeleQuery> getQueryList(String usertype) {
         ObservableList<TeleQuery> queryList = FXCollections.observableArrayList();
         File f = null;

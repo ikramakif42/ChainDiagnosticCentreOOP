@@ -1,6 +1,9 @@
 package model;
 
-public class Prescription {
+import java.io.Serializable;
+
+public class Prescription implements Serializable {
+    private static final long serialVersionUID = 13L;
     String medName, dosage;
     int duration;
 

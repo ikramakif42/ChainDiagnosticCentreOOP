@@ -44,7 +44,15 @@ public class PatientMyScheduleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) throws IOException {
@@ -65,11 +73,18 @@ public class PatientMyScheduleController implements Initializable {
     private void confirmCancelOnClick(ActionEvent event) {
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
+    @FXML
+    private void newApptOnClick(ActionEvent event) throws IOException {
+        Parent patientMakeAppt = null;
+        FXMLLoader apptLoader = new FXMLLoader(getClass().getResource("PatientMakeAppt.fxml"));
+        patientMakeAppt = (Parent) apptLoader.load();
+        Scene apptScene = new Scene(patientMakeAppt);
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+        PatientMakeApptController ap = apptLoader.getController();
+        ap.setPatient(this.patient);
+
+        Stage apptStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        apptStage.setScene(apptScene);
+        apptStage.show();
     }
 }

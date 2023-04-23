@@ -54,7 +54,9 @@ public class ViewQueryController implements Initializable {
         
         sentToTableColumn.setCellValueFactory(new PropertyValueFactory<>("usertype"));
         statusTableColumn.setCellValueFactory(newCVF);
-        queryTableView.setItems(TeleQuery.getQueryList(this.patient.getID()));
+        queryTableView.setItems(this.patient.getQueryList());
+        queryTableView.getSortOrder().add(statusTableColumn);
+        queryTableView.sort();
     }
 
     public Patient getPatient() {

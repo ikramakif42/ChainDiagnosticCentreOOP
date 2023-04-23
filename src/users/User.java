@@ -9,12 +9,13 @@ import java.time.LocalDate;
 import model.LoginInfo;
 
 public abstract class User implements Serializable{
+    private static final long serialVersionUID = 13L;
     
     public String name;
     public final int ID;
     protected String password;
     public String email;
-    public String gender;
+    public final String gender;
     protected String contactNo, address;
     protected final LocalDate DOB;
 
@@ -59,10 +60,6 @@ public abstract class User implements Serializable{
     
     public String getGender() {
         return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
     
     public String getContactNo() {

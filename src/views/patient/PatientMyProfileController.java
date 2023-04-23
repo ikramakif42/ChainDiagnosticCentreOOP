@@ -65,6 +65,7 @@ public class PatientMyProfileController implements Initializable {
         addressLabel.setText(patient.getAddress());
         contactNoLabel.setText(patient.getContactNo());
         DOBLabel.setText(patient.getDOB().toString());
+        genderLabel.setText(patient.getGender());
     }
 
     @FXML

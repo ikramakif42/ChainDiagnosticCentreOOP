@@ -19,12 +19,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import users.AccountsOfficer;
-import users.Director;
+import model.Task;
 import users.Doctor;
-import users.Patient;
+import users.Nurse;
+import users.LabTechnician;
+import users.Pharmacist;
 import users.User;
-import views.LoginController;
 
 public class AssignTaskController implements Initializable {
 
@@ -40,7 +40,7 @@ public class AssignTaskController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String[] temp = {"Nurse", "Technician", "Pharmacist", "Patient"};
+        String[] temp = {"Nurse", "LabTechnician", "Pharmacist"};
         userTypeComboBox.getItems().addAll(temp);
     }
 
@@ -71,15 +71,17 @@ public class AssignTaskController implements Initializable {
     private void assignTaskOnClick(ActionEvent event) {
         errorLabel.setText("");
         String usertype = userTypeComboBox.getSelectionModel().getSelectedItem();
-        String username = userNameComboBox.getSelectionModel().getSelectedItem();
-        String task = taskTextArea.getText();
         if (usertype==null){errorLabel.setText("Error, select user type");return;}
-        else if (username==null){errorLabel.setText("Error, select user name");return;}
-        else if (task.isEmpty()){errorLabel.setText("Error, enter task");return;}
-        System.out.println(usertype+username+task);
-        String[] nameID = username.split(" ");System.out.println(nameID);
-        User assigned = User.getInstance(Integer.parseInt(nameID[nameID.length-1]), usertype);
-        System.out.println(assigned.toString());
+        String username = userNameComboBox.getSelectionModel().getSelectedItem();
+        if (username==null){errorLabel.setText("Error, select user name");return;}
+        String task = taskTextArea.getText();
+        if (task.isEmpty()){errorLabel.setText("Error, enter task");return;}
+        System.out.println(usertype+" "+username+" "+task);
+        
+        String[] nameID = username.split(" ");
+        int receiverID = Integer.parseInt(nameID[nameID.length-1]);
+        Task.writeTask(new Task(this.doc.getID(), receiverID, task));
+        errorLabel.setText("Task assigned successfully!");
     }
 
     @FXML
@@ -93,17 +95,14 @@ public class AssignTaskController implements Initializable {
             ObjectInputStream ois = null;
             String path = "";
             switch(usertype){
-                case "Doctor":
-                    path="DoctorObjects.bin";
+                case "Nurse":
+                    path="NurseObjects.bin";
                     break;
-                case "Patient":
-                    path="PatientObjects.bin";
+                case "LabTechnician":
+                    path="LabTechnicianObjects.bin";
                     break;
-                case "Director":
-                    path="DirectorObjects.bin";
-                    break;
-                case "Accounts Officer":
-                    path="AccountsOfficerObjects.bin";
+                case "Pharmacist":
+                    path="PharmacistObjects.bin";
                     break;
             }
             try {
@@ -115,28 +114,22 @@ public class AssignTaskController implements Initializable {
                     System.out.println("Printing objects");
                     while(true){
                         switch(usertype){
-                            case "Doctor": 
-                                tempUser = (Doctor) ois.readObject();
-                                System.out.println("Uh well");
+                            case "Nurse": 
+                                tempUser = (Nurse) ois.readObject();
+                                System.out.println("Assign: nurse object");
                                 System.out.println(tempUser.toString());
                                 break;
-                            case "Patient": 
-                                tempUser = (Patient) ois.readObject();
-                                System.out.println("Hmm");
+                            case "LabTechnician": 
+                                tempUser = (LabTechnician) ois.readObject();
+                                System.out.println("Assign: technician object");
                                 System.out.println(tempUser.toString());
                                 break;
-                            case "Director": 
-                                tempUser = (Director) ois.readObject();                            
-                                System.out.println("Eh");
-                                System.out.println(tempUser.toString());
-                                break;
-                            case "Accounts Officer": 
-                                tempUser = (AccountsOfficer) ois.readObject();
-                                System.out.println("Oh");
+                            case "Pharmacist": 
+                                tempUser = (Pharmacist) ois.readObject();                            
+                                System.out.println("Assign: pharmacist object");
                                 System.out.println(tempUser.toString());
                                 break;
                         }
-                        System.out.println(tempUser.toString());
                         if (tempUser.getClass().getSimpleName().equals(usertype)){
                             System.out.println("User found");
                             usersToAdd.add(tempUser.getName()+" "+String.valueOf(tempUser.getID()));

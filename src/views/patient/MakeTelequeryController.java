@@ -51,10 +51,10 @@ public class MakeTelequeryController implements Initializable {
         String usertype = selectUserComboBox.getSelectionModel().getSelectedItem();
         if (usertype==null){errorLabel.setText("Error, select user type!");return;}
         String query = queryTextArea.getText();
-        if (query==null){errorLabel.setText("Error, enter query!");return;}
+        if (query==null|query.isEmpty()){errorLabel.setText("Error, enter query!");return;}
         System.out.println("Entered info: "+usertype+", "+query);
         TeleQuery q = new TeleQuery(patient.getID(), usertype, query);
-        writeQuery(q);
+        TeleQuery.writeQuery(q);
     }
 
     @FXML
@@ -71,25 +71,5 @@ public class MakeTelequeryController implements Initializable {
         patientStage.setScene(patientScene);
         patientStage.show();
     }
-
-    private void writeQuery(TeleQuery q) throws IOException {
-        File f = null;
-        FileOutputStream fos = null;      
-        ObjectOutputStream oos = null;
-        try {
-            f = new File("TeleQueryObjects.bin");
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
-            }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
-            }
-            oos.writeObject(q);
-        }
-        catch (IOException ex){System.out.println(ex);}
-        System.out.println("Query written");
-        oos.close();
-        }
+    
 }

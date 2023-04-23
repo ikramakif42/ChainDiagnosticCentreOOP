@@ -14,5 +14,7 @@
       <Label layoutX="46.0" layoutY="244.0" text="Received response:" />
       <Label layoutX="45.0" layoutY="46.0" text="Submitted to:" />
       <Label fx:id="usertypeLabel" layoutX="173.0" layoutY="46.0" prefHeight="21.0" prefWidth="80.0" text="- - - -" />
+      <Label layoutX="301.0" layoutY="46.0" text="Answered by user ID:" />
+      <Label fx:id="answerLabel" layoutX="455.0" layoutY="46.0" prefHeight="21.0" prefWidth="80.0" text="N/A" />
    </children>
 </AnchorPane>

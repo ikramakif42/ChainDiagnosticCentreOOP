@@ -5,14 +5,20 @@
  */
 package views.nurse;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import users.Nurse;
 
 /**
@@ -48,7 +54,17 @@ public class NursePatientListController implements Initializable {
     }
 
     @FXML
-    private void nurseSchedulePatientOnClick(ActionEvent event) {
+    private void nurseSchedulePatientOnClick(ActionEvent event) throws IOException {Parent nurseSchedulePatient= null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("NurseScheduleAppointmentPatient.fxml"));
+        nurseSchedulePatient= (Parent) scheduleLoader.load();
+        Scene nurseViewPatientListScene = new Scene(nurseSchedulePatient);
+
+        NurseScheduleAppointmentPatientController n = scheduleLoader.getController();
+        n.setNurse(this.nurse);
+
+        Stage nurseScheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        nurseScheduleStage.setScene(nurseViewPatientListScene);
+        nurseScheduleStage.show();
     }
 
     @FXML
@@ -68,7 +84,19 @@ public class NursePatientListController implements Initializable {
     }
 
     @FXML
-    private void nursePatientListToDashboardOnClick(ActionEvent event) {
+    private void nursePatientListToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent nurseDashboard = null;
+        FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("NurseDashboard.fxml"));
+        nurseDashboard = (Parent) nurseLoader.load();
+        Scene nurseScene = new Scene(nurseDashboard);
+
+        NurseDashboardController nu = nurseLoader.getController();
+        nu.setNurse(this.nurse);
+
+        Stage nurseStage  = (Stage)((Node)event.getSource()).getScene().getWindow();
+        nurseStage.setScene(nurseScene);
+        nurseStage.show();
+
     }
     
 }

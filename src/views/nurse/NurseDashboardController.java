@@ -77,7 +77,19 @@ public class NurseDashboardController implements Initializable {
     }
 
     @FXML
-    private void nurseViewStockOnClick(ActionEvent event) {
+    private void nurseViewStockOnClick(ActionEvent event) throws IOException {
+        Parent nurseViewStock = null;
+        FXMLLoader nurseViewStockLoader = new FXMLLoader(getClass().getResource("NurseStock.fxml"));
+        nurseViewStock = (Parent) nurseViewStockLoader.load();
+        Scene nurseViewStockScene = new Scene(nurseViewStock);
+
+        NurseStockController n = nurseViewStockLoader.getController();
+        n.setNurse(this.nurse);
+
+        Stage nurseViewStockStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        nurseViewStockStage.setScene(nurseViewStockScene);
+        nurseViewStockStage.show();
+
     }
 
 

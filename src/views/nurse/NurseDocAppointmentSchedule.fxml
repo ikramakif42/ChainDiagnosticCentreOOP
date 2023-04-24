@@ -21,12 +21,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="nurseDocAppointmentEdit" layoutX="514.0" layoutY="129.0" mnemonicParsing="false" onAction="#nurseDocAppointmentEditOnClick" style="-fx-background-color: orange;" text="Edit Schedule">
+      <Button layoutX="514.0" layoutY="129.0" mnemonicParsing="false" onAction="#nurseDocAppointmentEditOnClick" style="-fx-background-color: orange;" text="Edit Schedule">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="nurseDocAppointmentBackToDash" layoutX="491.0" layoutY="233.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackToDashOnClick" style="-fx-background-color: orange;" text="Back To Dashboard">
+      <Button layoutX="491.0" layoutY="233.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackToDashOnClick" style="-fx-background-color: orange;" text="Back To Dashboard">
          <font>
             <Font size="18.0" />
          </font>

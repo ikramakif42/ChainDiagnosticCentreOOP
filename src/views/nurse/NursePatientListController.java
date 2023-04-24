@@ -50,7 +50,17 @@ public class NursePatientListController implements Initializable {
     }
     
     @FXML
-    private void nurseUpdatePatientOnClick(ActionEvent event) {
+    private void nurseUpdatePatientOnClick(ActionEvent event) throws IOException {
+        FXMLLoader nurseUpdatePatientLoader = new FXMLLoader(getClass().getResource("NurseUpdatePatientMedicalRecords.fxml"));
+        Parent nurseUpdatePatient = (Parent) nurseUpdatePatientLoader.load();
+        Scene nurseUpdatePatientScene = new Scene(nurseUpdatePatient);
+
+        NurseUpdatePatientMedicalRecordsController n = nurseUpdatePatientLoader.getController();
+        n.setNurse(this.nurse);
+
+        Stage nurseUpdatePatientStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        nurseUpdatePatientStage.setScene(nurseUpdatePatientScene);
+        nurseUpdatePatientStage.show();
     }
 
     @FXML
@@ -68,15 +78,45 @@ public class NursePatientListController implements Initializable {
     }
 
     @FXML
-    private void nursePatientBillOnClick(ActionEvent event) {
+    private void nursePatientBillOnClick(ActionEvent event) throws IOException {
+        FXMLLoader nursePatientBillLoader = new FXMLLoader(getClass().getResource("NursePatientBill.fxml"));
+        Parent nursePatientBill = (Parent) nursePatientBillLoader.load();
+        Scene nursePatientBilltScene = new Scene(nursePatientBill);
+
+        NursePatientBillController n = nursePatientBillLoader.getController();
+        n.setNurse(this.nurse);
+
+        Stage nursePatientBillStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        nursePatientBillStage.setScene(nursePatientBilltScene);
+        nursePatientBillStage.show();
     }
 
     @FXML
-    private void nursePatientPrescriptionOnClick(ActionEvent event) {
+    private void nursePatientPrescriptionOnClick(ActionEvent event) throws IOException {
+        FXMLLoader nursePatientPrescriptionLoader = new FXMLLoader(getClass().getResource("NurseReviewPrescriptionRefills.fxml"));
+        Parent nursePatientPrescription = (Parent) nursePatientPrescriptionLoader.load();
+        Scene nursePatientPrescriptionScene = new Scene(nursePatientPrescription);
+
+        NurseReviewPrescriptionRefillsController n = nursePatientPrescriptionLoader.getController();
+        n.setNurse(this.nurse);
+
+        Stage nursePatientPrescriptionStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        nursePatientPrescriptionStage.setScene(nursePatientPrescriptionScene);
+        nursePatientPrescriptionStage.show();
     }
 
     @FXML
-    private void nursePatientLabReportsOnClick(ActionEvent event) {
+    private void nursePatientLabReportsOnClick(ActionEvent event) throws IOException {
+        FXMLLoader nursePatientLabReportsLoader = new FXMLLoader(getClass().getResource("NurseViewLabReports.fxml"));
+        Parent nursePatientLabReports = (Parent) nursePatientLabReportsLoader.load();
+        Scene nursePatientLabReportsScene = new Scene(nursePatientLabReports);
+
+        NurseViewLabReportsController n = nursePatientLabReportsLoader.getController();
+        n.setNurse(this.nurse);
+
+        Stage nursePatientLabReportsStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        nursePatientLabReportsStage.setScene(nursePatientLabReportsScene);
+        nursePatientLabReportsStage.show();
     }
 
     @FXML

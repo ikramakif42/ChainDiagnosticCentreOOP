@@ -1,5 +1,9 @@
 package users;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
@@ -27,9 +31,6 @@ public class AccountsOfficer extends Employee implements Serializable {
     public void approveLoanApplications(){};
     public void updateSalaries(){};
     
-    public ObservableList<AccountsOfficer> getAccounts(){
-        ObservableList<AccountsOfficer> patientList = FXCollections.observableArrayList();
-        return null;
-    }
+
     
 }

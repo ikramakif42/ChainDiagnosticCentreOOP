@@ -21,12 +21,12 @@
          </font>
       </Label>
       <TextField fx:id="nurseDocAppointmentTimeChange" layoutX="115.0" layoutY="179.0" prefHeight="25.0" prefWidth="174.0" />
-      <Button fx:id="nurseDocAppointmentSaveEdit" layoutX="58.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentSaveEditOnClick" style="-fx-background-color: orange;" text="Save" textFill="#3f7eba">
+      <Button layoutX="58.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentSaveEditOnClick" style="-fx-background-color: orange;" text="Save" textFill="#3f7eba">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="nurseDocAppointmentBack" layoutX="211.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackOnClick" style="-fx-background-color: orange;" text="Back" textFill="#3f7eba">
+      <Button layoutX="211.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackOnClick" style="-fx-background-color: orange;" text="Back" textFill="#3f7eba">
          <font>
             <Font size="18.0" />
          </font>

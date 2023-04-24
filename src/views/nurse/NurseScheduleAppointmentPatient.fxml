@@ -23,14 +23,14 @@
             <TableColumn prefWidth="183.0" text="Time" />
         </columns>
       </TableView>
-      <Button fx:id="nurseSheduleAppointmentPatientConfirm" layoutX="73.0" layoutY="324.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientConfirmOnClick" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Confirm" textFill="#133151">
+      <Button layoutX="73.0" layoutY="324.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientConfirmOnClick" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Confirm" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="nurseSheduleAppointmentPatientSearch" layoutX="315.0" layoutY="76.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientSearchOnClick" text="Search" />
+      <Button layoutX="315.0" layoutY="76.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientSearchOnClick" text="Search" />
       <TextField fx:id="nurseSheduleAppointmentPatientSearchTextField" layoutX="367.0" layoutY="76.0" />
-      <Button fx:id="nurseSheduleAppointmentPatientBack" layoutX="298.0" layoutY="324.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientBackOnClick" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Back To Patient List" textFill="#133151">
+      <Button layoutX="298.0" layoutY="324.0" mnemonicParsing="false" onAction="#nurseSheduleAppointmentPatientBackOnClick" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Back To Patient List" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>

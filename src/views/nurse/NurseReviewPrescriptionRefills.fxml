@@ -17,12 +17,12 @@
             <TableColumn prefWidth="112.0" text="Contact" />
          </columns>
       </TableView>
-      <Button fx:id="nursePatientRefillApproveAll" layoutX="440.0" layoutY="82.0" mnemonicParsing="false" onAction="#nursePatientRefillApproveAllOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Approve All" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
+      <Button layoutX="440.0" layoutY="82.0" mnemonicParsing="false" onAction="#nursePatientRefillApproveAllOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Approve Selected" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="nursePatientRefillDeclineAll" layoutX="440.0" layoutY="183.0" mnemonicParsing="false" onAction="#nursePatientRefillDeclineAllOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Decline All" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
+      <Button layoutX="437.0" layoutY="251.0" mnemonicParsing="false" onAction="#nursePatientRefillDeclineAllOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Decline Selected" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -32,11 +32,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="nursePatientRefillSelect" layoutX="440.0" layoutY="290.0" mnemonicParsing="false" onAction="#nursePatientRefillSelectOnClick" prefHeight="70.0" prefWidth="181.0" style="-fx-background-color: orange;" text="Select Individually" textAlignment="CENTER" textFill="#1c6f8d" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="NurseReviewPresRefillsBack" layoutX="528.0" layoutY="379.0" mnemonicParsing="false" onAction="#NurseReviewPresRefillsBack" prefHeight="26.0" prefWidth="146.0" text="Back to Patient List" />
+      <Button layoutX="528.0" layoutY="379.0" mnemonicParsing="false" onAction="#NurseReviewPresRefillsBack" prefHeight="26.0" prefWidth="146.0" text="Back to Patient List" />
    </children>
 </AnchorPane>

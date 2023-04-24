@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import users.Director;
 
 /**
  * FXML Controller class
@@ -19,7 +20,9 @@ import javafx.scene.control.TableView;
  * @author Kazi
  */
 public class DirectorPoliciesController implements Initializable {
-
+    
+    
+     private Director director;
     @FXML
     private TableView<?> policyTableView;
     @FXML
@@ -33,7 +36,16 @@ public class DirectorPoliciesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    public Director getDirector() {
+        return director;
+    }
+        
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+    
 
     @FXML
     private void editPolicy(ActionEvent event) {

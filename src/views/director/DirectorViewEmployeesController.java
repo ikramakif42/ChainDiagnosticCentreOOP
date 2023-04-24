@@ -6,7 +6,10 @@
 package views.director;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import users.Director;
+import users.Employee;
 
 /**
  * FXML Controller class
@@ -23,27 +27,27 @@ import users.Director;
 public class DirectorViewEmployeesController implements Initializable {
 
     @FXML
-    private TableView<?> employeeTableView;
+    private TableView<Employee> employeeTableView;
     @FXML
-    private TableColumn<?, ?> employeeIDTableColumn;
+    private TableColumn<Employee, Integer> employeeIDTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeNameTableColumn;
+    private TableColumn<Employee, String> employeeNameTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeAddressTableColumn1;
+    private TableColumn<Employee, String> employeeAddressTableColumn1;
     @FXML
-    private TableColumn<?, ?> employeeEmailTableColumn;
+    private TableColumn<Employee, String> employeeEmailTableColumn;
     @FXML
-    private TableColumn<?, ?> employeePhoneTableColumn;
+    private TableColumn<Employee, String> employeePhoneTableColumn;
     @FXML
-    private TableColumn<?, ?> employeDeptTableColumn;
+    private TableColumn<Employee, String> employeDeptTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeDesigTableColumn;
+    private TableColumn<Employee, String> employeeDesigTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeDOBTableColumn;
+    private TableColumn<Employee, LocalDate> employeeDOBTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeDOJTableColumn;
+    private TableColumn<Employee, LocalDate> employeeDOJTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeAddressTableColumn;
+    private TableColumn<Employee, String> employeeAddressTableColumn;
     @FXML
     private TextField nameSearchTextField;
     @FXML
@@ -73,6 +77,12 @@ public class DirectorViewEmployeesController implements Initializable {
 
     @FXML
     private void addOrSubtractSalary(ActionEvent event) {
+    }
+    
+    public ObservableList<Employee> getEmployees(){
+        ObservableList<Employee> employeeList = FXCollections.observableArrayList();
+        
+    return null;
     }
     
 }

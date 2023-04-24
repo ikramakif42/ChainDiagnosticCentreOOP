@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import users.Nurse;
 
 /**
  * FXML Controller class
@@ -24,20 +25,8 @@ public class NursePatientListController implements Initializable {
     @FXML
     private TableView<?> nursePatientListTable;
     @FXML
-    private Button nurseUpdatePatient;
-    @FXML
-    private Button nurseSchedulePatient;
-    @FXML
-    private Button nursePatientBill;
-    @FXML
-    private Button nursePatientPrescription;
-    @FXML
-    private Button nursePatientLabReports;
-    @FXML
-    private Button nurseSearchPatientList;
-    @FXML
     private TextField nurseSearchPatientListTextField;
-
+    private Nurse nurse;
     /**
      * Initializes the controller class.
      */
@@ -46,6 +35,14 @@ public class NursePatientListController implements Initializable {
         // TODO
     }    
 
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+    
     @FXML
     private void nurseUpdatePatientOnClick(ActionEvent event) {
     }
@@ -68,6 +65,10 @@ public class NursePatientListController implements Initializable {
 
     @FXML
     private void nurseSearchPatientListOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void nursePatientListToDashboardOnClick(ActionEvent event) {
     }
     
 }

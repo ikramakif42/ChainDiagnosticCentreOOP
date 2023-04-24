@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.Nurse;
 import users.User;
@@ -31,6 +32,8 @@ public class NurseStockController implements Initializable {
     @FXML
     private TableView<?> nurseStockTableList;
     private Nurse nurse;
+    @FXML
+    private TextField nurseStockQuantitySelection;
     
     /**
      * Initializes the controller class.

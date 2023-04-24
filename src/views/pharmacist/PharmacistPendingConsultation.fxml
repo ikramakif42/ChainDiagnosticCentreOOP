@@ -16,15 +16,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="pharmaPendingConsultationList" layoutY="136.0" prefHeight="256.0" prefWidth="653.0">
+      <TableView fx:id="pharmaPendingConsultationList" layoutX="68.0" layoutY="136.0" prefHeight="250.0" prefWidth="514.0">
         <columns>
           <TableColumn prefWidth="151.19997864961624" text="Patient's Name" />
           <TableColumn prefWidth="152.8000030517578" text="ID" />
-            <TableColumn prefWidth="349.60003662109375" text="Queries" />
+            <TableColumn prefWidth="208.79989624023438" text="Status" />
         </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="466.0" mnemonicParsing="false" onAction="#pharmaPendingConsultationBackToDashOnClick" text="Go Back To Dashboard" />
-      <Button layoutX="428.0" layoutY="411.0" mnemonicParsing="false" onAction="#pharmaPendingConsultationsGiveConsultOnClick" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: orange;" text="Give Consultations:" textFill="#175197">
+      <Button layoutX="395.0" layoutY="407.0" mnemonicParsing="false" onAction="#pharmaPendingConsultationsGiveConsultOnClick" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: orange;" text="Give Consultations:" textFill="#175197">
          <font>
             <Font size="18.0" />
          </font>

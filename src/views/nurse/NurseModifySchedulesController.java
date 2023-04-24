@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.Nurse;
@@ -33,6 +34,8 @@ public class NurseModifySchedulesController implements Initializable {
     @FXML
     private TextField nurseDocAppointmentTimeChange;
     private Nurse nurse;
+    @FXML
+    private Label saveUpdateLabel;
 
     /**
      * Initializes the controller class.

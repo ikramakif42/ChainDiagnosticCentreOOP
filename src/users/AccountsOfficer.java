@@ -2,6 +2,8 @@ package users;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Schedule;
 
 public class AccountsOfficer extends Employee implements Serializable {
@@ -24,5 +26,10 @@ public class AccountsOfficer extends Employee implements Serializable {
     public void updateOldReport(){};
     public void approveLoanApplications(){};
     public void updateSalaries(){};
+    
+    public ObservableList<AccountsOfficer> getAccounts(){
+        ObservableList<AccountsOfficer> patientList = FXCollections.observableArrayList();
+        return null;
+    }
     
 }

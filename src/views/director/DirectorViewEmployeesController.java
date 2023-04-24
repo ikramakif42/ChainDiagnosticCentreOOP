@@ -84,5 +84,9 @@ public class DirectorViewEmployeesController implements Initializable {
         
     return null;
     }
+
+    @FXML
+    private void employeeSchedule(ActionEvent event) {
+    }
     
 }

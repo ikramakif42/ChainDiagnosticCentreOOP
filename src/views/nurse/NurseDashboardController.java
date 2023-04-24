@@ -48,7 +48,6 @@ public class NurseDashboardController implements Initializable {
 
     @FXML
     private void nurseViewPatientListOnClick(ActionEvent event) throws IOException {
-        
         Parent nurseViewPatientList = null;
         FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("NursePatientList.fxml"));
         nurseViewPatientList = (Parent) nurseLoader.load();
@@ -63,7 +62,18 @@ public class NurseDashboardController implements Initializable {
     }
 
     @FXML
-    private void nurseAppointmentOnClick(ActionEvent event) {
+    private void nurseAppointmentOnClick(ActionEvent event) throws IOException {
+        Parent docAppt = null;
+        FXMLLoader docApptLoader = new FXMLLoader(getClass().getResource("NurseDocAppointmentSchedule.fxml"));
+        docAppt = (Parent) docApptLoader.load();
+        Scene docApptScene = new Scene(docAppt);
+
+        NurseDocAppointmentScheduleController n = docApptLoader.getController();
+        n.setNurse(this.nurse);
+
+        Stage docApptStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        docApptStage.setScene(docApptScene);
+        docApptStage.show();
     }
 
     @FXML

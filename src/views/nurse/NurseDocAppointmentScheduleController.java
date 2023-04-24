@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import users.Nurse;
 
 /**
  * FXML Controller class
@@ -22,8 +23,7 @@ public class NurseDocAppointmentScheduleController implements Initializable {
 
     @FXML
     private TableView<?> nurseDocAppointmentTable;
-    @FXML
-    private Button nurseDocAppointmentEdit;
+    private Nurse nurse;
 
     /**
      * Initializes the controller class.
@@ -33,8 +33,22 @@ public class NurseDocAppointmentScheduleController implements Initializable {
         // TODO
     }    
 
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+    
+    
+    
     @FXML
     private void nurseDocAppointmentEditOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void nurseDocAppointmentBackToDashOnClick(ActionEvent event) {
     }
     
 }

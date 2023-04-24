@@ -1,8 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Report {
+public class Report implements Serializable {
+    private static final long serialVersionUID = 13L;
+    
     public String title, author;
     public LocalDate date;
     public String type, body;

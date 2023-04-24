@@ -93,8 +93,9 @@ public class TelequeryResponseController implements Initializable {
         this.TQ.setAnswer(answer);
         this.TQ.setAnswerID(this.doc.getID());
         System.out.println("Writing answer...");
-        if (TeleQuery.answerQuery(TQ)){
+        if (this.doc.answerQuery(TQ)){
             errorLabel.setText("Query answered successfully!");
+            this.answerFlag = true;
         }
         else{
             errorLabel.setText("Error, please try again!");

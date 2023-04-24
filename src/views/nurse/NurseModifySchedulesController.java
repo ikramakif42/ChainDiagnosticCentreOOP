@@ -42,6 +42,14 @@ public class NurseModifySchedulesController implements Initializable {
         // TODO
     }    
 
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+    
     @FXML
     private void nurseDocAppointmentSaveEditOnClick(ActionEvent event) {
         
@@ -60,10 +68,6 @@ public class NurseModifySchedulesController implements Initializable {
         Stage docApptStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         docApptStage.setScene(docApptScene);
         docApptStage.show();
-    }
-
-    void setNurse(Nurse nurse) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

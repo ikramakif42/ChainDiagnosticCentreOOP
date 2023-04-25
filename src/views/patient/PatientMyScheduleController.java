@@ -43,7 +43,7 @@ public class PatientMyScheduleController implements Initializable {
             Appointment appt = feature.getValue();
             String name = ((Doctor)User.getInstance(appt.getDoctorID(), "Doctor")).getName();
             return new SimpleStringProperty(name);
-        };
+            };
         
         doctorNameTableColumn.setCellValueFactory(nameCVF);
         apptDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));

@@ -11,6 +11,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -238,5 +240,16 @@ public class Patient extends User implements Serializable{
 //    + viewLabReports(): void
 //    + viewPayBills(): void
 //    + requestRefills(): void
+
+    public LocalDate getLatestAppt(ObservableList<Appointment> apptList) {
+        ArrayList<LocalDate> dateList = new ArrayList<>();
+        for (Appointment appt: apptList){
+            dateList.add(appt.getDate());
+        }
+        System.out.println(dateList);
+        LocalDate latestAppt = Collections.max(dateList, Comparator.naturalOrder());
+        System.out.println("Latest appt: "+this.getID()+" "+latestAppt);
+        return latestAppt;
+    }
     
 }

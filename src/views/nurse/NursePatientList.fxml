@@ -12,11 +12,10 @@
    <children>
       <TableView fx:id="nursePatientListTable" layoutX="-1.0" prefHeight="632.0" prefWidth="511.0">
         <columns>
-          <TableColumn prefWidth="103.0" text="Patient Name" />
-          <TableColumn prefWidth="85.0" text="ID" />
-            <TableColumn prefWidth="105.0" text="Contact" />
-            <TableColumn prefWidth="111.0" text="Admission Date" />
-            <TableColumn prefWidth="99.0" text="DOB" />
+          <TableColumn fx:id="nursePatientNameTable" prefWidth="134.39996033906937" text="Patient Name" />
+          <TableColumn fx:id="nursePatientIdTable" prefWidth="107.20004272460938" text="ID" />
+            <TableColumn fx:id="nursePatientAgeTable" prefWidth="102.40000915527344" text="Age" />
+            <TableColumn fx:id="nursePatientContactTable" prefWidth="167.199951171875" text="Contact" />
         </columns>
       </TableView>
       <Label layoutX="628.0" layoutY="21.0" prefHeight="17.0" prefWidth="199.0" text="Patient's List" textFill="#14575c">

@@ -7,6 +7,7 @@ package views.nurse;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,9 +16,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Task;
 import users.Nurse;
+import users.Patient;
 
 /**
  * FXML Controller class
@@ -27,13 +32,28 @@ import users.Nurse;
 public class NurseAssignedTaskTableController implements Initializable {
 
     @FXML
-    private TableView<?> nurseAssignedTaskTable;
+    private TableView<Task> nurseAssignedTaskTable;
     private Nurse nurse;
+    @FXML
+    private TableColumn<Task, String> nurseAssignedTaskDocNameTable;
+    @FXML
+    private TableColumn<Task, String> nurseAssignedTaskTaskTable;
+    @FXML
+    private TableColumn<Task,LocalDate > nurseAssignedTaskDateTable;
+    @FXML
+    private TableColumn<Task,Integer> nurseAssignedDocIDTable;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+        nurseAssignedDocIDTable.setCellValueFactory(new PropertyValueFactory<Task,Integer>("ID"));
+        nurseAssignedTaskDocNameTable.setCellValueFactory(new PropertyValueFactory<Task,String>("name"));
+        nurseAssignedTaskTaskTable.setCellValueFactory(new PropertyValueFactory<Task,String>("contactNo"));
+        nurseAssignedTaskDateTable.setCellValueFactory(new PropertyValueFactory<Task,String>("contactNo"));
+        nurseAssignedTaskTable.setItems(Patient.getPatients());
         // TODO
     }    
 

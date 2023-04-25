@@ -251,5 +251,41 @@ public class Patient extends User implements Serializable{
         System.out.println("Latest appt: "+this.getID()+" "+latestAppt);
         return latestAppt;
     }
-    
+    public static ObservableList<Patient> getPatients(){
+        ObservableList<Patient> patientList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "PatientObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            User tempUser = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempUser = (Patient) ois.readObject();
+                    System.out.println("Populate patient:");
+                    System.out.println(tempUser.toString());
+                    patientList.add((Patient)tempUser);
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(patientList);
+        return patientList;
+    }
 }
+

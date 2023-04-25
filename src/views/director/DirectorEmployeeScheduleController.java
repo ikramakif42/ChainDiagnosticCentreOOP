@@ -16,10 +16,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Schedule;
 import users.Director;
 import users.Employee;
@@ -39,9 +44,17 @@ public class DirectorEmployeeScheduleController implements Initializable {
     private TableColumn<Schedule, LocalDate> taskDay;
     @FXML
     private TableColumn<Schedule, String> taskTime;
-    private Employee employee;
+    private Employee tempEmployee;
     private Director director;
-    
+
+    public Employee getTempEmployee() {
+        return tempEmployee;
+    }
+
+    public void setTempEmployee(Employee tempEmployee) {
+        this.tempEmployee = tempEmployee;
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -51,7 +64,14 @@ public class DirectorEmployeeScheduleController implements Initializable {
         taskDay.setCellValueFactory(new PropertyValueFactory<Schedule, LocalDate>("day"));
         taskTime.setCellValueFactory(new PropertyValueFactory<Schedule, String>("time"));
         
-        employeeTaskTableView.setItems(getSchedule());
+        if (tempEmployee.getScheduleRoster() == null){
+            ; 
+        }
+        
+        else {
+            employeeTaskTableView.setItems(getSchedule()); 
+        }
+        
     }    
 
     public Director getDirector() {
@@ -67,7 +87,22 @@ public class DirectorEmployeeScheduleController implements Initializable {
     }
 
     @FXML
-    private void createNewTask(ActionEvent event) {
+    private void createNewTask(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader directorLoader = new FXMLLoader(
+            getClass().getResource("DirectorScheduleCreator.fxml")
+        );
+        parent = (Parent) directorLoader.load();
+        Scene scene = new Scene(parent);
+        
+        DirectorScheduleCreatorController e = directorLoader.getController();
+        e.setDirector(this.director);
+        e.setTempEmployee(tempEmployee);
+        
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(scene);
+        directorStage.show();
     }
 
     @FXML
@@ -75,38 +110,19 @@ public class DirectorEmployeeScheduleController implements Initializable {
     }
     
     public ObservableList<Schedule> getSchedule(){
-        ObservableList<Schedule> scheduleList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "ScheduleObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            Schedule tempSch = null;
-            try{
-                while(true){
-                    tempSch = (Schedule) ois.readObject();
-                    scheduleList.add(tempSch);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println(ex.toString());
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(scheduleList);        
-        return scheduleList;
-    }         
+    ObservableList<Schedule> scheduleList = null;
     
-}
+        scheduleList = FXCollections.observableList(tempEmployee.getScheduleRoster());            
+        return scheduleList;
+        
+        
+        }
+    
+}         
+    
+    
+
+    
+    
+
+

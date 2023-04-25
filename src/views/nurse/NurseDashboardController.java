@@ -8,6 +8,8 @@ package views.nurse;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import users.Nurse;
+import views.doctor.DoctorDashboardController;
 
 /**
  * FXML Controller class
@@ -95,6 +98,16 @@ public class NurseDashboardController implements Initializable {
 
     @FXML
     private void nurseLogOutOnClick(ActionEvent event) {
+        Parent login=null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();
     }
 
     @FXML

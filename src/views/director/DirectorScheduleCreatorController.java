@@ -14,6 +14,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import users.Director;
+import users.Employee;
 
 /**
  * FXML Controller class
@@ -25,18 +27,39 @@ public class DirectorScheduleCreatorController implements Initializable {
     @FXML
     private TextArea taskBodyField;
     @FXML
-    private Label accountsIDLabel;
-    @FXML
     private DatePicker taskDay;
     @FXML
     private ComboBox<?> taskTime;
+    private Director director;
+    private Employee tempEmployee;
+    @FXML
+    private Label employeeNameLabel;
+
+    public Employee getTempEmployee() {
+        return tempEmployee;
+    }
+
+    public void setTempEmployee(Employee tempEmployee) {
+        this.tempEmployee = tempEmployee;
+    }
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+    
+    
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        employeeNameLabel.setText(tempEmployee.getName());
     }    
 
     @FXML
@@ -45,6 +68,7 @@ public class DirectorScheduleCreatorController implements Initializable {
 
     @FXML
     private void saveTaskInSchedule(ActionEvent event) {
+        
     }
     
 }

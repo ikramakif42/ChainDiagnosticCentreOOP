@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NursePatientBillController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NursePatientBillController">
    <children>
-      <TableView fx:id="nursePatientBillTableList" layoutX="45.0" layoutY="174.0" prefHeight="230.0" prefWidth="710.0">
+      <TableView fx:id="nursePatientBillTableList" layoutX="45.0" layoutY="204.0" prefHeight="230.0" prefWidth="710.0">
          <columns>
             <TableColumn prefWidth="191.9999656677246" text="Date Of Billing" />
             <TableColumn prefWidth="163.2000274658203" text="Details" />
@@ -20,7 +20,7 @@
             <TableColumn prefWidth="194.4000244140625" text="Status" />
          </columns>
       </TableView>
-      <Label layoutX="302.0" layoutY="14.0" text="Billing Information" textFill="#183372">
+      <Label layoutX="302.0" layoutY="24.0" text="Billing Information" textFill="#183372">
          <font>
             <Font size="24.0" />
          </font>
@@ -36,17 +36,17 @@
       <Label layoutX="143.0" layoutY="78.0" text="____" />
       <Label layoutX="143.0" layoutY="107.0" text="____" />
       <Label layoutX="143.0" layoutY="139.0" text="____" />
-      <Label layoutX="364.0" layoutY="78.0" text="Filter By Date:" />
-      <Label layoutX="364.0" layoutY="126.0" text="Filter By:" />
-      <DatePicker fx:id="nurseFilterByDateStart" layoutX="454.0" layoutY="73.0" prefHeight="26.0" prefWidth="102.0" />
-      <Label layoutX="587.0" layoutY="78.0" text="-to-" />
-      <DatePicker fx:id="nurseFilterByDateEnd" layoutX="663.0" layoutY="73.0" prefHeight="26.0" prefWidth="102.0" />
-      <RadioButton fx:id="nurseFilterByPaid" layoutX="447.0" layoutY="126.0" mnemonicParsing="false" text="Paid">
+      <Label layoutX="344.0" layoutY="88.0" text="Filter By Date:" />
+      <Label layoutX="344.0" layoutY="136.0" text="Filter By:" />
+      <DatePicker fx:id="nurseFilterByDateStart" layoutX="454.0" layoutY="83.0" prefHeight="26.0" prefWidth="102.0" />
+      <Label layoutX="587.0" layoutY="88.0" text="-to-" />
+      <DatePicker fx:id="nurseFilterByDateEnd" layoutX="643.0" layoutY="83.0" prefHeight="26.0" prefWidth="102.0" />
+      <RadioButton fx:id="nurseFilterByPaid" layoutX="447.0" layoutY="136.0" mnemonicParsing="false" text="Paid">
          <toggleGroup>
             <ToggleGroup fx:id="filterByPaid" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="nurseFilterByDue" layoutX="521.0" layoutY="126.0" mnemonicParsing="false" text="Due" toggleGroup="$filterByPaid" />
-      <Button layoutX="597.0" layoutY="122.0" mnemonicParsing="false" onAction="#nurseApplyFilter" text="Apply Filters" />
+      <RadioButton fx:id="nurseFilterByDue" layoutX="531.0" layoutY="136.0" mnemonicParsing="false" text="Due" toggleGroup="$filterByPaid" />
+      <Button layoutX="623.0" layoutY="132.0" mnemonicParsing="false" onAction="#nurseApplyFilter" prefHeight="31.0" prefWidth="116.0" text="Apply Filters" />
    </children>
 </AnchorPane>

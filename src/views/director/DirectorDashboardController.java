@@ -46,35 +46,41 @@ public class DirectorDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File f = null;
-        FileOutputStream fos = null;      
-        ObjectOutputStream oos = null;
-        LocalDate date1 = LocalDate.of(2001, 2, 1);
-        try {
-            f = new File("ScheduleObjects.bin");
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
-            }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
-            }
-            
-        Schedule test = new Schedule(date1, "9:30", "Do Something", 788);
-        oos.writeObject(test);
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if(oos != null) oos.close();
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        System.out.println("Hello World2! Initialised");
+//        File f = null;
+//        FileOutputStream fos = null;      
+//        ObjectOutputStream oos = null;
+//        LocalDate date1 = LocalDate.of(2001, 2, 1);
+//        try {
+//            f = new File("ScheduleObjects.bin");
+//            if(f.exists()){
+//                fos = new FileOutputStream(f,true);
+//                oos = new AppendableObjectOutputStream(fos);                
+//            }
+//            else{
+//                fos = new FileOutputStream(f);
+//                oos = new ObjectOutputStream(fos);               
+//            }
+//            
+//        Schedule test = new Schedule(date1, "9:30", "Do Something", 444);
+//        Schedule test2 = new Schedule(date1, "9:30", "Do Something", 666);
+//        Schedule test3 = new Schedule(date1, "9:30", "Do Something", 202);
+//        oos.writeObject(test);
+//        oos.writeObject(test2);
+//        oos.writeObject(test3);
+//            
+//            
+//        } catch (IOException ex) {
+//            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            try {
+//                if(oos != null) oos.close();
+//            } catch (IOException ex) {
+//                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        System.out.println("Hello World2! Initialised");
+
+        
     }    
     
     public Director getDirector() {

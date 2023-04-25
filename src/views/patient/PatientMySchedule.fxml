@@ -17,7 +17,7 @@
             <TableColumn fx:id="apptTimeTableColumn" prefWidth="164.0" text="Appt. Time" />
          </columns>
       </TableView>
-      <Button layoutX="257.0" layoutY="695.0" mnemonicParsing="false" onAction="#confirmCancelOnClick" text="Cancel Selected Appointments" />
+      <Button layoutX="257.0" layoutY="695.0" mnemonicParsing="false" onAction="#confirmCancelOnClick" text="Cancel Selected Appointment" />
       <Button layoutX="349.0" layoutY="33.0" mnemonicParsing="false" onAction="#newApptOnClick" text="Create New">
          <font>
             <Font size="20.0" />

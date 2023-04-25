@@ -15,7 +15,7 @@
       <Label layoutX="142.0" layoutY="88.0" text="Time:" />
       <TextArea fx:id="taskBodyField" layoutX="186.0" layoutY="120.0" prefHeight="87.0" prefWidth="274.0" />
       <Label layoutX="118.0" layoutY="24.0" text="Employee:" />
-      <Label fx:id="accountsIDLabel" layoutX="187.0" layoutY="22.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Label fx:id="employeeNameLabel" layoutX="187.0" layoutY="22.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
       <Label layoutX="142.0" layoutY="120.0" text="Task:" />
       <DatePicker fx:id="taskDay" layoutX="186.0" layoutY="51.0" />
       <ComboBox fx:id="taskTime" layoutX="187.0" layoutY="84.0" prefHeight="26.0" prefWidth="175.0" />

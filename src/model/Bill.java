@@ -1,13 +1,15 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Bill implements Serializable {
     private static final long serialVersionUID = 13L;
     
-    public boolean due;
+    private LocalDate date;
+    private boolean due;
     private Float amount;
-    String details;
+    private String details;
 
     public Bill(boolean due, Float amount, String details) {
         this.due = due;
@@ -37,6 +39,14 @@ public class Bill implements Serializable {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
     
 }

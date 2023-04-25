@@ -1,7 +1,16 @@
 package model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import main.AppendableObjectOutputStream;
 
 public class Appointment implements Serializable {
     private static final long serialVersionUID = 13L;
@@ -52,6 +61,43 @@ public class Appointment implements Serializable {
     @Override
     public String toString() {
         return "Appointment: " + "doctorID=" + doctorID + ", patientID=" + patientID + ", date=" + date + ", time=" + time;
+    }
+    
+    public static ObservableList<Appointment> getApptList(int id) {
+        ObservableList<Appointment> apptList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "AppointmentObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Appointment tempAppt = null;
+            try{
+                System.out.println("Printing Appt objects");
+                while(true){
+                    tempAppt = (Appointment) ois.readObject();
+                    System.out.println("Populated appt: "+tempAppt.getDoctorID()+", "+tempAppt.getPatientID());
+                    if (tempAppt.getDoctorID()==id | tempAppt.getPatientID()==id){
+                        apptList.add(tempAppt);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        return apptList;
     }
     
 }

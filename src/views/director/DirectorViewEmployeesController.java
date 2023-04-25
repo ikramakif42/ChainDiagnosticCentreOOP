@@ -21,10 +21,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import users.AccountsOfficer;
 import users.Director;
@@ -67,10 +69,22 @@ public class DirectorViewEmployeesController implements Initializable {
     private TextField nameSearchTextField;
     @FXML
     private TextField IDSearchTextField;
-    private Director director;
+
     @FXML
     private TableColumn<Employee, String> employeeGenderColumn;
+    @FXML
+    private Label testLabel;
     
+    private Director director;
+    private Employee tempEmployee;
+
+    public Employee getTempEmployee() {
+        return tempEmployee;
+    }
+
+    public void setTempEmployee(Employee tempEmployee) {
+        this.tempEmployee = tempEmployee;
+    }    
     
     /**
      * Initializes the controller class.
@@ -119,8 +133,10 @@ public class DirectorViewEmployeesController implements Initializable {
         parent = (Parent) directorLoader.load();
         Scene scene = new Scene(parent);
         
-        DirectorReportSelectionController e = directorLoader.getController();
+        DirectorEmployeeScheduleController e = directorLoader.getController();
         e.setDirector(this.director);
+        e.setTempEmployee(tempEmployee);
+        
         
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
@@ -140,6 +156,16 @@ public class DirectorViewEmployeesController implements Initializable {
         
         return employeeList;
     }    
+
+    @FXML
+    private void clickedEmployee(MouseEvent event) {
+        Employee employee = employeeTableView.getSelectionModel().getSelectedItem();
+        tempEmployee = employee;
+        testLabel.setText(tempEmployee.getEmail());
+        
+    }
+
+
     
 }
     

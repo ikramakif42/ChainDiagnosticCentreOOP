@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NursePatientListController">
    <children>
       <TableView fx:id="nursePatientListTable" layoutX="-1.0" prefHeight="632.0" prefWidth="511.0">
         <columns>
@@ -24,33 +24,33 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="nurseUpdatePatient" layoutX="550.0" layoutY="127.0" mnemonicParsing="false" onAction="#nurseUpdatePatientOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="Update Patient Medical Records" textFill="#133151">
+      <Button layoutX="550.0" layoutY="127.0" mnemonicParsing="false" onAction="#nurseUpdatePatientOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="Update Patient Medical Records" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="nurseSchedulePatient" layoutX="550.0" layoutY="212.0" mnemonicParsing="false" onAction="#nurseSchedulePatientOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="Schedule Appointment" textFill="#133151">
+      <Button layoutX="550.0" layoutY="212.0" mnemonicParsing="false" onAction="#nurseSchedulePatientOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="Schedule Appointment" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="nursePatientBill" layoutX="550.0" layoutY="294.0" mnemonicParsing="false" onAction="#nursePatientBillOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text=" Billing Information" textFill="#133151">
+      <Button layoutX="550.0" layoutY="294.0" mnemonicParsing="false" onAction="#nursePatientBillOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text=" Billing Information" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="nursePatientPrescription" layoutX="550.0" layoutY="375.0" mnemonicParsing="false" onAction="#nursePatientPrescriptionOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="Review Prescription Refills" textFill="#133151">
+      <Button layoutX="550.0" layoutY="375.0" mnemonicParsing="false" onAction="#nursePatientPrescriptionOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="Review Prescription Refills" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="nursePatientLabReports" layoutX="550.0" layoutY="458.0" mnemonicParsing="false" onAction="#nursePatientLabReportsOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="View Lab Reports" textFill="#133151">
+      <Button layoutX="550.0" layoutY="458.0" mnemonicParsing="false" onAction="#nursePatientLabReportsOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="View Lab Reports" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="nurseSearchPatientList" layoutX="550.0" layoutY="81.0" mnemonicParsing="false" onAction="#nurseSearchPatientListOnClick" text="Search" />
+      <Button layoutX="550.0" layoutY="81.0" mnemonicParsing="false" onAction="#nurseSearchPatientListOnClick" text="Search" />
       <TextField fx:id="nurseSearchPatientListTextField" layoutX="628.0" layoutY="81.0" prefHeight="25.0" prefWidth="247.0" />
-      <Button fx:id="nursePatientListToDashboard" layoutX="712.0" layoutY="565.0" mnemonicParsing="false" onAction="#nursePatientListToDashboardOnClick" prefHeight="26.0" prefWidth="160.0" text="Back To Dashboarad" />
+      <Button layoutX="712.0" layoutY="565.0" mnemonicParsing="false" onAction="#nursePatientListToDashboardOnClick" prefHeight="26.0" prefWidth="160.0" text="Back To Dashboarad" />
    </children>
 </AnchorPane>

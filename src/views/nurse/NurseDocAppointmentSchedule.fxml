@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NurseDocAppointmentScheduleController">
    <children>
       <TableView fx:id="nurseDocAppointmentTable" prefHeight="466.0" prefWidth="441.0">
         <columns>
@@ -21,12 +21,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="nurseDocAppointmentEdit" layoutX="514.0" layoutY="129.0" mnemonicParsing="false" onAction="#nurseDocAppointmentEditOnClick" style="-fx-background-color: orange;" text="Edit Schedule">
+      <Button layoutX="514.0" layoutY="129.0" mnemonicParsing="false" onAction="#nurseDocAppointmentEditOnClick" style="-fx-background-color: orange;" text="Edit Schedule">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="nurseDocAppointmentBackToDash" layoutX="491.0" layoutY="233.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackToDashOnClick" style="-fx-background-color: orange;" text="Back To Dashboard">
+      <Button layoutX="491.0" layoutY="233.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackToDashOnClick" style="-fx-background-color: orange;" text="Back To Dashboard">
          <font>
             <Font size="18.0" />
          </font>

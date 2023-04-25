@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="369.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="369.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NurseModifySchedulesController">
    <children>
       <DatePicker fx:id="nurseDocAppointmentDateChange" layoutX="115.0" layoutY="132.0" />
       <Label layoutX="55.0" layoutY="134.0" text="Date:">
@@ -21,15 +21,16 @@
          </font>
       </Label>
       <TextField fx:id="nurseDocAppointmentTimeChange" layoutX="115.0" layoutY="179.0" prefHeight="25.0" prefWidth="174.0" />
-      <Button fx:id="nurseDocAppointmentSaveEdit" layoutX="58.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentSaveEditOnClick" style="-fx-background-color: orange;" text="Save" textFill="#3f7eba">
+      <Button layoutX="58.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentSaveEditOnClick" style="-fx-background-color: orange;" text="Save" textFill="#3f7eba">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="nurseDocAppointmentBack" layoutX="211.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackOnClick" style="-fx-background-color: orange;" text="Back" textFill="#3f7eba">
+      <Button layoutX="211.0" layoutY="254.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackOnClick" style="-fx-background-color: orange;" text="Back" textFill="#3f7eba">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Label fx:id="saveUpdateLabel" layoutX="73.0" layoutY="316.0" prefHeight="18.0" prefWidth="174.0" />
    </children>
 </AnchorPane>

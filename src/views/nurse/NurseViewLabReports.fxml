@@ -5,11 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="778.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="778.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NurseViewLabReportsController">
    <children>
       <TextArea fx:id="nurseViewLabReportsContent" editable="false" layoutX="131.0" layoutY="108.0" prefHeight="482.0" prefWidth="576.0" promptText="Contents" />
       <TextField fx:id="nurseViewLabReportsDate" editable="false" layoutX="131.0" layoutY="51.0" prefHeight="26.0" prefWidth="250.0" promptText="Date" />
       <TextField fx:id="nurseViewLabReportsReportedBy" editable="false" layoutX="437.0" layoutY="52.0" prefHeight="25.0" prefWidth="269.0" promptText="Reported By" />
-      <Button layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#NurseViewLabReportsBackOnClick" text="Back" />
+      <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#NurseViewLabReportsBackOnClick" text="Back to Patient's List" />
    </children>
 </AnchorPane>

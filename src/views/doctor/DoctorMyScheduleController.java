@@ -114,10 +114,14 @@ public class DoctorMyScheduleController implements Initializable {
 
     @FXML
     private void clearFiltersOnClick(ActionEvent event) {
+        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
+        System.out.println(apptList);
+        patientTableView.setItems(apptList);
     }
 
     @FXML
     private void applyFIltersOnClick(ActionEvent event) {
+        
     }
 
     @FXML

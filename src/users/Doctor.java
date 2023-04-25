@@ -197,4 +197,41 @@ public class Doctor extends Employee implements Serializable{
         }
         return docList;
     }
+    
+    public static ObservableList<Employee> getAllDoctors(){
+        ObservableList<Employee> doctorList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "DoctorObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            User tempUser = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempUser = (Doctor) ois.readObject();
+                    System.out.println("Populate Employee (Doctor):");
+                    System.out.println(tempUser.toString());
+                    doctorList.add((Doctor)tempUser);
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(doctorList);        
+        return doctorList;
+    }        
 }

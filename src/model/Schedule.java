@@ -7,13 +7,14 @@ public class Schedule implements Serializable {
     private static final long serialVersionUID = 13L;
     
     private LocalDate day;
-    private String time, task, assignedTo;
+    private String time, task;
+    private int assignedToID;
 
-    public Schedule(LocalDate day, String time, String task, String assignedTo) {
+    public Schedule(LocalDate day, String time, String task, int assignedToID) {
         this.day = day;
         this.time = time;
         this.task = task;
-        this.assignedTo = assignedTo;
+        this.assignedToID = assignedToID;
     }
 
     public LocalDate getDay() {
@@ -40,12 +41,12 @@ public class Schedule implements Serializable {
         this.task = task;
     }
 
-    public String getAssignedTo() {
-        return assignedTo;
+    public int getAssignedToID() {
+        return assignedToID;
     }
 
-    public void setAssignedTo(String assignedTo) {
-        this.assignedTo = assignedTo;
+    public void setAssignedToID(int assignedToID) {
+        this.assignedToID = assignedToID;
     }
     
 }

@@ -16,11 +16,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import users.AccountsOfficer;
 import users.Director;
 import users.Doctor;
@@ -106,243 +111,35 @@ public class DirectorViewEmployeesController implements Initializable {
     
 
     @FXML
-    private void employeeSchedule(ActionEvent event) {
+    private void employeeSchedule(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader directorLoader = new FXMLLoader(
+            getClass().getResource("DirectorEmployeeSchedule.fxml")
+        );
+        parent = (Parent) directorLoader.load();
+        Scene scene = new Scene(parent);
+        
+        DirectorReportSelectionController e = directorLoader.getController();
+        e.setDirector(this.director);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(scene);
+        directorStage.show();
+        
     }
-    
-    public ObservableList<Employee> getAccounts(){
-        ObservableList<Employee> accountsOfficerList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "AccountsOfficerObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            User tempUser = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempUser = (AccountsOfficer) ois.readObject();
-                    System.out.println("Populate Employee (Accounts Officer):");
-                    System.out.println(tempUser.toString());
-                    accountsOfficerList.add((AccountsOfficer)tempUser);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(accountsOfficerList);        
-        return accountsOfficerList;
-    }    
-    
-    public ObservableList<Employee> getDoctors(){
-        ObservableList<Employee> doctorList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "DoctorObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            User tempUser = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempUser = (Doctor) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempUser.toString());
-                    doctorList.add((Doctor)tempUser);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(doctorList);        
-        return doctorList;
-    }    
-    
-    public ObservableList<Employee> getHROfficers(){
-        ObservableList<Employee> hrOfficerList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "HROfficerObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            User tempUser = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempUser = (HROfficer) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempUser.toString());
-                    hrOfficerList.add((HROfficer)tempUser);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(hrOfficerList);        
-        return hrOfficerList;
-    } 
-    
-    public ObservableList<Employee> getLabTechnicians(){
-        ObservableList<Employee> labTechnicianList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "LabTechnicianObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            User tempUser = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempUser = (LabTechnician) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempUser.toString());
-                    labTechnicianList.add((LabTechnician)tempUser);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(labTechnicianList);        
-        return labTechnicianList;
-    } 
-    
-    public ObservableList<Employee> getNurses(){
-        ObservableList<Employee> nurseList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "NurseObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            User tempUser = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempUser = (Nurse) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempUser.toString());
-                    nurseList.add((Nurse)tempUser);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(nurseList);        
-        return nurseList;
-    } 
-    
-    public ObservableList<Employee> getPharmacists(){
-        ObservableList<Employee> pharmacistList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "PharmacistObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            User tempUser = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempUser = (Pharmacist) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempUser.toString());
-                    pharmacistList.add((Pharmacist)tempUser);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(pharmacistList);        
-        return pharmacistList;
-    }     
-    
     
     public ObservableList<Employee> getEmployees(){
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();
-        employeeList.addAll(getAccounts());
-        employeeList.addAll(getDoctors());
-        employeeList.addAll(getHROfficers());
-        employeeList.addAll(getLabTechnicians());
-        employeeList.addAll(getNurses());
-        employeeList.addAll(getPharmacists());        
+
+        employeeList.addAll(AccountsOfficer.getAllAccounts());
+        employeeList.addAll(Doctor.getAllDoctors());
+        employeeList.addAll(HROfficer.getAllHROfficers());
+        employeeList.addAll(LabTechnician.getAllLabTechnicians());
+        employeeList.addAll(Nurse.getAllNurses());
+        employeeList.addAll(Pharmacist.getAllPharmacists());        
         
         return employeeList;
-    }
+    }    
     
 }
     

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistViewPatientController">
    <children>
       <TableView fx:id="pharmaViewPatientListTable" prefHeight="554.0" prefWidth="497.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="0.0">
         <columns>
@@ -32,6 +32,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="588.0" layoutY="490.0" mnemonicParsing="false" onAction="#pharmaGoBackToDashOnClick" prefHeight="25.0" prefWidth="139.0" text="Go Back to Dashboard" />
+      <Button layoutX="565.0" layoutY="455.0" mnemonicParsing="false" onAction="#pharmaGoBackToDashOnClick" prefHeight="54.0" prefWidth="178.0" text="Go Back to Dashboard" />
    </children>
 </AnchorPane>

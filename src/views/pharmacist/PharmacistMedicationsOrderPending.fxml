@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistMedicationsOrderPendingController">
    <children>
       <TableView fx:id="pharmaMedOrderPendingtListTable" prefHeight="435.0" prefWidth="380.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="0.0">
          <columns>
@@ -32,6 +32,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="569.0" layoutY="381.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingBackToPatientOnClick" text="Back" />
+      <Button layoutX="440.0" layoutY="382.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingBackToPatientOnClick" text="Back" />
    </children>
 </AnchorPane>

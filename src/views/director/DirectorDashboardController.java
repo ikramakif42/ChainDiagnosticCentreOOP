@@ -89,6 +89,8 @@ public class DirectorDashboardController implements Initializable {
         
     public void setDirector(Director director) {
         this.director = director;
+        directorIDLabel.setText(String.valueOf(this.director.getID()));
+        directorNameLabel.setText(this.director.getName());
     }
     
     

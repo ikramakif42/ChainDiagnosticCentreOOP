@@ -63,34 +63,6 @@ public class Appointment implements Serializable {
         return "Appointment: " + "doctorID=" + doctorID + ", patientID=" + patientID + ", date=" + date + ", time=" + time;
     }
     
-    public static void writeAppt(Appointment newAppt) {
-        System.out.println("New Appt is: "+newAppt.toString());
-        File f = null;
-        FileOutputStream fos = null; 
-        ObjectOutputStream oos = null;
-        try {
-            f = new File("AppointmentObjects.bin");
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
-            }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
-            }
-            oos.writeObject(newAppt);
-        } catch (IOException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            try {
-                if(oos != null) oos.close();
-            } catch (IOException ex) {
-                System.out.println(ex.toString());
-            }
-        }
-        System.out.println("Appt written successfully!");
-    }
-    
     public static ObservableList<Appointment> getApptList(int id) {
         ObservableList<Appointment> apptList = FXCollections.observableArrayList();
         File f = null;

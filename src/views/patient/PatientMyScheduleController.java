@@ -80,7 +80,20 @@ public class PatientMyScheduleController implements Initializable {
     }
 
     @FXML
-    private void confirmCancelOnClick(ActionEvent event) {
+    private void confirmCancelOnClick(ActionEvent event) throws IOException {
+        Appointment apptToCancel = apptTableView.getSelectionModel().getSelectedItem();
+        Parent confirmCancel = null;
+        FXMLLoader cancelLoader = new FXMLLoader(getClass().getResource("ConfirmCancelAppt.fxml"));
+        confirmCancel = (Parent) cancelLoader.load();
+        Scene patientScene = new Scene(confirmCancel);
+
+        ConfirmCancelApptController cc = cancelLoader.getController();
+        cc.setPatient(this.patient);
+        cc.setAppt(apptToCancel);
+
+        Stage patientStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        patientStage.setScene(patientScene);
+        patientStage.show();        
     }
 
     @FXML

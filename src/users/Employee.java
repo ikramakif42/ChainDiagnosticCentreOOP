@@ -2,6 +2,7 @@ package users;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import model.Schedule;
 
 public abstract class Employee extends User implements Serializable{
@@ -11,7 +12,7 @@ public abstract class Employee extends User implements Serializable{
     protected Float salary;
     final LocalDate DOJ;
     public String branchName;
-    protected Schedule[] scheduleRoster;
+    protected ArrayList<Schedule> scheduleRoster;
 
     public Employee(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
         super(name, ID, password, email, gender, contactNo, address, DOB);
@@ -20,6 +21,7 @@ public abstract class Employee extends User implements Serializable{
         this.salary = salary;
         this.DOJ = DOJ;
         this.branchName = branchName;
+        scheduleRoster = new ArrayList<>();
     }
 
     public String getDesignation() {
@@ -58,11 +60,11 @@ public abstract class Employee extends User implements Serializable{
         this.branchName = branchName;
     }
 
-    public Schedule[] getScheduleRoster() {
+    public ArrayList<Schedule> getScheduleRoster() {
         return scheduleRoster;
     }
 
-    public void setScheduleRoster(Schedule[] scheduleRoster) {
+    public void setScheduleRoster(ArrayList<Schedule> scheduleRoster) {
         this.scheduleRoster = scheduleRoster;
     }    
     

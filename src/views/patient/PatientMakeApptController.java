@@ -85,7 +85,7 @@ public class PatientMakeApptController implements Initializable {
         String[] nameID = username.split(" ");
         int docID = Integer.parseInt(nameID[nameID.length-1]);
         doc = (Doctor) User.getInstance(docID, "Doctor");
-        Schedule[] docScheduleList = doc.getScheduleRoster();
+        ArrayList<Schedule> docScheduleList = doc.getScheduleRoster();
 
         ObservableList<String> timeList = FXCollections.observableArrayList();
         String[] times = {"09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"};
@@ -119,9 +119,9 @@ public class PatientMakeApptController implements Initializable {
         String apptTime = timeComboBox.getSelectionModel().getSelectedItem();
         if (apptTime.isEmpty()){errorLabel.setText("Error, select time!");return;}
         
-        Appointment newAppt = new Appointment(doc.getID(), this.patient.getID(), apptDate, apptTime);
+        this.patient.writeAppt(doc.getID(), apptDate, apptTime);
+        
         Schedule newSchedule = new Schedule(apptDate, apptTime, "Patient Appointment", doc.getID());
-        Appointment.writeAppt(newAppt);
         doc.addSchedule(newSchedule);
         
         errorLabel.setText("Appt made successfully!");

@@ -8,11 +8,13 @@ public class Schedule implements Serializable {
     
     private LocalDate day;
     private String time, task;
+    private int assignedToID;
 
-    public Schedule(LocalDate day, String time, String task) {
+    public Schedule(LocalDate day, String time, String task, int assignedToID) {
         this.day = day;
         this.time = time;
         this.task = task;
+        this.assignedToID = assignedToID;
     }
 
     public LocalDate getDay() {
@@ -37,6 +39,14 @@ public class Schedule implements Serializable {
 
     public void setTask(String task) {
         this.task = task;
+    }
+
+    public int getAssignedToID() {
+        return assignedToID;
+    }
+
+    public void setAssignedToID(int assignedToID) {
+        this.assignedToID = assignedToID;
     }
     
 }

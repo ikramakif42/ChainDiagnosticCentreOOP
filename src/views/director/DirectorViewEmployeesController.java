@@ -5,15 +5,36 @@
  */
 package views.director;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import users.AccountsOfficer;
 import users.Director;
+import users.Doctor;
+import users.Employee;
+import users.HROfficer;
+import users.LabTechnician;
+import users.Nurse;
+import users.Pharmacist;
+import users.User;
 
 /**
  * FXML Controller class
@@ -23,32 +44,32 @@ import users.Director;
 public class DirectorViewEmployeesController implements Initializable {
 
     @FXML
-    private TableView<?> employeeTableView;
+    private TableView<Employee> employeeTableView;
     @FXML
-    private TableColumn<?, ?> employeeIDTableColumn;
+    private TableColumn<Employee, Integer> employeeIDTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeNameTableColumn;
+    private TableColumn<Employee, String> employeeNameTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeAddressTableColumn1;
+    private TableColumn<Employee, String> employeeEmailTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeEmailTableColumn;
+    private TableColumn<Employee, String> employeePhoneTableColumn;
     @FXML
-    private TableColumn<?, ?> employeePhoneTableColumn;
+    private TableColumn<Employee, String> employeDeptTableColumn;
     @FXML
-    private TableColumn<?, ?> employeDeptTableColumn;
+    private TableColumn<Employee, String> employeeDesigTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeDesigTableColumn;
+    private TableColumn<Employee, LocalDate> employeeDOBTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeDOBTableColumn;
+    private TableColumn<Employee, LocalDate> employeeDOJTableColumn;
     @FXML
-    private TableColumn<?, ?> employeeDOJTableColumn;
-    @FXML
-    private TableColumn<?, ?> employeeAddressTableColumn;
+    private TableColumn<Employee, String> employeeAddressTableColumn;
     @FXML
     private TextField nameSearchTextField;
     @FXML
     private TextField IDSearchTextField;
     private Director director;
+    @FXML
+    private TableColumn<Employee, String> employeeGenderColumn;
     
     
     /**
@@ -56,7 +77,20 @@ public class DirectorViewEmployeesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("ID"));
+        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
+        employeeAddressTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("address"));
+        employeeEmailTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("email"));        
+        employeePhoneTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("contactNo"));        
+        employeDeptTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("department"));        
+        employeeDesigTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("designation"));        
+        employeeDOBTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("DOB"));        
+        employeeDOJTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("DOJ"));        
+        employeeGenderColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("gender"));
+               
+        employeeTableView.setItems(getEmployees());
+        
     }
     
     public Director getDirector() {
@@ -75,4 +109,39 @@ public class DirectorViewEmployeesController implements Initializable {
     private void addOrSubtractSalary(ActionEvent event) {
     }
     
+
+    @FXML
+    private void employeeSchedule(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader directorLoader = new FXMLLoader(
+            getClass().getResource("DirectorEmployeeSchedule.fxml")
+        );
+        parent = (Parent) directorLoader.load();
+        Scene scene = new Scene(parent);
+        
+        DirectorReportSelectionController e = directorLoader.getController();
+        e.setDirector(this.director);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(scene);
+        directorStage.show();
+        
+    }
+    
+    public ObservableList<Employee> getEmployees(){
+        ObservableList<Employee> employeeList = FXCollections.observableArrayList();
+
+        employeeList.addAll(AccountsOfficer.getAllAccounts());
+        employeeList.addAll(Doctor.getAllDoctors());
+        employeeList.addAll(HROfficer.getAllHROfficers());
+        employeeList.addAll(LabTechnician.getAllLabTechnicians());
+        employeeList.addAll(Nurse.getAllNurses());
+        employeeList.addAll(Pharmacist.getAllPharmacists());        
+        
+        return employeeList;
+    }    
+    
 }
+    
+    
+

@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import users.Director;
 
 /**
  * FXML Controller class
@@ -17,7 +18,8 @@ import javafx.fxml.Initializable;
  * @author Kazi
  */
 public class DirectorReportSelectionController implements Initializable {
-
+    private Director director;
+    
     /**
      * Initializes the controller class.
      */
@@ -25,7 +27,16 @@ public class DirectorReportSelectionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
+    public Director getDirector() {
+        return director;
+    }
+        
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+    
+    
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) {
     }

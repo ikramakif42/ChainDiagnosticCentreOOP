@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.patient;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,33 +16,41 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import model.Appointment;
+import users.Doctor;
 import users.Patient;
 import users.User;
 
-/**
- * FXML Controller class
- *
- * @author Asus
- */
 public class PatientMyScheduleController implements Initializable {
     
     private Patient patient;
     @FXML
-    private TableView<?> apptTableView;
+    private TableView<Appointment> apptTableView;
     @FXML
-    private TableColumn<?, ?> doctorNameTableColumn;
+    private TableColumn<Appointment, String> doctorNameTableColumn;
     @FXML
-    private TableColumn<?, ?> apptDateTableColumn;
+    private TableColumn<Appointment, LocalDate> apptDateTableColumn;
     @FXML
-    private TableColumn<?, ?> apptTimeTableColumn;
+    private TableColumn<Appointment, String> apptTimeTableColumn;
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Callback<TableColumn.CellDataFeatures<Appointment, String>, ObservableValue<String>> nameCVF = feature -> {
+            Appointment appt = feature.getValue();
+            String name = ((Doctor)User.getInstance(appt.getDoctorID(), "Doctor")).getName();
+            return new SimpleStringProperty(name);
+        };
+        
+        doctorNameTableColumn.setCellValueFactory(nameCVF);
+        apptDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        apptTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+        
+//        ObservableList<Appointment> ApptList = Appointment.getApptList(this.patient.getID());
+//        apptTableView.setItems(ApptList);
     }
     
     public Patient getPatient() {
@@ -52,6 +59,9 @@ public class PatientMyScheduleController implements Initializable {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+        ObservableList<Appointment> apptList = Appointment.getApptList(this.patient.getID());
+        System.out.println(apptList);
+        apptTableView.setItems(apptList);
     }
 
     @FXML

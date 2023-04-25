@@ -48,5 +48,12 @@ public class Schedule implements Serializable {
     public void setAssignedToID(int assignedToID) {
         this.assignedToID = assignedToID;
     }
+
+    @Override
+    public String toString() {
+        return "Schedule: " + "day=" + day + ", time=" + time + ", task=" + task + ", assignedToID=" + assignedToID;
+    }
+    
+    
     
 }

@@ -234,4 +234,8 @@ public class Doctor extends Employee implements Serializable{
         System.out.println(doctorList);        
         return doctorList;
     }        
+
+    public void addSchedule(Schedule newSchedule) {
+        System.out.println(newSchedule.toString());
+    }
 }

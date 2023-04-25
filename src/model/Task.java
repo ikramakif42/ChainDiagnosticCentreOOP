@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import main.AppendableObjectOutputStream;
 
 public class Task implements Serializable {
@@ -13,11 +14,13 @@ public class Task implements Serializable {
     public int senderID;
     public int receiverID;
     private String taskDetails;
+    private LocalDate assignedDate;
 
     public Task(int senderID, int receiverID, String taskDetails) {
         this.senderID = senderID;
         this.receiverID = receiverID;
         this.taskDetails = taskDetails;
+        this.assignedDate = LocalDate.now();
     }
     
     public int getSenderID() {
@@ -44,9 +47,17 @@ public class Task implements Serializable {
         this.taskDetails = taskDetails;
     }
 
+    public LocalDate getAssignedDate() {
+        return assignedDate;
+    }
+
+    public void setAssignedDate(LocalDate assignedDate) {
+        this.assignedDate = assignedDate;
+    }
+
     @Override
     public String toString() {
-        return "Task: " + "senderID=" + senderID + ", receiverID=" + receiverID + ", taskDetails=" + taskDetails;
+        return "Task: " + "senderID=" + senderID + ", receiverID=" + receiverID + ", taskDetails=" + taskDetails+ ", assignedDate=" + assignedDate;
     }
     
 }

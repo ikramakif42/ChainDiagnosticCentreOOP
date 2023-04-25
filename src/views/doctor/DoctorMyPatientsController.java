@@ -81,7 +81,7 @@ public class DoctorMyPatientsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //set up the columns in the table
-        Callback<TableColumn.CellDataFeatures<Patient, Integer>, ObservableValue<Integer>> newCVF = feature -> {
+        Callback<TableColumn.CellDataFeatures<Patient, Integer>, ObservableValue<Integer>> ageCVF = feature -> {
             Patient pat = feature.getValue();
             LocalDate birthdate = pat.getDOB();
             int age = Period.between(birthdate, LocalDate.now()).getYears();
@@ -90,7 +90,7 @@ public class DoctorMyPatientsController implements Initializable {
         
         patientIDTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("ID"));
         patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,String>("name"));
-        patientAgeTableColumn.setCellValueFactory(newCVF);
+        patientAgeTableColumn.setCellValueFactory(ageCVF);
         latestApptTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,String>("email"));
         patientTableView.setItems(getPatients());
     }    

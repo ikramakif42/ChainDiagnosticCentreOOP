@@ -111,8 +111,6 @@ public class DirectorDashboardController implements Initializable {
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
         directorStage.show();
-        
-        
     }
 
     @FXML

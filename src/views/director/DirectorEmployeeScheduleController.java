@@ -47,32 +47,20 @@ public class DirectorEmployeeScheduleController implements Initializable {
     private Employee tempEmployee;
     private Director director;
 
-    public Employee getTempEmployee() {
-        return tempEmployee;
-    }
-
-    public void setTempEmployee(Employee tempEmployee) {
+    DirectorEmployeeScheduleController(Director director, Employee tempEmployee) {
+        this.director = director;
         this.tempEmployee = tempEmployee;
+        System.out.println(this.director.toString());
+        System.out.println(this.tempEmployee.toString());
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        employeeTask.setCellValueFactory(new PropertyValueFactory<Schedule, String>("task"));
-        taskDay.setCellValueFactory(new PropertyValueFactory<Schedule, LocalDate>("day"));
-        taskTime.setCellValueFactory(new PropertyValueFactory<Schedule, String>("time"));
-        
-        if (tempEmployee.getScheduleRoster() == null){
-            ; 
-        }
-        
-        else {
-            employeeTaskTableView.setItems(getSchedule()); 
-        }
-        
-    }    
+        employeeTask.setCellValueFactory(new PropertyValueFactory<>("task"));
+        taskDay.setCellValueFactory(new PropertyValueFactory<>("day"));
+        taskTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        employeeTaskTableView.setItems(getSchedule());
+    }
 
     public Director getDirector() {
         return director;
@@ -80,25 +68,28 @@ public class DirectorEmployeeScheduleController implements Initializable {
         
     public void setDirector(Director director) {
         this.director = director;
-    }    
+    }  
     
-    @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    public Employee getTempEmployee() {
+        return tempEmployee;
     }
 
+    public void setTempEmployee(Employee tempEmployee) {
+        this.tempEmployee = tempEmployee;
+        
+    }
+    
     @FXML
-    private void createNewTask(ActionEvent event) throws IOException {
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
         Parent parent = null;
         FXMLLoader directorLoader = new FXMLLoader(
-            getClass().getResource("DirectorScheduleCreator.fxml")
+            getClass().getResource("DirectorViewEmployees.fxml")
         );
         parent = (Parent) directorLoader.load();
         Scene scene = new Scene(parent);
         
-        DirectorScheduleCreatorController e = directorLoader.getController();
+        DirectorViewEmployeesController e = directorLoader.getController();
         e.setDirector(this.director);
-        e.setTempEmployee(tempEmployee);
-        
         
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
@@ -106,17 +97,33 @@ public class DirectorEmployeeScheduleController implements Initializable {
     }
 
     @FXML
+    private void createNewTask(ActionEvent event) throws IOException {
+//        Parent parent = null;
+//        FXMLLoader directorLoader = new FXMLLoader(
+//            getClass().getResource("DirectorScheduleCreator.fxml")
+//        );
+//        parent = (Parent) directorLoader.load();
+//        Scene scene = new Scene(parent);
+//        
+//        DirectorScheduleCreatorController e = directorLoader.getController();
+//        e.setDirector(this.director);
+//        e.setTempEmployee(tempEmployee);
+//        
+//        
+//        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        directorStage.setScene(scene);
+//        directorStage.show();
+    }
+
+    @FXML
     private void deleteTask(ActionEvent event) {
     }
     
     public ObservableList<Schedule> getSchedule(){
-    ObservableList<Schedule> scheduleList = null;
-    
-        scheduleList = FXCollections.observableList(tempEmployee.getScheduleRoster());            
+        ObservableList<Schedule> scheduleList = (ObservableList<Schedule>) tempEmployee.getScheduleRoster();
+        System.out.println("Sched: "+scheduleList);
         return scheduleList;
-        
-        
-        }
+    }
     
 }         
     

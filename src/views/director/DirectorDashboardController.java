@@ -89,6 +89,8 @@ public class DirectorDashboardController implements Initializable {
         
     public void setDirector(Director director) {
         this.director = director;
+        directorIDLabel.setText(String.valueOf(this.director.getID()));
+        directorNameLabel.setText(this.director.getName());
     }
     
     
@@ -109,8 +111,6 @@ public class DirectorDashboardController implements Initializable {
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
         directorStage.show();
-        
-        
     }
 
     @FXML

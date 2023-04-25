@@ -76,7 +76,7 @@ public class DirectorViewEmployeesController implements Initializable {
     private Label testLabel;
     
     private Director director;
-    private Employee tempEmployee;
+    private Employee tempEmployee=null;
 
     public Employee getTempEmployee() {
         return tempEmployee;
@@ -126,21 +126,31 @@ public class DirectorViewEmployeesController implements Initializable {
 
     @FXML
     private void employeeSchedule(ActionEvent event) throws IOException {
-        Parent parent = null;
-        FXMLLoader directorLoader = new FXMLLoader(
-            getClass().getResource("DirectorEmployeeSchedule.fxml")
-        );
-        parent = (Parent) directorLoader.load();
-        Scene scene = new Scene(parent);
-        
-        DirectorEmployeeScheduleController e = directorLoader.getController();
-        e.setDirector(this.director);
-        e.setTempEmployee(tempEmployee);
-        
-        
-        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        directorStage.setScene(scene);
-        directorStage.show();
+        if (tempEmployee==null){System.out.println("No emp");return;}
+//        Parent parent = null;
+//        FXMLLoader directorLoader = new FXMLLoader(
+//            getClass().getResource("DirectorEmployeeSchedule.fxml")
+//        );
+//        parent = (Parent) directorLoader.load();
+//        Scene scene = new Scene(parent);
+//        
+//        DirectorEmployeeScheduleController e = directorLoader.getController();
+//        e.setDirector(this.director);
+//        e.setTempEmployee(this.tempEmployee);
+//        
+//        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        directorStage.setScene(scene);
+//        directorStage.show();
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorEmployeeSchedule.fxml"));
+        DirectorEmployeeScheduleController q = new DirectorEmployeeScheduleController(this.director, this.tempEmployee);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
         
     }
     
@@ -161,6 +171,7 @@ public class DirectorViewEmployeesController implements Initializable {
     private void clickedEmployee(MouseEvent event) {
         Employee employee = employeeTableView.getSelectionModel().getSelectedItem();
         tempEmployee = employee;
+        System.out.println(tempEmployee.toString());
         testLabel.setText(tempEmployee.getEmail());
         
     }

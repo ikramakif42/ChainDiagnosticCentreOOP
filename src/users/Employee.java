@@ -21,7 +21,7 @@ public abstract class Employee extends User implements Serializable{
         this.salary = salary;
         this.DOJ = DOJ;
         this.branchName = branchName;
-        scheduleRoster = new ArrayList<>();
+        this.scheduleRoster = new ArrayList<>();
     }
 
     public String getDesignation() {

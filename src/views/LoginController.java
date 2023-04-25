@@ -31,6 +31,7 @@ import views.director.DirectorDashboardController;
 import views.doctor.DoctorDashboardController;
 import views.nurse.NurseDashboardController;
 import views.patient.PatientDashboardController;
+import views.pharmacist.PharmacistDashboardController;
 
 public class LoginController implements Initializable {
 
@@ -220,17 +221,17 @@ public class LoginController implements Initializable {
                 break;             
             case 5: 
                 errorLabel.setText("Login Successful - Pharmacist");                       //Pharmacist authenticated
-//                Parent pharmacistDashboard = null;
-//                FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("pharmacist/PharmacistDashboard.fxml"));
-//                pharmacistDashboard = (Parent) pharmaLoader.load();
-//                Scene pharmaScene = new Scene(pharmacistDashboard);
-//                
-//                PharmacistDashboardController ph = pharmaLoader.getController();
-//                ph.setPharmacist((Pharmacist) User.getInstance(id, "Pharmacist"));
-//                
-//                Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-//                pharmaStage.setScene(pharmaScene);
-//                pharmaStage.show();
+                Parent pharmacistDashboard = null;
+                FXMLLoader pharmaLoader = new FXMLLoader(getClass().getResource("pharmacist/PharmacistDashboard.fxml"));
+                pharmacistDashboard = (Parent) pharmaLoader.load();
+                Scene pharmaScene = new Scene(pharmacistDashboard);
+                
+                PharmacistDashboardController ph = pharmaLoader.getController();
+                ph.setPharmacist((Pharmacist) User.getInstance(id, "Pharmacist"));
+                
+                Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+                pharmaStage.setScene(pharmaScene);
+                pharmaStage.show();
                 break;
             case 6: 
                 errorLabel.setText("Login Successful - Nurse");                            //Nurse authenticated

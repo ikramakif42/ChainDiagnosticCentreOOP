@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistPendingConsultationController">
    <children>
       <Label layoutX="173.0" layoutY="24.0" prefHeight="17.0" prefWidth="255.0" text="Pending Consultations" textFill="#172a61">
          <font>
@@ -31,16 +31,16 @@
       </Button>
       <Label layoutX="25.0" layoutY="70.0" text="Patient's Name:" />
       <Label layoutX="25.0" layoutY="96.0" text="Patient's ID:" />
-      <Label layoutX="117.0" layoutY="70.0" text="____" />
-      <Label layoutX="117.0" layoutY="96.0" text="____" />
-      <Label layoutX="287.0" layoutY="70.0" text="Filter By:" />
+      <Label layoutX="141.0" layoutY="70.0" text="____" />
+      <Label layoutX="141.0" layoutY="96.0" text="____" />
+      <Label layoutX="266.0" layoutY="70.0" text="Filter By:" />
       <RadioButton layoutX="341.0" layoutY="70.0" mnemonicParsing="false" selected="true" text="Pending">
          <toggleGroup>
             <ToggleGroup fx:id="filterByPending" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="416.0" layoutY="70.0" mnemonicParsing="false" text="Resolved" toggleGroup="$filterByPending" />
-      <RadioButton layoutX="495.0" layoutY="70.0" mnemonicParsing="false" text="All" toggleGroup="$filterByPending" />
+      <RadioButton layoutX="428.0" layoutY="70.0" mnemonicParsing="false" text="Resolved" toggleGroup="$filterByPending" />
+      <RadioButton layoutX="527.0" layoutY="70.0" mnemonicParsing="false" text="All" toggleGroup="$filterByPending" />
       <Button layoutX="457.0" layoutY="101.0" mnemonicParsing="false" text="Apply Filter" />
    </children>
 </AnchorPane>

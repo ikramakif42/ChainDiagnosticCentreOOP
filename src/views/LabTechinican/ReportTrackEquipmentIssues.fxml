@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.Lab_techinican_File.ReportTrackEquipmentIssuesController">
    <top>
       <AnchorPane prefHeight="133.0" prefWidth="642.0" style="-fx-background-color: #708090;" BorderPane.alignment="CENTER">
          <children>
@@ -22,9 +22,9 @@
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane prefHeight="513.0" prefWidth="641.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="513.0" prefWidth="641.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ReportEquipmentIssueButton" layoutX="42.0" layoutY="62.0" mnemonicParsing="false" onAction="#ReportEquipmentIssueButtonOnClick" prefHeight="44.0" prefWidth="143.0" text="Report Equipment Issue" />
+            <Button layoutX="42.0" layoutY="62.0" mnemonicParsing="false" onAction="#ReportEquipmentIssueOnClick" prefHeight="44.0" prefWidth="143.0" text="Report Equipment Issue" />
             <TextField layoutX="42.0" layoutY="166.0" prefHeight="25.0" prefWidth="174.0" promptText="Type Of Equipment">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -42,10 +42,13 @@
                </font>
             </TextField>
             <TextArea layoutX="392.0" layoutY="153.0" prefHeight="117.0" prefWidth="200.0" promptText="Technician Report" />
-            <Button fx:id="SubmitTechnicianReportButton" layoutX="441.0" layoutY="317.0" mnemonicParsing="false" onAction="#SubmitTechnicianReportButtonOnClick" prefHeight="39.0" prefWidth="101.0" text="Submit" />
+            <Button layoutX="441.0" layoutY="317.0" mnemonicParsing="false" onAction="#SubmitTechnicianReportOnClick" prefHeight="39.0" prefWidth="101.0" text="Submit">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
             <Line endX="6.333343505859375" endY="152.6666259765625" layoutX="299.0" layoutY="190.0" startX="6.333343505859375" startY="-22.00000762939453" stroke="WHITE" strokeWidth="3.0" />
             <Line endX="151.00003051757812" endY="-1.52587890625E-5" layoutX="129.0" layoutY="133.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
-            <Button fx:id="ReturnReportTrackButton" layoutX="27.0" layoutY="462.0" mnemonicParsing="false" onAction="#ReturnReportTrackButtonOnClick" text="Return" textFill="#ff1717" />
+            <Button layoutX="27.0" layoutY="462.0" mnemonicParsing="false" onAction="#ReturnReportTrackOnClick" text="Return" textFill="#ff1717" />
          </children></AnchorPane>
    </left>
 </BorderPane>

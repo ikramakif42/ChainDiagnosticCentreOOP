@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.Lab_techinican_File.RestockDrugsRequiredController">
    <top>
       <AnchorPane prefHeight="144.0" prefWidth="651.0" style="-fx-background-color: #708090;" BorderPane.alignment="CENTER">
          <children>
@@ -22,11 +22,14 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: whiteB;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ConfirmTheReqButton" layoutX="184.0" layoutY="261.0" mnemonicParsing="false" onAction="#ConfirmTheReqButtonOnClick" prefHeight="25.0" prefWidth="130.0" text="Confirm" />
-            <Button fx:id="ReturnInternalParmacistsButton" layoutX="65.0" layoutY="436.0" mnemonicParsing="false" onAction="#ReturnInternalParmacistsButtonOnClick" text="Return" textFill="RED" />
-            <MenuButton layoutX="37.0" layoutY="54.0" mnemonicParsing="false" text="Restock Drugs">
+            <Button layoutX="215.0" layoutY="276.0" mnemonicParsing="false" onAction="#ConfirmTheReqOnClick" prefHeight="38.0" prefWidth="147.0" text="Confirm">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="65.0" layoutY="436.0" mnemonicParsing="false" onAction="#ReturnInternalParmacistsOnClick" text="Return" textFill="RED" />
+            <MenuButton layoutX="37.0" layoutY="54.0" mnemonicParsing="false" onAction="#RestockDrugsOnClick" text="Restock Drugs">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />

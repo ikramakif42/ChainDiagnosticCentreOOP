@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.Lab_techinican_File.RecordManageLabInventoryController">
    <top>
       <AnchorPane prefHeight="135.0" prefWidth="660.0" style="-fx-background-color: #708090;" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +23,7 @@
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="495.0" prefWidth="660.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="495.0" prefWidth="660.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <TableView layoutX="437.0" layoutY="41.0" prefHeight="200.0" prefWidth="161.0">
               <columns>
@@ -35,8 +35,8 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="ReturnLabInventoryButton" layoutX="28.0" layoutY="448.0" mnemonicParsing="false" onAction="#ReturnLabInventoryButtonOnClick" text="Return" textFill="#ff0b0b" />
-            <Button fx:id="ConfirmLabInventoryButton" layoutX="76.0" layoutY="223.0" mnemonicParsing="false" onAction="#ConfirmLabInventoryButtonOnClick" prefHeight="48.0" prefWidth="105.0" text="Confirm" />
+            <Button layoutX="33.0" layoutY="454.0" mnemonicParsing="false" onAction="#ReturnLabInventoryOnClick" text="Return" textFill="#ff0b0b" />
+            <Button layoutX="76.0" layoutY="223.0" mnemonicParsing="false" onAction="#ConfirmLabInventoryOnClick" prefHeight="48.0" prefWidth="105.0" text="Confirm" />
             <Line endX="14.66668701171875" endY="86.33335876464844" layoutX="315.0" layoutY="158.0" startX="14.66668701171875" startY="-82.99996948242188" stroke="WHITE" strokeWidth="3.0" />
          </children></AnchorPane>
    </bottom>

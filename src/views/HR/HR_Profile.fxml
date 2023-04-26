@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="645.0" style="-fx-background-color: #0D1824;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="273.0" layoutY="14.0" prefHeight="52.0" prefWidth="153.0" style="-fx-border-width: 4px 4px 4px 4px; -fx-border-color: white;" text="HR OFFICER" textFill="#fffffd">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <VBox layoutX="50.0" layoutY="90.0" prefHeight="495.0" prefWidth="164.0" style="-fx-background-color: #0D1824;">
+         <children>
+            <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="138.0" style="-fx-background-color: #0D1224;" text="User Goals " textFill="#ff7676">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </MenuButton>
+            <Button mnemonicParsing="false" onAction="#updatePoliciesOnclick" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update hospital policies and procedures" textAlignment="CENTER" textFill="#382020" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="49.0" mnemonicParsing="false" onAction="#manageApplicationsOnClick" prefHeight="57.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Manage applications " textFill="#382020">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="83.0" mnemonicParsing="false" onAction="#updateEmployeesOnClick" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update employee records and profiles" textAlignment="CENTER" textFill="#382020" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="117.0" mnemonicParsing="false" onAction="#viewComplaints" prefHeight="59.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="View employee complaints" textAlignment="CENTER" textFill="#382020" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleResignations" prefHeight="49.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Handle resignations" textAlignment="CENTER" textFill="#382020" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#addNewEmployee" prefHeight="57.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Hire new employee" textAlignment="CENTER" textFill="#382020" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="185.0" mnemonicParsing="false" onAction="#createReport" prefHeight="60.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Create reports on employees" textAlignment="CENTER" textFill="#382020" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="219.0" mnemonicParsing="false" onAction="#updateSalary" prefHeight="55.0" prefWidth="164.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" text="Update employee compensation" textAlignment="CENTER" textFill="#382020" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Line endX="373.66668701171875" endY="-1.6666717529296875" layoutX="241.0" layoutY="81.0" startX="-199.6666717529297" startY="-1.6666717529296875" stroke="WHITE" />
+   </children>
+</AnchorPane>

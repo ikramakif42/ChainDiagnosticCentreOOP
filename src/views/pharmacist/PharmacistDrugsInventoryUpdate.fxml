@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistDrugsInventoryUpdateController">
+   <children>
+      <Label layoutX="111.0" layoutY="14.0" prefHeight="69.0" prefWidth="207.0" text="Drugs Inventory Update" textAlignment="CENTER" textFill="#203683" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="150.0" prefHeight="37.0" prefWidth="117.0" text="New Quantity:" textFill="#123057">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="pharmaDrugsQuantityUpdate" layoutX="207.0" layoutY="156.0" />
+      <Button layoutX="215.0" layoutY="281.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryUpdateOnClick" prefHeight="55.0" prefWidth="193.0" style="-fx-background-color: orange;" text="Update &amp; Save." textAlignment="CENTER" textFill="#1c5886" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="281.0" mnemonicParsing="false" onAction="#pharmaDrugsInventoryBackOnClick" prefHeight="55.0" prefWidth="193.0" style="-fx-background-color: orange;" text="Back" textAlignment="CENTER" textFill="#1c5886" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

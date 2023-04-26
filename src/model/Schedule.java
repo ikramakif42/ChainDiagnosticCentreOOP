@@ -1,19 +1,27 @@
 package model;
 
-public class Schedule {
-    String day, time, task;
+import java.io.Serializable;
+import java.time.LocalDate;
 
-    public Schedule(String day, String time, String task) {
+public class Schedule implements Serializable {
+    private static final long serialVersionUID = 13L;
+    
+    private LocalDate day;
+    private String time, task;
+    private int assignedToID;
+
+    public Schedule(LocalDate day, String time, String task, int assignedToID) {
         this.day = day;
         this.time = time;
         this.task = task;
+        this.assignedToID = assignedToID;
     }
 
-    public String getDay() {
+    public LocalDate getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public void setDay(LocalDate day) {
         this.day = day;
     }
 
@@ -32,5 +40,20 @@ public class Schedule {
     public void setTask(String task) {
         this.task = task;
     }
+
+    public int getAssignedToID() {
+        return assignedToID;
+    }
+
+    public void setAssignedToID(int assignedToID) {
+        this.assignedToID = assignedToID;
+    }
+
+    @Override
+    public String toString() {
+        return "Schedule: " + "day=" + day + ", time=" + time + ", task=" + task + ", assignedToID=" + assignedToID;
+    }
+    
+    
     
 }

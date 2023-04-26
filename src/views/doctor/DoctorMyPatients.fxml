@@ -8,33 +8,46 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.doctor.DoctorMyPatientsController">
    <children>
       <Button layoutX="45.0" layoutY="728.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
-      <TableView fx:id="patientTableView" layoutX="45.0" layoutY="158.0" prefHeight="550.0" prefWidth="1151.0">
+      <TableView fx:id="patientTableView" layoutX="45.0" layoutY="158.0" prefHeight="550.0" prefWidth="660.0">
         <columns>
-            <TableColumn fx:id="patientIDTableColumn" prefWidth="81.00003051757812" text="Patient ID" />
-          <TableColumn fx:id="patientNameTableColumn" prefWidth="150.0" text="Patient Name" />
-          <TableColumn fx:id="patientAgeTableColumn" minWidth="0.0" prefWidth="60.0" text="Age" />
-            <TableColumn fx:id="latestApptTableColumn" prefWidth="108.0" text="Latest Appt." />
-            <TableColumn fx:id="medicalRecordTableColumn" prefWidth="197.0" text="Check Medical Records" />
-            <TableColumn fx:id="prescribeMedicationTableColumn" prefWidth="206.0" text="Prescribe Medication" />
-            <TableColumn fx:id="labResultTableColumn" prefWidth="196.0" text="Add/Track Lab Tests" />
-            <TableColumn fx:id="viewBillingInfoTableColumn" prefWidth="152.0" text="View Billing Info" />
+            <TableColumn fx:id="patientIDTableColumn" prefWidth="111.0" text="Patient ID" />
+          <TableColumn fx:id="patientNameTableColumn" prefWidth="218.0" text="Patient Name" />
+          <TableColumn fx:id="patientAgeTableColumn" minWidth="0.0" prefWidth="111.0" text="Age" />
+            <TableColumn fx:id="latestApptTableColumn" prefWidth="219.0" text="Latest Appt." />
         </columns>
       </TableView>
       <TextField fx:id="nameSearchTextField" layoutX="208.0" layoutY="37.0" />
       <Label layoutX="77.0" layoutY="42.0" text="Search by Name:" />
-      <Label layoutX="482.0" layoutY="42.0" text="Filter by date:" />
-      <DatePicker fx:id="startDatePicker" layoutX="629.0" layoutY="37.0" prefHeight="31.0" prefWidth="112.0" />
-      <Label layoutX="750.0" layoutY="42.0" text="- to -" />
-      <DatePicker fx:id="endDatePicker" layoutX="794.0" layoutY="37.0" prefHeight="31.0" prefWidth="112.0" />
-      <Button layoutX="1099.0" layoutY="88.0" mnemonicParsing="false" onAction="#clearFiltersOnClick" text="Clear Filters" />
-      <Button layoutX="1097.0" layoutY="37.0" mnemonicParsing="false" onAction="#applyFIltersOnClick" text="Apply Filters" />
+      <Label layoutX="432.0" layoutY="42.0" text="Filter by date:" />
+      <DatePicker fx:id="startDatePicker" layoutX="579.0" layoutY="37.0" prefHeight="31.0" prefWidth="112.0" />
+      <Label layoutX="700.0" layoutY="42.0" text="- to -" />
+      <DatePicker fx:id="endDatePicker" layoutX="744.0" layoutY="37.0" prefHeight="31.0" prefWidth="112.0" />
+      <Button layoutX="902.0" layoutY="88.0" mnemonicParsing="false" onAction="#clearFiltersOnClick" text="Clear Filters" />
+      <Button layoutX="900.0" layoutY="37.0" mnemonicParsing="false" onAction="#applyFiltersOnClick" text="Apply Filters" />
       <TextField fx:id="IDSearchTextField" layoutX="208.0" layoutY="88.0" />
       <Label layoutX="77.0" layoutY="93.0" text="Search by ID:" />
-      <Label layoutX="482.0" layoutY="93.0" text="Filter by special criteria:" />
-      <ComboBox fx:id="criteriaComboBox" layoutX="674.0" layoutY="88.0" prefHeight="31.0" prefWidth="232.0" />
+      <Label layoutX="432.0" layoutY="93.0" text="Filter by special criteria:" />
+      <ComboBox fx:id="criteriaComboBox" layoutX="624.0" layoutY="88.0" prefHeight="31.0" prefWidth="232.0" />
+      <Button layoutX="737.0" layoutY="250.0" mnemonicParsing="false" onAction="#medicalRecordsOnClick" text="View/Add Medical Records" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="761.0" layoutY="355.0" mnemonicParsing="false" onAction="#prescribeMedsOnClick" text="Prescribe Medication" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="755.0" layoutY="454.0" mnemonicParsing="false" onAction="#labResultsOnClick" text="Add/Track Lab Results" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="749.0" layoutY="556.0" mnemonicParsing="false" onAction="#billInfoOnClick" text="View Billing Information" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

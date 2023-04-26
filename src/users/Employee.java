@@ -2,22 +2,26 @@ package users;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import model.Schedule;
 
 public abstract class Employee extends User implements Serializable{
+    private static final long serialVersionUID = 13L;
+    
     public String designation, department;
     protected Float salary;
     final LocalDate DOJ;
     public String branchName;
-    protected Schedule[] scheduleRoster;
+    protected ArrayList<Schedule> scheduleRoster;
 
-    public Employee(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String contactNo, String address, LocalDate DOB) {
-        super(name, ID, password, email, contactNo, address, DOB);
+    public Employee(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
+        super(name, ID, password, email, gender, contactNo, address, DOB);
         this.designation = designation;
         this.department = department;
         this.salary = salary;
         this.DOJ = DOJ;
         this.branchName = branchName;
+        this.scheduleRoster = new ArrayList<>();
     }
 
     public String getDesignation() {
@@ -44,6 +48,10 @@ public abstract class Employee extends User implements Serializable{
         this.salary = salary;
     }
 
+    public LocalDate getDOJ() {
+        return DOJ;
+    }
+
     public String getBranchName() {
         return branchName;
     }
@@ -52,37 +60,12 @@ public abstract class Employee extends User implements Serializable{
         this.branchName = branchName;
     }
 
-    public Schedule[] getScheduleRoster() {
+    public ArrayList<Schedule> getScheduleRoster() {
         return scheduleRoster;
     }
 
-    public void setScheduleRoster(Schedule[] scheduleRoster) {
+    public void setScheduleRoster(ArrayList<Schedule> scheduleRoster) {
         this.scheduleRoster = scheduleRoster;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(LocalDate DOB) {
-        this.DOB = DOB;
-    }
-    
+    }    
     
 }

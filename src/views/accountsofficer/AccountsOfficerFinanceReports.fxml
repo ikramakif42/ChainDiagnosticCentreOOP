@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerFinanceReportsController">
+   <children>
+      <TableView fx:id="financeReportTableView" layoutX="96.0" layoutY="38.0" prefHeight="550.0" prefWidth="578.0">
+         <columns>
+            <TableColumn fx:id="financeReportTitle" minWidth="0.0" prefWidth="151.20004272460938" text="Title" />
+            <TableColumn fx:id="financeReportAuthor" prefWidth="211.199951171875" text="Author" />
+            <TableColumn fx:id="financeReportDate" prefWidth="214.39999999999998" text="Date" />
+         </columns>
+      </TableView>
+      <Button layoutX="96.0" layoutY="602.0" mnemonicParsing="false" onAction="#openReportView" prefHeight="26.0" prefWidth="66.0" text="Details" />
+      <Button layoutX="177.0" layoutY="603.0" mnemonicParsing="false" onAction="#openFinanceReportCreator" text="Create Finance Report" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+   </children>
+</AnchorPane>

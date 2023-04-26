@@ -1,45 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerDashboardController">
    <children>
-      <Button layoutX="100.0" layoutY="232.0" mnemonicParsing="false" onAction="#directorSchedulesOnClick" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: #abc4ff;" text="Restock Requests">
+      <Label layoutX="71.0" layoutY="59.0" prefHeight="31.0" prefWidth="268.0" text="Accounts Officer Dashboard">
          <font>
-            <Font size="18.0" />
+            <Font size="21.0" />
          </font>
-      </Button>
-      <Button layoutX="100.0" layoutY="172.0" mnemonicParsing="false" onAction="#directorPastReportsOnClick" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: #abc4ff;" text="View Past Records">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="100.0" layoutY="114.0" mnemonicParsing="false" onAction="#directorNewEmployeeOnClick" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: #abc4ff;" text="Patient Billing">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="314.0" layoutY="383.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: orange;" text="Log out">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="100.0" layoutY="291.0" mnemonicParsing="false" onAction="#directorSchedulesOnClick" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: #abc4ff;" text="Reports">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="407.0" layoutY="114.0" mnemonicParsing="false" onAction="#directorSchedulesOnClick" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: #abc4ff;" text="Loan Applications">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="407.0" layoutY="172.0" mnemonicParsing="false" onAction="#directorSchedulesOnClick" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: #abc4ff;" text="Salary Update">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      </Label>
+      <Button layoutX="154.0" layoutY="202.0" mnemonicParsing="false" onAction="#viewBills" prefHeight="26.0" prefWidth="114.0" text="Patient Bills" />
+      <Button layoutX="155.0" layoutY="239.0" mnemonicParsing="false" onAction="#viewRestocks" prefHeight="26.0" prefWidth="114.0" text="Restock Orders" />
+      <Button layoutX="155.0" layoutY="274.0" mnemonicParsing="false" onAction="#viewPastRecords" prefHeight="26.0" prefWidth="114.0" text="Past Records" />
+      <Button layoutX="154.0" layoutY="456.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="114.0" text="Log Out" />
+      <Label layoutX="109.0" layoutY="121.0" text="User ID:" />
+      <Label layoutX="109.0" layoutY="152.0" text="Name:" />
+      <Label fx:id="accountsIDLabel" layoutX="212.0" layoutY="121.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Label fx:id="accountsNameLabel" layoutX="212.0" layoutY="152.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Button layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#viewReports" prefHeight="26.0" prefWidth="114.0" text="Finance Reports" />
+      <Button layoutX="155.0" layoutY="345.0" mnemonicParsing="false" onAction="#viewLoanApplications" prefHeight="26.0" prefWidth="114.0" text="Loan Applications" />
+      <Button layoutX="155.0" layoutY="380.0" mnemonicParsing="false" onAction="#viewSalary" prefHeight="26.0" prefWidth="114.0" text="Salary" />
    </children>
 </AnchorPane>

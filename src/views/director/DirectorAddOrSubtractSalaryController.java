@@ -5,14 +5,25 @@
  */
 package views.director;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
+import users.Director;
+import users.Employee;
+import views.accountsofficer.AccountsOfficerPatientBillsController;
 
 /**
  * FXML Controller class
@@ -28,24 +39,90 @@ public class DirectorAddOrSubtractSalaryController implements Initializable {
     @FXML
     private TextField addOrSubtractAmount;
     @FXML
-    private CheckBox addCheckbox;
+    private Label employeeID;
+    private Director director;
+    private Employee tempEmployee;
     @FXML
-    private CheckBox subtractCheckbox;
+    private RadioButton addRadioButton;
+    @FXML
+    private RadioButton subtractRadioButton;
+    @FXML
+    private ToggleGroup addSub;
 
+    public DirectorAddOrSubtractSalaryController(Director director, Employee tempEmployee) {
+        this.director = director;
+        this.tempEmployee = tempEmployee;
+    }
+    
+    
+    
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public Employee getTempEmployee() {
+        return tempEmployee;
+    }
+
+    public void setTempEmployee(Employee tempEmployee) {
+        this.tempEmployee = tempEmployee;
+    }
+    
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        employeeSalary.setText(String.valueOf(tempEmployee.getSalary()));
+        employeeName.setText(tempEmployee.getName());
+        employeeID.setText(String.valueOf(tempEmployee.getID()));
+        
+        
     }    
 
     @FXML
     private void confirmAddOrSubtractOnClick(ActionEvent event) {
+        float newSal = 0;
+        if (addRadioButton.isSelected()){
+            if (!(addOrSubtractAmount.getText().isEmpty())){
+                newSal = tempEmployee.getSalary() + Float.valueOf(addOrSubtractAmount.getText());
+        }}
+        if (subtractRadioButton.isSelected()){
+            if (!(addOrSubtractAmount.getText().isEmpty())){
+                newSal = tempEmployee.getSalary() - Float.valueOf(addOrSubtractAmount.getText());
+        }}
+        
+        tempEmployee.setSalary(newSal);
+        employeeSalary.setText(String.valueOf(newSal));
+        Employee.updatePersonalInfo(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), newSal);
+        
+        
     }
 
     @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("DirectorViewEmployees.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        
+        DirectorViewEmployeesController e = officerLoader.getController();
+        e.setDirector(this.director);
+        
+        Scene employeeListScene = new Scene(bills);
+        
+
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();
     }
     
 }

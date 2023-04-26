@@ -122,7 +122,17 @@ public class DirectorViewEmployeesController implements Initializable {
     }
 
     @FXML
-    private void addOrSubtractSalary(ActionEvent event) {
+    private void addOrSubtractSalary(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorAddOrSubtractSalary.fxml"));
+        DirectorAddOrSubtractSalaryController q = new DirectorAddOrSubtractSalaryController(this.director, this.tempEmployee);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
     }
     
 

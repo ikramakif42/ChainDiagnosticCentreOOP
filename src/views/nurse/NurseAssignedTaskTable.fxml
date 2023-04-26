@@ -9,12 +9,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NurseAssignedTaskTableController">
    <children>
-      <TableView fx:id="nurseAssignedTaskTable" layoutY="153.0" prefHeight="475.0" prefWidth="910.0">
+      <TableView fx:id="nurseAssignedTaskTable" layoutX="107.0" layoutY="166.0" prefHeight="405.0" prefWidth="696.0">
          <columns>
-            <TableColumn prefWidth="160.0" text="Doctor's Name" />
-            <TableColumn prefWidth="398.0" text="Task" />
-            <TableColumn minWidth="0.0" prefWidth="188.0" text="Date" />
-            <TableColumn prefWidth="163.0" text="Time" />
+            <TableColumn fx:id="nurseAssignedDocIDTable" prefWidth="168.80010986328125" text="Doctor's ID" />
+            <TableColumn fx:id="nurseAssignedTaskDocNameTable" prefWidth="160.0" text="Doctor's Name" />
+            <TableColumn fx:id="nurseAssignedTaskTaskTable" prefWidth="211.99998474121094" text="Task" />
+            <TableColumn fx:id="nurseAssignedTaskDateTable" minWidth="0.0" prefWidth="150.40008544921875" text="Date" />
          </columns>
       </TableView>
       <Label layoutX="335.0" layoutY="40.0" text="Assigned Tasks" textFill="#1d6979">

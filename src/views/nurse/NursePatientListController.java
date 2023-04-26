@@ -7,7 +7,11 @@ package views.nurse;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +20,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import users.Nurse;
+import users.Patient;
 
 /**
  * FXML Controller class
@@ -29,15 +37,36 @@ import users.Nurse;
 public class NursePatientListController implements Initializable {
 
     @FXML
-    private TableView<?> nursePatientListTable;
+    private TableView<Patient> nursePatientListTable;
     @FXML
     private TextField nurseSearchPatientListTextField;
     private Nurse nurse;
+    @FXML
+    private TableColumn<Patient, String> nursePatientNameTable;
+    @FXML
+    private TableColumn<Patient,Integer> nursePatientIdTable;
+    @FXML
+    private TableColumn<Patient,Integer> nursePatientAgeTable;
+    @FXML
+    private TableColumn<Patient, String> nursePatientContactTable;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Callback<TableColumn.CellDataFeatures<Patient, Integer>, ObservableValue<Integer>> ageCVF = feature -> {
+            Patient pat = feature.getValue();
+            LocalDate birthdate = pat.getDOB();
+            int age = Period.between(birthdate, LocalDate.now()).getYears();
+            return new SimpleObjectProperty<Integer>(age);
+        };
+        
+        nursePatientIdTable.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("ID"));
+        nursePatientNameTable.setCellValueFactory(new PropertyValueFactory<Patient,String>("name"));
+        nursePatientAgeTable.setCellValueFactory(ageCVF);
+        nursePatientContactTable.setCellValueFactory(new PropertyValueFactory<Patient,String>("contactNo"));
+        nursePatientListTable.setItems(Patient.getPatients());
+        
         // TODO
     }    
 

@@ -1,4 +1,3 @@
-
 package views.HR;
 
 import java.net.URL;
@@ -20,7 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import users.hr;
+import users.HROfficer;
 import users.User;
 import views.HROfficer.AddNewEmployeeController;
 import views.HROfficer.CreateReportsOnEmployeesController;
@@ -32,35 +31,26 @@ import views.HROfficer.UpdateRecordProfileController;
 import views.HROfficer.ViewEmployeeComplaintsController;
 
 
-/**
- * FXML Controller class
- *
- * @author arafath
- */
 public class HRDashboardController implements Initializable {
-    private hr HR;
     @FXML
     private Label HRIDLabel;
     @FXML
     private Label NameLabel;
-
-    /**
-     * Initializes the controller class.
-     */
+    private HROfficer HR;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }  
-    public hr gethr() {
-        return hr;
-    }
-     public void setPatient(hr HR) {
-        this.HR = HR;
-        System.out.println("Be HR");
-        HRIDLabel.setText(String.valueOf(HR.ID));
-        HRNameLabel.setText(HR.name);
+
+    public HROfficer getHR() {
+        return HR;
     }
 
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
+    }
+    
     @FXML
     private void updatePoliciesOnclick(ActionEvent event) throws IOException {
         

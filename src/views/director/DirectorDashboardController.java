@@ -71,15 +71,9 @@ public class DirectorDashboardController implements Initializable {
 //            
 //        } catch (IOException ex) {
 //            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            try {
-//                if(oos != null) oos.close();
-//            } catch (IOException ex) {
-//                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
 //        }
 //        System.out.println("Hello World2! Initialised");
-
+    
         
     }    
     

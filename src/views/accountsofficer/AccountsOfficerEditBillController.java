@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -23,11 +24,9 @@ public class AccountsOfficerEditBillController implements Initializable {
     @FXML
     private TextField amountField;
     @FXML
-    private TextField startDateField;
-    @FXML
-    private TextField dueDateField;
-    @FXML
     private TextArea descriptionField;
+    @FXML
+    private DatePicker dueDate;
 
     /**
      * Initializes the controller class.

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -27,11 +28,13 @@ public class DirectorEditEmployeesController implements Initializable {
     @FXML
     private TextField phoneField;
     @FXML
-    private TextField dobField;
-    @FXML
     private TextField addressField;
     @FXML
-    private ComboBox<?> genderPicker;
+    private Label genderLabel;
+    @FXML
+    private Label idLabel;
+    @FXML
+    private Label dobLabel;
 
     /**
      * Initializes the controller class.

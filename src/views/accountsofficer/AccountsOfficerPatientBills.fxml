@@ -16,8 +16,8 @@
             <TableColumn fx:id="billDescription" prefWidth="277.5999938964844" text="Description" />
          </columns>
       </TableView>
-      <Button layoutX="141.0" layoutY="605.0" mnemonicParsing="false" onAction="#ediBill" prefHeight="26.0" prefWidth="66.0" text="Edit" />
+      <Button layoutX="155.0" layoutY="605.0" mnemonicParsing="false" onAction="#ediBill" prefHeight="26.0" prefWidth="66.0" text="Edit" />
       <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
-      <Button layoutX="55.0" layoutY="605.0" mnemonicParsing="false" onAction="#acceptBill" prefHeight="26.0" prefWidth="66.0" text="Accept" />
+      <Button layoutX="55.0" layoutY="605.0" mnemonicParsing="false" onAction="#createBill" prefHeight="26.0" prefWidth="79.0" text="Create Bill" />
    </children>
 </AnchorPane>

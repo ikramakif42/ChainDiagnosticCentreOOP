@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Schedule;
 import users.AccountsOfficer;
 import users.Director;
 import users.Doctor;
@@ -120,7 +122,17 @@ public class DirectorViewEmployeesController implements Initializable {
     }
 
     @FXML
-    private void addOrSubtractSalary(ActionEvent event) {
+    private void addOrSubtractSalary(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorAddOrSubtractSalary.fxml"));
+        DirectorAddOrSubtractSalaryController q = new DirectorAddOrSubtractSalaryController(this.director, this.tempEmployee);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
     }
     
 
@@ -141,6 +153,8 @@ public class DirectorViewEmployeesController implements Initializable {
 //        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
 //        directorStage.setScene(scene);
 //        directorStage.show();
+        
+        
         Parent root = null;
         FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorEmployeeSchedule.fxml"));
         DirectorEmployeeScheduleController q = new DirectorEmployeeScheduleController(this.director, this.tempEmployee);
@@ -170,9 +184,12 @@ public class DirectorViewEmployeesController implements Initializable {
     @FXML
     private void clickedEmployee(MouseEvent event) {
         Employee employee = employeeTableView.getSelectionModel().getSelectedItem();
+        
         tempEmployee = employee;
         System.out.println(tempEmployee.toString());
         testLabel.setText(tempEmployee.getEmail());
+        
+
         
     }
 

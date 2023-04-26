@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,6 +57,8 @@ public class DirectorEmployeeScheduleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         employeeTask.setCellValueFactory(new PropertyValueFactory<>("task"));
         taskDay.setCellValueFactory(new PropertyValueFactory<>("day"));
         taskTime.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -85,11 +88,14 @@ public class DirectorEmployeeScheduleController implements Initializable {
         FXMLLoader directorLoader = new FXMLLoader(
             getClass().getResource("DirectorViewEmployees.fxml")
         );
-        parent = (Parent) directorLoader.load();
-        Scene scene = new Scene(parent);
         
         DirectorViewEmployeesController e = directorLoader.getController();
         e.setDirector(this.director);
+        
+        parent = (Parent) directorLoader.load();
+        Scene scene = new Scene(parent);
+        
+
         
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
@@ -98,21 +104,16 @@ public class DirectorEmployeeScheduleController implements Initializable {
 
     @FXML
     private void createNewTask(ActionEvent event) throws IOException {
-//        Parent parent = null;
-//        FXMLLoader directorLoader = new FXMLLoader(
-//            getClass().getResource("DirectorScheduleCreator.fxml")
-//        );
-//        parent = (Parent) directorLoader.load();
-//        Scene scene = new Scene(parent);
-//        
-//        DirectorScheduleCreatorController e = directorLoader.getController();
-//        e.setDirector(this.director);
-//        e.setTempEmployee(tempEmployee);
-//        
-//        
-//        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        directorStage.setScene(scene);
-//        directorStage.show();
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorScheduleCreator.fxml"));
+        DirectorScheduleCreatorController q = new DirectorScheduleCreatorController(this.director, this.tempEmployee);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
     }
 
     @FXML

@@ -3,26 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.LabTechnicain;
+package views.HROfficer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import users.HROfficer;
 
 /**
  * FXML Controller class
  *
  * @author arafath
  */
-public class ReciveAndProcessLabOrderController implements Initializable {
+public class HandleResignationsController implements Initializable {
+    
+    private HROfficer HR;
 
-    @FXML
-    private Button ConfirmLabOrderButton;
-    @FXML
-    private Button ReturnLabOrderButton;
 
     /**
      * Initializes the controller class.
@@ -30,14 +28,31 @@ public class ReciveAndProcessLabOrderController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    public HROfficer getHR() {
+        return HR;
+    }
+
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
+    }
+    
 
     @FXML
-    private void ConfirmLabOrderButtonOnClick(ActionEvent event) {
+    private void RegistationNoticeOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void ReturnLabOrderButtonOnClick(ActionEvent event) {
+    private void ReginationAccepetOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void ReginationsRejectedOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void ResigationReturnOnClick(ActionEvent event) {
     }
     
 }

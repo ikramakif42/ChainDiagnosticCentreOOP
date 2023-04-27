@@ -10,13 +10,17 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import users.HROfficer;
 
 /**
  * FXML Controller class
  *
  * @author arafath
  */
-public class CreateReportsOnEmployeesController implements Initializable {
+public class AddNewEmployeeController implements Initializable {
+    
+    private HROfficer HR;
+
 
     /**
      * Initializes the controller class.
@@ -24,18 +28,27 @@ public class CreateReportsOnEmployeesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    public HROfficer getHR() {
+        return HR;
+    }
 
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
+    }
+    
+    
+    
     @FXML
-    private void CreateReportsOnClick(ActionEvent event) {
+    private void HireNewEmployeeOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void ReturnCreateOnEmployee(ActionEvent event) {
+    private void ConfirmJobOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void SubmitCreateReportOnClick(ActionEvent event) {
+    private void ReturnHireEmployeeOnClick(ActionEvent event) {
     }
     
 }

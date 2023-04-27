@@ -3,20 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.Lab_techinican_File;
+package views.HROfficer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import users.HROfficer;
 
 /**
  * FXML Controller class
  *
  * @author arafath
  */
-public class RestockDrugsRequiredController implements Initializable {
+public class UpdateRecordProfileController implements Initializable {
+    
+    private HROfficer HR;
+
+
 
     /**
      * Initializes the controller class.
@@ -24,18 +30,29 @@ public class RestockDrugsRequiredController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    public HROfficer getHR() {
+        return HR;
+    }
 
-    @FXML
-    private void ConfirmTheReqOnClick(ActionEvent event) {
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
     }
 
     @FXML
-    private void ReturnInternalParmacistsOnClick(ActionEvent event) {
+    private void EmployeeRecordOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void RestockDrugsOnClick(ActionEvent event) {
+    private void UpdateRecordOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void SaveupdaterecordOnClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void ReturnUpdateEmployeeRecord(ActionEvent event) {
     }
     
 }

@@ -1,4 +1,4 @@
-package views.HR;
+package views.HROfficer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -188,7 +188,7 @@ public class HRDashboardController implements Initializable {
     
     @FXML
     private void logOut(ActionEvent event) {
-        hr login;
+        Parent login;
         login = null;
         try {
             login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));

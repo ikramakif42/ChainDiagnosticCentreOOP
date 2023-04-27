@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import users.HROfficer;
 
 /**
  * FXML Controller class
@@ -17,6 +18,8 @@ import javafx.fxml.Initializable;
  * @author arafath
  */
 public class UpdateEmployeeCompensationController implements Initializable {
+    private HROfficer HR;
+
 
     /**
      * Initializes the controller class.
@@ -24,7 +27,13 @@ public class UpdateEmployeeCompensationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    public HROfficer getHR() {
+        return HR;
+    }
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
+    }
 
     @FXML
     private void UpdateCompensationOnClick(ActionEvent event) {

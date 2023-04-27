@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.Lab_techinican_File;
+package views.LabTechnician;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,16 +22,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import users.labtechnician;
+import users.LabTechnician;
 import users.User;
-import views.LabTechnicain.ReciveAndProcessLabOrderController;
-import views.Lab_techinican_File.OrderSuppliesRequiredController;
-import views.Lab_techinican_File.PatientBillingInformationController;
-import views.Lab_techinican_File.RecordLabResultsReportsController;
-import views.Lab_techinican_File.RecordManageLabInventoryController;
-import views.Lab_techinican_File.ReportTrackEquipmentIssuesController;
-import views.Lab_techinican_File.RestockDrugsRequiredController;
-import views.Lab_techinican_File.RetrievePatientHistoryTestResultsController;
+import views.LabTechnician.ReciveAndProcessLabOrderController;
+import views.LabTechnician.OrderSuppliesRequiredController;
+import views.LabTechnician.PatientBillingInformationController;
+import views.LabTechnician.RecordLabResultsReportsController;
+import views.LabTechnician.RecordManageLabInventoryController;
+import views.LabTechnician.ReportTrackEquipmentIssuesController;
+import views.LabTechnician.RestockDrugsRequiredController;
+import views.LabTechnician.RetrievePatientHistoryTestResultsController;
 
 /**
  * FXML Controller class
@@ -40,11 +40,12 @@ import views.Lab_techinican_File.RetrievePatientHistoryTestResultsController;
  */
 public class LabTechnicianDashboardController implements Initializable {
     
-    private labtechnician LabTechnician;
+    private LabTechnician LabTechnician;
     @FXML
     private Label LabTechnicainIDLabel;
     @FXML
     private Label LabTechnicainNameLabel;
+    private LabTechnician labtechnician;
 
 
     /**
@@ -55,14 +56,11 @@ public class LabTechnicianDashboardController implements Initializable {
         // TODO
     }
 
-    public labtechnician getlabtechnician() {
+    public LabTechnician getlabtechnician() {
         return labtechnician;
     }
-     public void setPatient(labtechnician LabTechnician) {
-        this.LabTechnician = LabTechnician;
-        System.out.println("Be LabTechnician");
-        LabTechnicianIDLabel.setText(String.valueOf(LabTechnician.ID));
-        LabTechnicianNameLabel.setText(LabTechnician.name);
+    public void setlabtechnician(LabTechnician labtechnician) {
+        this.labtechnician = labtechnician;
     }
      
      
@@ -205,7 +203,7 @@ public class LabTechnicianDashboardController implements Initializable {
     
     @FXML
     private void logOut(ActionEvent event) {
-        labtechnician login;
+        Parent login;
         login = null;
         try {
             login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));

@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import users.HROfficer;
 
 /**
  * FXML Controller class
@@ -28,6 +29,7 @@ public class UpdateHospitalPoliciesProceduresController implements Initializable
     private Button ConfirmButton;
     @FXML
     private Button ReturnButton;
+    private HROfficer HR;
 
     /**
      * Initializes the controller class.
@@ -35,8 +37,18 @@ public class UpdateHospitalPoliciesProceduresController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    
+    public HROfficer getHR() {
+        return HR;
+    }
 
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
+    }
+    
+    
     @FXML
     private void LoadUpdatePolicesButtonOnClick(ActionEvent event) {
     }

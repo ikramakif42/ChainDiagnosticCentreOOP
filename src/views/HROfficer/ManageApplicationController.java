@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import users.HROfficer;
 
 /**
  * FXML Controller class
@@ -29,6 +30,8 @@ public class ManageApplicationController implements Initializable {
     private Button ApproveButton;
     @FXML
     private Button ReturnButton;
+    private HROfficer HR;
+
 
     /**
      * Initializes the controller class.
@@ -36,7 +39,15 @@ public class ManageApplicationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    public HROfficer getHR() {
+        return HR;
+    }
+
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
+    }
 
     @FXML
     private void LeaveButtonOnClick(ActionEvent event) {

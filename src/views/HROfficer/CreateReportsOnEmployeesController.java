@@ -10,13 +10,17 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import users.HROfficer;
 
 /**
  * FXML Controller class
  *
  * @author arafath
  */
-public class HandleResignationsController implements Initializable {
+public class CreateReportsOnEmployeesController implements Initializable {
+    
+    private HROfficer HR;
+
 
     /**
      * Initializes the controller class.
@@ -24,22 +28,25 @@ public class HandleResignationsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    public HROfficer getHR() {
+        return HR;
+    }
+    public void setHR(HROfficer HR) {
+        this.HR = HR;
+    }
+    
 
     @FXML
-    private void RegistationNoticeOnClick(ActionEvent event) {
+    private void CreateReportsOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void ReginationAccepetOnClick(ActionEvent event) {
+    private void ReturnCreateOnEmployee(ActionEvent event) {
     }
 
     @FXML
-    private void ReginationsRejectedOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void ResigationReturnOnClick(ActionEvent event) {
+    private void SubmitCreateReportOnClick(ActionEvent event) {
     }
     
 }

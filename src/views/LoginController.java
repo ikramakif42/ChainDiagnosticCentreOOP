@@ -26,7 +26,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.*;
-import views.HR.HRDashboardController;
+import views.HROfficer.HRDashboardController;
 import views.accountsofficer.AccountsOfficerDashboardController;
 import views.director.DirectorDashboardController;
 import views.doctor.DoctorDashboardController;
@@ -279,7 +279,7 @@ public class LoginController implements Initializable {
             case 9: 
                 errorLabel.setText("Login Successful - HR Officer");                       //HR Officer authenticated
                 Parent HRDashboard = null;
-                FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("HROfficer/HR_Profile.fxml"));
+                FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("HROfficer/HRDashboard.fxml"));
                 HRDashboard = (Parent) HRLoader.load();
                 Scene HRScene = new Scene(HRDashboard);
                 

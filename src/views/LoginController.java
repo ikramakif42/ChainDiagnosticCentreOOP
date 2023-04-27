@@ -292,10 +292,10 @@ public class LoginController implements Initializable {
                 break;
             case 10: 
                 errorLabel.setText("Login Successful - Lab Technician");                   //Lab Technician authenticated
-//                Parent labTechnicianDashboard = null;
+//                Parent LabTechnicianDashboard = null;
 //                FXMLLoader labLoader = new FXMLLoader(getClass().getResource("LabTechnician/LabTechnicianDashboard.fxml"));
-//                labTechnicianDashboard = (Parent) labLoader.load();
-//                Scene labScene = new Scene(labTechnicianDashboard);
+//                LabTechnicianDashboard = (Parent) labLoader.load();
+//                Scene labScene = new Scene(LabTechnicianDashboard);
 //                
 //                LabTechnicianDashboardController l = labLoader.getController();
 //                l.setLabTechnician((LabTechnician) User.getInstance(id, "LabTechnician"));

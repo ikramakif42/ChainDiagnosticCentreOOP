@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import users.Nurse;
@@ -30,6 +31,14 @@ public class NurseDocAppointmentScheduleController implements Initializable {
     @FXML
     private TableView<?> nurseDocAppointmentTable;
     private Nurse nurse;
+    @FXML
+    private TableColumn<?, ?> nurseDocAppSchDocIDTableView;
+    @FXML
+    private TableColumn<?, ?> nurseDocAppSchDocNameTableView;
+    @FXML
+    private TableColumn<?, ?> nurseDocAppSchDocDateTableView;
+    @FXML
+    private TableColumn<?, ?> nurseDocAppSchDocTimeTableView;
 
     /**
      * Initializes the controller class.

@@ -30,18 +30,18 @@
             <TextArea layoutX="361.0" layoutY="90.0" prefHeight="200.0" prefWidth="200.0" />
             <TextField fx:id="LoadUpdatePolicesButton" layoutX="57.0" layoutY="143.0" onAction="#LoadUpdatePolicesButtonOnClick" prefHeight="48.0" prefWidth="190.0" text="update policies and procedures" />
             <Line endX="-77.0" endY="177.33331298828125" layoutX="368.0" layoutY="96.0" startX="-77.0" startY="-4.9999847412109375" stroke="WHITE" strokeWidth="3.0" />
-            <Button fx:id="EditButtton" layoutX="479.0" layoutY="40.0" mnemonicParsing="false" onAction="#LoadEditButttonOnClick" prefHeight="25.0" prefWidth="81.0" text="Edit" />
-            <Button fx:id="ConfirmButton" layoutX="222.0" layoutY="367.0" mnemonicParsing="false" onAction="#ConfirmButtonOnClick" prefHeight="37.0" prefWidth="155.0" style="-fx-background-color: white;" text="Confirm">
+            <Button layoutX="479.0" layoutY="40.0" mnemonicParsing="false" onAction="#LoadEditOnClick" prefHeight="25.0" prefWidth="81.0" text="Edit" />
+            <Button layoutX="222.0" layoutY="367.0" mnemonicParsing="false" onAction="#ConfirmpoliciesOnClick" prefHeight="37.0" prefWidth="155.0" text="Confirm">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="ReturnButton" layoutX="529.0" layoutY="455.0" mnemonicParsing="false" onAction="#ReturnButtonOnClick" prefHeight="25.0" prefWidth="83.0" text="Return" textFill="RED">
+            <Button layoutX="529.0" layoutY="455.0" mnemonicParsing="false" onAction="#ReturnUpdatePoliciesOnClick" prefHeight="25.0" prefWidth="83.0" text="Return" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="54.0" layoutY="65.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="193.0" text="POLICY  Number" />
+            <Button layoutX="54.0" layoutY="65.0" mnemonicParsing="false" onAction="#PolicyNumberOnClick" prefHeight="44.0" prefWidth="193.0" text="POLICY  Number" />
          </children>
       </AnchorPane>
    </center>

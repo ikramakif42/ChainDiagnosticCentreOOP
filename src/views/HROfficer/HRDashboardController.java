@@ -176,7 +176,7 @@ public class HRDashboardController implements Initializable {
     private void UpdateCompensation(ActionEvent event) throws IOException {
         
         Parent parent = null;
-        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("update employee compensation.fxml"));
+        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("UpdateEmployeeCompensation.fxml"));
         parent = (Parent) HRLoader.load();
         Scene HRScene = new Scene(parent);
         

@@ -7,7 +7,10 @@ package views.nurse;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +21,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import model.Appointment;
+import model.Task;
+import users.Doctor;
 import users.Nurse;
+import users.User;
 
 /**
  * FXML Controller class
@@ -32,21 +41,35 @@ public class NurseDocAppointmentScheduleController implements Initializable {
     private TableView<?> nurseDocAppointmentTable;
     private Nurse nurse;
     @FXML
-    private TableColumn<?, ?> nurseDocAppSchDocIDTableView;
+    private TableColumn<Appointment,Integer> nurseDocAppSchDocIDTableView;
     @FXML
-    private TableColumn<?, ?> nurseDocAppSchDocNameTableView;
+    private TableColumn<Appointment,String> nurseDocAppSchDocNameTableView;
     @FXML
-    private TableColumn<?, ?> nurseDocAppSchDocDateTableView;
+    private TableColumn<Appointment, LocalDate> nurseDocAppSchDocDateTableView;
     @FXML
-    private TableColumn<?, ?> nurseDocAppSchDocTimeTableView;
+    private TableColumn<Appointment,String> nurseDocAppSchDocTimeTableView;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Callback<TableColumn.CellDataFeatures<Appointment, String>, ObservableValue<String>> nameCVF = feature -> {
+            Appointment temp = feature.getValue();
+            String name = ((Doctor)User.getInstance(temp.getDoctorID(),"Doctor")).getName();
+            return new SimpleStringProperty(name);
+        
+        
+        nurseDocAppSchDocIDTableView.setCellValueFactory(new PropertyValueFactory<Appointment,Integer>("DoctorID"));
+        nurseDocAppSchDocNameTableView.setCellValueFactory(nameCVF);
+        nurseDocAppSchDocTimeTableView.setCellValueFactory(new PropertyValueFactory<Appointment,String>("Time"));
+        nurseDocAppSchDocDateTableView.setCellValueFactory(new PropertyValueFactory<Appointment,LocalDate>("Date"));
+        
+//comment
         // TODO
-    }    
+        }
+                
+                   
 
     public Nurse getNurse() {
         return nurse;

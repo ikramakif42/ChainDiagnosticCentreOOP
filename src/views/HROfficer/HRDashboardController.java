@@ -71,6 +71,7 @@ public class HRDashboardController implements Initializable {
     @FXML
     private void manageApplicationsOnClick(ActionEvent event) throws IOException {
         
+        
         Parent parent = null;
         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("ManageApplication.fxml"));
         parent = (Parent) HRLoader.load();

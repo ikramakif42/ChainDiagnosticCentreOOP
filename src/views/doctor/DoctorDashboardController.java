@@ -60,13 +60,13 @@ public class DoctorDashboardController implements Initializable {
     }
 
     @FXML
-    private void viewMySchedule(ActionEvent event) throws IOException {
+    private void viewMyAppts(ActionEvent event) throws IOException {
         Parent doctorMySchedule = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorMySchedule.fxml"));
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorMyAppointments.fxml"));
         doctorMySchedule = (Parent) doctorLoader.load();
         Scene doctorScene = new Scene(doctorMySchedule);
 
-        DoctorMyScheduleController d = doctorLoader.getController();
+        DoctorMyAppointmentsController d = doctorLoader.getController();
         d.setDoc(this.doc);
 
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
@@ -129,6 +129,10 @@ public class DoctorDashboardController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene1);
         window.show();
+    }
+
+    @FXML
+    private void viewMySchedule(ActionEvent event) {
     }
 
 }

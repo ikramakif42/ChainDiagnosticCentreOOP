@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -44,6 +45,16 @@ public class PharmacistBillingInformationController implements Initializable {
 
     private Pharmacist pharmacist;
     private Pharmacist Pharmacist;
+    @FXML
+    private TableColumn<?, ?> pharmacistPatientBillDateofBillTableView;
+    @FXML
+    private TableColumn<?, ?> pharmacistPatientBillDueDateTableView;
+    @FXML
+    private TableColumn<?, ?> pharmacistPatientBillStatusTableView;
+    @FXML
+    private TableColumn<?, ?> pharmacistPatientBillAmountTableView;
+    @FXML
+    private TableColumn<?, ?> pharmacistPatientBillDetailsTableView;
     /**
      * Initializes the controller class.
      */

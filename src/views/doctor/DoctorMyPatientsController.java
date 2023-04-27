@@ -40,6 +40,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import model.Appointment;
 import users.AccountsOfficer;
 import users.Director;
 import users.Doctor;
@@ -80,19 +81,17 @@ public class DoctorMyPatientsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //set up the columns in the table
         Callback<TableColumn.CellDataFeatures<Patient, Integer>, ObservableValue<Integer>> ageCVF = feature -> {
             Patient pat = feature.getValue();
             LocalDate birthdate = pat.getDOB();
             int age = Period.between(birthdate, LocalDate.now()).getYears();
-            return new SimpleObjectProperty<Integer>(age);
+            return new SimpleObjectProperty<>(age);
         };
         
-        patientIDTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("ID"));
-        patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,String>("name"));
+        patientIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         patientAgeTableColumn.setCellValueFactory(ageCVF);
-        latestApptTableColumn.setCellValueFactory(new PropertyValueFactory<Patient,String>("email"));
-        patientTableView.setItems(getPatients());
+        latestApptTableColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
     }    
 
     public Doctor getDoc(){
@@ -101,6 +100,7 @@ public class DoctorMyPatientsController implements Initializable {
 
     public void setDoc(Doctor doc) {
         this.doc = doc;
+        patientTableView.setItems(getPats(Appointment.getApptList(this.doc.getID())));
     }
 
     @FXML
@@ -222,4 +222,13 @@ public class DoctorMyPatientsController implements Initializable {
         System.out.println(patientList);
         return patientList;
     }   
+
+    private ObservableList<Patient> getPats(ObservableList<Appointment> apptList) {
+        ObservableList<Patient> patList = FXCollections.observableArrayList();
+        for (Appointment appt : apptList){
+            Patient pat = (Patient) User.getInstance(appt.getPatientID(), "Patient");
+            patList.add(pat);
+        }
+        return patList;
+    }
 }

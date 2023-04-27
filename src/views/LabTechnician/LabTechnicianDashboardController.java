@@ -24,7 +24,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import users.LabTechnician;
 import users.User;
-import views.LabTechnician.ReciveAndProcessLabOrderController;
 import views.LabTechnician.OrderSuppliesRequiredController;
 import views.LabTechnician.PatientBillingInformationController;
 import views.LabTechnician.RecordLabResultsReportsController;
@@ -68,16 +67,16 @@ public class LabTechnicianDashboardController implements Initializable {
     private void ReciveProcessLabOrderOnClick(ActionEvent event) throws IOException {
         
         Parent parent = null;
-        FXMLLoader LabTechnicainLoader = new FXMLLoader(getClass().getResource("ReciveProcessLabOrder.fxml"));
-        parent = (Parent) LabTechnicainLoader.load();
-        Scene LabTechnicainScene = new Scene(parent);
+        FXMLLoader LabTechnicianLoader = new FXMLLoader(getClass().getResource("ReciveProcessLabOrder.fxml"));
+        parent = (Parent) LabTechnicianLoader.load();
+        Scene LabTechnicianScene = new Scene(parent);
         
-        ReciveAndProcessLabOrderController l  = LabTechnicainLoader.getController();
+        ReciveProcessLabOrderController l  = LabTechnicianLoader.getController();
         l.setLabTechnician(this.LabTechnician);
 
-        Stage LabTechnicainStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        LabTechnicainStage.setScene(LabTechnicainScene);
-        LabTechnicainStage.show();
+        Stage LabTechnicianStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        LabTechnicianStage.setScene(LabTechnicianScene);
+        LabTechnicianStage.show();
     }
 
     @FXML

@@ -15,7 +15,7 @@
       <Label fx:id="employeeName" layoutX="197.0" layoutY="43.0" prefHeight="22.0" prefWidth="36.0" text="- - - -" />
       <TextField fx:id="addOrSubtractAmount" layoutX="80.0" layoutY="167.0" promptText="Amount" />
       <Button layoutX="204.0" layoutY="240.0" mnemonicParsing="false" onAction="#confirmAddOrSubtractOnClick" text="Confirm" />
-      <Button layoutX="25.0" layoutY="357.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="25.0" layoutY="357.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <Label fx:id="employeeID" layoutX="308.0" layoutY="43.0" prefHeight="22.0" prefWidth="36.0" text="- - - -" />
       <Label layoutX="278.0" layoutY="45.0" text="ID:" />
       <RadioButton fx:id="addRadioButton" layoutX="249.0" layoutY="171.0" mnemonicParsing="false" selected="true" text="Add">

@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,8 +58,7 @@ public class DirectorEmployeeScheduleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
+        System.out.println(this.director.toString());
         employeeTask.setCellValueFactory(new PropertyValueFactory<>("task"));
         taskDay.setCellValueFactory(new PropertyValueFactory<>("day"));
         taskTime.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -84,22 +84,19 @@ public class DirectorEmployeeScheduleController implements Initializable {
     
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) throws IOException {
-        Parent parent = null;
+        try{Parent parent = null;
         FXMLLoader directorLoader = new FXMLLoader(
             getClass().getResource("DirectorViewEmployees.fxml")
         );
+        parent = (Parent) directorLoader.load();
+        Scene scene = new Scene(parent);
         
         DirectorViewEmployeesController e = directorLoader.getController();
         e.setDirector(this.director);
         
-        parent = (Parent) directorLoader.load();
-        Scene scene = new Scene(parent);
-        
-
-        
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
-        directorStage.show();
+        directorStage.show();}catch(Exception e){System.out.println(e.toString()+"ASDASD");};
     }
 
     @FXML
@@ -121,7 +118,10 @@ public class DirectorEmployeeScheduleController implements Initializable {
     }
     
     public ObservableList<Schedule> getSchedule(){
-        ObservableList<Schedule> scheduleList = (ObservableList<Schedule>) tempEmployee.getScheduleRoster();
+        System.out.println("Sched1: "+tempEmployee.getScheduleRoster());
+        ArrayList<Schedule> temp = tempEmployee.getScheduleRoster();
+        if (temp==null){return null;}
+        ObservableList<Schedule> scheduleList = FXCollections.observableArrayList(temp);
         System.out.println("Sched: "+scheduleList);
         return scheduleList;
     }

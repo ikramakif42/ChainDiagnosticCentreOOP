@@ -26,7 +26,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.*;
-import views.HR.HRDashboardController;
+import views.HROfficer.HRDashboardController;
 import views.accountsofficer.AccountsOfficerDashboardController;
 import views.director.DirectorDashboardController;
 import views.doctor.DoctorDashboardController;

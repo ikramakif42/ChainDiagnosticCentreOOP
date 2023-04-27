@@ -27,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.*;
 import views.HROfficer.HRDashboardController;
+import views.LabTechnician.LabTechnicianDashboardController;
 import views.accountsofficer.AccountsOfficerDashboardController;
 import views.director.DirectorDashboardController;
 import views.doctor.DoctorDashboardController;
@@ -292,17 +293,17 @@ public class LoginController implements Initializable {
                 break;
             case 10: 
                 errorLabel.setText("Login Successful - Lab Technician");                   //Lab Technician authenticated
-//                Parent labTechnicianDashboard = null;
-//                FXMLLoader labLoader = new FXMLLoader(getClass().getResource("LabTechnician/LabTechnicianDashboard.fxml"));
-//                labTechnicianDashboard = (Parent) labLoader.load();
-//                Scene labScene = new Scene(labTechnicianDashboard);
-//                
-//                LabTechnicianDashboardController l = labLoader.getController();
-//                l.setLabTechnician((LabTechnician) User.getInstance(id, "LabTechnician"));
-//                
-//                Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-//                labStage.setScene(labScene);
-//                labStage.show();
+                Parent labTechnicianDashboard = null;
+                FXMLLoader labLoader = new FXMLLoader(getClass().getResource("LabTechnician/LabTechnicianDashboard.fxml"));
+                labTechnicianDashboard = (Parent) labLoader.load();
+                Scene labScene = new Scene(labTechnicianDashboard);
+                
+                LabTechnicianDashboardController l = labLoader.getController();
+                l.setLabTechnician((LabTechnician) User.getInstance(id, "LabTechnician"));
+                
+                Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+                labStage.setScene(labScene);
+                labStage.show();
                 break;
         }
     }

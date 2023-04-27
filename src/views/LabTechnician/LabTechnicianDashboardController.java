@@ -41,12 +41,17 @@ import views.LabTechnician.RetrievePatientHistoryTestResultsController;
 public class LabTechnicianDashboardController implements Initializable {
     
     private LabTechnician LabTechnician;
-    @FXML
-    private Label LabTechnicainIDLabel;
-    @FXML
-    private Label LabTechnicainNameLabel;
-    private LabTechnician labtechnician;
 
+    public LabTechnician getLabTechnician() {
+        return LabTechnician;
+    }
+
+    public void setLabTechnician(LabTechnician LabTechnician) {
+        this.LabTechnician = LabTechnician;
+    }
+
+    
+    
 
     /**
      * Initializes the controller class.
@@ -56,12 +61,6 @@ public class LabTechnicianDashboardController implements Initializable {
         // TODO
     }
 
-    public LabTechnician getlabtechnician() {
-        return labtechnician;
-    }
-    public void setlabtechnician(LabTechnician labtechnician) {
-        this.labtechnician = labtechnician;
-    }
      
      
 
@@ -201,7 +200,6 @@ public class LabTechnicianDashboardController implements Initializable {
         
     }
     
-    @FXML
     private void logOut(ActionEvent event) {
         Parent login;
         login = null;
@@ -214,6 +212,10 @@ public class LabTechnicianDashboardController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene1);
         window.show();
+    }
+
+    @FXML
+    private void LogOutLabTechnician(ActionEvent event) {
     }
     
 

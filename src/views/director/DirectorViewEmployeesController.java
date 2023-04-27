@@ -117,7 +117,18 @@ public class DirectorViewEmployeesController implements Initializable {
     }
 
     @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent directorDashboard = null;
+        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("DirectorDashboard.fxml"));
+        directorDashboard = (Parent) directorLoader.load();
+        Scene directorScene = new Scene(directorDashboard);
+
+        DirectorDashboardController di = directorLoader.getController();
+        di.setDirector(this.director);
+
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        directorStage.setScene(directorScene);
+        directorStage.show();
     }
 
     @FXML

@@ -11,7 +11,7 @@
    <children>
       <Label layoutX="101.0" layoutY="55.0" text="Author:" />
       <Label layoutX="101.0" layoutY="19.0" text="Title:" />
-      <Button layoutX="25.0" layoutY="507.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="25.0" layoutY="507.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <Label layoutX="101.0" layoutY="92.0" text="Date:" />
       <TextArea fx:id="reportBody" layoutX="25.0" layoutY="165.0" prefHeight="327.0" prefWidth="447.0" />
       <TextField fx:id="reportTitle" layoutX="152.0" layoutY="14.0" />

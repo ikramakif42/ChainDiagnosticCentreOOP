@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.AppendableObjectOutputStream;
+import model.Policy;
 import model.Schedule;
 import users.Director;
 import views.LoginController;
@@ -51,7 +52,7 @@ public class DirectorDashboardController implements Initializable {
 //        ObjectOutputStream oos = null;
 //        LocalDate date1 = LocalDate.of(2001, 2, 1);
 //        try {
-//            f = new File("ScheduleObjects.bin");
+//            f = new File("PolicyObjects.bin");
 //            if(f.exists()){
 //                fos = new FileOutputStream(f,true);
 //                oos = new AppendableObjectOutputStream(fos);                
@@ -61,9 +62,10 @@ public class DirectorDashboardController implements Initializable {
 //                oos = new ObjectOutputStream(fos);               
 //            }
 //            
-//        Schedule test = new Schedule(date1, "9:30", "Do Something", 444);
-//        Schedule test2 = new Schedule(date1, "9:30", "Do Something", 666);
-//        Schedule test3 = new Schedule(date1, "9:30", "Do Something", 202);
+//        Policy test = new Policy(1, "Something");
+//        Policy test2 = new Policy(2, "Something else");
+//        Policy test3 = new Policy(3, "Something elser");
+//        
 //        oos.writeObject(test);
 //        oos.writeObject(test2);
 //        oos.writeObject(test3);
@@ -139,6 +141,7 @@ public class DirectorDashboardController implements Initializable {
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
         directorStage.show();
+        
     }
 
     @FXML

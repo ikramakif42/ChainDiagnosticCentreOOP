@@ -5,14 +5,20 @@
  */
 package views.director;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import users.Director;
 import users.Employee;
 
@@ -71,16 +77,38 @@ public class DirectorEditEmployeesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         nameField.setText(tempEmployee.getName());
+        emailField.setText(tempEmployee.getEmail());
+        phoneField.setText(tempEmployee.getContactNo());
+        addressField.setText(tempEmployee.getAddress());
+        genderLabel.setText(tempEmployee.getGender());
+        idLabel.setText(String.valueOf(tempEmployee.getID()));
+        dobLabel.setText(String.valueOf(tempEmployee.getDOB()));
+        
         
         
     }    
 
     @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("DirectorViewEmployees.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        
+        DirectorViewEmployeesController e = officerLoader.getController();
+        e.setDirector(this.director);        
+        Scene employeeListScene = new Scene(bills);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();
     }
 
     @FXML
     private void saveEdit(ActionEvent event) {
+        Employee.updatePersonalInfo(tempEmployee.getID(), nameField.getText(), emailField.getText(), phoneField.getText(), addressField.getText(), tempEmployee.getSalary());
+
     }
     
 }

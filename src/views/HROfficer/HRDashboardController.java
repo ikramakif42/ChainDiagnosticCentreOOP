@@ -64,6 +64,7 @@ public class HRDashboardController implements Initializable {
         Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         HRStage.setScene(HRScene);
         HRStage.show();
+        // comment
     }
 
     private void manageApplicationsOnClick(ActionEvent event) throws IOException {

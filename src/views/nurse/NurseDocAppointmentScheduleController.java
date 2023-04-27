@@ -38,7 +38,7 @@ import users.User;
 public class NurseDocAppointmentScheduleController implements Initializable {
 
     @FXML
-    private TableView<?> nurseDocAppointmentTable;
+    private TableView<Appointment> nurseDocAppointmentTable;
     private Nurse nurse;
     @FXML
     private TableColumn<Appointment,Integer> nurseDocAppSchDocIDTableView;
@@ -57,7 +57,7 @@ public class NurseDocAppointmentScheduleController implements Initializable {
         Callback<TableColumn.CellDataFeatures<Appointment, String>, ObservableValue<String>> nameCVF = feature -> {
             Appointment temp = feature.getValue();
             String name = ((Doctor)User.getInstance(temp.getDoctorID(),"Doctor")).getName();
-            return new SimpleStringProperty(name);
+            return new SimpleStringProperty(name);};
         
         
         nurseDocAppSchDocIDTableView.setCellValueFactory(new PropertyValueFactory<Appointment,Integer>("DoctorID"));
@@ -77,6 +77,8 @@ public class NurseDocAppointmentScheduleController implements Initializable {
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+        
+        nurseDocAppointmentTable.setItems(this.nurse.getDocApptList());
     }
     
     

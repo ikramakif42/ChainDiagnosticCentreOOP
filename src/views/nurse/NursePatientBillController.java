@@ -58,19 +58,21 @@ public class NursePatientBillController implements Initializable {
     @FXML
     private TableColumn<Bill, String> nursePatientBillDetailsTableView;
     @FXML
-    private TableColumn<Bill,Float> nursePatientBillAmountTableView;
+    private TableColumn<Bill, Float> nursePatientBillAmountTableView;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        nursePatientBillDateOfBillTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("CreatedDate"));
-        nursePatientDueDateOfBillTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("DueDate"));
-        nursePatientBillPaidStatusTableView.setCellValueFactory(new PropertyValueFactory<Bill,Boolean>("PaidStatus"));
-        nursePatientBillAmountTableView.setCellValueFactory(new PropertyValueFactory<Bill,Float>("Amount"));
-        nursePatientBillDetailsTableView.setCellValueFactory(new PropertyValueFactory<Bill,String>("Details"));
+        
+        nursePatientBillDateOfBillTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("createdDate"));
+        nursePatientDueDateOfBillTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("dueDate"));
+        nursePatientBillPaidStatusTableView.setCellValueFactory(new PropertyValueFactory<Bill,Boolean>("paidStatus"));
+        nursePatientBillAmountTableView.setCellValueFactory(new PropertyValueFactory<Bill,Float>("amount"));
+        nursePatientBillDetailsTableView.setCellValueFactory(new PropertyValueFactory<Bill,String>("details"));
         // TODO
+        nursePatientBillTableList.setItems(Bill.getAllBills());
     }    
 
     public Nurse getNurse() {
@@ -79,7 +81,7 @@ public class NursePatientBillController implements Initializable {
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
-        nursePatientBillAmountTableView.setItems(this.nurse.getPatientBills());
+       
     }
     
     @FXML

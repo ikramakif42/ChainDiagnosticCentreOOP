@@ -73,6 +73,7 @@ public class NursePatientBillController implements Initializable {
         nursePatientBillDetailsTableView.setCellValueFactory(new PropertyValueFactory<Bill,String>("details"));
         // TODO
         nursePatientBillTableList.setItems(Bill.getAllBills());
+        System.out.println(Bill.getAllBills());
     }    
 
     public Nurse getNurse() {

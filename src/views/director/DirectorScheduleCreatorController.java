@@ -102,16 +102,7 @@ public class DirectorScheduleCreatorController implements Initializable {
     private void saveTaskInSchedule(ActionEvent event) {
         LocalDate date1 = LocalDate.of(2023, 5, 10);
         Schedule newSch = new Schedule(date1, taskTime.getValue(), taskBodyField.getText(), tempEmployee.getID());        
-        ArrayList<Schedule> schList = tempEmployee.getScheduleRoster();
-        if (schList==null){
-            ArrayList<Schedule> addList = new ArrayList<>();
-            addList.add(newSch);
-            tempEmployee.setScheduleRoster(addList);
-        }
-        else {
-            schList.add(newSch);
-            tempEmployee.setScheduleRoster(schList);
-        }
+        tempEmployee.updateSchedule(newSch);
     }
     
 }

@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import main.AppendableObjectOutputStream;
+import model.EmployeeComplaint;
+import model.LeaveApplication;
+import model.LoanApplication;
+import model.Resignation;
 import model.Schedule;
 
 public abstract class Employee extends User implements Serializable{
@@ -308,6 +313,116 @@ public abstract class Employee extends User implements Serializable{
         }
         return false;
     }
+
+    public void submitLeaveApplication(LocalDate start, LocalDate end, String type, String details) {
+        LeaveApplication leave = new LeaveApplication(start, end, type, details, this.getID());
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("LeaveApplicationObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            oos.writeObject(leave);
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        System.out.println("Leave application written successfully!");
+    }
     
-    
+    public void submitLoanApplication(float amount, LocalDate date, String duration, String type, String details) {
+        LoanApplication loan = new LoanApplication(amount, date, duration, type, details, this.getID());
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("LoanApplicationObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            oos.writeObject(loan);
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        System.out.println("Loan application written successfully!");
+    } 
+
+    public void submitComplaint(String subject, String details) {
+        EmployeeComplaint complaint = new EmployeeComplaint(this.getID(), subject, details);
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("EmployeeComplaintObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            oos.writeObject(complaint);
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        System.out.println("Loan application written successfully!");
+    }
+
+    public void submitResignation(LocalDate date, String details) {
+        Resignation resignation = new Resignation(this.getID(), date, details);
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("ResignationObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            oos.writeObject(resignation);
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        System.out.println("Loan application written successfully!");
+    }
 }

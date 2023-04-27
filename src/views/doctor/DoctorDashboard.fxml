@@ -12,7 +12,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button layoutX="56.0" layoutY="218.0" mnemonicParsing="false" onAction="#viewMySchedule" text="My Schedule" />
+      <Button layoutX="40.0" layoutY="218.0" mnemonicParsing="false" onAction="#viewMyAppts" text="My Appointments" />
       <Button layoutX="60.0" layoutY="270.0" mnemonicParsing="false" onAction="#viewMyPatients" text="My Patients" />
       <Button layoutX="51.0" layoutY="319.0" mnemonicParsing="false" onAction="#viewMyWorkplace" text="My Workplace" />
       <Button layoutX="168.0" layoutY="431.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
@@ -22,5 +22,6 @@
       <Label fx:id="doctorNameLabel" layoutX="212.0" layoutY="152.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
       <Button layoutX="275.0" layoutY="218.0" mnemonicParsing="false" onAction="#assignTasksOnClick" text="Assign Tasks" />
       <Button layoutX="261.0" layoutY="270.0" mnemonicParsing="false" onAction="#viewTeleQueryOnClick" text="View Telequeries" />
+      <Button layoutX="275.0" layoutY="319.0" mnemonicParsing="false" onAction="#viewMySchedule" text="My Schedule" />
    </children>
 </AnchorPane>

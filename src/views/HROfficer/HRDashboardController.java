@@ -101,7 +101,7 @@ public class HRDashboardController implements Initializable {
         
     }
 
-    private void viewComplaints(ActionEvent event) throws IOException {
+    private void viewComplaintsOnClick(ActionEvent event) throws IOException {
         
         Parent parent = null;
         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("ViewEmployeeComplaints.fxml"));
@@ -116,7 +116,7 @@ public class HRDashboardController implements Initializable {
         HRStage.show();
     }
 
-    private void handleResignations(ActionEvent event) throws IOException {
+    private void handleResignationsOnClick(ActionEvent event) throws IOException {
         
         Parent parent = null;
         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("HandleResignations.fxml"));
@@ -125,13 +125,13 @@ public class HRDashboardController implements Initializable {
         
         HandleResignationsController m = HRLoader.getController();
         m.setHR(this.HR);
-
         Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         HRStage.setScene(HRScene);
         HRStage.show();
+        
     }
 
-    private void addNewEmployee(ActionEvent event) throws IOException {
+    private void addNewEmployeeOnClick(ActionEvent event) throws IOException {
         
         Parent parent = null;
         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("AddNewEmployee.fxml"));
@@ -147,7 +147,7 @@ public class HRDashboardController implements Initializable {
         
     }
 
-    private void createReport(ActionEvent event) throws IOException {
+    private void createReportOnClick(ActionEvent event) throws IOException {
         
         Parent parent = null;
         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("CreateReportsOnEmployees.fxml"));
@@ -164,7 +164,7 @@ public class HRDashboardController implements Initializable {
     
     
     
-    private void UpdateCompensation(ActionEvent event) throws IOException {
+    private void UpdateCompensationOnClick(ActionEvent event) throws IOException {
         
         Parent parent = null;
         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("update employee compensation.fxml"));

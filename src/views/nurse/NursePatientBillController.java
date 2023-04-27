@@ -7,6 +7,7 @@ package views.nurse;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +19,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Bill;
+import model.Task;
 import users.Nurse;
 
 /**
@@ -31,7 +36,7 @@ import users.Nurse;
 public class NursePatientBillController implements Initializable {
 
     @FXML
-    private TableView<?> nursePatientBillTableList;
+    private TableView<Bill> nursePatientBillTableList;
     
     private Nurse nurse;
     @FXML
@@ -44,11 +49,27 @@ public class NursePatientBillController implements Initializable {
     private ToggleGroup filterByPaid;
     @FXML
     private RadioButton nurseFilterByDue;
+    @FXML
+    private TableColumn<Bill, LocalDate> nursePatientBillDateOfBillTableView;
+    @FXML
+    private TableColumn<Bill, LocalDate> nursePatientDueDateOfBillTableView;
+    @FXML
+    private TableColumn<Bill, Boolean> nursePatientBillPaidStatusTableView;
+    @FXML
+    private TableColumn<Bill, String> nursePatientBillDetailsTableView;
+    @FXML
+    private TableColumn<Bill,Float> nursePatientBillAmountTableView;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        nursePatientBillDateOfBillTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("CreatedDate"));
+        nursePatientDueDateOfBillTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("DueDate"));
+        nursePatientBillPaidStatusTableView.setCellValueFactory(new PropertyValueFactory<Bill,Boolean>("PaidStatus"));
+        nursePatientBillAmountTableView.setCellValueFactory(new PropertyValueFactory<Bill,Float>("Amount"));
+        nursePatientBillDetailsTableView.setCellValueFactory(new PropertyValueFactory<Bill,String>("Details"));
         // TODO
     }    
 
@@ -58,6 +79,7 @@ public class NursePatientBillController implements Initializable {
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+        nursePatientBillAmountTableView.setItems(this.nurse.getPatientBills());
     }
     
     @FXML

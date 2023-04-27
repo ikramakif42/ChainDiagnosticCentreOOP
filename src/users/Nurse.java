@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Appointment;
+import model.Bill;
 import model.Schedule;
 import model.Task;
 
@@ -134,5 +135,42 @@ public class Nurse extends Employee implements Serializable{
             } catch (IOException ex) { }
         }
         return apptList;
+    }
+    
+    public static ObservableList<Bill> getPatientBills(){
+        ObservableList<Bill> billList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "BillObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Bill tempBill = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempBill = (Bill) ois.readObject();
+                    System.out.println("Populate Employee (Doctor):");
+                    System.out.println(tempBill.toString());
+                    billList.add((Bill)tempBill);
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(billList);        
+        return billList;
     }
 }

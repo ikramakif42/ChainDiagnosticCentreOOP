@@ -18,14 +18,16 @@ public class Bill implements Serializable {
     private Float amount;
     private String details;
     private int patientID;
+    private int billedByID;
 
-    public Bill(LocalDate createdDate, LocalDate dueDate, Float amount, String details, int patientID) {
-        this.createdDate = createdDate;
+    public Bill(LocalDate dueDate, Float amount, String details, int patientID, int billedByID) {
+        this.createdDate = LocalDate.now();
         this.dueDate = dueDate;
         this.paidStatus = false;
         this.amount = amount;
         this.details = details;
         this.patientID = patientID;
+        this.billedByID = billedByID;
     }
 
     public LocalDate getCreatedDate() {
@@ -76,9 +78,17 @@ public class Bill implements Serializable {
         this.patientID = patientID;
     }
 
+    public int getBilledByID() {
+        return billedByID;
+    }
+
+    public void setBilledByID(int billedByID) {
+        this.billedByID = billedByID;
+    }
+
     @Override
     public String toString() {
-        return "Bill{" + "createdDate=" + createdDate + ", dueDate=" + dueDate + ", paidStatus=" + paidStatus + ", amount=" + amount + ", details=" + details + ", patientID=" + patientID + '}';
+        return "Bill: " + "createdDate=" + createdDate + ", dueDate=" + dueDate + ", paidStatus=" + paidStatus + ", amount=" + amount + ", details=" + details + ", patientID=" + patientID + ", billedByID=" + billedByID;
     }
     
     public static ObservableList<Bill> getAllBills(){
@@ -96,8 +106,7 @@ public class Bill implements Serializable {
                 System.out.println("Printing objects");
                 while(true){
                     tempBill = (Bill) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempBill.toString());
+                    System.out.println("Populated bill: "+tempBill.toString());
                     billList.add((Bill)tempBill);
                 }
             }

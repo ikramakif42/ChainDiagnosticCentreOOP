@@ -72,35 +72,11 @@ public class AccountsOfficerMakeBillController implements Initializable {
 
     @FXML
     private void saveBill(ActionEvent event) {
-        Alert a = new Alert(AlertType.NONE);
-        Bill newBill = new Bill(LocalDate.now(), dueDate.getValue(), Float.parseFloat(amountField.getText()), descriptionField.getText(), Integer.parseInt(patientIDField.getText()));
-        File f = null;
-        FileOutputStream fos = null;      
-        ObjectOutputStream oos = null;
-        LocalDate date1 = LocalDate.of(2023, 5, 10);
-        try {
-            f = new File("BillObjects.bin");
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
-            }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
-            }          
-            
-        oos.writeObject(newBill);
-        a.setAlertType(AlertType.INFORMATION);
-        a.show();
-                        
-        } catch (IOException ex) {
-                System.out.println(ex.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-                a.setAlertType(AlertType.WARNING);
-                a.show();
-        }
-        System.out.println("Hello World2! Initialised");      
-          
+        LocalDate due = dueDate.getValue(); 
+        float amount = Float.parseFloat(amountField.getText());
+        String details = descriptionField.getText();
+        int patientID = Integer.parseInt(patientIDField.getText());
+        this.officer.makeBill(due, amount, details, patientID);
     }
     
 }

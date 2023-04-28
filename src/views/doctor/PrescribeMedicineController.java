@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.doctor;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,38 +15,46 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Prescription;
 import users.Doctor;
+import users.Patient;
 
-/**
- * FXML Controller class
- *
- * @author Asus
- */
 public class PrescribeMedicineController implements Initializable {
 
     @FXML
-    private TableView<?> prescriptionTableView;
+    private TableView<Prescription> prescriptionTableView;
     @FXML
-    private TableColumn<?, ?> medicineTableColumn;
+    private TableColumn<Prescription, String> medicineTableColumn;
     @FXML
-    private TableColumn<?, ?> dosageTableColumn;
+    private TableColumn<Prescription, String> dosageTableColumn;
     @FXML
-    private TableColumn<?, ?> durationTableColumn;
+    private TableColumn<Prescription, String> durationTableColumn;
     @FXML
     private Label patientIDLabel;
     @FXML
     private Label patientNameLabel;
     @FXML
     private Label patientAgeLabel;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private TextField medNameTextField;
+    @FXML
+    private TextField dosageTextField;
+    @FXML
+    private TextField durationTextField;
+    
     private Doctor doc;
+    private Patient pat;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        medicineTableColumn.setCellValueFactory(new PropertyValueFactory<>("medName"));
+        dosageTableColumn.setCellValueFactory(new PropertyValueFactory<>("dosage"));
+        durationTableColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
     }    
 
     public Doctor getDoc() {
@@ -58,6 +63,32 @@ public class PrescribeMedicineController implements Initializable {
 
     public void setDoc(Doctor doc) {
         this.doc = doc;
+    }
+
+    public Patient getPat() {
+        return pat;
+    }
+
+    public void setPat(Patient pat) {
+        this.pat = pat;
+        patientIDLabel.setText(String.valueOf(pat.getID()));
+        patientNameLabel.setText(pat.getName());
+        patientAgeLabel.setText(String.valueOf(Period.between(pat.getDOB(), LocalDate.now()).getYears()));
+        prescriptionTableView.setItems(pat.getPrescriptions());
+    }
+
+    @FXML
+    private void addNewPrescriptionOnClick(ActionEvent event) {
+        String medName = medNameTextField.getText();
+        if (medName.isEmpty()){errorLabel.setText("Error, enter medicine name!");return;}
+        String dosage = dosageTextField.getText();
+        if (dosage.isEmpty()){errorLabel.setText("Error, enter medicine dosage!");return;}
+        String duration = durationTextField.getText();
+        if (duration.isEmpty()){errorLabel.setText("Error, enter medicine duration!");return;}
+        
+        this.doc.prescribeMed(medName, dosage, duration, this.pat.getID());
+        errorLabel.setText("Medicine prescribed successfully!");
+        prescriptionTableView.setItems(pat.getPrescriptions());
     }
     
     @FXML
@@ -73,10 +104,6 @@ public class PrescribeMedicineController implements Initializable {
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         doctorStage.setScene(doctorScene);
         doctorStage.show();
-    }
-
-    @FXML
-    private void addNewPrescriptionOnClick(ActionEvent event) {
     }
     
 }

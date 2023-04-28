@@ -28,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -65,6 +66,8 @@ public class DoctorMyPatientsController implements Initializable {
     @FXML
     private TextField IDSearchTextField;
     private Doctor doc;
+    @FXML
+    private Label errorLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -179,6 +182,9 @@ public class DoctorMyPatientsController implements Initializable {
 
     @FXML
     private void medicalRecordsOnClick(ActionEvent event) throws IOException {
+        Patient pat = patientTableView.getSelectionModel().getSelectedItem();
+        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        
         Parent parent = null;
         FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("ViewAddPatientRecords.fxml"));
         parent = (Parent) doctorLoader.load();
@@ -194,6 +200,9 @@ public class DoctorMyPatientsController implements Initializable {
 
     @FXML
     private void prescribeMedsOnClick(ActionEvent event) throws IOException {
+        Patient pat = patientTableView.getSelectionModel().getSelectedItem();
+        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        
         Parent parent = null;
         FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("PrescribeMedicine.fxml"));
         parent = (Parent) doctorLoader.load();
@@ -209,6 +218,9 @@ public class DoctorMyPatientsController implements Initializable {
 
     @FXML
     private void labResultsOnClick(ActionEvent event) throws IOException {
+        Patient pat = patientTableView.getSelectionModel().getSelectedItem();
+        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        
         Parent parent = null;
         FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("AddTrackLabTests.fxml"));
         parent = (Parent) doctorLoader.load();
@@ -224,6 +236,9 @@ public class DoctorMyPatientsController implements Initializable {
 
     @FXML
     private void billInfoOnClick(ActionEvent event) throws IOException {
+        Patient pat = patientTableView.getSelectionModel().getSelectedItem();
+        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        
         Parent parent = null;
         FXMLLoader billLoader = new FXMLLoader(getClass().getResource("ViewPatientBillingInfo.fxml"));
         parent = (Parent) billLoader.load();

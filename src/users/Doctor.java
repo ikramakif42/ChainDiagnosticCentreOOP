@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
+import model.Prescription;
 import model.Schedule;
 import model.Task;
 import model.TeleQuery;
@@ -36,8 +37,7 @@ public class Doctor extends Employee implements Serializable{
     }
     
     public void checkAppt(){}
-    public void cancelAppt(){}    
-    public void prescribeMeds(){}
+    public void cancelAppt(){}
     public void viewEditRecords(int PatientID){}
     public void viewPatientBillingInfo(int PatientID){}
     //    + trackLabTests(PatientID): void
@@ -236,7 +236,91 @@ public class Doctor extends Employee implements Serializable{
         return doctorList;
     }        
 
-    public void addSchedule(Schedule newSchedule) {
-        System.out.println(newSchedule.toString());
+    public boolean addSchedule(Schedule newSchedule) {
+        try {
+            File file = new File("DoctorObjects.bin");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Doctor> docList = new ArrayList<>();
+            try{
+                while(true){
+                    Doctor temp = (Doctor) ois.readObject();
+                    System.out.println(temp);
+                    docList.add(temp);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+            System.out.println(docList);
+
+            for (Doctor currentDoc : docList) {
+                if (currentDoc.getID()==this.ID) {
+                    ArrayList<Schedule> schList = currentDoc.getScheduleRoster();
+                    schList.add(newSchedule);
+                    currentDoc.setScheduleRoster(schList);
+                }
+            }
+
+            System.out.println(docList);
+            if(file.delete()){
+                System.out.println("Deleted Doctors File!");
+                File f = new File("DoctorObjects.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (Doctor currentDoc : docList) {
+                    oos.writeObject(currentDoc);
+                }
+                oos.close();
+                System.out.println("Fixed Patients File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
+    
+    public void prescribeMed(String medName, String dosage, String duration, int patientID) {
+        Prescription tempPres = new Prescription(medName, dosage, duration, this.getID(), patientID);
+        System.out.println("New Prescription is: "+tempPres.toString());
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("PrescriptionObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            oos.writeObject(tempPres);
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        System.out.println("Prescription written successfully!");
+    }
+
+    
 }

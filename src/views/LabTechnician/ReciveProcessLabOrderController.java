@@ -5,12 +5,19 @@
  */
 package views.LabTechnician;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import users.LabTechnician;
+import users.User;
 
 /**
  * FXML Controller class
@@ -21,15 +28,7 @@ public class ReciveProcessLabOrderController implements Initializable {
     
     
     private LabTechnician labTechnician;
-
-    public LabTechnician getLabTechnician() {
-        return labTechnician;
-    }
-
-    public void setLabTechnician(LabTechnician labTechnician) {
-        this.labTechnician = labTechnician;
-    }
-    
+    private LabTechnician LabTechnician;
     
     /**
      * Initializes the controller class.
@@ -38,13 +37,36 @@ public class ReciveProcessLabOrderController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public LabTechnician getLabTechnician() {
+        return labTechnician;
+    }
 
+    public void setLabTechnician(LabTechnician labTechnician) {
+        this.labTechnician = labTechnician;
+    }
+    
     @FXML
     private void ConfirmLabOrderOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void ReturnLabOrderButtonOnClick(ActionEvent event) {
+    private void ReturnLabOrderButtonOnClick(ActionEvent event) throws IOException {
+        Parent LabTechnicianDashboard = null;
+        FXMLLoader labLoader = new FXMLLoader(getClass().getResource("LabTechnicianDashboard.fxml"));
+        LabTechnicianDashboard = (Parent) labLoader.load();
+        Scene labScene = new Scene(LabTechnicianDashboard);
+
+        LabTechnicianDashboardController l = labLoader.getController();
+        l.setLabTechnician(this.LabTechnician);
+
+        Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        labStage.setScene(labScene);
+        labStage.show(); 
+    }
+
+    @FXML
+    private void laborderOnClick(ActionEvent event) {
     }
     
 }

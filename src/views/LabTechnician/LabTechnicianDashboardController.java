@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import users.LabTechnician;
 import users.User;
+import views.LabTechnician.LabTechnicianDashboardController;
 import views.LabTechnician.OrderSuppliesRequiredController;
 import views.LabTechnician.PatientBillingInformationController;
 import views.LabTechnician.RecordLabResultsReportsController;
@@ -31,6 +32,8 @@ import views.LabTechnician.RecordManageLabInventoryController;
 import views.LabTechnician.ReportTrackEquipmentIssuesController;
 import views.LabTechnician.RestockDrugsRequiredController;
 import views.LabTechnician.RetrievePatientHistoryTestResultsController;
+import views.LabTechnician.ReciveProcessLabOrderController;
+
 
 /**
  * FXML Controller class
@@ -198,7 +201,7 @@ public class LabTechnicianDashboardController implements Initializable {
         LabTechnicainStage.show();
         
     }
-    
+    @FXML
     private void logOut(ActionEvent event) {
         Parent login;
         login = null;
@@ -213,13 +216,9 @@ public class LabTechnicianDashboardController implements Initializable {
         window.show();
     }
 
-    @FXML
-    private void LogOutLabTechnician(ActionEvent event) {
-    }
-    
+   
 
    
-   
-    }
+}
     
 

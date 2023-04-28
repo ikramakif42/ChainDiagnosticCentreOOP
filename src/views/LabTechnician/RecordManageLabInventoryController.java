@@ -5,11 +5,17 @@
  */
 package views.LabTechnician;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import users.LabTechnician;
 
 /**
@@ -18,7 +24,7 @@ import users.LabTechnician;
  * @author arafath
  */
 public class RecordManageLabInventoryController implements Initializable {
-    private LabTechnician labtechnician;
+    private LabTechnician labTechnician;
 
     /**
      * Initializes the controller class.
@@ -27,23 +33,30 @@ public class RecordManageLabInventoryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     } 
-     public LabTechnician getlabtechnician() {
-        return labtechnician;
+     public LabTechnician getLabTechnician() {
+        return labTechnician;
     }
-    public void setlabtechnician(LabTechnician labtechnician) {
-        this.labtechnician = labtechnician;
+    public void setLabTechnician(LabTechnician labTechnician) {
+        this.labTechnician = labTechnician;
     }
 
     @FXML
-    private void ReturnLabInventoryOnClick(ActionEvent event) {
+    private void ReturnLabInventoryOnClick(ActionEvent event) throws IOException {
+        Parent LabTechnicianDashboard = null;
+        FXMLLoader labLoader = new FXMLLoader(getClass().getResource("LabTechnicianDashboard.fxml"));
+        LabTechnicianDashboard = (Parent) labLoader.load();
+        Scene labScene = new Scene(LabTechnicianDashboard);
+
+        LabTechnicianDashboardController l = labLoader.getController();
+        l.setLabTechnician(this.labTechnician);
+
+        Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        labStage.setScene(labScene);
+        labStage.show(); 
     }
 
     @FXML
     private void ConfirmLabInventoryOnClick(ActionEvent event) {
-    }
-
-    void setLabTechnician(LabTechnician LabTechnician) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

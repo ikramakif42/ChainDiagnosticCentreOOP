@@ -5,13 +5,19 @@
  */
 package views.HROfficer;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import users.HROfficer;
 
 /**
@@ -53,16 +59,25 @@ public class UpdateHospitalPoliciesProceduresController implements Initializable
     private void LoadUpdatePolicesButtonOnClick(ActionEvent event) {
     }
 
-    @FXML
-    private void LoadEditButttonOnClick(ActionEvent event) {
-    }
+    
 
     @FXML
     private void ConfirmButtonOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void ReturnButtonOnClick(ActionEvent event) {
+    private void ReturnButtonOnClick(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("HRDashboard.fxml"));
+        parent = (Parent) HRLoader.load();
+        Scene HRScene = new Scene(parent);
+        
+        HRDashboardController m = HRLoader.getController();
+        m.setHR(this.HR);
+
+        Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        HRStage.setScene(HRScene);
+        HRStage.show();
     }
     
 }

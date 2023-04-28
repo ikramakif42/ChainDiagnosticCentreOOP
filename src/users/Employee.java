@@ -313,7 +313,138 @@ public abstract class Employee extends User implements Serializable{
         }
         return false;
     }
+    
+    public boolean deleteSchedule(Schedule toDelete) {
+        String path = null;
+        ObservableList<Employee> DocList = Doctor.getAllDoctors();
+        ObservableList<Employee> AccList = AccountsOfficer.getAllAccounts();
+        ObservableList<Employee> HRList = HROfficer.getAllHROfficers();
+        ObservableList<Employee> LabList = LabTechnician.getAllLabTechnicians();
+        ObservableList<Employee> NurseList = Nurse.getAllNurses();
+        ObservableList<Employee> PhList = Pharmacist.getAllPharmacists();
+        boolean foundFlag=false;        
+        
+        for(Employee e : DocList){
+            if (foundFlag){break;}
+            if (e.getID() == toDelete.getAssignedToID()){
+                path = "DoctorObjects.bin";
+                System.out.println(DocList);
+                foundFlag = true;
+            }
+        }        
+        
+        for(Employee e : AccList){
+            if (foundFlag){break;}
+            if (e.getID() == toDelete.getAssignedToID()){
+                path = "AccountsOfficerObjects.bin";
+                System.out.println(AccList);
+                foundFlag = true;
+            }
+        }
+        
+        for(Employee e : HRList){
+            if (foundFlag){break;}
+            if (e.getID() == toDelete.getAssignedToID()){
+                path = "HROfficerObjects.bin";
+                System.out.println(HRList);
+                foundFlag = true;
+            }
+        }
+        
+        for(Employee e : LabList){
+            if (foundFlag){break;}
+            if (e.getID() == toDelete.getAssignedToID()){
+                path = "LabTechnicianObjects.bin";
+                System.out.println(LabList);
+                foundFlag = true;
+            }
+        }
+        
+        for(Employee e : NurseList){
+            if (foundFlag){break;}
+            if (e.getID() == toDelete.getAssignedToID()){
+                path = "NurseObjects.bin";
+                System.out.println(NurseList);
+                foundFlag = true;
+            }
+        }
+        
+        for(Employee e : PhList){
+            if (foundFlag){break;}
+            if (e.getID() == toDelete.getAssignedToID()){
+                path = "PharmacistObjects.bin";
+                System.out.println(PhList);
+                foundFlag = true;
+            }
+        }
+        
+        
+        try {
+            File file = new File(path);
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Employee> emp = new ArrayList<>();
+            
+            try{
+                while(true){
+                    Employee tempE = (Employee) ois.readObject();
+                    System.out.println(tempE);
+                    emp.add(tempE);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            
+            ois.close();
+            foundFlag = false;
+            System.out.println(emp);
 
+            for (Employee currentE : emp) {
+                if (currentE.getID() == toDelete.getAssignedToID()) {
+                    ArrayList<Schedule> schList = new ArrayList<>();
+                    for (Schedule tempSch : currentE.getScheduleRoster()){
+                        if (tempSch.getDay().equals(toDelete.getDay())){
+                            if (tempSch.getTime().equals(toDelete.getTime())){
+                                continue;
+                            }
+                        }
+                        schList.add(tempSch);
+                    }
+                    currentE.setScheduleRoster(schList);
+                }
+            }
+
+            System.out.println(emp);
+            if(file.delete()){
+                System.out.println("Deleted File!");
+                File f = new File(path);
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (Employee currentE : emp) {
+                    oos.writeObject(currentE);
+                }
+                oos.close();
+                System.out.println("Fixed File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public void submitLeaveApplication(LocalDate start, LocalDate end, String type, String details) {
         LeaveApplication leave = new LeaveApplication(start, end, type, details, this.getID());
         File f = null;

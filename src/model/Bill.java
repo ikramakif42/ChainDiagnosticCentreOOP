@@ -19,10 +19,10 @@ public class Bill implements Serializable {
     private String details;
     private int patientID;
 
-    public Bill(LocalDate createdDate, LocalDate dueDate, boolean paidStatus, Float amount, String details, int patientID) {
+    public Bill(LocalDate createdDate, LocalDate dueDate, Float amount, String details, int patientID) {
         this.createdDate = createdDate;
         this.dueDate = dueDate;
-        this.paidStatus = paidStatus;
+        this.paidStatus = false;
         this.amount = amount;
         this.details = details;
         this.patientID = patientID;

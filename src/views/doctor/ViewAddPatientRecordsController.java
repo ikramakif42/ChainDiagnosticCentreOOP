@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.doctor;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,25 +17,24 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Prescription;
 import users.Doctor;
 import users.Patient;
+import users.User;
 
-/**
- * FXML Controller class
- *
- * @author Asus
- */
 public class ViewAddPatientRecordsController implements Initializable {
 
     @FXML
-    private TableView<?> prescriptionTableView;
+    private TableView<Prescription> prescriptionTableView;
     @FXML
-    private TableColumn<?, ?> medicineTableColumn;
+    private TableColumn<Prescription, String> medicineTableColumn;
     @FXML
-    private TableColumn<?, ?> dosageTableColumn;
+    private TableColumn<Prescription, String> dosageTableColumn;
     @FXML
-    private TableColumn<?, ?> durationTableColumn;
+    private TableColumn<Prescription, String> durationTableColumn;
     @FXML
     private TextArea historyTextArea;
     @FXML
@@ -50,13 +47,12 @@ public class ViewAddPatientRecordsController implements Initializable {
     private Label patientAgeLabel;
     private Doctor doc;
     private Patient pat;
-
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        medicineTableColumn.setCellValueFactory(new PropertyValueFactory<>("medName"));
+        dosageTableColumn.setCellValueFactory(new PropertyValueFactory<>("dosage"));
+        durationTableColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
     }    
 
     public Doctor getDoc() {
@@ -73,6 +69,18 @@ public class ViewAddPatientRecordsController implements Initializable {
 
     public void setPat(Patient pat) {
         this.pat = pat;
+        System.out.println("Loadedpat: "+pat.toString());
+        patientIDLabel.setText(String.valueOf(pat.getID()));
+        patientNameLabel.setText(pat.getName());
+        patientAgeLabel.setText(String.valueOf(Period.between(pat.getDOB(), LocalDate.now()).getYears()));
+        prescriptionTableView.setItems(pat.getPrescriptions());
+        if (this.pat.getMedicalRecords().isEmpty()){historyTextArea.setText("No past records!");}
+        else{
+            ArrayList<String> recordList = this.pat.getMedicalRecords();
+            for (String rec : recordList){
+                historyTextArea.appendText(rec+"\n");
+            }
+        }
     }
     
     @FXML
@@ -92,6 +100,28 @@ public class ViewAddPatientRecordsController implements Initializable {
 
     @FXML
     private void addNewRecordsOnClick(ActionEvent event) {
+        System.out.println("PAT: "+this.pat.getMedicalRecords());
+        String newRecord = newRecordTextArea.getText();
+        if (newRecord.isEmpty() || newRecord.equals("New record added successfully!") || newRecord.equals("Error, enter new record!!")){
+            newRecordTextArea.setText("Error, enter new record!!");
+            return;
+        }
+        this.pat.updatePersonalInfo(newRecord);
+        newRecordTextArea.setText("New record added successfully!");
+        
+        historyTextArea.clear();
+        this.pat = (Patient)User.getInstance(this.pat.getID(), "Patient");
+        ArrayList<String> recordList = this.pat.getMedicalRecords();
+        for (String rec : recordList){
+            historyTextArea.appendText(rec+"\n");
+        }
+    }
+
+    @FXML
+    private void textAreaOnClick(MouseEvent event) {
+        String newRecord = newRecordTextArea.getText();
+        if (newRecord.equals("New record added successfully!") || newRecord.equals("Error, enter new record!!"))
+        {newRecordTextArea.clear();}
     }
     
 }

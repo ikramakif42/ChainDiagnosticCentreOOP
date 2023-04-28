@@ -2,6 +2,7 @@ package views.patient;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Prescription;
 import users.Patient;
 
 public class PatientMyProfileController implements Initializable {
@@ -32,25 +35,24 @@ public class PatientMyProfileController implements Initializable {
     @FXML
     private Label DOBLabel;
     @FXML
-    private TableView<?> prescriptionTableView;
+    private TableView<Prescription> prescriptionTableView;
     @FXML
-    private TableColumn<?, ?> medicineTableColumn;
+    private TableColumn<Prescription, String> medicineTableColumn;
     @FXML
-    private TableColumn<?, ?> dosageTableColumn;
+    private TableColumn<Prescription, String> dosageTableColumn;
     @FXML
-    private TableColumn<?, ?> durationTableColumn;
+    private TableColumn<Prescription, String> durationTableColumn;
     @FXML
     private TextArea medicalHistoryTextArea;
     @FXML
     private Label genderLabel;
     private Patient patient;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        medicineTableColumn.setCellValueFactory(new PropertyValueFactory<>("medName"));
+        dosageTableColumn.setCellValueFactory(new PropertyValueFactory<>("dosage"));
+        durationTableColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
     }
 
     public Patient getPatient() {
@@ -59,6 +61,7 @@ public class PatientMyProfileController implements Initializable {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+        
         IDLabel.setText(Integer.toString(patient.getID()));
         nameLabel.setText(patient.getName());
         emailLabel.setText(patient.getEmail());
@@ -66,6 +69,15 @@ public class PatientMyProfileController implements Initializable {
         contactNoLabel.setText(patient.getContactNo());
         DOBLabel.setText(patient.getDOB().toString());
         genderLabel.setText(patient.getGender());
+        
+        prescriptionTableView.setItems(this.patient.getPrescriptions());
+        if (this.patient.getMedicalRecords().isEmpty()){medicalHistoryTextArea.setText("No past records!");}
+        else{
+            ArrayList<String> recordList = this.patient.getMedicalRecords();
+            for (String rec : recordList){
+                medicalHistoryTextArea.appendText(rec+"\n");
+            }
+        }
     }
 
     @FXML

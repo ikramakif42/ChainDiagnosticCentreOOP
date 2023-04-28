@@ -93,16 +93,16 @@ public class DirectorViewEmployeesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("ID"));
-        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
-        employeeAddressTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("address"));
-        employeeEmailTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("email"));        
-        employeePhoneTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("contactNo"));        
-        employeDeptTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("department"));        
-        employeeDesigTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("designation"));        
-        employeeDOBTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("DOB"));        
-        employeeDOJTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("DOJ"));        
-        employeeGenderColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("gender"));
+        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        employeeAddressTableColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        employeeEmailTableColumn.setCellValueFactory(new PropertyValueFactory<>("email"));        
+        employeePhoneTableColumn.setCellValueFactory(new PropertyValueFactory<>("contactNo"));        
+        employeDeptTableColumn.setCellValueFactory(new PropertyValueFactory<>("department"));        
+        employeeDesigTableColumn.setCellValueFactory(new PropertyValueFactory<>("designation"));        
+        employeeDOBTableColumn.setCellValueFactory(new PropertyValueFactory<>("DOB"));        
+        employeeDOJTableColumn.setCellValueFactory(new PropertyValueFactory<>("DOJ"));        
+        employeeGenderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
                
         employeeTableView.setItems(getEmployees());
         

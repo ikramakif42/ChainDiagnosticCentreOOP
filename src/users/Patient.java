@@ -19,18 +19,29 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
 import model.Appointment;
+import model.Bill;
+import model.Prescription;
 import model.TeleQuery;
 
 public class Patient extends User implements Serializable{
     private static final long serialVersionUID = 13L;
+    private ArrayList<String> medicalRecords = new ArrayList<>();
     
     public Patient(String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
         super(name, ID, password, email, gender, contactNo, address, DOB);
     }
 
+    public ArrayList<String> getMedicalRecords() {
+        return medicalRecords;
+    }
+
+    public void setMedicalRecords(ArrayList<String> medicalRecords) {
+        this.medicalRecords = medicalRecords;
+    }
+
     @Override
     public String toString() {
-        return "Patient: name="+name+" ID="+ID+" pass="+password+" mail="+email+" gender="+gender+" contact="+contactNo+" addr="+address+" DOB="+DOB;
+        return "Patient: name="+name+" ID="+ID+" pass="+password+" mail="+email+" gender="+gender+" contact="+contactNo+" addr="+address+" DOB="+DOB+" medicalRecords="+medicalRecords;
     }
     
     public boolean updatePersonalInfo(String newName, String newEmail, String newAddr, String newContactNo){
@@ -38,12 +49,12 @@ public class Patient extends User implements Serializable{
             File file = new File("PatientObjects.bin");
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            ArrayList<Patient> appts = new ArrayList<>();
+            ArrayList<Patient> patientList = new ArrayList<>();
             try{
                 while(true){
                     Patient tempPat = (Patient) ois.readObject();
                     System.out.println(tempPat);
-                    appts.add(tempPat);
+                    patientList.add(tempPat);
                 }
             }
             catch (EOFException eof){
@@ -54,9 +65,9 @@ public class Patient extends User implements Serializable{
                 System.out.println("IOException | ClassNotFoundException in reading bin file");
             }
             ois.close();
-            System.out.println(appts);
+            System.out.println(patientList);
 
-            for (Patient currentPat : appts) {
+            for (Patient currentPat : patientList) {
                 if (currentPat.getID()==this.ID) {
                     currentPat.setName(newName);
                     currentPat.setEmail(newEmail);
@@ -65,13 +76,69 @@ public class Patient extends User implements Serializable{
                 }
             }
 
-            System.out.println(appts);
+            System.out.println(patientList);
             if(file.delete()){
                 System.out.println("Deleted Patients File!");
                 File f = new File("PatientObjects.bin");
                 FileOutputStream fos = new FileOutputStream(f);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
-                for (Patient currentPat : appts) {
+                for (Patient currentPat : patientList) {
+                    oos.writeObject(currentPat);
+                }
+                oos.close();
+                System.out.println("Fixed Patients File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public boolean updatePersonalInfo(String newRecord){
+        try {
+            File file = new File("PatientObjects.bin");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Patient> patientList = new ArrayList<>();
+            try{
+                while(true){
+                    Patient tempPat = (Patient) ois.readObject();
+                    System.out.println(tempPat);
+                    patientList.add(tempPat);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+            System.out.println(patientList);
+
+            for (Patient currentPat : patientList) {
+                if (currentPat.getID()==this.ID) {
+                    ArrayList<String> newList = currentPat.getMedicalRecords();
+                    newList.add(newRecord);
+                    currentPat.setMedicalRecords(newList);
+                }
+            }
+
+            System.out.println(patientList);
+            if(file.delete()){
+                System.out.println("Deleted Patients File!");
+                File f = new File("PatientObjects.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (Patient currentPat : patientList) {
                     oos.writeObject(currentPat);
                 }
                 oos.close();
@@ -181,61 +248,6 @@ public class Patient extends User implements Serializable{
         System.out.println("Appt written successfully!");
     }
     
-    public void cancelAppt(Appointment apptToCancel){
-        try {
-            File file = new File("AppointmentObjects.bin");
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            ArrayList<Appointment> appts = new ArrayList<>();
-            try{
-                while(true){
-                    Appointment tempAppt = (Appointment) ois.readObject();
-                    System.out.println(tempAppt);
-                    if (tempAppt.getPatientID()==this.getID()){
-                        if (tempAppt.getDoctorID()==apptToCancel.getDoctorID()){
-                            if (tempAppt.getDate().equals(apptToCancel.getDate())){
-                                if (tempAppt.getTime().equals(apptToCancel.getTime())){
-                                    continue;
-                                }
-                            }
-                        }
-                    }
-                    appts.add(tempAppt);
-                }
-            }
-            catch (EOFException eof){
-                System.out.println("End of file");
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            ois.close();
-
-            System.out.println(appts);
-            if(file.delete()){
-                System.out.println("Deleted Patients File!");
-                File f = new File("AppointmentObjects.bin");
-                FileOutputStream fos = new FileOutputStream(f);
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                for (Appointment tempAppt : appts) {
-                    oos.writeObject(tempAppt);
-                }
-                oos.close();
-                System.out.println("Fixed Patients File!");
-            }
-            else{
-                System.out.println("Could not delete file");
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex);
-            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
 //    + submitComplaint(): void
 //    + viewLabReports(): void
 //    + viewPayBills(): void
@@ -251,6 +263,7 @@ public class Patient extends User implements Serializable{
         System.out.println("Latest appt: "+this.getID()+" "+latestAppt);
         return latestAppt;
     }
+    
     public static ObservableList<Patient> getPatients(){
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         File f = null;
@@ -286,6 +299,82 @@ public class Patient extends User implements Serializable{
         }
         System.out.println(patientList);
         return patientList;
+    }
+
+    public ObservableList<Prescription> getPrescriptions() {
+        ObservableList<Prescription> prescriptionList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "PrescriptionObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Prescription temp = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    temp = (Prescription) ois.readObject();
+                    System.out.println("Populated prescription: "+temp.toString());
+                    if (temp.getPatientID()==this.getID()){
+                        prescriptionList.add(temp);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(prescriptionList);
+        return prescriptionList;
+    }
+
+    public ObservableList<Bill> getBillList() {
+        ObservableList<Bill> billList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "BillObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Bill temp = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    temp = (Bill) ois.readObject();
+                    System.out.println("Populated bill: "+temp.toString());
+                    if (temp.getPatientID()==this.getID()){
+                        billList.add(temp);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(billList);
+        return billList;
     }
 }
 

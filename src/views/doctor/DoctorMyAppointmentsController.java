@@ -92,8 +92,10 @@ public class DoctorMyAppointmentsController implements Initializable {
             @Override
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
-                if (date.isBefore(startDatePicker.getValue())) {
-                    setDisable(true);
+                if (startDatePicker.getValue()!=null){
+                    if (date.isBefore(startDatePicker.getValue())) {
+                        setDisable(true);
+                    }
                 }
             }
         });
@@ -110,12 +112,11 @@ public class DoctorMyAppointmentsController implements Initializable {
         patientTableView.setItems(apptList);
         
         nameSearchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            ObservableList<Appointment> newList = patientTableView.getItems();
             String name = newValue.trim().toLowerCase();
             if (name.isEmpty()) {
-                patientTableView.setItems(newList);
+                patientTableView.setItems(apptList);
             } else {
-                ObservableList<Appointment> filterList = newList.filtered(appt -> {
+                ObservableList<Appointment> filterList = apptList.filtered(appt -> {
                     return ((Patient)User.getInstance(appt.getPatientID(), "Patient")).getName().toLowerCase().contains(name);
                 });
                 patientTableView.setItems(filterList);
@@ -123,13 +124,12 @@ public class DoctorMyAppointmentsController implements Initializable {
         });
         
         IDSearchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            ObservableList<Appointment> newList = patientTableView.getItems();
             String id = newValue.trim();
             if (id.isEmpty()) {
-                patientTableView.setItems(newList);
+                patientTableView.setItems(apptList);
             } else {
                 try {
-                    ObservableList<Appointment> filterList = newList.filtered(appt -> {
+                    ObservableList<Appointment> filterList = apptList.filtered(appt -> {
                         return String.valueOf(appt.getPatientID()).contains(id);
                     });
                     patientTableView.setItems(filterList);
@@ -155,6 +155,9 @@ public class DoctorMyAppointmentsController implements Initializable {
     
     @FXML
     private void applyFiltersOnClick(ActionEvent event) {
+        nameSearchTextField.clear();
+        IDSearchTextField.clear();
+        
         ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
         ObservableList<Appointment> newApptList = FXCollections.observableArrayList();
         LocalDate startDate = startDatePicker.getValue();
@@ -179,6 +182,10 @@ public class DoctorMyAppointmentsController implements Initializable {
 
     @FXML
     private void confirmCancelOnClick(ActionEvent event) {
+        Appointment toCancel = patientTableView.getSelectionModel().getSelectedItem();
+        Appointment.cancelAppt(toCancel);
+        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
+        patientTableView.setItems(apptList);
     }
 
     @FXML

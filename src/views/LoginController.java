@@ -27,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.*;
 import views.HROfficer.HRDashboardController;
+import views.LabTechnician.LabTechnicianDashboardController;
 import views.accountsofficer.AccountsOfficerDashboardController;
 import views.director.DirectorDashboardController;
 import views.doctor.DoctorDashboardController;
@@ -50,7 +51,7 @@ public class LoginController implements Initializable {
 //        ObjectOutputStream oos = null;
 //        LocalDate date1 = LocalDate.of(2001, 2, 1);
 //        try {
-//            f = new File("LoginInfoObjects.bin");
+//            f = new File("PatientObjects.bin");
 //            if(f.exists()){
 //                fos = new FileOutputStream(f,true);
 //                oos = new AppendableObjectOutputStream(fos);                
@@ -292,17 +293,18 @@ public class LoginController implements Initializable {
                 break;
             case 10: 
                 errorLabel.setText("Login Successful - Lab Technician");                   //Lab Technician authenticated
-//                Parent labTechnicianDashboard = null;
-//                FXMLLoader labLoader = new FXMLLoader(getClass().getResource("???.fxml"));
-//                labTechnicianDashboard = (Parent) labLoader.load();
-//                Scene labScene = new Scene(labTechnicianDashboard);
-//                
-//                AccountsOfficerDashboardController l = labLoader.getController();
-//                l.setLabTechnician((LabTechnician) User.getInstance(id, "LabTechnician"));
-//                
-//                Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-//                labStage.setScene(labScene);
-//                labStage.show();
+              
+                Parent LabTechnicianDashboard = null;
+                FXMLLoader labLoader = new FXMLLoader(getClass().getResource("LabTechnician/LabTechnicianDashboard.fxml"));
+                LabTechnicianDashboard = (Parent) labLoader.load();
+                Scene labScene = new Scene(LabTechnicianDashboard);
+                
+                LabTechnicianDashboardController l = labLoader.getController();
+                l.setLabTechnician((LabTechnician) User.getInstance(id, "LabTechnician"));
+                
+                Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+                labStage.setScene(labScene);
+                labStage.show();        
                 break;
         }
     }

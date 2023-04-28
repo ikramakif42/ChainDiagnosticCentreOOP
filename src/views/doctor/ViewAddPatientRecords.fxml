@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.doctor.ViewAddPatientRecordsController">
    <children>
       <TableView fx:id="prescriptionTableView" layoutX="583.0" layoutY="258.0" prefHeight="385.0" prefWidth="320.0">
@@ -20,14 +19,14 @@
       <TextArea fx:id="historyTextArea" layoutX="43.0" layoutY="259.0" prefHeight="385.0" prefWidth="507.0" />
       <Button layoutX="43.0" layoutY="661.0" mnemonicParsing="false" onAction="#returnToMyPatientsOnClick" text="Return to My Patients" />
       <Label layoutX="43.0" layoutY="225.0" text="Past Medical History:" />
-      <Label layoutX="43.0" layoutY="47.0" text="Patient ID:" />
-      <Label layoutX="43.0" layoutY="78.0" text="Patient Name:" />
-      <Label layoutX="43.0" layoutY="110.0" text="Patient Age:" />
+      <Label layoutX="43.0" layoutY="57.0" text="Patient ID:" />
+      <Label layoutX="43.0" layoutY="88.0" text="Patient Name:" />
+      <Label layoutX="43.0" layoutY="120.0" text="Patient Age:" />
       <Label layoutX="392.0" layoutY="48.0" text="Enter new records:" />
-      <TextArea fx:id="newRecordTextArea" layoutX="390.0" layoutY="89.0" prefHeight="108.0" prefWidth="517.0" />
-      <Label fx:id="patientIDLabel" layoutX="166.0" layoutY="47.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
-      <Label fx:id="patientNameLabel" layoutX="166.0" layoutY="78.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
-      <Label fx:id="patientAgeLabel" layoutX="166.0" layoutY="110.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <TextArea fx:id="newRecordTextArea" layoutX="390.0" layoutY="89.0" onMouseClicked="#textAreaOnClick" prefHeight="108.0" prefWidth="517.0" />
+      <Label fx:id="patientIDLabel" layoutX="166.0" layoutY="57.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Label fx:id="patientNameLabel" layoutX="166.0" layoutY="88.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Label fx:id="patientAgeLabel" layoutX="166.0" layoutY="120.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
       <Button layoutX="705.0" layoutY="41.0" mnemonicParsing="false" onAction="#addNewRecordsOnClick" text="Save New Entry to Records" />
       <Label layoutX="583.0" layoutY="225.0" text="Prescription Information:" />
    </children>

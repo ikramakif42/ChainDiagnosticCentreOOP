@@ -41,7 +41,7 @@ public class ConfirmCancelApptController implements Initializable {
     
     @FXML
     private void cancelApptOnClick(ActionEvent event) throws IOException {
-        this.patient.cancelAppt(this.appt);
+        Appointment.cancelAppt(this.appt);
         back(event);
     }
 

@@ -2,12 +2,16 @@ package users;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import main.AppendableObjectOutputStream;
+import model.Bill;
 import model.Schedule;
 
 public class AccountsOfficer extends Employee implements Serializable {
@@ -70,6 +74,30 @@ public class AccountsOfficer extends Employee implements Serializable {
         System.out.println(accountsOfficerList);        
         return accountsOfficerList;
     }    
+
+    public void makeBill(LocalDate dueDate, float amount, String details, int patientID) {
+        Bill toAdd = new Bill(dueDate, amount, details, patientID, this.getID());
+        File f = null;
+        FileOutputStream fos = null;      
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("BillObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+        oos.writeObject(toAdd);
+                        
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+            System.out.println("IOException | ClassNotFoundException in reading bin file");
+        }
+        System.out.println("Bill added successfully!");
+    }
 
     
 }

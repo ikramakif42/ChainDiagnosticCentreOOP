@@ -122,7 +122,7 @@ public class PatientMakeApptController implements Initializable {
         this.patient.writeAppt(doc.getID(), apptDate, apptTime);
         
         Schedule newSchedule = new Schedule(apptDate, apptTime, "Patient Appointment", doc.getID());
-        doc.addSchedule(newSchedule);
+        this.doc.addSchedule(newSchedule);
         
         errorLabel.setText("Appt made successfully!");
         doc = null;

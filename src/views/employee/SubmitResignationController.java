@@ -51,6 +51,7 @@ public class SubmitResignationController implements Initializable {
 
     @FXML
     private void submitResignationOnClick(ActionEvent event) {
+        if (this.employee.isResigned()){errorLabel.setText("Error, already submitted!");return;}
         LocalDate date = resignationDatePicker.getValue();
         if (date==null){errorLabel.setText("Error, select date!");return;}
         String details = resignationTextArea.getText();

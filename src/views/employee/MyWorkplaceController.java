@@ -85,7 +85,7 @@ public class MyWorkplaceController implements Initializable {
         resign = (Parent) resignLoader.load();
         Scene resignScene = new Scene(resign);
 
-        SubmitComplaintController rs = resignLoader.getController();
+        SubmitResignationController rs = resignLoader.getController();
         rs.setEmployee(this.employee);
 
         Stage resignStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 

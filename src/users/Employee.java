@@ -554,6 +554,46 @@ public abstract class Employee extends User implements Serializable{
                 System.out.println(ex.toString());
             }
         }
-        System.out.println("Loan application written successfully!");
+        System.out.println("Resignation written successfully!");
+    }
+
+    public boolean isResigned() {
+        File file = null;
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try{
+            file = new File("ResignationObjects.bin");
+            fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+            try{
+                while(true){
+                    Resignation temp = (Resignation) ois.readObject();
+                    if (temp.getApplicantID()==this.getID()){
+                        ois.close();
+                        return true;
+                    }
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+        }
+        catch (FileNotFoundException ex){
+            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fis.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
     }
 }

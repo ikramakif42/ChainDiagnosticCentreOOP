@@ -89,7 +89,7 @@ public class Policy implements Serializable {
         return policyList;
     }            
     
-public static boolean updatePolicy(int curNum, String newContent){      
+    public static boolean updatePolicy(int curNum, String newContent){      
         
         try {
             String path = "PolicyObjects.bin";

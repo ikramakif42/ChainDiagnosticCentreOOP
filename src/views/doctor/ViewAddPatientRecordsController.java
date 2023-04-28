@@ -18,10 +18,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Prescription;
 import users.Doctor;
 import users.Patient;
+import users.User;
 
 public class ViewAddPatientRecordsController implements Initializable {
 
@@ -51,13 +53,6 @@ public class ViewAddPatientRecordsController implements Initializable {
         medicineTableColumn.setCellValueFactory(new PropertyValueFactory<>("medName"));
         dosageTableColumn.setCellValueFactory(new PropertyValueFactory<>("dosage"));
         durationTableColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
-        ArrayList<String> recordList = this.pat.getMedicalRecords();
-        if (recordList==null){historyTextArea.setText("No past records!");}
-        else{
-            for (String rec : recordList){
-                historyTextArea.appendText(rec);
-            }
-        }
     }    
 
     public Doctor getDoc() {
@@ -74,10 +69,18 @@ public class ViewAddPatientRecordsController implements Initializable {
 
     public void setPat(Patient pat) {
         this.pat = pat;
+        System.out.println("Loadedpat: "+pat.toString());
         patientIDLabel.setText(String.valueOf(pat.getID()));
         patientNameLabel.setText(pat.getName());
         patientAgeLabel.setText(String.valueOf(Period.between(pat.getDOB(), LocalDate.now()).getYears()));
         prescriptionTableView.setItems(pat.getPrescriptions());
+        if (this.pat.getMedicalRecords().isEmpty()){historyTextArea.setText("No past records!");}
+        else{
+            ArrayList<String> recordList = this.pat.getMedicalRecords();
+            for (String rec : recordList){
+                historyTextArea.appendText(rec+"\n");
+            }
+        }
     }
     
     @FXML
@@ -97,24 +100,28 @@ public class ViewAddPatientRecordsController implements Initializable {
 
     @FXML
     private void addNewRecordsOnClick(ActionEvent event) {
+        System.out.println("PAT: "+this.pat.getMedicalRecords());
         String newRecord = newRecordTextArea.getText();
-        if (newRecord.isEmpty()){newRecordTextArea.setText("Error, enter new record!!");return;}
-        else {newRecord = newRecord + "/n";}
-        ArrayList<String> newList = null;
-        if (this.pat.getMedicalRecords() == null) {
-            newList = new ArrayList<>();
-            newList.add(newRecord);
+        if (newRecord.isEmpty() || newRecord.equals("New record added successfully!") || newRecord.equals("Error, enter new record!!")){
+            newRecordTextArea.setText("Error, enter new record!!");
+            return;
         }
-        else {
-            newList = this.pat.getMedicalRecords();
-        }
-        this.pat.setMedicalRecords(newList);
+        this.pat.updatePersonalInfo(newRecord);
         newRecordTextArea.setText("New record added successfully!");
         
+        historyTextArea.clear();
+        this.pat = (Patient)User.getInstance(this.pat.getID(), "Patient");
         ArrayList<String> recordList = this.pat.getMedicalRecords();
         for (String rec : recordList){
-            historyTextArea.appendText(rec);
+            historyTextArea.appendText(rec+"\n");
         }
+    }
+
+    @FXML
+    private void textAreaOnClick(MouseEvent event) {
+        String newRecord = newRecordTextArea.getText();
+        if (newRecord.equals("New record added successfully!") || newRecord.equals("Error, enter new record!!"))
+        {newRecordTextArea.clear();}
     }
     
 }

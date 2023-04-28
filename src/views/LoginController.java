@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
 //        ObjectOutputStream oos = null;
 //        LocalDate date1 = LocalDate.of(2001, 2, 1);
 //        try {
-//            f = new File("LoginInfoObjects.bin");
+//            f = new File("PatientObjects.bin");
 //            if(f.exists()){
 //                fos = new FileOutputStream(f,true);
 //                oos = new AppendableObjectOutputStream(fos);                

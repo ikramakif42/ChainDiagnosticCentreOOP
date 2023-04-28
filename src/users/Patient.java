@@ -41,7 +41,7 @@ public class Patient extends User implements Serializable{
 
     @Override
     public String toString() {
-        return "Patient: name="+name+" ID="+ID+" pass="+password+" mail="+email+" gender="+gender+" contact="+contactNo+" addr="+address+" DOB="+DOB;
+        return "Patient: name="+name+" ID="+ID+" pass="+password+" mail="+email+" gender="+gender+" contact="+contactNo+" addr="+address+" DOB="+DOB+" medicalRecords="+medicalRecords;
     }
     
     public boolean updatePersonalInfo(String newName, String newEmail, String newAddr, String newContactNo){
@@ -73,6 +73,62 @@ public class Patient extends User implements Serializable{
                     currentPat.setEmail(newEmail);
                     currentPat.setAddress(newAddr);
                     currentPat.setContactNo(newContactNo);
+                }
+            }
+
+            System.out.println(patientList);
+            if(file.delete()){
+                System.out.println("Deleted Patients File!");
+                File f = new File("PatientObjects.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (Patient currentPat : patientList) {
+                    oos.writeObject(currentPat);
+                }
+                oos.close();
+                System.out.println("Fixed Patients File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public boolean updatePersonalInfo(String newRecord){
+        try {
+            File file = new File("PatientObjects.bin");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Patient> patientList = new ArrayList<>();
+            try{
+                while(true){
+                    Patient tempPat = (Patient) ois.readObject();
+                    System.out.println(tempPat);
+                    patientList.add(tempPat);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+            System.out.println(patientList);
+
+            for (Patient currentPat : patientList) {
+                if (currentPat.getID()==this.ID) {
+                    ArrayList<String> newList = currentPat.getMedicalRecords();
+                    newList.add(newRecord);
+                    currentPat.setMedicalRecords(newList);
                 }
             }
 

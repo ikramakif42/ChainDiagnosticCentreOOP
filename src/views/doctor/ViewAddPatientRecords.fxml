@@ -23,7 +23,7 @@
       <Label layoutX="43.0" layoutY="88.0" text="Patient Name:" />
       <Label layoutX="43.0" layoutY="120.0" text="Patient Age:" />
       <Label layoutX="392.0" layoutY="48.0" text="Enter new records:" />
-      <TextArea fx:id="newRecordTextArea" layoutX="390.0" layoutY="89.0" prefHeight="108.0" prefWidth="517.0" />
+      <TextArea fx:id="newRecordTextArea" layoutX="390.0" layoutY="89.0" onMouseClicked="#textAreaOnClick" prefHeight="108.0" prefWidth="517.0" />
       <Label fx:id="patientIDLabel" layoutX="166.0" layoutY="57.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
       <Label fx:id="patientNameLabel" layoutX="166.0" layoutY="88.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
       <Label fx:id="patientAgeLabel" layoutX="166.0" layoutY="120.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />

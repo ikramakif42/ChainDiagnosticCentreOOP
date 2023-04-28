@@ -190,8 +190,9 @@ public class DoctorMyPatientsController implements Initializable {
         parent = (Parent) doctorLoader.load();
         Scene doctorScene = new Scene(parent);
 
-        ViewAddPatientRecordsController d = doctorLoader.getController();
-        d.setDoc(this.doc);
+        ViewAddPatientRecordsController r = doctorLoader.getController();
+        r.setDoc(this.doc);
+        r.setPat(pat);
 
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         doctorStage.setScene(doctorScene);
@@ -208,8 +209,9 @@ public class DoctorMyPatientsController implements Initializable {
         parent = (Parent) doctorLoader.load();
         Scene doctorScene = new Scene(parent);
 
-        PrescribeMedicineController d = doctorLoader.getController();
-        d.setDoc(this.doc);
+        PrescribeMedicineController m = doctorLoader.getController();
+        m.setDoc(this.doc);
+        m.setPat(pat);
 
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         doctorStage.setScene(doctorScene);
@@ -226,8 +228,9 @@ public class DoctorMyPatientsController implements Initializable {
         parent = (Parent) doctorLoader.load();
         Scene doctorScene = new Scene(parent);
 
-        AddTrackLabTestsController d = doctorLoader.getController();
-        d.setDoc(this.doc);
+        AddTrackLabTestsController l = doctorLoader.getController();
+        l.setDoc(this.doc);
+//        l.setPat(pat);
 
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         doctorStage.setScene(doctorScene);
@@ -246,6 +249,7 @@ public class DoctorMyPatientsController implements Initializable {
 
         ViewPatientBillingInfoController b = billLoader.getController();
         b.setDoc(this.doc);
+        b.setPat(pat);
 
         Stage billStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         billStage.setScene(billScene);

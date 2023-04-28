@@ -10,17 +10,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistBillingInformationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistBillingInformationController">
    <children>
       <TableView fx:id="pharmaBillStatusTableList" layoutX="30.0" layoutY="162.0" prefHeight="293.0" prefWidth="660.0" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="162.0">
         <columns>
-          <TableColumn prefWidth="149.60000228881836" text="Date Of Billing" />
-          <TableColumn prefWidth="184.80006408691406" text="Details" />
-            <TableColumn minWidth="0.0" prefWidth="153.5999755859375" text="Amount" />
-            <TableColumn prefWidth="177.5999755859375" text="Status" />
+          <TableColumn fx:id="pharmacistPatientBillDateofBillTableView" prefWidth="149.60000228881836" text="Date Of Billing" />
+            <TableColumn fx:id="pharmacistPatientBillDueDateTableView" prefWidth="179.0" text="Due Date" />
+            <TableColumn fx:id="pharmacistPatientBillStatusTableView" prefWidth="177.5999755859375" text="Status" />
+            <TableColumn fx:id="pharmacistPatientBillAmountTableView" minWidth="0.0" prefWidth="153.5999755859375" text="Amount" />
+          <TableColumn fx:id="pharmacistPatientBillDetailsTableView" prefWidth="184.80006408691406" text="Details" />
         </columns>
       </TableView>
-      <Label layoutX="163.0" layoutY="14.0" prefHeight="27.0" prefWidth="314.0" text="                         Billing Information" textAlignment="CENTER" wrapText="true">
+      <Label layoutX="274.0" layoutY="14.0" prefHeight="27.0" prefWidth="314.0" text="                         Billing Information" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>

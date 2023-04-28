@@ -13,36 +13,45 @@ import users.User;
 public class Bill implements Serializable {
     private static final long serialVersionUID = 13L;
     
-    private LocalDate date;
-    private LocalDate due;
+    private LocalDate createdDate, dueDate;
+    private boolean paidStatus;
     private Float amount;
     private String details;
     private int patientID;
 
-    public Bill(LocalDate due, Float amount, String details, int patientID) {
-        this.date = LocalDate.now();
-        this.due = due;
+    public Bill(LocalDate createdDate, LocalDate dueDate, Float amount, String details, int patientID) {
+        this.createdDate = createdDate;
+        this.dueDate = dueDate;
+        this.paidStatus = false;
         this.amount = amount;
         this.details = details;
         this.patientID = patientID;
     }
 
-    public LocalDate getDue() {
-        return due;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
-    public void setDue(LocalDate due) {
-        this.due = due;
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public int getPatientID() {
-        return patientID;
+    public LocalDate getDueDate() {
+        return dueDate;
     }
 
-    public void setPatientID(int patientID) {
-        this.patientID = patientID;
-    }    
-    
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public boolean isPaidStatus() {
+        return paidStatus;
+    }
+
+    public void setPaidStatus(boolean paidStatus) {
+        this.paidStatus = paidStatus;
+    }
+
     public Float getAmount() {
         return amount;
     }
@@ -59,16 +68,18 @@ public class Bill implements Serializable {
         this.details = details;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public int getPatientID() {
+        return patientID;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Bill{" + "createdDate=" + createdDate + ", dueDate=" + dueDate + ", paidStatus=" + paidStatus + ", amount=" + amount + ", details=" + details + ", patientID=" + patientID + '}';
+    }
     
     public static ObservableList<Bill> getAllBills(){
         ObservableList<Bill> billList = FXCollections.observableArrayList();
@@ -105,9 +116,5 @@ public class Bill implements Serializable {
         }
         System.out.println(billList);        
         return billList;
-    }        
-
-    public void addSchedule(Schedule newSchedule) {
-        System.out.println(newSchedule.toString());
-    }    
+    }
 }

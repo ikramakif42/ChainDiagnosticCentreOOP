@@ -15,7 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import users.Doctor;
+import users.Employee;
 import users.User;
+import views.employee.MyWorkplaceController;
 
 public class DoctorDashboardController implements Initializable {
 
@@ -40,6 +42,13 @@ public class DoctorDashboardController implements Initializable {
         doctorNameLabel.setText(this.doc.name);
     }
     
+    public void setDoc(Employee doc) {
+        this.doc = (Doctor) doc;
+        System.out.println("What's up doc");
+        doctorIDLabel.setText(String.valueOf(this.doc.ID));
+        doctorNameLabel.setText(this.doc.name);
+    }
+    
     @FXML
     private void viewMyPatients(ActionEvent event) throws IOException {
         Parent doctorMyPatients = null;
@@ -56,7 +65,18 @@ public class DoctorDashboardController implements Initializable {
     }
 
     @FXML
-    private void viewMyWorkplace(ActionEvent event) {
+    private void viewMyWorkplace(ActionEvent event) throws IOException {
+        Parent empDashboard = null;
+        FXMLLoader empLoader = new FXMLLoader(getClass().getResource("/views/employee/MyWorkplace.fxml"));
+        empDashboard = (Parent) empLoader.load();
+        Scene empScene = new Scene(empDashboard);
+
+        MyWorkplaceController emp = empLoader.getController();
+        emp.setEmployee(this.doc);
+
+        Stage empStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        empStage.setScene(empScene);
+        empStage.show();
     }
 
     @FXML
@@ -103,18 +123,6 @@ public class DoctorDashboardController implements Initializable {
         Stage queryStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         queryStage.setScene(queryScene);
         queryStage.show();
-        
-//        Parent root = null;
-//        FXMLLoader teleQueryLoader = new FXMLLoader(getClass().getResource("ViewTelequeryList.fxml"));
-//        root = (Parent) teleQueryLoader.load();
-//        Scene teleQueryScene = new Scene(root);
-//        
-//        ViewTelequeryListController t = teleQueryLoader.getController();
-//        t.setDoc(this.doc);
-//        
-//        Stage teleQueryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        teleQueryStage.setScene(teleQueryScene);
-//        teleQueryStage.show();
     }
     
     @FXML

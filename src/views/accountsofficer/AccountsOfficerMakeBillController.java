@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.accountsofficer;
 
 import java.io.File;
@@ -46,6 +41,9 @@ public class AccountsOfficerMakeBillController implements Initializable {
     @FXML
     private TextField patientIDField;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {}    
+    
     public AccountsOfficer getOfficer() {
         return officer;
     }
@@ -54,16 +52,6 @@ public class AccountsOfficerMakeBillController implements Initializable {
         this.officer = officer;
     }
     
-    
-
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) throws IOException {
         Parent billsBack = null;
@@ -85,8 +73,7 @@ public class AccountsOfficerMakeBillController implements Initializable {
     @FXML
     private void saveBill(ActionEvent event) {
         Alert a = new Alert(AlertType.NONE);
-        Bill newBill = new Bill(dueDate.getValue(), Float.parseFloat(amountField.getText()), descriptionField.getText(), Integer.parseInt(patientIDField.getText()));
-        
+        Bill newBill = new Bill(LocalDate.now(), dueDate.getValue(), Float.parseFloat(amountField.getText()), descriptionField.getText(), Integer.parseInt(patientIDField.getText()));
         File f = null;
         FileOutputStream fos = null;      
         ObjectOutputStream oos = null;
@@ -113,10 +100,7 @@ public class AccountsOfficerMakeBillController implements Initializable {
                 a.show();
         }
         System.out.println("Hello World2! Initialised");      
-        
-        
-        
-       
+          
     }
     
 }

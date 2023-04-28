@@ -5,8 +5,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="222.0" prefWidth="313.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorReportSelectionController">
    <children>
-      <Button layoutX="108.0" layoutY="71.0" mnemonicParsing="false" text="Branch Reports" />
-      <Button layoutX="95.0" layoutY="111.0" mnemonicParsing="false" text="HR/Finance Reports" />
+      <Button layoutX="108.0" layoutY="71.0" mnemonicParsing="false" onAction="#toBranchReports" text="Branch Reports" />
+      <Button layoutX="95.0" layoutY="111.0" mnemonicParsing="false" onAction="#toHRFinanceReports" text="HR/Finance Reports" />
       <Button layoutX="93.0" layoutY="182.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
    </children>
 </AnchorPane>

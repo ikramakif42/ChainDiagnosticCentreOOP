@@ -7,16 +7,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorBranchReportsController">
    <children>
-      <TableView fx:id="branchReportTableView" layoutX="96.0" layoutY="38.0" prefHeight="550.0" prefWidth="578.0">
+      <TableView fx:id="branchReportTableView" layoutX="43.0" layoutY="38.0" onMouseClicked="#clickedReport" prefHeight="550.0" prefWidth="694.0">
          <columns>
-            <TableColumn fx:id="branchReportTitle" minWidth="0.0" prefWidth="151.20004272460938" text="Title" />
-            <TableColumn fx:id="branchReportAuthor" prefWidth="211.199951171875" text="Author" />
-            <TableColumn fx:id="branchReportDate" prefWidth="214.39999999999998" text="Date" />
+            <TableColumn fx:id="branchReportTitle" minWidth="0.0" prefWidth="215.20001983642578" text="Title" />
+            <TableColumn fx:id="branchReportAuthor" prefWidth="104.0" text="Author" />
+            <TableColumn fx:id="branchReportAuthorID" prefWidth="122.4000244140625" text="Author ID" />
+            <TableColumn fx:id="branchReportDate" prefWidth="247.19998168945312" text="Date" />
          </columns>
       </TableView>
-      <Button layoutX="96.0" layoutY="602.0" mnemonicParsing="false" onAction="#openReportView" prefHeight="26.0" prefWidth="66.0" text="Details" />
-      <Button layoutX="177.0" layoutY="603.0" mnemonicParsing="false" onAction="#openBranchReportCreator" text="Create Branch Report" />
+      <Button layoutX="43.0" layoutY="602.0" mnemonicParsing="false" onAction="#openReportView" prefHeight="26.0" prefWidth="66.0" text="Details" />
+      <Button layoutX="121.0" layoutY="603.0" mnemonicParsing="false" onAction="#openBranchReportCreator" text="Create" />
       <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
-      <Button layoutX="321.0" layoutY="603.0" mnemonicParsing="false" onAction="#editBranchReport" text="Edit Report" />
    </children>
 </AnchorPane>

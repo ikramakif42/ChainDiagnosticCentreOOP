@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.AppendableObjectOutputStream;
 import model.Policy;
+import model.Report;
 import model.Schedule;
 import users.Director;
 import views.LoginController;
@@ -50,9 +51,11 @@ public class DirectorDashboardController implements Initializable {
 //        File f = null;
 //        FileOutputStream fos = null;      
 //        ObjectOutputStream oos = null;
-//        LocalDate date1 = LocalDate.of(2001, 2, 1);
+//        LocalDate date1 = LocalDate.of(2023, 4, 1);
+//        LocalDate date2 = LocalDate.of(2023, 4, 2);
+//        LocalDate date3 = LocalDate.of(2023, 4, 3);
 //        try {
-//            f = new File("PolicyObjects.bin");
+//            f = new File("ReportObjects.bin");
 //            if(f.exists()){
 //                fos = new FileOutputStream(f,true);
 //                oos = new AppendableObjectOutputStream(fos);                
@@ -62,20 +65,32 @@ public class DirectorDashboardController implements Initializable {
 //                oos = new ObjectOutputStream(fos);               
 //            }
 //            
-//        Policy test = new Policy(1, "Something");
-//        Policy test2 = new Policy(2, "Something else");
-//        Policy test3 = new Policy(3, "Something elser");
-//        
+//        Report test = new Report ("One Thing", "Guy", "HR", "There is a concerning lack.", 123, date1);
+//        Report test2 = new Report("Two Things", "Guy", "HR", "There is a concerning lack.", 123, date2);
+//        Report test3 = new Report("Three Things", "Guy", "HR", "There is a concerning lack.", 123, date3);
+//        Report test4 = new Report("Four Things", "Guy", "Finance", "There is a concerning lack.", 123, date1);
+//        Report test5 = new Report("Five Things", "Guy", "Finance", "There is a concerning lack.", 123, date2);
+//        Report test6 = new Report("Six Things", "Guy", "Finance", "There is a concerning lack.", 123, date3);
+//        Report test7 = new Report("Seven Things", "Guy", "Branch", "There is a concerning lack.", 123, date1);
+//        Report test8 = new Report("Eight Things", "Guy", "Branch", "There is a concerning lack.", 123, date2);
+//        Report test9 = new Report("Nine Things", "Guy", "Branch", "There is a concerning lack.", 123, date3);
+//                
 //        oos.writeObject(test);
 //        oos.writeObject(test2);
 //        oos.writeObject(test3);
-//            
+//        oos.writeObject(test4);
+//        oos.writeObject(test5);
+//        oos.writeObject(test6);
+//        oos.writeObject(test7);
+//        oos.writeObject(test8);
+//        oos.writeObject(test9);
+//           
 //            
 //        } catch (IOException ex) {
 //            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //        System.out.println("Hello World2! Initialised");
-    
+//    
         
     }    
     

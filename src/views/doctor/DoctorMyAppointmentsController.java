@@ -122,7 +122,6 @@ public class DoctorMyAppointmentsController implements Initializable {
         });
         
         IDSearchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            
             String id = newValue.trim();
             if (id.isEmpty()) {
                 patientTableView.setItems(apptList);

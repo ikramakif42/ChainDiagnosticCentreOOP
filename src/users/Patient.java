@@ -251,6 +251,7 @@ public class Patient extends User implements Serializable{
         System.out.println("Latest appt: "+this.getID()+" "+latestAppt);
         return latestAppt;
     }
+    
     public static ObservableList<Patient> getPatients(){
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         File f = null;

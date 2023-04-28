@@ -19,14 +19,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
 import model.Appointment;
+import model.Bill;
 import model.Prescription;
 import model.TeleQuery;
 
 public class Patient extends User implements Serializable{
     private static final long serialVersionUID = 13L;
+    private ArrayList<String> medicalRecords = new ArrayList<>();
     
     public Patient(String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
         super(name, ID, password, email, gender, contactNo, address, DOB);
+    }
+
+    public ArrayList<String> getMedicalRecords() {
+        return medicalRecords;
+    }
+
+    public void setMedicalRecords(ArrayList<String> medicalRecords) {
+        this.medicalRecords = medicalRecords;
     }
 
     @Override
@@ -326,6 +336,44 @@ public class Patient extends User implements Serializable{
         }
         System.out.println(prescriptionList);
         return prescriptionList;
+    }
+
+    public ObservableList<Bill> getBillList() {
+        ObservableList<Bill> billList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "BillObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Bill temp = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    temp = (Bill) ois.readObject();
+                    System.out.println("Populated bill: "+temp.toString());
+                    if (temp.getPatientID()==this.getID()){
+                        billList.add(temp);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(billList);
+        return billList;
     }
 }
 

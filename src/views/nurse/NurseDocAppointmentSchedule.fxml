@@ -7,26 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NurseDocAppointmentScheduleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="869.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NurseDocAppointmentScheduleController">
    <children>
-      <TableView fx:id="nurseDocAppointmentTable" prefHeight="466.0" prefWidth="441.0">
+      <TableView fx:id="nurseDocAppointmentTable" prefHeight="553.0" prefWidth="538.0">
         <columns>
-          <TableColumn prefWidth="160.0" text="Doctor's Name" />
-            <TableColumn minWidth="0.0" prefWidth="153.0" text="Date" />
-            <TableColumn prefWidth="124.0" text="Time" />
+            <TableColumn fx:id="nurseDocAppSchDocIDTableView" prefWidth="99.20001375675201" text="Doctor's Id" />
+          <TableColumn fx:id="nurseDocAppSchDocNameTableView" prefWidth="200.80001068115234" text="Doctor's Name" />
+            <TableColumn fx:id="nurseDocAppSchDocDateTableView" minWidth="0.0" prefWidth="88.79998779296875" text="Date" />
+            <TableColumn fx:id="nurseDocAppSchDocTimeTableView" prefWidth="148.0000061035156" text="Time" />
         </columns>
       </TableView>
-      <Label layoutX="491.0" layoutY="14.0" text="Doctor's Appointments" textFill="#215a82">
+      <Label layoutX="571.0" layoutY="66.0" text="Doctor's Appointments" textFill="#215a82">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="514.0" layoutY="129.0" mnemonicParsing="false" onAction="#nurseDocAppointmentEditOnClick" style="-fx-background-color: orange;" text="Edit Schedule">
+      <Button layoutX="610.0" layoutY="257.0" mnemonicParsing="false" onAction="#nurseDocAppointmentEditOnClick" style="-fx-background-color: orange;" text="Edit Schedule">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="491.0" layoutY="233.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackToDashOnClick" style="-fx-background-color: orange;" text="Back To Dashboard">
+      <Button layoutX="587.0" layoutY="380.0" mnemonicParsing="false" onAction="#nurseDocAppointmentBackToDashOnClick" style="-fx-background-color: orange;" text="Back To Dashboard">
          <font>
             <Font size="18.0" />
          </font>

@@ -7,13 +7,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.patient.PatientDashboardController">
    <children>
-      <Label layoutX="127.0" layoutY="59.0" text="Patient Dashboard">
+      <Label layoutX="110.0" layoutY="52.0" text="Patient Dashboard">
          <font>
-            <Font size="21.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <Button layoutX="63.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewMySchedule" text="My Schedule" />
-      <Button layoutX="72.0" layoutY="259.0" mnemonicParsing="false" onAction="#viewMyProfile" text="My Profile" />
+      <Button layoutX="40.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewMySchedule" text="My Appointments" />
+      <Button layoutX="65.0" layoutY="259.0" mnemonicParsing="false" onAction="#viewMyProfile" text="My Profile" />
       <Button layoutX="271.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewQueryOnClick" text="View Queries" />
       <Button layoutX="175.0" layoutY="454.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
       <Label layoutX="109.0" layoutY="121.0" text="User ID:" />
@@ -23,7 +23,7 @@
       <Button layoutX="274.0" layoutY="259.0" mnemonicParsing="false" onAction="#makeQueryOnClick" text="Make Query" />
       <Button layoutX="255.0" layoutY="372.0" mnemonicParsing="false" onAction="#submitComplaintOnClick" text="Submit Complaint" />
       <Button layoutX="270.0" layoutY="314.0" mnemonicParsing="false" onAction="#refillRequestOnClick" text="Refill Request" />
-      <Button layoutX="80.0" layoutY="314.0" mnemonicParsing="false" onAction="#viewPayBIllOnClick" text="My Bills" />
+      <Button layoutX="74.0" layoutY="314.0" mnemonicParsing="false" onAction="#viewPayBIllOnClick" text="My Bills" />
       <Button layoutX="61.0" layoutY="372.0" mnemonicParsing="false" onAction="#viewReportOnClick" text="My Reports" />
    </children>
 </AnchorPane>

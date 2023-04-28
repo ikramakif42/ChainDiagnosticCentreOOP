@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorPoliciesController">
    <children>
-      <TableView fx:id="policyTableView" layoutX="96.0" layoutY="38.0" prefHeight="550.0" prefWidth="578.0">
+      <TableView fx:id="policyTableView" layoutX="96.0" layoutY="38.0" onMouseClicked="#clickedPolicy" prefHeight="550.0" prefWidth="578.0">
          <columns>
             <TableColumn fx:id="polictNumber" minWidth="0.0" prefWidth="94.39997100830078" text="Number" />
             <TableColumn fx:id="policy" prefWidth="482.3999938964844" text="Policy" />

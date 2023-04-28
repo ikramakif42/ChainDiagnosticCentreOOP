@@ -74,7 +74,6 @@ public class DirectorViewEmployeesController implements Initializable {
 
     @FXML
     private TableColumn<Employee, String> employeeGenderColumn;
-    @FXML
     private Label testLabel;
     
     private Director director;
@@ -198,10 +197,23 @@ public class DirectorViewEmployeesController implements Initializable {
         
         tempEmployee = employee;
         System.out.println(tempEmployee.toString());
-        testLabel.setText(tempEmployee.getEmail());
         
 
         
+    }
+
+    @FXML
+    private void editEmployee(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorEditEmployees.fxml"));
+        DirectorEditEmployeesController q = new DirectorEditEmployeesController(this.director, this.tempEmployee);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
     }
 
 

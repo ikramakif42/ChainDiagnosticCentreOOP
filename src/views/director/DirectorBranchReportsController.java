@@ -5,13 +5,24 @@
  */
 package views.director;
 
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import model.Report;
+import users.Director;
 
 /**
  * FXML Controller class
@@ -21,36 +32,100 @@ import javafx.scene.control.TableView;
 public class DirectorBranchReportsController implements Initializable {
 
     @FXML
-    private TableView<?> branchReportTableView;
+    private TableView<Report> branchReportTableView;
     @FXML
-    private TableColumn<?, ?> branchReportTitle;
+    private TableColumn<Report, String> branchReportTitle;
     @FXML
-    private TableColumn<?, ?> branchReportAuthor;
+    private TableColumn<Report, String> branchReportAuthor;
     @FXML
-    private TableColumn<?, ?> branchReportDate;
+    private TableColumn<Report, LocalDate> branchReportDate;
+    private Director director;
+    private Report tempReport;
+    @FXML
+    private TableColumn<Report, Integer> branchReportAuthorID;
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public Report getTempReport() {
+        return tempReport;
+    }
+
+    public void setTempReport(Report tempReport) {
+        this.tempReport = tempReport;
+    }
+    
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        branchReportTitle.setCellValueFactory(new PropertyValueFactory<Report, String>("title"));
+        branchReportAuthor.setCellValueFactory(new PropertyValueFactory<Report, String>("author"));
+        branchReportDate.setCellValueFactory(new PropertyValueFactory<Report, LocalDate>("date"));
+        branchReportAuthorID.setCellValueFactory(new PropertyValueFactory<Report, Integer>("authorID"));    
+        
+        branchReportTableView.setItems(Report.getAllBranchReports());
     }    
 
     @FXML
-    private void openReportView(ActionEvent event) {
+    private void openReportView(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorReportDetails.fxml"));
+        DirectorReportDetailsController q = new DirectorReportDetailsController(this.director, this.tempReport);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = new Stage();
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();        
     }
 
     @FXML
-    private void openBranchReportCreator(ActionEvent event) {
+    private void openBranchReportCreator(ActionEvent event) throws IOException {
+        Parent directorDashboard = null;
+        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("DirectorCreateBranchReport.fxml"));
+        directorDashboard = (Parent) directorLoader.load();
+        Scene directorScene = new Scene(directorDashboard);
+
+        DirectorCreateBranchReportController di = directorLoader.getController();
+        di.setDirector(this.director);
+
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        directorStage.setScene(directorScene);
+        directorStage.show();        
     }
 
     @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent directorDashboard = null;
+        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("DirectorReportSelection.fxml"));
+        directorDashboard = (Parent) directorLoader.load();
+        Scene directorScene = new Scene(directorDashboard);
+
+        DirectorReportSelectionController di = directorLoader.getController();
+        di.setDirector(this.director);
+
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        directorStage.setScene(directorScene);
+        directorStage.show();                
     }
 
+
     @FXML
-    private void editBranchReport(ActionEvent event) {
+    private void clickedReport(MouseEvent event) {
+        Report report = branchReportTableView.getSelectionModel().getSelectedItem();
+        
+        tempReport = report;
+        System.out.println(tempReport);
     }
     
 }

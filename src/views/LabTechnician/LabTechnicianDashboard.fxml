@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="655.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.LabTechnicain.LabTechnicianDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="655.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.LabTechnician.LabTechnicianDashboardController">
    <children>
       <Label alignment="CENTER" layoutX="224.0" layoutY="23.0" prefHeight="55.0" prefWidth="208.0" style="-fx-border-width: 4px 4px 4px 4px; -fx-border-color: black;" text="Lab Technician" textFill="#121111">
          <font>
@@ -18,7 +18,7 @@
       <Label layoutX="91.0" layoutY="204.0" text="Name :" />
       <Label layoutX="151.0" layoutY="171.0" text="------" />
       <Label layoutX="151.0" layoutY="204.0" text="------" />
-      <Button layoutX="65.0" layoutY="544.0" mnemonicParsing="false" onAction="#LogOutLabTechnician" text="Log Out" />
+      <Button layoutX="65.0" layoutY="544.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
       <Button layoutX="383.0" layoutY="115.0" mnemonicParsing="false" onAction="#ReciveProcessLabOrderOnClick" prefHeight="47.0" prefWidth="201.0" style="-fx-background-color: #F8F8FF; -fx-border-color: black;" text="Receive and process lab orders" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />

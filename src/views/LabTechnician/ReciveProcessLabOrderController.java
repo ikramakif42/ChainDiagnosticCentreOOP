@@ -17,55 +17,56 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import users.LabTechnician;
+import users.User;
 
 /**
  * FXML Controller class
  *
- * @author arafath
+ * @author Kazi
  */
-public class RecordLabResultsReportsController implements Initializable {
+public class ReciveProcessLabOrderController implements Initializable {
+    
     
     private LabTechnician labTechnician;
-
+    private LabTechnician LabTechnician;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
     
     public LabTechnician getLabTechnician() {
         return labTechnician;
     }
-    public void setLabTechnician(LabTechnician labtechnician) {
-        this.labTechnician = labtechnician;
+
+    public void setLabTechnician(LabTechnician labTechnician) {
+        this.labTechnician = labTechnician;
     }
-     
-
-
-
+    
     @FXML
-    private void UpdatePatientRecordsOnClick(ActionEvent event) {
+    private void ConfirmLabOrderOnClick(ActionEvent event) {
     }
 
     @FXML
-    private void SubmitLabResultOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void ReturnLabResultReportOnClick(ActionEvent event) throws IOException {
+    private void ReturnLabOrderButtonOnClick(ActionEvent event) throws IOException {
         Parent LabTechnicianDashboard = null;
         FXMLLoader labLoader = new FXMLLoader(getClass().getResource("LabTechnicianDashboard.fxml"));
         LabTechnicianDashboard = (Parent) labLoader.load();
         Scene labScene = new Scene(LabTechnicianDashboard);
 
         LabTechnicianDashboardController l = labLoader.getController();
-        l.setLabTechnician(this.labTechnician);
+        l.setLabTechnician(this.LabTechnician);
 
         Stage labStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         labStage.setScene(labScene);
         labStage.show(); 
+    }
+
+    @FXML
+    private void laborderOnClick(ActionEvent event) {
     }
     
 }

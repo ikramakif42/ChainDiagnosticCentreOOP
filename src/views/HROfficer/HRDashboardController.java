@@ -51,6 +51,7 @@ public class HRDashboardController implements Initializable {
         this.HR = HR;
     }
     
+    @FXML
     private void updatePoliciesOnclick(ActionEvent event) throws IOException {
         
         Parent parent = null;
@@ -64,9 +65,12 @@ public class HRDashboardController implements Initializable {
         Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         HRStage.setScene(HRScene);
         HRStage.show();
+        // comment
     }
 
+    @FXML
     private void manageApplicationsOnClick(ActionEvent event) throws IOException {
+        
         
         Parent parent = null;
         FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("ManageApplication.fxml"));
@@ -81,6 +85,7 @@ public class HRDashboardController implements Initializable {
         HRStage.show();
     }
 
+    @FXML
     private void updateEmployeesOnClick(ActionEvent event) throws IOException {
         
         Parent parent = null;
@@ -100,6 +105,7 @@ public class HRDashboardController implements Initializable {
         
     }
 
+    @FXML
     private void viewComplaints(ActionEvent event) throws IOException {
         
         Parent parent = null;
@@ -115,6 +121,7 @@ public class HRDashboardController implements Initializable {
         HRStage.show();
     }
 
+    @FXML
     private void handleResignations(ActionEvent event) throws IOException {
         
         Parent parent = null;
@@ -130,6 +137,7 @@ public class HRDashboardController implements Initializable {
         HRStage.show();
     }
 
+    @FXML
     private void addNewEmployee(ActionEvent event) throws IOException {
         
         Parent parent = null;
@@ -146,6 +154,7 @@ public class HRDashboardController implements Initializable {
         
     }
 
+    @FXML
     private void createReport(ActionEvent event) throws IOException {
         
         Parent parent = null;
@@ -163,10 +172,11 @@ public class HRDashboardController implements Initializable {
     
     
     
+     @FXML
     private void UpdateCompensation(ActionEvent event) throws IOException {
         
         Parent parent = null;
-        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("update employee compensation.fxml"));
+        FXMLLoader HRLoader = new FXMLLoader(getClass().getResource("UpdateEmployeeCompensation.fxml"));
         parent = (Parent) HRLoader.load();
         Scene HRScene = new Scene(parent);
         
@@ -178,6 +188,7 @@ public class HRDashboardController implements Initializable {
         HRStage.show();
     }
     
+    @FXML
     private void logOut(ActionEvent event) {
         Parent login;
         login = null;
@@ -190,42 +201,6 @@ public class HRDashboardController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene1);
         window.show();
-    }
-
-    @FXML
-    private void updatepolicesonclick(ActionEvent event) {
-    }
-
-    @FXML
-    private void ManageApplicationsOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void UpdateEmployeeRecordsProfilesOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void EmployeeComplimentOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void HandleReginationOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void AddNewEmployeeOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void CreateReportOnEmployeeOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void UpateEmployeeCompensationOnClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void LogOutHROfficer(ActionEvent event) {
     }
     
 

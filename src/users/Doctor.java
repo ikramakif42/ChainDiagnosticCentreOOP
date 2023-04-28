@@ -41,7 +41,6 @@ public class Doctor extends Employee implements Serializable{
     public void viewEditRecords(int PatientID){}
     public void viewPatientBillingInfo(int PatientID){}
     //    + trackLabTests(PatientID): void
-    //    + answerTeleQuery(): void
     
     public boolean answerQuery(TeleQuery q){
         System.out.println("Updated Query: "+q.toString());

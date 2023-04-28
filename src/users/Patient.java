@@ -248,61 +248,6 @@ public class Patient extends User implements Serializable{
         System.out.println("Appt written successfully!");
     }
     
-    public void cancelAppt(Appointment apptToCancel){
-        try {
-            File file = new File("AppointmentObjects.bin");
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            ArrayList<Appointment> appts = new ArrayList<>();
-            try{
-                while(true){
-                    Appointment tempAppt = (Appointment) ois.readObject();
-                    System.out.println(tempAppt);
-                    if (tempAppt.getPatientID()==this.getID()){
-                        if (tempAppt.getDoctorID()==apptToCancel.getDoctorID()){
-                            if (tempAppt.getDate().equals(apptToCancel.getDate())){
-                                if (tempAppt.getTime().equals(apptToCancel.getTime())){
-                                    continue;
-                                }
-                            }
-                        }
-                    }
-                    appts.add(tempAppt);
-                }
-            }
-            catch (EOFException eof){
-                System.out.println("End of file");
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            ois.close();
-
-            System.out.println(appts);
-            if(file.delete()){
-                System.out.println("Deleted Patients File!");
-                File f = new File("AppointmentObjects.bin");
-                FileOutputStream fos = new FileOutputStream(f);
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                for (Appointment tempAppt : appts) {
-                    oos.writeObject(tempAppt);
-                }
-                oos.close();
-                System.out.println("Fixed Patients File!");
-            }
-            else{
-                System.out.println("Could not delete file");
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex);
-            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
 //    + submitComplaint(): void
 //    + viewLabReports(): void
 //    + viewPayBills(): void

@@ -182,6 +182,10 @@ public class DoctorMyAppointmentsController implements Initializable {
 
     @FXML
     private void confirmCancelOnClick(ActionEvent event) {
+        Appointment toCancel = patientTableView.getSelectionModel().getSelectedItem();
+        Appointment.cancelAppt(toCancel);
+        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
+        patientTableView.setItems(apptList);
     }
 
     @FXML

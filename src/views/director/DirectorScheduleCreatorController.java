@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -43,6 +44,9 @@ public class DirectorScheduleCreatorController implements Initializable {
     private Employee tempEmployee;
     @FXML
     private Label employeeNameLabel;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Edit Successful");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Edit Unsuccessful");
+
 
     public DirectorScheduleCreatorController(Director director, Employee tempEmployee) {
         this.director = director;
@@ -78,10 +82,22 @@ public class DirectorScheduleCreatorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         employeeNameLabel.setText(tempEmployee.getName());
-        taskTime.getItems().add("9:30");
-        taskTime.getItems().add("10:30");
-        taskTime.getItems().add("11:30");
-        taskTime.getItems().add("12:30");
+        taskTime.getItems().add("9:00 AM");
+        taskTime.getItems().add("9:30 AM");
+        taskTime.getItems().add("10:00 AM");
+        taskTime.getItems().add("10:30 AM");
+        taskTime.getItems().add("11:00 AM");
+        taskTime.getItems().add("11:30 AM");
+        taskTime.getItems().add("12:00 PM");
+        taskTime.getItems().add("12:30 PM");
+        taskTime.getItems().add("1:00 PM");
+        taskTime.getItems().add("1:30 PM");
+        taskTime.getItems().add("2:00 PM");
+        taskTime.getItems().add("2:30 PM");
+        taskTime.getItems().add("3:00 PM");
+        taskTime.getItems().add("3:30 PM");
+        taskTime.getItems().add("4:00 PM");
+        taskTime.getItems().add("4:30 PM");
     }    
 
     @FXML
@@ -102,7 +118,7 @@ public class DirectorScheduleCreatorController implements Initializable {
     private void saveTaskInSchedule(ActionEvent event) {
         LocalDate date1 = LocalDate.of(2023, 5, 10);
         Schedule newSch = new Schedule(date1, taskTime.getValue(), taskBodyField.getText(), tempEmployee.getID());        
-        tempEmployee.updateSchedule(newSch);
+        Director.editSchedule(newSch);
     }
     
 }

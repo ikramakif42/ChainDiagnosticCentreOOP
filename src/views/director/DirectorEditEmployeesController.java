@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -45,7 +47,8 @@ public class DirectorEditEmployeesController implements Initializable {
     private Label dobLabel;    
     private Director director;
     private Employee tempEmployee;
-
+    Alert a = new Alert(AlertType.INFORMATION, "Edit Successful");
+    Alert b = new Alert(AlertType.WARNING, "Edit Unsuccessful");
 
     public Director getDirector() {
         return director;
@@ -107,8 +110,14 @@ public class DirectorEditEmployeesController implements Initializable {
 
     @FXML
     private void saveEdit(ActionEvent event) {
-        Employee.updatePersonalInfo(tempEmployee.getID(), nameField.getText(), emailField.getText(), phoneField.getText(), addressField.getText(), tempEmployee.getSalary());
 
+        boolean success = Director.editPersonalInfo(tempEmployee.getID(), nameField.getText(), emailField.getText(), phoneField.getText(), addressField.getText(), tempEmployee.getSalary(), tempEmployee.getDepartment(), tempEmployee.getDesignation());
+        if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }
     }
     
 }

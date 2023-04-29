@@ -79,31 +79,7 @@ public class DirectorCreateBranchReportController implements Initializable {
         LocalDate today = LocalDate.now();
         Report newBranchReport = new Report(reportTitle.getText(), director.getName(), "Branch", reportBody.getText(), director.getID(), today);
         
-        File f = null;
-        FileOutputStream fos = null;      
-        ObjectOutputStream oos = null;
-        try {
-            f = new File("ReportObjects.bin");
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
-            }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
-            }          
-        
-            
-        oos.writeObject(newBranchReport);
-
-                        
-        } catch (IOException ex) {
-                System.out.println(ex.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-
-        }
-        System.out.println("Hello World2! Initialised");      
-                
+        Director.createBranchReport(newBranchReport);
     }
     
 }

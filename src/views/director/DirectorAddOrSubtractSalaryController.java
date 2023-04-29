@@ -100,7 +100,7 @@ public class DirectorAddOrSubtractSalaryController implements Initializable {
         
         tempEmployee.setSalary(newSal);
         employeeSalary.setText(String.valueOf(newSal));
-        Employee.updatePersonalInfo(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), newSal);
+        Director.editPersonalInfo(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), newSal, tempEmployee.getDepartment(), tempEmployee.getDesignation());
         
         
     }

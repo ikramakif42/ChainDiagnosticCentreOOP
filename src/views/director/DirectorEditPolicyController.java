@@ -89,7 +89,7 @@ public class DirectorEditPolicyController implements Initializable {
 
     @FXML
     private void saveEdit(ActionEvent event) {
-        Policy.updatePolicy(tempPolicy.getNumber(), policyField.getText());
+        Director.updatePolicy(tempPolicy.getNumber(), policyField.getText());
     }
     
 }

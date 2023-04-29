@@ -116,7 +116,7 @@ public class DirectorEmployeeScheduleController implements Initializable {
     @FXML
     private void deleteTask(ActionEvent event) {
         Schedule toDelete = employeeTaskTableView.getSelectionModel().getSelectedItem();
-        this.tempEmployee.deleteSchedule(toDelete);
+        Director.deleteSchedule(toDelete);
         employeeTaskTableView.setItems(getSchedule());
     }
     

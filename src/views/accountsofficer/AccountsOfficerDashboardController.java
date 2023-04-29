@@ -46,35 +46,36 @@ public class AccountsOfficerDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        File f = null;
-//        FileOutputStream fos = null;      
-//        ObjectOutputStream oos = null;
-//        LocalDate date1 = LocalDate.of(2023, 5, 10);
-//        try {
-//            f = new File("BillObjects.bin");
-//            if(f.exists()){
-//                fos = new FileOutputStream(f,true);
-//                oos = new AppendableObjectOutputStream(fos);                
-//            }
-//            else{
-//                fos = new FileOutputStream(f);
-//                oos = new ObjectOutputStream(fos);               
-//            }
-//            
-//        Bill test1 = new Bill(date1, (float)22.3, "Something", 147);
-//        Bill test2 = new Bill(date1, (float)25.3, "Something else", 258);
-//        Bill test3 = new Bill(date1, (float)28.3, "Something elser", 369);
-//            
-//        oos.writeObject(test1);
-//        oos.writeObject(test2);
-//        oos.writeObject(test3);
-//            
-//            
-//        } catch (IOException ex) {
-//                System.out.println(ex.toString());
-//                System.out.println("IOException | ClassNotFoundException in reading bin file");
-//        }
-//        System.out.println("Hello World2! Initialised");
+        File f = null;
+        FileOutputStream fos = null;      
+        ObjectOutputStream oos = null;
+        LocalDate date1 = LocalDate.of(2023, 4, 29);
+        LocalDate date2 = LocalDate.of(2023, 5, 10);
+        try {
+            f = new File("BillObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            
+        Bill test1 = new Bill(date1, date2, false, (float)22.34, "A Bill", 138, 202);
+        Bill test2 = new Bill(date1, date2, false, (float)28.37, "Another Bill", 130, 444);
+        Bill test3 = new Bill(date1, date2, false, (float)12.24, "Anotherer Bill", 148, 111);
+            
+        oos.writeObject(test1);
+        oos.writeObject(test2);
+        oos.writeObject(test3);
+            
+            
+        } catch (IOException ex) {
+                System.out.println(ex.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+        }
+        System.out.println("Hello World2! Initialised");
     }
     
     public AccountsOfficer getOfficer() {

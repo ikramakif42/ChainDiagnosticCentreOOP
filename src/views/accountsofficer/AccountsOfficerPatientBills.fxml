@@ -5,19 +5,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerPatientBillsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerPatientBillsController">
    <children>
-      <TableView fx:id="accountsBillsTableView" layoutX="55.0" layoutY="42.0" prefHeight="550.0" prefWidth="659.0">
+      <TableView fx:id="accountsBillsTableView" layoutX="41.0" layoutY="37.0" prefHeight="550.0" prefWidth="846.0">
          <columns>
             <TableColumn fx:id="billPatientID" minWidth="0.0" prefWidth="84.00000762939453" text="Patient ID" />
             <TableColumn fx:id="billStart" prefWidth="92.0001220703125" text="Start Date" />
-            <TableColumn fx:id="billDue" prefWidth="101.5999755859375" text="Due" />
-            <TableColumn fx:id="billAmount" prefWidth="101.5999755859375" text="Amount" />
-            <TableColumn fx:id="billDescription" prefWidth="277.5999938964844" text="Description" />
+            <TableColumn fx:id="billDue" prefWidth="101.5999755859375" text="Due Date" />
+            <TableColumn fx:id="billedBy" prefWidth="101.5999755859375" text="Billed By (ID)" />
+            <TableColumn fx:id="billAmount" prefWidth="155.19998168945312" text="Amount" />
+            <TableColumn fx:id="billDescription" prefWidth="309.60003662109375" text="Description" />
          </columns>
       </TableView>
-      <Button layoutX="155.0" layoutY="605.0" mnemonicParsing="false" onAction="#ediBill" prefHeight="26.0" prefWidth="66.0" text="Edit" />
+      <Button layoutX="141.0" layoutY="609.0" mnemonicParsing="false" onAction="#ediBill" prefHeight="26.0" prefWidth="66.0" text="Edit" />
       <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
-      <Button layoutX="55.0" layoutY="605.0" mnemonicParsing="false" onAction="#createBill" prefHeight="26.0" prefWidth="79.0" text="Create Bill" />
+      <Button layoutX="41.0" layoutY="609.0" mnemonicParsing="false" onAction="#createBill" prefHeight="26.0" prefWidth="79.0" text="Create Bill" />
+      <Button layoutX="233.0" layoutY="609.0" mnemonicParsing="false" onAction="#markAsPaid" prefHeight="26.0" prefWidth="95.0" text="Mark As Paid" />
    </children>
 </AnchorPane>

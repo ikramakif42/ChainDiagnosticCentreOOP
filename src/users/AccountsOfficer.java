@@ -75,8 +75,8 @@ public class AccountsOfficer extends Employee implements Serializable {
         return accountsOfficerList;
     }    
 
-    public void makeBill(LocalDate dueDate, float amount, String details, int patientID) {
-        Bill toAdd = new Bill(dueDate, amount, details, patientID, this.getID());
+    public void makeBill(LocalDate createdDate, LocalDate dueDate, boolean paidStatus, float amount, String details, int patientID, int billedByID) {
+        Bill toAdd = new Bill(createdDate, dueDate, paidStatus, amount, details, patientID, this.getID());
         File f = null;
         FileOutputStream fos = null;      
         ObjectOutputStream oos = null;

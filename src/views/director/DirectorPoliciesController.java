@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Policy;
 import users.Director;
+import users.User;
 
 /**
  * FXML Controller class
@@ -49,7 +50,7 @@ public class DirectorPoliciesController implements Initializable {
         polictNumber.setCellValueFactory(new PropertyValueFactory<Policy, Integer>("number"));
         policy.setCellValueFactory(new PropertyValueFactory<Policy, String>("content"));
         
-        policyTableView.setItems(Policy.getAllPolicies());
+        policyTableView.setItems(User.viewPolicies());
         
         
     }

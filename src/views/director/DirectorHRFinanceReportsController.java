@@ -70,7 +70,7 @@ public class DirectorHRFinanceReportsController implements Initializable {
         reportType.setCellValueFactory(new PropertyValueFactory<Report, String>("type"));        
         hrFinanceReportAuthorID.setCellValueFactory(new PropertyValueFactory<Report, Integer>("authorID"));    
         
-        hrFinanceReportTableView.setItems(Report.getAllHRFinanceReports());
+        hrFinanceReportTableView.setItems(Director.viewHRFinanceReports());
         
     }    
 

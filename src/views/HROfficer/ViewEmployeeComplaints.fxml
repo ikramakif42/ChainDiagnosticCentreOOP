@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
@@ -27,20 +26,20 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="301.0" layoutY="339.0" mnemonicParsing="false" onAction="#EmployeeComplaintsOnClick" prefHeight="35.0" prefWidth="161.0" text="Employee Complaints" />
-            <TreeTableView layoutX="335.0" layoutY="61.0" prefHeight="200.0" prefWidth="234.0">
+            <TreeTableView fx:id="LoadComplaintTableView" layoutX="20.0" layoutY="111.0" prefHeight="200.0" prefWidth="365.0">
                <columns>
-                  <TreeTableColumn prefWidth="75.0" text="Name" />
-                  <TreeTableColumn prefWidth="75.0" text="Department" />
-                  <TreeTableColumn prefWidth="75.0" text="Date" />
+                  <TreeTableColumn fx:id="IDTableColumn" prefWidth="75.0" text="ID" />
+                  <TreeTableColumn fx:id="NameTableColumn" prefWidth="75.0" text="Name" />
+                  <TreeTableColumn fx:id="DeptTableColumn" prefWidth="96.00004577636719" text="Dept" />
+                  <TreeTableColumn fx:id="DesignationTableColumn" prefWidth="118.0" text="Designation" />
                </columns>
             </TreeTableView>
-            <TextField layoutX="40.0" layoutY="80.0" prefHeight="25.0" prefWidth="169.0" promptText="Name" />
-            <TextField layoutX="42.0" layoutY="135.0" prefHeight="25.0" prefWidth="170.0" promptText="Department" />
-            <DatePicker layoutX="40.0" layoutY="205.0" promptText="Date" />
+            <TextField fx:id="SubjectTextField" layoutX="425.0" layoutY="86.0" prefHeight="25.0" prefWidth="169.0" promptText="Subject" />
             <Line endX="-75.66665649414062" endY="-39.000030517578125" layoutX="353.0" layoutY="102.0" startX="-75.66667175292969" startY="180.6666259765625" stroke="WHITE" strokeWidth="3.0" />
-            <CheckBox layoutX="508.0" layoutY="348.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" text="Resolved" textFill="WHITE" />
             <Button layoutX="42.0" layoutY="440.0" mnemonicParsing="false" onAction="#ReturnEmployeeCompliants" text="Return" textFill="#ff1111" />
+            <Line endX="-75.66665649414062" endY="-39.000030517578125" layoutX="363.0" layoutY="112.0" startX="-75.66667175292969" startY="180.6666259765625" stroke="WHITE" strokeWidth="3.0" />
+            <TextArea fx:id="DetalisTextArea" layoutX="425.0" layoutY="135.0" prefHeight="200.0" prefWidth="172.0" promptText="Detalis" />
+            <Button layoutX="20.0" layoutY="335.0" mnemonicParsing="false" onAction="#LoadOnClick" text="Load" />
          </children>
       </AnchorPane>
    </center>

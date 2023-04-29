@@ -24,13 +24,13 @@ public class Report implements Serializable {
     public LocalDate date;
 
     
-    public Report(String title, String author, String type, String body, int authorID, LocalDate date) {
+    public Report(String title, String author, String type, String body, int authorID) {
         this.title = title;
         this.author = author;
         this.type = type;
         this.body = body;
         this.authorID = authorID;
-        this.date = date;
+        this.date = LocalDate.now();
     }    
     
     

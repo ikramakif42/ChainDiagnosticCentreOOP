@@ -16,9 +16,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Policy;
 import users.HROfficer;
+import users.User;
 
 /**
  * FXML Controller class
@@ -27,22 +33,24 @@ import users.HROfficer;
  */
 public class UpdateHospitalPoliciesProceduresController implements Initializable {
 
-    @FXML
-    private TextField LoadUpdatePolicesButton;
-    @FXML
-    private Button EditButtton;
-    @FXML
-    private Button ConfirmButton;
-    @FXML
-    private Button ReturnButton;
     private HROfficer HR;
+    @FXML
+    private TextArea detailsTextArea;
+    @FXML
+    private TableView<Policy> policyTableView;
+    @FXML
+    private TableColumn<Policy, Integer> numberTableColumn;
+    @FXML
+    private TableColumn<Policy, String> detailsTableColumn;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        numberTableColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
+        detailsTableColumn.setCellValueFactory(new PropertyValueFactory<>("content"));
+        policyTableView.setItems(User.getPolicyList());
     }
     
     

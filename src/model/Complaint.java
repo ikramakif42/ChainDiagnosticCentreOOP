@@ -2,13 +2,13 @@ package model;
 
 import java.io.Serializable;
 
-public class EmployeeComplaint implements Serializable {
+public class Complaint implements Serializable {
     private static final long serialVersionUID = 13L;
     
     protected int senderID;
     protected String subject, details;
 
-    public EmployeeComplaint(int senderID, String subject, String details) {
+    public Complaint(int senderID, String subject, String details) {
         this.senderID = senderID;
         this.subject = subject;
         this.details = details;

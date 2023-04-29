@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.patient.ViewPayBillController">
    <children>
       <TableView fx:id="billingInfoTableView" layoutX="43.0" layoutY="160.0" prefHeight="385.0" prefWidth="721.0">
          <columns>
@@ -23,12 +23,12 @@
       </TableView>
       <Button layoutX="41.0" layoutY="573.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
       <Label layoutX="360.0" layoutY="98.0" text="Filter by:" />
-      <RadioButton fx:id="paidStatusRadioButton" layoutX="474.0" layoutY="98.0" mnemonicParsing="false" text="Paid">
+      <RadioButton fx:id="paidStatusRadioButton" layoutX="444.0" layoutY="98.0" mnemonicParsing="false" text="Paid">
          <toggleGroup>
             <ToggleGroup fx:id="billStatusTG" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="dueStatusRadioButton" layoutX="568.0" layoutY="98.0" mnemonicParsing="false" text="Due" toggleGroup="$billStatusTG" />
+      <RadioButton fx:id="dueStatusRadioButton" layoutX="518.0" layoutY="98.0" mnemonicParsing="false" text="Due" toggleGroup="$billStatusTG" />
       <Label layoutX="360.0" layoutY="47.0" text="Filter by date:" />
       <DatePicker fx:id="startDatePicker" layoutX="490.0" layoutY="42.0" prefHeight="31.0" prefWidth="112.0" />
       <Label layoutX="611.0" layoutY="47.0" text="- to -" />
@@ -40,5 +40,6 @@
          </font>
       </Label>
       <Button layoutX="633.0" layoutY="573.0" mnemonicParsing="false" onAction="#payBillsOnClick" text="Pay Selected BIlls" />
+      <RadioButton fx:id="allStatusRadioButton" layoutX="585.0" layoutY="98.0" mnemonicParsing="false" text="All" toggleGroup="$billStatusTG" />
    </children>
 </AnchorPane>

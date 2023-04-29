@@ -99,15 +99,48 @@ public class PatientDashboardController implements Initializable {
     }
 
     @FXML
-    private void submitComplaintOnClick(ActionEvent event) {
+    private void submitComplaintOnClick(ActionEvent event) throws IOException {
+        Parent complaint = null;
+        FXMLLoader complaintLoader = new FXMLLoader(getClass().getResource("PatientSubmitComplaint.fxml"));
+        complaint = (Parent) complaintLoader.load();
+        Scene complaintScene = new Scene(complaint);
+
+        PatientSubmitComplaintController q = complaintLoader.getController();
+        q.setPatient(this.patient);
+
+        Stage complaintStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        complaintStage.setScene(complaintScene);
+        complaintStage.show();
     }
 
     @FXML
-    private void refillRequestOnClick(ActionEvent event) {
+    private void refillRequestOnClick(ActionEvent event) throws IOException {
+        Parent refill = null;
+        FXMLLoader refillLoader = new FXMLLoader(getClass().getResource("RefillRequest.fxml"));
+        refill = (Parent) refillLoader.load();
+        Scene refillScene = new Scene(refill);
+
+        RefillRequestController q = refillLoader.getController();
+        q.setPatient(this.patient);
+
+        Stage refillStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        refillStage.setScene(refillScene);
+        refillStage.show();
     }
 
     @FXML
-    private void viewPayBIllOnClick(ActionEvent event) {
+    private void viewPayBillOnClick(ActionEvent event) throws IOException {
+        Parent bill = null;
+        FXMLLoader billLoader = new FXMLLoader(getClass().getResource("ViewPayBill.fxml"));
+        bill = (Parent) billLoader.load();
+        Scene billScene = new Scene(bill);
+
+        ViewPayBillController q = billLoader.getController();
+        q.setPatient(this.patient);
+
+        Stage billStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        billStage.setScene(billScene);
+        billStage.show();
     }
 
     @FXML

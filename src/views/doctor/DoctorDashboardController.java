@@ -16,7 +16,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import users.Doctor;
 import users.Employee;
-import users.User;
 import views.employee.MyWorkplaceController;
 
 public class DoctorDashboardController implements Initializable {
@@ -93,8 +92,6 @@ public class DoctorDashboardController implements Initializable {
         doctorStage.setScene(doctorScene);
         doctorStage.show();
     }
-
-    //check medical records, prescribe medication, add/track lab test, view bill info
     
     @FXML
     private void assignTasksOnClick(ActionEvent event) throws IOException {
@@ -137,10 +134,6 @@ public class DoctorDashboardController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene1);
         window.show();
-    }
-
-    @FXML
-    private void viewMySchedule(ActionEvent event) {
     }
 
 }

@@ -59,7 +59,6 @@ public class ViewTelequeryListController implements Initializable {
     @FXML
     private ToggleGroup queryStatusTG;
     private Doctor doc;
-//    private ObservableList<TeleQuery> TQL = FXCollections.observableArrayList();
     private FilteredList<TeleQuery> filterTQL;
 
     ViewTelequeryListController(Doctor doc) {

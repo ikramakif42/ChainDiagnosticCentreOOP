@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
-import model.EmployeeComplaint;
+import model.Complaint;
 import model.LeaveApplication;
 import model.LoanApplication;
 import model.Resignation;
@@ -502,12 +502,12 @@ public abstract class Employee extends User implements Serializable{
     } 
 
     public void submitComplaint(String subject, String details) {
-        EmployeeComplaint complaint = new EmployeeComplaint(this.getID(), subject, details);
+        Complaint complaint = new Complaint(this.getID(), subject, details);
         File f = null;
         FileOutputStream fos = null; 
         ObjectOutputStream oos = null;
         try {
-            f = new File("EmployeeComplaintObjects.bin");
+            f = new File("ComplaintObjects.bin");
             if(f.exists()){
                 fos = new FileOutputStream(f,true);
                 oos = new AppendableObjectOutputStream(fos);                

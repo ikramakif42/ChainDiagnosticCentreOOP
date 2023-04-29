@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -58,6 +59,8 @@ public class DoctorMyAppointmentsController implements Initializable {
     @FXML
     private TextField IDSearchTextField;
     private Doctor doc;
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Appointment cancelled!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, appointment cancel failed!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -183,7 +186,9 @@ public class DoctorMyAppointmentsController implements Initializable {
     @FXML
     private void confirmCancelOnClick(ActionEvent event) {
         Appointment toCancel = patientTableView.getSelectionModel().getSelectedItem();
-        Appointment.cancelAppt(toCancel);
+        if(Appointment.cancelAppt(toCancel)){success.show();}
+        else{failure.show();}
+        
         ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
         patientTableView.setItems(apptList);
     }

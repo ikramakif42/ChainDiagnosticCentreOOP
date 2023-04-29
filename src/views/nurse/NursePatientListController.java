@@ -167,6 +167,7 @@ public class NursePatientListController implements Initializable {
 
     @FXML
     private void nurseSearchPatientListByIDOnClick(ActionEvent event) {
+        
     }
     
 }

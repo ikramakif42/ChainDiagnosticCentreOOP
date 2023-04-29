@@ -50,7 +50,7 @@ public class UpdateHospitalPoliciesProceduresController implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
         numberTableColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         detailsTableColumn.setCellValueFactory(new PropertyValueFactory<>("content"));
-        policyTableView.setItems(User.getPolicyList());
+        policyTableView.setItems(User.viewPolicies());
     }
     
     

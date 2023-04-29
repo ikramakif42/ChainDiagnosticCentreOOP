@@ -40,6 +40,8 @@ public class DirectorCreateBranchReportController implements Initializable {
     @FXML
     private TextField reportTitle;
     private Director director;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Branch Report Created");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Error Creating Branch Report");
 
     public Director getDirector() {
         return director;
@@ -77,9 +79,16 @@ public class DirectorCreateBranchReportController implements Initializable {
     @FXML
     private void saveBranchReport(ActionEvent event) {
         LocalDate today = LocalDate.now();
+        
         Report newBranchReport = new Report(reportTitle.getText(), director.getName(), "Branch", reportBody.getText(), director.getID(), today);
         
-        Director.createBranchReport(newBranchReport);
+        boolean success = Director.createBranchReport(newBranchReport);
+        if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }        
     }
     
 }

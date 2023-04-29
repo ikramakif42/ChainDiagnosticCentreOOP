@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -48,6 +49,8 @@ public class DirectorEmployeeScheduleController implements Initializable {
     private TableColumn<Schedule, String> taskTime;
     private Employee tempEmployee;
     private Director director;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Delete Successful");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Delete Unsuccessful");
 
     DirectorEmployeeScheduleController(Director director, Employee tempEmployee) {
         this.director = director;
@@ -116,7 +119,15 @@ public class DirectorEmployeeScheduleController implements Initializable {
     @FXML
     private void deleteTask(ActionEvent event) {
         Schedule toDelete = employeeTaskTableView.getSelectionModel().getSelectedItem();
-        Director.deleteSchedule(toDelete);
+        
+        boolean success = Director.deleteSchedule(toDelete);
+        if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }
+        
         employeeTaskTableView.setItems(getSchedule());
     }
     

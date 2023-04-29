@@ -44,7 +44,7 @@ public class DirectorScheduleCreatorController implements Initializable {
     private Employee tempEmployee;
     @FXML
     private Label employeeNameLabel;
-    Alert a = new Alert(Alert.AlertType.INFORMATION, "Edit Successful");
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "New Task Created");
     Alert b = new Alert(Alert.AlertType.WARNING, "Edit Unsuccessful");
 
 
@@ -118,7 +118,16 @@ public class DirectorScheduleCreatorController implements Initializable {
     private void saveTaskInSchedule(ActionEvent event) {
         LocalDate date1 = LocalDate.of(2023, 5, 10);
         Schedule newSch = new Schedule(date1, taskTime.getValue(), taskBodyField.getText(), tempEmployee.getID());        
-        Director.editSchedule(newSch);
+        boolean success = Director.editSchedule(newSch);
+        
+        if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }
+        
+        
     }
     
 }

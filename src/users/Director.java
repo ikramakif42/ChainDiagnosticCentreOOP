@@ -422,34 +422,34 @@ public class Director extends Employee implements Serializable {
         return false;
     }
       
-      public static Report createBranchReport(Report newBranchReport){
+      public static boolean createBranchReport(Report newBranchReport){
           
-              File f = null;
+        File f = null;
         FileOutputStream fos = null;      
         ObjectOutputStream oos = null;
         try {
             f = new File("ReportObjects.bin");
             if(f.exists()){
                 fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
+                oos = new AppendableObjectOutputStream(fos); 
+                oos.writeObject(newBranchReport);
+                return true;
             }
             else{
                 fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
+                oos = new ObjectOutputStream(fos);     
+                oos.writeObject(newBranchReport);
+                return true;
             }          
         
-            
-        oos.writeObject(newBranchReport);
-
                         
         } catch (IOException ex) {
                 System.out.println(ex.toString());
                 System.out.println("IOException | ClassNotFoundException in reading bin file");
+                return false;
 
-        }
-        System.out.println("Hello World2! Initialised");      
-                
-      return newBranchReport;
+        }      
+
       }
       
       public static ObservableList<Report> viewBranchReports(){

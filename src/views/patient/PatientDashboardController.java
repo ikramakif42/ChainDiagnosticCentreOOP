@@ -144,7 +144,18 @@ public class PatientDashboardController implements Initializable {
     }
 
     @FXML
-    private void viewReportOnClick(ActionEvent event) {
+    private void viewReportOnClick(ActionEvent event) throws IOException {
+        Parent report = null;
+        FXMLLoader reportLoader = new FXMLLoader(getClass().getResource("ViewLabReport.fxml"));
+        report = (Parent) reportLoader.load();
+        Scene reportScene = new Scene(report);
+
+        ViewLabReportController lr = reportLoader.getController();
+        lr.setPatient(this.patient);
+
+        Stage reportStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        reportStage.setScene(reportScene);
+        reportStage.show();
     }
     
     @FXML

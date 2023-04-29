@@ -21,6 +21,7 @@ import main.AppendableObjectOutputStream;
 import model.Appointment;
 import model.Bill;
 import model.Complaint;
+import model.LabReport;
 import model.Prescription;
 import model.TeleQuery;
 
@@ -419,8 +420,6 @@ public class Patient extends User implements Serializable{
       return false;
     }
     
-    //    + viewLabReports(): void
-
     public boolean submitRefill(Prescription refill) {
         System.out.println("New refill is: "+refill.toString());
         File f = null;
@@ -450,6 +449,44 @@ public class Patient extends User implements Serializable{
             }
         }
       return false;
+    }
+
+    public ObservableList<LabReport> getReportList() {
+        ObservableList<LabReport> reportList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "LabReportObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            LabReport temp = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    temp = (LabReport) ois.readObject();
+                    System.out.println("Populated lab report: "+temp.toString());
+                    if (temp.getPatientID()==this.getID()){
+                        reportList.add(temp);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(reportList);
+        return reportList;
     }
     
 }

@@ -38,8 +38,6 @@ public class NursePatientListController implements Initializable {
 
     @FXML
     private TableView<Patient> nursePatientListTable;
-    @FXML
-    private TextField nurseSearchPatientListTextField;
     private Nurse nurse;
     @FXML
     private TableColumn<Patient, String> nursePatientNameTable;
@@ -49,6 +47,8 @@ public class NursePatientListController implements Initializable {
     private TableColumn<Patient,Integer> nursePatientAgeTable;
     @FXML
     private TableColumn<Patient, String> nursePatientContactTable;
+    @FXML
+    private TextField nurseSearchPatientListnurseSearchPatientListByIDOnClickTextField;
     /**
      * Initializes the controller class.
      */
@@ -148,9 +148,6 @@ public class NursePatientListController implements Initializable {
         nursePatientLabReportsStage.show();
     }
 
-    @FXML
-    private void nurseSearchPatientListOnClick(ActionEvent event) {
-    }
 
     @FXML
     private void nursePatientListToDashboardOnClick(ActionEvent event) throws IOException {
@@ -166,6 +163,10 @@ public class NursePatientListController implements Initializable {
         nurseStage.setScene(nurseScene);
         nurseStage.show();
 
+    }
+
+    @FXML
+    private void nurseSearchPatientListByIDOnClick(ActionEvent event) {
     }
     
 }

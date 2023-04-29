@@ -76,7 +76,7 @@ public class AccountsOfficerMakeBillController implements Initializable {
         float amount = Float.parseFloat(amountField.getText());
         String details = descriptionField.getText();
         int patientID = Integer.parseInt(patientIDField.getText());
-        this.officer.makeBill(due, amount, details, patientID);
+//        this.officer.makeBill(due, amount, details, patientID);
     }
     
 }

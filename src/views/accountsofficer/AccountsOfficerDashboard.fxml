@@ -12,7 +12,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button layoutX="154.0" layoutY="202.0" mnemonicParsing="false" onAction="#viewBills" prefHeight="26.0" prefWidth="114.0" text="Patient Bills" />
+      <Button layoutX="155.0" layoutY="202.0" mnemonicParsing="false" onAction="#viewBills" prefHeight="26.0" prefWidth="114.0" text="Patient Bills" />
       <Button layoutX="155.0" layoutY="239.0" mnemonicParsing="false" onAction="#viewRestocks" prefHeight="26.0" prefWidth="114.0" text="Restock Orders" />
       <Button layoutX="155.0" layoutY="274.0" mnemonicParsing="false" onAction="#viewPastRecords" prefHeight="26.0" prefWidth="114.0" text="Past Records" />
       <Button layoutX="154.0" layoutY="456.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="114.0" text="Log Out" />

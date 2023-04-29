@@ -43,6 +43,8 @@ public class AccountsOfficerPatientBillsController implements Initializable {
     @FXML
     private TableColumn<Bill, String> billDescription;
     private AccountsOfficer officer;
+    @FXML
+    private TableColumn<Bill, Integer> billedBy;
 
     /**
      * Initializes the controller class.
@@ -51,9 +53,10 @@ public class AccountsOfficerPatientBillsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         billPatientID.setCellValueFactory(new PropertyValueFactory<Bill, Integer>("patientID"));
         billStart.setCellValueFactory(new PropertyValueFactory<Bill, LocalDate>("date"));
-        billDue.setCellValueFactory(new PropertyValueFactory<Bill, LocalDate>("due"));
+        billDue.setCellValueFactory(new PropertyValueFactory<Bill, LocalDate>("dueDate"));
         billAmount.setCellValueFactory(new PropertyValueFactory<Bill, Float>("amount"));        
-        billDescription.setCellValueFactory(new PropertyValueFactory<Bill, String>("details"));    
+        billDescription.setCellValueFactory(new PropertyValueFactory<Bill, String>("details"));
+        billedBy.setCellValueFactory(new PropertyValueFactory<Bill, Integer>("billedByID"));    
         
         accountsBillsTableView.setItems(Bill.getAllBills());
     }
@@ -89,6 +92,10 @@ public class AccountsOfficerPatientBillsController implements Initializable {
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(employeeListScene);
         directorStage.show();
+    }
+
+    @FXML
+    private void markAsPaid(ActionEvent event) {
     }
     
 }

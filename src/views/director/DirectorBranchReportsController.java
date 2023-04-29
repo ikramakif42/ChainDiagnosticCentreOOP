@@ -72,7 +72,7 @@ public class DirectorBranchReportsController implements Initializable {
         branchReportDate.setCellValueFactory(new PropertyValueFactory<Report, LocalDate>("date"));
         branchReportAuthorID.setCellValueFactory(new PropertyValueFactory<Report, Integer>("authorID"));    
         
-        branchReportTableView.setItems(Report.getAllBranchReports());
+        branchReportTableView.setItems(Director.viewBranchReports());
     }    
 
     @FXML

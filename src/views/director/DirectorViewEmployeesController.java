@@ -104,7 +104,7 @@ public class DirectorViewEmployeesController implements Initializable {
         employeeDOJTableColumn.setCellValueFactory(new PropertyValueFactory<>("DOJ"));        
         employeeGenderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
                
-        employeeTableView.setItems(getEmployees());
+        employeeTableView.setItems(Director.viewEmployeeList());
         
     }
     
@@ -178,23 +178,10 @@ public class DirectorViewEmployeesController implements Initializable {
         
     }
     
-    public ObservableList<Employee> getEmployees(){
-        ObservableList<Employee> employeeList = FXCollections.observableArrayList();
-
-        employeeList.addAll(AccountsOfficer.getAllAccounts());
-        employeeList.addAll(Doctor.getAllDoctors());
-        employeeList.addAll(HROfficer.getAllHROfficers());
-        employeeList.addAll(LabTechnician.getAllLabTechnicians());
-        employeeList.addAll(Nurse.getAllNurses());
-        employeeList.addAll(Pharmacist.getAllPharmacists());        
-        
-        return employeeList;
-    }    
 
     @FXML
     private void clickedEmployee(MouseEvent event) {
         Employee employee = employeeTableView.getSelectionModel().getSelectedItem();
-        
         tempEmployee = employee;
         System.out.println(tempEmployee.toString());
         
@@ -207,6 +194,20 @@ public class DirectorViewEmployeesController implements Initializable {
         Parent root = null;
         FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorEditEmployees.fxml"));
         DirectorEditEmployeesController q = new DirectorEditEmployeesController(this.director, this.tempEmployee);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
+    }
+
+    @FXML
+    private void promoteTransfer(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("DirectorPromoteTransferEmployee.fxml"));
+        DirectorPromoteTransferEmployeeController q = new DirectorPromoteTransferEmployeeController(this.director, this.tempEmployee);
         scheduleLoader.setController(q);
         root = (Parent) scheduleLoader.load();
 

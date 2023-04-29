@@ -40,6 +40,8 @@ public class DirectorCreateBranchReportController implements Initializable {
     @FXML
     private TextField reportTitle;
     private Director director;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Branch Report Created");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Error Creating Branch Report");
 
     public Director getDirector() {
         return director;
@@ -77,33 +79,16 @@ public class DirectorCreateBranchReportController implements Initializable {
     @FXML
     private void saveBranchReport(ActionEvent event) {
         LocalDate today = LocalDate.now();
+        
         Report newBranchReport = new Report(reportTitle.getText(), director.getName(), "Branch", reportBody.getText(), director.getID(), today);
         
-        File f = null;
-        FileOutputStream fos = null;      
-        ObjectOutputStream oos = null;
-        try {
-            f = new File("ReportObjects.bin");
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
-            }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
-            }          
-        
-            
-        oos.writeObject(newBranchReport);
-
-                        
-        } catch (IOException ex) {
-                System.out.println(ex.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-
+        boolean success = Director.createBranchReport(newBranchReport);
+        if (success){
+            a.show();
         }
-        System.out.println("Hello World2! Initialised");      
-                
+        else {
+            b.show();
+        }        
     }
     
 }

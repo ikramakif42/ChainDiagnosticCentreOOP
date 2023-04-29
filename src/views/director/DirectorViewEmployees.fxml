@@ -31,5 +31,6 @@
       <Button layoutX="41.0" layoutY="653.0" mnemonicParsing="false" onAction="#addOrSubtractSalary" text="Add/Subtract Salary" textAlignment="CENTER" />
       <Button layoutX="318.0" layoutY="653.0" mnemonicParsing="false" onAction="#employeeSchedule" text="Schedule" textAlignment="CENTER" />
       <Button layoutX="490.0" layoutY="653.0" mnemonicParsing="false" onAction="#editEmployee" text="Edit" textAlignment="CENTER" />
+      <Button layoutX="617.0" layoutY="653.0" mnemonicParsing="false" onAction="#promoteTransfer" text="Promote/Transfer" textAlignment="CENTER" />
    </children>
 </AnchorPane>

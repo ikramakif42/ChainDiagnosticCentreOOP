@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
@@ -34,6 +35,8 @@ public class DirectorEditPolicyController implements Initializable {
     private TextArea policyField;
     private Policy tempPolicy;
     private Director director;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Edit Successful");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Edit Unsuccessful");
 
     public Policy getTempPolicy() {
         return tempPolicy;
@@ -89,7 +92,13 @@ public class DirectorEditPolicyController implements Initializable {
 
     @FXML
     private void saveEdit(ActionEvent event) {
-        Policy.updatePolicy(tempPolicy.getNumber(), policyField.getText());
+        boolean success = Director.updatePolicy(tempPolicy.getNumber(), policyField.getText());
+        if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }
     }
     
 }

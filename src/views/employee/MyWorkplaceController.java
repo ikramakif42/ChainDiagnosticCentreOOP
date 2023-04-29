@@ -95,17 +95,32 @@ public class MyWorkplaceController implements Initializable {
 
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) throws IOException {
-        Parent doctorDashboard = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("/views/doctor/DoctorDashboard.fxml"));
-        doctorDashboard = (Parent) doctorLoader.load();
-        Scene doctorScene = new Scene(doctorDashboard);
+//        Parent doctorDashboard = null;
+//        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("/views/doctor/DoctorDashboard.fxml"));
+//        doctorDashboard = (Parent) doctorLoader.load();
+//        Scene doctorScene = new Scene(doctorDashboard);
+//
+//        DoctorDashboardController d = doctorLoader.getController();
+//        d.setDoc(this.employee);
+//
+//        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+//        doctorStage.setScene(doctorScene);
+//        doctorStage.show();
+    }
 
-        DoctorDashboardController d = doctorLoader.getController();
-        d.setDoc(this.employee);
+    @FXML
+    private void viewScheduleOnClick(ActionEvent event) throws IOException {
+        Parent schedule = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("ViewSchedule.fxml"));
+        schedule = (Parent) scheduleLoader.load();
+        Scene scheduleScene = new Scene(schedule);
 
-        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        doctorStage.setScene(doctorScene);
-        doctorStage.show();
+        ViewScheduleController vs = scheduleLoader.getController();
+        vs.setEmployee(this.employee);
+
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
     }
     
 }

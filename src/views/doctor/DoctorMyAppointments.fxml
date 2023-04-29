@@ -28,7 +28,7 @@
       <DatePicker fx:id="startDatePicker" layoutX="521.0" layoutY="37.0" prefHeight="31.0" prefWidth="128.0" />
       <Label layoutX="658.0" layoutY="42.0" text="- to -" />
       <DatePicker fx:id="endDatePicker" layoutX="706.0" layoutY="37.0" prefHeight="31.0" prefWidth="128.0" />
-      <Button layoutX="637.0" layoutY="99.0" mnemonicParsing="false" onAction="#clearFiltersOnClick" text="Clear Apply Appt Date Filter" />
+      <Button layoutX="667.0" layoutY="99.0" mnemonicParsing="false" onAction="#clearFiltersOnClick" text="Clear Appt Date Filter" />
       <Button layoutX="417.0" layoutY="99.0" mnemonicParsing="false" onAction="#applyFiltersOnClick" text="Apply Appt Date Filter" />
       <TextField fx:id="IDSearchTextField" layoutX="182.0" layoutY="88.0" onMouseClicked="#idClick" />
       <Label layoutX="51.0" layoutY="93.0" text="Search by ID:" />

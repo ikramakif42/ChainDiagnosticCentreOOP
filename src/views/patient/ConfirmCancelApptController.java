@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.Appointment;
 import users.Patient;
@@ -17,6 +19,8 @@ import users.Patient;
 public class ConfirmCancelApptController implements Initializable {
     private Patient patient;
     private Appointment appt;
+    Alert success = new Alert(AlertType.INFORMATION, "Appointment cancelled!");
+    Alert failure = new Alert(AlertType.WARNING, "Error, appointment cancel failed!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,16 +45,12 @@ public class ConfirmCancelApptController implements Initializable {
     
     @FXML
     private void cancelApptOnClick(ActionEvent event) throws IOException {
-        Appointment.cancelAppt(this.appt);
-        back(event);
+        if(Appointment.cancelAppt(this.appt)){success.show();}
+        else{failure.show();}
     }
 
     @FXML
     private void returnToScheduleOnClick(ActionEvent event) throws IOException {
-        back(event);
-    }
-    
-    private void back(ActionEvent event) throws IOException {
         Parent root = null;
         FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("PatientMySchedule.fxml"));
         root = (Parent) scheduleLoader.load();
@@ -63,4 +63,5 @@ public class ConfirmCancelApptController implements Initializable {
         scheduleStage.setScene(doctorScene);
         scheduleStage.show();
     }
+    
 }

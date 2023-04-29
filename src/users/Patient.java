@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
 import model.Appointment;
 import model.Bill;
+import model.Complaint;
 import model.Prescription;
 import model.TeleQuery;
 
@@ -101,6 +102,7 @@ public class Patient extends User implements Serializable{
         }
         return false;
     }
+    
     public boolean updatePersonalInfo(String newRecord){
         try {
             File file = new File("PatientObjects.bin");
@@ -197,29 +199,39 @@ public class Patient extends User implements Serializable{
         return queryList;
     }
     
-    public void writeQuery(String usertype, String query) throws IOException {
-        TeleQuery q = new TeleQuery(this.ID, usertype, query);
+    public boolean writeQuery(String usertype, String query) throws IOException {
+        TeleQuery tq = new TeleQuery(this.ID, usertype, query);
+        System.out.println("New TeleQuery is: "+tq.toString());
         File f = null;
-        FileOutputStream fos = null;      
+        FileOutputStream fos = null; 
         ObjectOutputStream oos = null;
         try {
-            f = new File("TeleQueryObjects.bin");
+            f = new File("AppointmentObjects.bin");
             if(f.exists()){
                 fos = new FileOutputStream(f,true);
                 oos = new AppendableObjectOutputStream(fos);                
             }
             else{
                 fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
+                oos = new ObjectOutputStream(fos);
             }
-            oos.writeObject(q);
+            oos.writeObject(tq);
+            System.out.println("TeleQuery written successfully!");
+            oos.close();
+            return true;
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
         }
-        catch (IOException ex){System.out.println(ex);}
-        System.out.println("Query written");
-        oos.close();
+      return false;
     }
     
-    public void writeAppt(int docID, LocalDate date, String time) {
+    public boolean writeAppt(int docID, LocalDate date, String time) {
         Appointment newAppt = new Appointment(docID, this.getID(), date, time);
         System.out.println("New Appt is: "+newAppt.toString());
         File f = null;
@@ -236,6 +248,9 @@ public class Patient extends User implements Serializable{
                 oos = new ObjectOutputStream(fos);
             }
             oos.writeObject(newAppt);
+            System.out.println("Appt written successfully!");
+            oos.close();
+            return true;
         } catch (IOException ex) {
             System.out.println(ex.toString());
         } finally {
@@ -245,13 +260,8 @@ public class Patient extends User implements Serializable{
                 System.out.println(ex.toString());
             }
         }
-        System.out.println("Appt written successfully!");
+      return false;
     }
-    
-//    + submitComplaint(): void
-//    + viewLabReports(): void
-//    + viewPayBills(): void
-//    + requestRefills(): void
 
     public LocalDate getLatestAppt(ObservableList<Appointment> apptList) {
         ArrayList<LocalDate> dateList = new ArrayList<>();
@@ -376,5 +386,71 @@ public class Patient extends User implements Serializable{
         System.out.println(billList);
         return billList;
     }
+    
+    public boolean submitComplaint(String subject, String details){
+        Complaint complaint = new Complaint(this.getID(), subject, details);
+        System.out.println("New complaint is: "+complaint.toString());
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("PatientComplaintObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            oos.writeObject(complaint);
+            System.out.println("Complaint written successfully!");
+            oos.close();
+            return true;
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+      return false;
+    }
+    
+    //    + viewLabReports(): void
+
+    public boolean submitRefill(Prescription refill) {
+        System.out.println("New refill is: "+refill.toString());
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("RefillRequests.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            oos.writeObject(refill);
+            System.out.println("Refill Request submitted successfully!");
+            oos.close();
+            return true;
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+      return false;
+    }
+    
 }
 

@@ -48,8 +48,8 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="550.0" layoutY="81.0" mnemonicParsing="false" onAction="#nurseSearchPatientListOnClick" text="Search" />
-      <TextField fx:id="nurseSearchPatientListTextField" layoutX="628.0" layoutY="81.0" prefHeight="25.0" prefWidth="247.0" />
-      <Button layoutX="712.0" layoutY="565.0" mnemonicParsing="false" onAction="#nursePatientListToDashboardOnClick" prefHeight="26.0" prefWidth="160.0" text="Back To Dashboarad" />
+      <Button layoutX="550.0" layoutY="81.0" mnemonicParsing="false" onAction="#nurseSearchPatientListByIDOnClick" text="Search By ID" />
+      <TextField fx:id="nurseSearchPatientListnurseSearchPatientListByIDOnClickTextField" layoutX="663.0" layoutY="81.0" prefHeight="26.0" prefWidth="212.0" />
+      <Button layoutX="712.0" layoutY="565.0" mnemonicParsing="false" onAction="#nursePatientListToDashboardOnClick" prefHeight="26.0" prefWidth="160.0" text="Back To Dashboard" />
    </children>
 </AnchorPane>

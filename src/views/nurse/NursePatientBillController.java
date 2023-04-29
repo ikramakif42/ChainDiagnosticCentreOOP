@@ -72,7 +72,7 @@ public class NursePatientBillController implements Initializable {
         nursePatientBillAmountTableView.setCellValueFactory(new PropertyValueFactory<Bill,Float>("amount"));
         nursePatientBillDetailsTableView.setCellValueFactory(new PropertyValueFactory<Bill,String>("details"));
         // TODO
-        nursePatientBillTableList.setItems(Bill.getAllBills());
+        
         System.out.println(Bill.getAllBills());
     }    
 
@@ -82,6 +82,7 @@ public class NursePatientBillController implements Initializable {
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+        nursePatientBillTableList.setItems(Nurse.getPatientBills());
        
     }
     

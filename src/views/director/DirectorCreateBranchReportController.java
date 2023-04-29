@@ -80,7 +80,7 @@ public class DirectorCreateBranchReportController implements Initializable {
     private void saveBranchReport(ActionEvent event) {
         LocalDate today = LocalDate.now();
         
-        Report newBranchReport = new Report(reportTitle.getText(), director.getName(), "Branch", reportBody.getText(), director.getID(), today);
+        Report newBranchReport = new Report(reportTitle.getText(), director.getName(), "Branch", reportBody.getText(), director.getID());
         
         boolean success = Director.createBranchReport(newBranchReport);
         if (success){

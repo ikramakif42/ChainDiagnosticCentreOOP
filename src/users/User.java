@@ -296,4 +296,42 @@ public abstract class User implements Serializable{
         }
         return null;
     }
-}
+
+    public static ObservableList<Policy> getPolicyList() {
+        ObservableList<Policy> PolicyList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "PolicyObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Policy tempPolicy = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempPolicy = (Policy) ois.readObject();
+                    System.out.println("Populate Policy:");
+                    System.out.println(tempPolicy.toString());
+                    PolicyList.add((Policy)tempPolicy);
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(PolicyList);        
+        return PolicyList;
+    }    
+    }
+

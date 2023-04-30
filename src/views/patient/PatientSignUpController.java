@@ -72,7 +72,7 @@ public class PatientSignUpController implements Initializable {
         String name = nameTextField.getText();
         
         String id = IDTextField.getText();
-        if (!isNumeric(id) && id.length()>=5) {idNumError.show();return;}
+        if (!isNumeric(id) || id.length()>=5) {idNumError.show();return;}
         else if(User.userLogin(Integer.parseInt(id), "")==2) {idExistsError.show();return;}
         int ID = Integer.parseInt(id);
         

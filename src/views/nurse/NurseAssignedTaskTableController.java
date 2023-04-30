@@ -59,7 +59,7 @@ public class NurseAssignedTaskTableController implements Initializable {
             String name = ((Doctor)User.getInstance(temp.getSenderID(),"Doctor")).getName();
             return new SimpleStringProperty(name);
         };
-        //blablablal
+        
         
         
         nurseAssignedDocIDTable.setCellValueFactory(new PropertyValueFactory<Task,Integer>("SenderID"));
@@ -67,7 +67,7 @@ public class NurseAssignedTaskTableController implements Initializable {
         nurseAssignedTaskTaskTable.setCellValueFactory(new PropertyValueFactory<Task,String>("taskDetails"));
         nurseAssignedTaskDateTable.setCellValueFactory(new PropertyValueFactory<Task,LocalDate>("assignedDate"));
 
-        // TODO
+        
     }    
 
     public Nurse getNurse() {

@@ -16,10 +16,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.Nurse;
+import users.Patient;
 
 /**
  * FXML Controller class
@@ -28,20 +30,43 @@ import users.Nurse;
  */
 public class NurseUpdatePatientMedicalRecordsController implements Initializable {
 
-    @FXML
     private TextField nurseUpdatePatientName;
-    @FXML
     private TextField nurseUpdatePatientId;
     @FXML
     private TextArea nurseUpdatePatientMedicalRecordTextArea;
     
     private Nurse nurse;
+    
+    private Patient patient;
+    @FXML
+    private TextArea nursePatientMedicalRecordTextArea;
+    @FXML
+    private Label nurseUpdatePatientNameLabel;
+    @FXML
+    private Label nurseUpdatePatientIDLabel;
+
+    public NurseUpdatePatientMedicalRecordsController(Nurse nurse, Patient patient) {
+        this.nurse = nurse;
+        this.patient = patient;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+     
+    nurseUpdatePatientName.setText(patient.getName());
+    nurseUpdatePatientId.setText(String.valueOf( patient.getID()));
+    nursePatientMedicalRecordTextArea.setText(patient.getMedicalRecords());
     }    
 
     public Nurse getNurse() {

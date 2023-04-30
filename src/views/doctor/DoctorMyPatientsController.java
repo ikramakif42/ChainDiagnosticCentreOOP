@@ -88,8 +88,10 @@ public class DoctorMyPatientsController implements Initializable {
             @Override
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
-                if (date.isBefore(startDatePicker.getValue())) {
-                    setDisable(true);
+                if (startDatePicker.getValue()!=null){
+                    if (date.isBefore(startDatePicker.getValue())) {
+                        setDisable(true);
+                    }
                 }
             }
         });

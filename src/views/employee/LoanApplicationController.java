@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -33,9 +34,16 @@ public class LoanApplicationController implements Initializable {
     private TextArea loanApplicationTextArea;
     @FXML
     private DatePicker loanDatePicker;
-    @FXML
-    private Label errorLabel;
     private Employee employee;
+    Alert noType = new Alert(Alert.AlertType.WARNING, "Error, select loan type!");
+    Alert noAmount = new Alert(Alert.AlertType.WARNING, "Error, enter loan amount!");
+    Alert minAmount = new Alert(Alert.AlertType.WARNING, "Error, minimum loan amount is BDT 25,000!");
+    Alert badAmount = new Alert(Alert.AlertType.WARNING, "Error, enter valid amount!");
+    Alert noDate = new Alert(Alert.AlertType.WARNING, "Error, select date of disbursement!");
+    Alert noDuration = new Alert(Alert.AlertType.WARNING, "Error, select loan duration!");
+    Alert noDetails = new Alert(Alert.AlertType.WARNING, "Error, enter loan application details!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to submit loan application!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Loan application submitted successfully!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,24 +74,24 @@ public class LoanApplicationController implements Initializable {
     private void submitApplicationOnClick(ActionEvent event){
         float amount=0f;
         String type = loanTypeComboBox.getSelectionModel().getSelectedItem();
-        if (type==null){errorLabel.setText("Error, select loan type!");return;}
+        if (type==null){noType.show();return;}
         String amountText = loanAmountTextField.getText();
-        if (amountText.isEmpty()){errorLabel.setText("Error, select loan amount!");return;}
+        if (amountText.isEmpty()){noAmount.show();return;}
         try {
             amount = Float.parseFloat(amountText);
-            if (amount<10000){errorLabel.setText("Error, minimum amount is 25,000!");return;}
+            if (amount<10000){minAmount.show();return;}
         }
-        catch (NumberFormatException n) {errorLabel.setText("Error, enter valid amount!");return;}
+        catch (NumberFormatException n) {badAmount.show();return;}
         LocalDate date = loanDatePicker.getValue();
-        if (date==null){errorLabel.setText("Error, select disbursement date!");return;}
+        if (date==null){noDate.show();return;}
         String duration = loanDurationComboBox.getSelectionModel().getSelectedItem();
-        if (duration==null){errorLabel.setText("Error, select loan duration!");return;}
+        if (duration==null){noDuration.show();return;}
         String details = loanApplicationTextArea.getText();
-        if (details.isEmpty()){errorLabel.setText("Error, enter application details!");return;}
+        if (details.isEmpty()){noDetails.show();return;}
         
         
-        this.employee.submitLoanApplication(amount, date, duration, type, details);
-        errorLabel.setText("Leave Application submitted successfully!");
+        if(this.employee.submitLoanApplication(amount, date, duration, type, details)){success.show();}
+        else{failure.show();return;}
         
         loanTypeComboBox.getSelectionModel().clearSelection();
         loanAmountTextField.clear();

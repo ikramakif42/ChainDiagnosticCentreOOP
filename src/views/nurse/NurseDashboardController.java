@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views.nurse;
 
 import java.io.IOException;
@@ -22,18 +18,13 @@ import javafx.stage.Stage;
 import users.Nurse;
 import views.doctor.DoctorDashboardController;
 
-/**
- * FXML Controller class
- *
- * @author User
- */
+
+
 public class NurseDashboardController implements Initializable {
 
     private Nurse nurse;
 
-    /**
-     * Initializes the controller class.
-     */
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

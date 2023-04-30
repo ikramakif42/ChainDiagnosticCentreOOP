@@ -22,8 +22,10 @@ import model.Appointment;
 import model.Bill;
 import model.Complaint;
 import model.LabReport;
+import model.LoginInfo;
 import model.Prescription;
 import model.TeleQuery;
+import views.patient.PatientSignUpController;
 
 public class Patient extends User implements Serializable{
     private static final long serialVersionUID = 13L;
@@ -489,5 +491,48 @@ public class Patient extends User implements Serializable{
         return reportList;
     }
     
+    public static boolean addPatient(Patient toAdd) {
+        File f = null;
+        FileOutputStream fos = null;      
+        ObjectOutputStream oos = null;
+        File f2 = null;
+        FileOutputStream fos2 = null;      
+        ObjectOutputStream oos2 = null;
+        try {
+            f = new File("PatientObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);               
+            }
+            f2 = new File("LoginInfoObjects.bin");
+            if(f2.exists()){
+                fos2 = new FileOutputStream(f2,true);
+                oos2 = new AppendableObjectOutputStream(fos2);                
+            }
+            else{
+                fos2 = new FileOutputStream(f2);
+                oos2 = new ObjectOutputStream(fos2);               
+            }
+            LoginInfo toAddLogin = new LoginInfo(toAdd.getID(), toAdd.getPassword(), "Patient");
+            oos.writeObject(toAdd);
+            oos2.writeObject(toAddLogin);
+            oos.close();
+            oos2.close();
+            System.out.println("Sign up success");
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(PatientSignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(oos != null) {oos.close();oos2.close();}
+            } catch (IOException ex) {
+                Logger.getLogger(PatientSignUpController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
 }
-

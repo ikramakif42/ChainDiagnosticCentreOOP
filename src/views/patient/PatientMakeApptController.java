@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -45,6 +46,15 @@ public class PatientMakeApptController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         deptComboBox.setItems(Doctor.getDeptList());
+        datePicker.setDayCellFactory(dp -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(LocalDate.now())) {
+                    setDisable(true);
+                }
+            }
+        });
     }
 
     public Patient getPatient() {

@@ -33,6 +33,7 @@ import views.director.DirectorDashboardController;
 import views.doctor.DoctorDashboardController;
 import views.nurse.NurseDashboardController;
 import views.patient.PatientDashboardController;
+import views.patient.PatientSignUpController;
 import views.pharmacist.PharmacistDashboardController;
 
 public class LoginController implements Initializable {
@@ -309,4 +310,18 @@ public class LoginController implements Initializable {
         }
     }
   }
+
+    @FXML
+    private void patientSignUpOnClick(ActionEvent event) throws IOException {
+        Parent signUp = null;
+        FXMLLoader signUpLoader = new FXMLLoader(getClass().getResource("patient/PatientSignUp.fxml"));
+        signUp = (Parent) signUpLoader.load();
+        Scene signUpScene = new Scene(signUp);
+
+        PatientSignUpController u = signUpLoader.getController();
+
+        Stage signUpStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
+    }
 }

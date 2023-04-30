@@ -7,6 +7,7 @@ package views.nurse;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,9 +65,12 @@ public class NurseUpdatePatientMedicalRecordsController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
+    ArrayList<String> historyList = patient.getMedicalRecords();
     nurseUpdatePatientName.setText(patient.getName());
     nurseUpdatePatientId.setText(String.valueOf( patient.getID()));
-    nursePatientMedicalRecordTextArea.setText(patient.getMedicalRecords());
+    for (String s: historyList){
+        nursePatientMedicalRecordTextArea.appendText(s + "/n");
+    }
     }    
 
     public Nurse getNurse() {

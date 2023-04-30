@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.nurse.NursePatientListController">
    <children>
-      <TableView fx:id="nursePatientListTable" layoutX="-1.0" prefHeight="632.0" prefWidth="511.0">
+      <TableView fx:id="nursePatientListTable" layoutX="-1.0" onMouseClicked="#clickedPatient" prefHeight="632.0" prefWidth="511.0">
         <columns>
           <TableColumn fx:id="nursePatientNameTable" prefWidth="134.39996033906937" text="Patient Name" />
           <TableColumn fx:id="nursePatientIdTable" prefWidth="107.20004272460938" text="ID" />

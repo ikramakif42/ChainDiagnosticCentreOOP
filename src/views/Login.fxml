@@ -20,5 +20,6 @@
       <Button layoutX="378.0" layoutY="374.0" mnemonicParsing="false" onAction="#userLogin" text="Log me in" />
       <PasswordField fx:id="passwordField" layoutX="421.0" layoutY="283.0" />
       <Label fx:id="errorLabel" layoutX="343.0" layoutY="433.0" prefHeight="21.0" prefWidth="268.0" textAlignment="CENTER" />
+      <Button layoutX="611.0" layoutY="439.0" mnemonicParsing="false" onAction="#patientSignUpOnClick" text="New Patient? Sign up here!" />
    </children>
 </AnchorPane>

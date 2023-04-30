@@ -54,17 +54,17 @@
             }
             return taskList;
         }
-
-        public Nurse(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
-            super(designation, department, salary, DOJ, branchName, name, ID, password, email, gender, contactNo, address, DOB);
-            this.scheduleRoster = super.scheduleRoster;
-        }
-
-        @Override
-        public String toString() {
-            return "Nurse: " + "Desig="+designation+" Dept= "+department+" Salary= "+salary+" DOJ= "+DOJ+" branch= "+branchName+" Name= "+name+" ID= "+ID+" pass= "+password+" mail= "+email+" gender"+gender+" contact= "+contactNo+" addr= "+address+" DOJ= "+DOB+" sche="+scheduleRoster;
-        }
-
+        
+    public Nurse(String designation, String department, Float salary, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
+        super(designation, department, salary, branchName, name, ID, password, email, gender, contactNo, address, DOB);
+        this.scheduleRoster = super.scheduleRoster;
+    }
+    
+    @Override
+    public String toString() {
+        return "Nurse: " + "Desig="+designation+" Dept= "+department+" Salary= "+salary+" DOJ= "+DOJ+" branch= "+branchName+" Name= "+name+" ID= "+ID+" pass= "+password+" mail= "+email+" gender"+gender+" contact= "+contactNo+" addr= "+address+" DOJ= "+DOB+" sche="+scheduleRoster;
+    }
+    
     public static ObservableList<Employee> getAllNurses(){
         ObservableList<Employee> nurseList = FXCollections.observableArrayList();
         File f = null;

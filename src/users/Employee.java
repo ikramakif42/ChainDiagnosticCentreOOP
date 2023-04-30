@@ -30,12 +30,12 @@ public abstract class Employee extends User implements Serializable{
     public String branchName;
     protected ArrayList<Schedule> scheduleRoster = new ArrayList<Schedule>();
 
-    public Employee(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
+    public Employee(String designation, String department, Float salary, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
         super(name, ID, password, email, gender, contactNo, address, DOB);
         this.designation = designation;
         this.department = department;
         this.salary = salary;
-        this.DOJ = DOJ;
+        this.DOJ = LocalDate.now();
         this.branchName = branchName;
     }
 

@@ -91,6 +91,17 @@ public class DoctorMyAppointmentsController implements Initializable {
         apptTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         lastApptTableColumn.setCellValueFactory(apptCVF);
         
+        startDatePicker.setDayCellFactory(dp -> new DateCell(){
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (endDatePicker.getValue()!=null){
+                    if (date.isAfter(endDatePicker.getValue())) {
+                        setDisable(true);
+                    }
+                }
+            }
+        });
         endDatePicker.setDayCellFactory(dp -> new DateCell(){
             @Override
             public void updateItem(LocalDate date, boolean empty) {

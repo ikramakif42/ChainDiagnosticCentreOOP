@@ -25,8 +25,8 @@ public class Director extends Employee implements Serializable {
     private int stockOptions;
     
     
-    public Director(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
-        super(designation, department, salary, DOJ, branchName, name, ID, password, email, gender, contactNo, address, DOB);
+    public Director(String designation, String department, Float salary, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
+        super(designation, department, salary, branchName, name, ID, password, email, gender, contactNo, address, DOB);
         this.scheduleRoster = super.scheduleRoster;
     }
 

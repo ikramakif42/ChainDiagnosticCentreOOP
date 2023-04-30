@@ -263,7 +263,7 @@ public class LoginController implements Initializable {
                 Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
                 directorStage.setScene(directorScene);
                 directorStage.show();            
-            break;
+                break;
             case 8: 
                 errorLabel.setText("Login Successful - Accounts Officer");                  //Accounts Officer authenticated
                 Parent accountsOfficerDashboard = null;

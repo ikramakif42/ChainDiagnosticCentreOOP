@@ -1,20 +1,11 @@
 package views.doctor;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,25 +16,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Appointment;
-import users.AccountsOfficer;
-import users.Director;
 import users.Doctor;
 import users.Patient;
-import users.User;
 
 public class DoctorMyPatientsController implements Initializable {
 
@@ -66,9 +51,8 @@ public class DoctorMyPatientsController implements Initializable {
     @FXML
     private TextField IDSearchTextField;
     private Doctor doc;
-    @FXML
-    private Label errorLabel;
-
+    Alert noPat = new Alert(Alert.AlertType.WARNING, "Error, select a patient first!");
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Callback<TableColumn.CellDataFeatures<Patient, Integer>, ObservableValue<Integer>> ageCVF = feature -> {
@@ -117,7 +101,7 @@ public class DoctorMyPatientsController implements Initializable {
 
     public void setDoc(Doctor doc) {
         this.doc = doc;
-        ObservableList<Patient> patList = getPats(Appointment.getApptList(this.doc.getID()));
+        ObservableList<Patient> patList = this.doc.getPats(Appointment.getApptList(this.doc.getID()));
         patientTableView.setItems(patList);
         
         nameSearchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -154,7 +138,7 @@ public class DoctorMyPatientsController implements Initializable {
         startDatePicker.setValue(null);
         endDatePicker.setValue(null);
         
-        ObservableList<Patient> patList = getPats(Appointment.getApptList(this.doc.getID()));
+        ObservableList<Patient> patList = this.doc.getPats(Appointment.getApptList(this.doc.getID()));
         patientTableView.setItems(patList);
     }
 
@@ -164,7 +148,7 @@ public class DoctorMyPatientsController implements Initializable {
         IDSearchTextField.clear();        
         
         ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
-        ObservableList<Patient> patList = getPats(apptList);
+        ObservableList<Patient> patList = this.doc.getPats(apptList);
         ObservableList<Patient> newPatList = FXCollections.observableArrayList();
         LocalDate startDate = startDatePicker.getValue();
         LocalDate endDate = endDatePicker.getValue();
@@ -183,7 +167,7 @@ public class DoctorMyPatientsController implements Initializable {
     @FXML
     private void medicalRecordsOnClick(ActionEvent event) throws IOException {
         Patient pat = patientTableView.getSelectionModel().getSelectedItem();
-        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        if (pat==null){noPat.show();return;}
         
         Parent parent = null;
         FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("ViewAddPatientRecords.fxml"));
@@ -202,7 +186,7 @@ public class DoctorMyPatientsController implements Initializable {
     @FXML
     private void prescribeMedsOnClick(ActionEvent event) throws IOException {
         Patient pat = patientTableView.getSelectionModel().getSelectedItem();
-        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        if (pat==null){noPat.show();return;}
         
         Parent parent = null;
         FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("PrescribeMedicine.fxml"));
@@ -221,7 +205,7 @@ public class DoctorMyPatientsController implements Initializable {
     @FXML
     private void labResultsOnClick(ActionEvent event) throws IOException {
         Patient pat = patientTableView.getSelectionModel().getSelectedItem();
-        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        if (pat==null){noPat.show();return;}
         
         Parent parent = null;
         FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("AddTrackLabTests.fxml"));
@@ -230,7 +214,7 @@ public class DoctorMyPatientsController implements Initializable {
 
         AddTrackLabTestsController l = doctorLoader.getController();
         l.setDoc(this.doc);
-//        l.setPat(pat);
+        l.setPat(pat);
 
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         doctorStage.setScene(doctorScene);
@@ -240,7 +224,7 @@ public class DoctorMyPatientsController implements Initializable {
     @FXML
     private void billInfoOnClick(ActionEvent event) throws IOException {
         Patient pat = patientTableView.getSelectionModel().getSelectedItem();
-        if (pat==null){errorLabel.setText("Error, select a patient first!");return;}
+        if (pat==null){noPat.show();return;}
         
         Parent parent = null;
         FXMLLoader billLoader = new FXMLLoader(getClass().getResource("ViewPatientBillingInfo.fxml"));
@@ -269,52 +253,6 @@ public class DoctorMyPatientsController implements Initializable {
         Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         doctorStage.setScene(doctorScene);
         doctorStage.show();
-    }
-    
-    public ObservableList<Patient> getPatients(){
-        ObservableList<Patient> patientList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "PatientObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            User tempUser = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempUser = (Patient) ois.readObject();
-                    System.out.println("Populate patient:");
-                    System.out.println(tempUser.toString());
-                    patientList.add((Patient)tempUser);
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }
-        System.out.println(patientList);
-        return patientList;
-    }   
-
-    private ObservableList<Patient> getPats(ObservableList<Appointment> apptList) {
-        ObservableList<Patient> patList = FXCollections.observableArrayList();
-        for (Appointment appt : apptList){
-            Patient pat = (Patient) User.getInstance(appt.getPatientID(), "Patient");
-            patList.add(pat);
-        }
-        return patList;
     }
 
     @FXML

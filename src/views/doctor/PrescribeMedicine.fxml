@@ -43,7 +43,6 @@
       <Line endX="4.0" endY="419.0" layoutX="554.0" layoutY="110.0" startX="4.0" startY="-24.0" />
       <Label layoutX="606.0" layoutY="251.0" text="New Medicine Dosage:" />
       <Label layoutX="606.0" layoutY="343.0" text="New Medicine Duration:" />
-      <Label fx:id="errorLabel" layoutX="608.0" layoutY="430.0" prefHeight="21.0" prefWidth="236.0" />
       <TextField fx:id="medNameTextField" layoutX="606.0" layoutY="196.0" prefHeight="31.0" prefWidth="236.0" />
       <TextField fx:id="dosageTextField" layoutX="607.0" layoutY="286.0" prefHeight="31.0" prefWidth="236.0" />
       <TextField fx:id="durationTextField" layoutX="608.0" layoutY="386.0" prefHeight="31.0" prefWidth="236.0" />

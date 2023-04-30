@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
@@ -32,11 +33,13 @@ public class TelequeryResponseController implements Initializable {
     private TextArea queryTextArea;
     @FXML
     private TextArea answerTextArea;
-    @FXML
-    private Label errorLabel;
     private Doctor doc;
     private TeleQuery TQ;
     private boolean answerFlag;
+    Alert noAns = new Alert(Alert.AlertType.WARNING, "Error, enter an answer!");
+    Alert answered = new Alert(Alert.AlertType.WARNING, "Error, selected query is already answered!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to submit answer!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Telemedicine query answered successfully!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,18 +91,16 @@ public class TelequeryResponseController implements Initializable {
     @FXML
     private void submitAnswerOnClick(ActionEvent event) {
         String answer = answerTextArea.getText();
-        if (answer.isEmpty()){errorLabel.setText("Error, answer query!");return;}
-        else if (this.answerFlag){errorLabel.setText("Error, already answered!");return;}
+        if (answer.isEmpty()){noAns.show();return;}
+        else if (this.answerFlag){answered.show();return;}
         this.TQ.setAnswer(answer);
         this.TQ.setAnswerID(this.doc.getID());
         System.out.println("Writing answer...");
         if (this.doc.answerQuery(TQ)){
-            errorLabel.setText("Query answered successfully!");
+            success.show();
             this.answerFlag = true;
         }
-        else{
-            errorLabel.setText("Error, please try again!");
-        }
+        else{failure.show();}
     }
     
 }

@@ -10,7 +10,7 @@ public class LabReport extends Report implements Serializable {
         super(title, author, type, body, authorID);
         this.patientID = patientID;
     }
-
+    
     public int getPatientID() {
         return patientID;
     }
@@ -18,7 +18,7 @@ public class LabReport extends Report implements Serializable {
     public void setPatientID(int patientID) {
         this.patientID = patientID;
     }
-
+    
     @Override
     public String toString() {
         return "Report: " + "title=" + title + ", author=" + author + ", type=" + type + ", body=" + body + ", authorID=" + authorID + ", date=" + date + ", patientID" +patientID;

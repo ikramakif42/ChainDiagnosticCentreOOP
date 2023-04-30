@@ -18,6 +18,8 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
+import model.Appointment;
+import model.LabOrder;
 import model.Prescription;
 import model.Schedule;
 import model.Task;
@@ -321,5 +323,81 @@ public class Doctor extends Employee implements Serializable{
         System.out.println("Prescription written successfully!");
     }
 
-    
+    public ObservableList<Patient> getPatients(){
+        ObservableList<Patient> patientList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "PatientObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            User tempUser = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempUser = (Patient) ois.readObject();
+                    System.out.println("Populate patient:");
+                    System.out.println(tempUser.toString());
+                    patientList.add((Patient)tempUser);
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(patientList);
+        return patientList;
+    }   
+
+    public ObservableList<Patient> getPats(ObservableList<Appointment> apptList) {
+        ObservableList<Patient> patList = FXCollections.observableArrayList();
+        for (Appointment appt : apptList){
+            Patient pat = (Patient) User.getInstance(appt.getPatientID(), "Patient");
+            patList.add(pat);
+        }
+        return patList;
+    }
+
+    public boolean submitLabOrder(int patientID, String testName, String priority) {
+        LabOrder newOrder = new LabOrder(patientID, this.getID(), testName, priority);
+        System.out.println("New Lab Order is: "+newOrder.toString());
+        File f = null;
+        FileOutputStream fos = null; 
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("LabOrderObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos);                
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+            oos.writeObject(newOrder);
+            oos.close();
+            System.out.println("Lab Order submitted successfully!");
+            return true;
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            try {
+                if(oos != null) oos.close();
+            } catch (IOException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        return false;
+    }
 }

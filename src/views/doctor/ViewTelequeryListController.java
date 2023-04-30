@@ -1,20 +1,13 @@
 package views.doctor;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Iterator;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -24,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -38,8 +32,6 @@ import users.Patient;
 import users.User;
 
 public class ViewTelequeryListController implements Initializable {
-    @FXML
-    private Label errorLabel;
     @FXML
     private TableView<TeleQuery> queryListTableView;
     @FXML
@@ -60,6 +52,7 @@ public class ViewTelequeryListController implements Initializable {
     private ToggleGroup queryStatusTG;
     private Doctor doc;
     private FilteredList<TeleQuery> filterTQL;
+    Alert noTQ = new Alert(Alert.AlertType.WARNING, "Error, select a patient first!");
 
     ViewTelequeryListController(Doctor doc) {
         this.doc = doc;
@@ -109,21 +102,6 @@ public class ViewTelequeryListController implements Initializable {
     public void setDoc(Doctor doc) {
         this.doc = doc;
     }
-    
-    @FXML
-    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
-        Parent doctorDashboard = null;
-        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorDashboard.fxml"));
-        doctorDashboard = (Parent) doctorLoader.load();
-        Scene doctorScene = new Scene(doctorDashboard);
-
-        DoctorDashboardController d = doctorLoader.getController();
-        d.setDoc(this.doc);
-
-        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        doctorStage.setScene(doctorScene);
-        doctorStage.show();
-    }
 
 
     @FXML
@@ -152,7 +130,7 @@ public class ViewTelequeryListController implements Initializable {
     @FXML
     private void answerQueryOnClick(ActionEvent event) throws IOException {
         TeleQuery selectedTQ = queryListTableView.getSelectionModel().getSelectedItem();
-        System.out.println(selectedTQ.toString());
+        if (selectedTQ==null){noTQ.show();return;}
         
         Parent answerQuery=null;
         FXMLLoader answerLoader = new FXMLLoader(getClass().getResource("TelequeryResponse.fxml"));
@@ -168,4 +146,18 @@ public class ViewTelequeryListController implements Initializable {
         answerStage.show();
     }
     
+    @FXML
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent doctorDashboard = null;
+        FXMLLoader doctorLoader = new FXMLLoader(getClass().getResource("DoctorDashboard.fxml"));
+        doctorDashboard = (Parent) doctorLoader.load();
+        Scene doctorScene = new Scene(doctorDashboard);
+
+        DoctorDashboardController d = doctorLoader.getController();
+        d.setDoc(this.doc);
+
+        Stage doctorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        doctorStage.setScene(doctorScene);
+        doctorStage.show();
+    }
 }

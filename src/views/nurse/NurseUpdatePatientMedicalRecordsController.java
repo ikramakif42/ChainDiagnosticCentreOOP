@@ -66,10 +66,11 @@ public class NurseUpdatePatientMedicalRecordsController implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
      
     ArrayList<String> historyList = patient.getMedicalRecords();
-    nurseUpdatePatientName.setText(patient.getName());
-    nurseUpdatePatientId.setText(String.valueOf( patient.getID()));
+    nurseUpdatePatientNameLabel.setText(patient.getName());
+    nurseUpdatePatientIDLabel.setText(String.valueOf( patient.getID()));
     for (String s: historyList){
-        nursePatientMedicalRecordTextArea.appendText(s + "/n");
+        nursePatientMedicalRecordTextArea.appendText(s + "\n");
+        
     }
     }    
 

@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -42,10 +43,12 @@ public class UpdatePersonalInfoController implements Initializable {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Label errorLabel;
-    @FXML
     private Label genderLabel;
     private Patient patient;
+    Alert wrongPW = new Alert(Alert.AlertType.WARNING, "Error, wrong password entered!");
+    Alert badEmail = new Alert(Alert.AlertType.WARNING, "Error, enter a valid email!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to update info!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Successfully updated info!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}    
@@ -69,7 +72,7 @@ public class UpdatePersonalInfoController implements Initializable {
     private void updatePersonalInfoOnClick(ActionEvent event){
         String pw = passwordField.getText();
         if (!pw.equals(patient.getPassword())) {
-            errorLabel.setText("Error, wrong password!");
+            wrongPW.show();
             System.out.println(patient.getPassword());
             return;
         }
@@ -78,18 +81,13 @@ public class UpdatePersonalInfoController implements Initializable {
         String newEmail = emailTextField.getText();
         String newAddr = addressTextField.getText();
         String newContactNo = contactNoTextField.getText();
-        if (!newEmail.contains("@")){
-            errorLabel.setText("Error, enter valid email!");
-            return;
-        }
+        if (!newEmail.contains("@")){badEmail.show();return;}
         
         System.out.println("New Info collected: "+newName+", "+newEmail+", "+newAddr+", "+newContactNo+", ");
         if (this.patient.updatePersonalInfo(newName, newEmail, newAddr, newContactNo)){
-            errorLabel.setText("Info updated successfully!");
+            success.show();
         }
-        else {
-            errorLabel.setText("Error, update info failed!");
-        }
+        else {failure.show();}
     }
 
     @FXML

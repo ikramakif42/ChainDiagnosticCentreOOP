@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,7 +36,7 @@ public class PatientMyScheduleController implements Initializable {
     private TableColumn<Appointment, LocalDate> apptDateTableColumn;
     @FXML
     private TableColumn<Appointment, String> apptTimeTableColumn;
-
+    Alert noAppt = new Alert(Alert.AlertType.WARNING, "Error, select an appointment first!");
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,9 +49,6 @@ public class PatientMyScheduleController implements Initializable {
         doctorNameTableColumn.setCellValueFactory(nameCVF);
         apptDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         apptTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
-        
-//        ObservableList<Appointment> ApptList = Appointment.getApptList(this.patient.getID());
-//        apptTableView.setItems(ApptList);
     }
     
     public Patient getPatient() {
@@ -82,6 +80,8 @@ public class PatientMyScheduleController implements Initializable {
     @FXML
     private void confirmCancelOnClick(ActionEvent event) throws IOException {
         Appointment apptToCancel = apptTableView.getSelectionModel().getSelectedItem();
+        if (apptToCancel==null){noAppt.show();return;}
+        
         Parent confirmCancel = null;
         FXMLLoader cancelLoader = new FXMLLoader(getClass().getResource("ConfirmCancelAppt.fxml"));
         confirmCancel = (Parent) cancelLoader.load();

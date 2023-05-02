@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,23 +23,21 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="48.0" layoutY="56.0" mnemonicParsing="false" onAction="#laborderOnClick" prefHeight="36.0" prefWidth="151.0" text="Lab order">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
-            <TreeTableView layoutX="323.0" layoutY="39.0" prefHeight="217.0" prefWidth="297.0">
+            <TreeTableView fx:id="PatientTableView" layoutX="30.0" layoutY="40.0" prefHeight="217.0" prefWidth="297.0">
               <columns>
                 <TreeTableColumn prefWidth="96.6666259765625" text="Patient ID" />
-                <TreeTableColumn prefWidth="97.99996948242188" text="Serial Number" />
-                  <TreeTableColumn prefWidth="98.6666259765625" text="Lab Test" />
+                <TreeTableColumn fx:id="TestNameTableColumn" prefWidth="97.99996948242188" text="Test Name" />
+                  <TreeTableColumn fx:id="PriorityTableColumn" prefWidth="98.6666259765625" text="Priority" />
               </columns>
             </TreeTableView>
-            <Button layoutX="261.0" layoutY="337.0" mnemonicParsing="false" onAction="#ConfirmLabOrderOnClick" prefHeight="35.0" prefWidth="105.0" text="Confirm" />
+            <Button layoutX="451.0" layoutY="348.0" mnemonicParsing="false" onAction="#ConfirmLabOrderOnClick" prefHeight="35.0" prefWidth="105.0" text="Confirm" />
             <Button layoutX="30.0" layoutY="443.0" mnemonicParsing="false" onAction="#ReturnLabOrderButtonOnClick" text="Return" textFill="#d41010" />
+            <Button layoutX="103.0" layoutY="292.0" mnemonicParsing="false" onAction="#AddReportOnClick" prefHeight="37.0" prefWidth="138.0" text="Add Report" />
+            <TextField fx:id="TitleTextField" layoutX="416.0" layoutY="46.0" prefHeight="25.0" prefWidth="175.0" promptText="Title" />
+            <TextField fx:id="TypeTextField" layoutX="416.0" layoutY="95.0" prefHeight="25.0" prefWidth="174.0" promptText="Type" />
+            <TextArea fx:id="BodyTextArea" layoutX="416.0" layoutY="142.0" prefHeight="161.0" prefWidth="175.0" promptText="Body" />
          </children></AnchorPane>
    </center>
 </BorderPane>

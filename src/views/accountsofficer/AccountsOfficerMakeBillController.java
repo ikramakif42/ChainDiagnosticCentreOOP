@@ -72,11 +72,9 @@ public class AccountsOfficerMakeBillController implements Initializable {
 
     @FXML
     private void saveBill(ActionEvent event) {
-        LocalDate due = dueDate.getValue(); 
-        float amount = Float.parseFloat(amountField.getText());
-        String details = descriptionField.getText();
+        LocalDate today = LocalDate.now();
         int patientID = Integer.parseInt(patientIDField.getText());
-//        this.officer.makeBill(due, amount, details, patientID);
+        AccountsOfficer.makeBill(today, dueDate.getValue(), false, Float.parseFloat(amountField.getText()), descriptionField.getText(), Integer.valueOf(patientIDField.getText()), officer.getID());
     }
     
 }

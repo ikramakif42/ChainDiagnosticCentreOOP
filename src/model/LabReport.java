@@ -1,13 +1,14 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class LabReport extends Report implements Serializable {
     private static final long serialVersionUID = 13L;
     private int patientID;
 
-    public LabReport(int patientID, String title, String author, String type, String body, int authorID) {
-        super(title, author, type, body, authorID);
+    public LabReport(int patientID, String title, String author, String type, String body, int authorID, LocalDate date) {
+        super(title, author, type, body, authorID, date);
         this.patientID = patientID;
     }
 

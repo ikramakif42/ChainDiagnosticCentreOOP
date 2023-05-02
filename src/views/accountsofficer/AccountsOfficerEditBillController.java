@@ -11,8 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import model.Bill;
+import users.AccountsOfficer;
 
 /**
  * FXML Controller class
@@ -27,6 +30,37 @@ public class AccountsOfficerEditBillController implements Initializable {
     private TextArea descriptionField;
     @FXML
     private DatePicker dueDate;
+    @FXML
+    private Label billedByLabel;
+    @FXML
+    private Label patientIDLabel;
+    @FXML
+    private Label createdOn;
+    private AccountsOfficer officer;
+    private Bill tempBill;
+
+    public AccountsOfficerEditBillController(AccountsOfficer officer, Bill tempBill) {
+        this.officer = officer;
+        this.tempBill = tempBill;
+    }
+
+    public AccountsOfficer getOfficer() {
+        return officer;
+    }
+
+    public void setOfficer(AccountsOfficer officer) {
+        this.officer = officer;
+    }
+
+    public Bill getTempBill() {
+        return tempBill;
+    }
+
+    public void setTempBill(Bill tempBill) {
+        this.tempBill = tempBill;
+    }
+    
+    
 
     /**
      * Initializes the controller class.
@@ -42,6 +76,8 @@ public class AccountsOfficerEditBillController implements Initializable {
 
     @FXML
     private void saveEdit(ActionEvent event) {
+        
+        
     }
     
 }

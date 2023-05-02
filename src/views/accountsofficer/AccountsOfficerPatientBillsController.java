@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Bill;
 import users.AccountsOfficer;
@@ -43,6 +44,7 @@ public class AccountsOfficerPatientBillsController implements Initializable {
     @FXML
     private TableColumn<Bill, String> billDescription;
     private AccountsOfficer officer;
+    private Bill tempBill;
     @FXML
     private TableColumn<Bill, Integer> billedBy;
 
@@ -58,7 +60,7 @@ public class AccountsOfficerPatientBillsController implements Initializable {
         billDescription.setCellValueFactory(new PropertyValueFactory<Bill, String>("details"));
         billedBy.setCellValueFactory(new PropertyValueFactory<Bill, Integer>("billedByID"));    
         
-        accountsBillsTableView.setItems(Bill.getAllBills());
+        accountsBillsTableView.setItems(AccountsOfficer.viewPatientBillingInfo());
     }
     
     public AccountsOfficer getOfficer() {
@@ -71,10 +73,22 @@ public class AccountsOfficerPatientBillsController implements Initializable {
 
     @FXML
     private void ediBill(ActionEvent event) {
+        
     }
 
     @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent directorDashboard = null;
+        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("AccountsOfficerDashboard.fxml"));
+        directorDashboard = (Parent) directorLoader.load();
+        Scene directorScene = new Scene(directorDashboard);
+
+        AccountsOfficerDashboardController di = directorLoader.getController();
+        di.setOfficer(officer);
+
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        directorStage.setScene(directorScene);
+        directorStage.show();
     }
 
     @FXML
@@ -96,6 +110,14 @@ public class AccountsOfficerPatientBillsController implements Initializable {
 
     @FXML
     private void markAsPaid(ActionEvent event) {
+        AccountsOfficer.editBillInfo(tempBill, tempBill.getDueDate(), true, tempBill.getAmount(), tempBill.getDetails());
+        accountsBillsTableView.setItems(AccountsOfficer.viewPatientBillingInfo());
+    }
+
+    @FXML
+    private void clickedBill(MouseEvent event) {
+        Bill bill = accountsBillsTableView.getSelectionModel().getSelectedItem();
+        tempBill = bill;
     }
     
 }

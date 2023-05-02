@@ -52,6 +52,7 @@ public class Bill implements Serializable {
         return paidStatus;
     }
 
+    
     public void setPaidStatus(boolean paidStatus) {
         this.paidStatus = paidStatus;
     }
@@ -93,7 +94,7 @@ public class Bill implements Serializable {
         return "Bill: " + "createdDate=" + createdDate + ", dueDate=" + dueDate + ", paidStatus=" + paidStatus + ", amount=" + amount + ", details=" + details + ", patientID=" + patientID + ", billedByID=" + billedByID;
     }
     
-    public static ObservableList<Bill> getAllBills(){
+    public static ObservableList<Bill> getAllPendingBills(){
         ObservableList<Bill> billList = FXCollections.observableArrayList();
         File f = null;
         FileInputStream fis = null;      
@@ -108,8 +109,11 @@ public class Bill implements Serializable {
                 System.out.println("Printing objects");
                 while(true){
                     tempBill = (Bill) ois.readObject();
+                    if (!(tempBill.paidStatus)){
                     System.out.println("Populated bill: "+tempBill.toString());
                     billList.add((Bill)tempBill);
+                    }
+
                 }
             }
             catch(IOException | ClassNotFoundException e){

@@ -57,7 +57,7 @@ public class PatientMyScheduleController implements Initializable {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-        ObservableList<Appointment> apptList = Appointment.getApptList(this.patient.getID());
+        ObservableList<Appointment> apptList = this.patient.getApptList();
         System.out.println(apptList);
         apptTableView.setItems(apptList);
     }

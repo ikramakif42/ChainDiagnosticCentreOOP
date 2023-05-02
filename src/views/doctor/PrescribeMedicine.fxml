@@ -29,7 +29,7 @@
          <font>
             <Font size="17.0" />
          </font></Button>
-      <Label layoutX="43.0" layoutY="82.0" text="Past prescription info:">
+      <Label layoutX="43.0" layoutY="82.0" text="Prescription info:">
          <font>
             <Font size="22.0" />
          </font>

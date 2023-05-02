@@ -121,7 +121,7 @@ public class ViewPatientBillingInfoController implements Initializable {
         patientIDLabel.setText(String.valueOf(pat.getID()));
         patientNameLabel.setText(pat.getName());
         patientAgeLabel.setText(String.valueOf(Period.between(pat.getDOB(), LocalDate.now()).getYears()));
-        ObservableList<Bill> BillList = this.pat.getBillList();
+        ObservableList<Bill> BillList = this.doc.getBillList(this.pat.getID());
         this.filterBillList = new FilteredList<>(BillList, b -> true);
         billingInfoTableView.setItems(this.filterBillList);
     }

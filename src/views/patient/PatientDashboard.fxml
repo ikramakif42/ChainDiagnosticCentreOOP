@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.patient.PatientDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.patient.PatientDashboardController">
    <children>
       <Label layoutX="156.0" layoutY="55.0" text="Patient Dashboard">
          <font>
@@ -15,7 +15,7 @@
       <Button layoutX="86.0" layoutY="209.0" mnemonicParsing="false" onAction="#viewMySchedule" text="My Appointments" />
       <Button layoutX="111.0" layoutY="262.0" mnemonicParsing="false" onAction="#viewMyProfile" text="My Profile" />
       <Button layoutX="317.0" layoutY="209.0" mnemonicParsing="false" onAction="#viewQueryOnClick" text="View Queries" />
-      <Button layoutX="105.0" layoutY="520.0" mnemonicParsing="false" onAction="#logOut" text="Log Out">
+      <Button layoutX="105.0" layoutY="500.0" mnemonicParsing="false" onAction="#logOut" text="Log Out">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -25,7 +25,7 @@
       <Label fx:id="patientNameLabel" layoutX="258.0" layoutY="155.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
       <Button layoutX="320.0" layoutY="262.0" mnemonicParsing="false" onAction="#makeQueryOnClick" text="Make Query" />
       <Button layoutX="301.0" layoutY="375.0" mnemonicParsing="false" onAction="#submitComplaintOnClick" text="Submit Complaint" />
-      <Button layoutX="316.0" layoutY="317.0" mnemonicParsing="false" onAction="#refillRequestOnClick" text="Refill Request" />
+      <Button layoutX="316.0" layoutY="317.0" mnemonicParsing="false" onAction="#refillRequestOnClick" text="Request Refill" />
       <Button layoutX="120.0" layoutY="317.0" mnemonicParsing="false" onAction="#viewPayBillOnClick" text="My Bills" />
       <Button layoutX="107.0" layoutY="375.0" mnemonicParsing="false" onAction="#viewReportOnClick" text="My Reports" />
       <Button layoutX="289.0" layoutY="432.0" mnemonicParsing="false" onAction="#viewPoliciesOnClick" text="View Hospital Policies" />

@@ -15,9 +15,9 @@
    <children>
       <TableView fx:id="reportTableView" layoutX="397.0" layoutY="47.0" prefHeight="235.0" prefWidth="440.0">
          <columns>
-            <TableColumn fx:id="dateTableColumn" prefWidth="172.0" text="Type" />
-            <TableColumn fx:id="titleTableColumn" prefWidth="102.0" text="Title" />
-            <TableColumn fx:id="typeTableColumn" prefWidth="165.0" text="Type" />
+            <TableColumn fx:id="dateTableColumn" prefWidth="109.0" text="Date" />
+            <TableColumn fx:id="titleTableColumn" prefWidth="190.0" text="Title" />
+            <TableColumn fx:id="typeTableColumn" prefWidth="140.0" text="Type" />
          </columns>
       </TableView>
       <Button layoutX="43.0" layoutY="528.0" mnemonicParsing="false" onAction="#returnToMyPatientsOnClick" text="Return to My Patients" />

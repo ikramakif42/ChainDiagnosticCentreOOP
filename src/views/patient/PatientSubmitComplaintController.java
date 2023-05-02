@@ -24,10 +24,10 @@ public class PatientSubmitComplaintController implements Initializable {
     @FXML
     private TextArea complaintTextArea;
     private Patient patient;
-    Alert success = new Alert(AlertType.INFORMATION, "Complaint submitted successfully!");
     Alert noSub = new Alert(AlertType.WARNING, "Error, enter subject!");
     Alert noBody = new Alert(AlertType.WARNING, "Error, enter details!");
     Alert failure = new Alert(AlertType.WARNING, "Error, complaint submission failed!");
+    Alert success = new Alert(AlertType.INFORMATION, "Complaint submitted successfully!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

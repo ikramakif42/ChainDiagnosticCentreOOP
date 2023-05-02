@@ -12,9 +12,9 @@
    <children>
       <TableView fx:id="taskTableView" layoutX="67.0" layoutY="182.0" prefHeight="380.0" prefWidth="715.0">
         <columns>
-          <TableColumn fx:id="dateTableColumn" prefWidth="178.0" text="Date" />
-          <TableColumn fx:id="timeTableColumn" prefWidth="133.0" text="Time" />
-            <TableColumn fx:id="detailsTableColumn" prefWidth="403.0" text="Task Details" />
+          <TableColumn fx:id="dateTableColumn" prefWidth="147.0" text="Date" />
+          <TableColumn fx:id="timeTableColumn" prefWidth="117.0" text="Time" />
+            <TableColumn fx:id="detailsTableColumn" prefWidth="450.0" text="Task Details" />
         </columns>
       </TableView>
       <Label layoutX="348.0" layoutY="56.0" text="Filter by date:" />

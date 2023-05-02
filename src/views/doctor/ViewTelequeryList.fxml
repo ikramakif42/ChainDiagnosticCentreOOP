@@ -29,7 +29,7 @@
       <RadioButton fx:id="answeredStatusRadioButton" layoutX="258.0" layoutY="46.0" mnemonicParsing="false" text="Answered" toggleGroup="$queryStatusTG" />
       <Button layoutX="470.0" layoutY="41.0" mnemonicParsing="false" onAction="#applyFiltersOnClick" text="Apply Filters" />
       <RadioButton fx:id="noneStatusRadioButton" layoutX="371.0" layoutY="46.0" mnemonicParsing="false" text="All" toggleGroup="$queryStatusTG" />
-      <Button layoutX="386.0" layoutY="536.0" mnemonicParsing="false" onAction="#answerQueryOnClick" prefHeight="73.0" prefWidth="181.0" text="Answer Telemedicine Query" textAlignment="CENTER" wrapText="true">
+      <Button layoutX="386.0" layoutY="536.0" mnemonicParsing="false" onAction="#answerQueryOnClick" prefHeight="73.0" prefWidth="181.0" text="View/Answer Telemedicine Query" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="17.0" />
          </font>

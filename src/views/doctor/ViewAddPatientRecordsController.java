@@ -106,7 +106,7 @@ public class ViewAddPatientRecordsController implements Initializable {
             newRecordTextArea.setText("Error, enter new record!!");
             return;
         }
-        this.pat.updatePersonalInfo(newRecord);
+        this.doc.updatePatientRecord(this.pat.getID(), newRecord);
         newRecordTextArea.setText("New record added successfully!");
         
         historyTextArea.clear();

@@ -64,7 +64,7 @@ public class DoctorMyPatientsController implements Initializable {
         
         Callback<TableColumn.CellDataFeatures<Patient, LocalDate>, ObservableValue<LocalDate>> apptCVF = feature -> {
             Patient pat = feature.getValue();
-            LocalDate latestAppt = pat.getLatestAppt(Appointment.getApptList(pat.getID()));
+            LocalDate latestAppt = pat.getLatestAppt(pat.getApptList());
             return new SimpleObjectProperty<>(latestAppt);
         };
         
@@ -103,7 +103,7 @@ public class DoctorMyPatientsController implements Initializable {
 
     public void setDoc(Doctor doc) {
         this.doc = doc;
-        ObservableList<Patient> patList = this.doc.getPats(Appointment.getApptList(this.doc.getID()));
+        ObservableList<Patient> patList = this.doc.getPats(this.doc.getApptList());
         patientTableView.setItems(patList);
         
         nameSearchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -140,7 +140,7 @@ public class DoctorMyPatientsController implements Initializable {
         startDatePicker.setValue(null);
         endDatePicker.setValue(null);
         
-        ObservableList<Patient> patList = this.doc.getPats(Appointment.getApptList(this.doc.getID()));
+        ObservableList<Patient> patList = this.doc.getPats(this.doc.getApptList());
         patientTableView.setItems(patList);
     }
 
@@ -149,7 +149,7 @@ public class DoctorMyPatientsController implements Initializable {
         nameSearchTextField.clear();
         IDSearchTextField.clear();        
         
-        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
+        ObservableList<Appointment> apptList = this.doc.getApptList();
         ObservableList<Patient> patList = this.doc.getPats(apptList);
         ObservableList<Patient> newPatList = FXCollections.observableArrayList();
         LocalDate startDate = startDatePicker.getValue();
@@ -157,7 +157,7 @@ public class DoctorMyPatientsController implements Initializable {
         
         for (Patient pat : patList){
             if (startDate != null || endDate != null){
-                LocalDate latestAppt = pat.getLatestAppt(Appointment.getApptList(pat.getID()));
+                LocalDate latestAppt = pat.getLatestAppt(pat.getApptList());
                 if (latestAppt.isBefore(endDate) && latestAppt.isAfter(startDate)){
                     newPatList.add(pat);
                 }

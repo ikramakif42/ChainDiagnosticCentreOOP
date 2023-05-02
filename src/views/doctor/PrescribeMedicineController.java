@@ -48,6 +48,7 @@ public class PrescribeMedicineController implements Initializable {
     Alert noName = new Alert(Alert.AlertType.WARNING, "Error, enter medicine name!");
     Alert noDosage = new Alert(Alert.AlertType.WARNING, "Error, enter medicine dosage!");
     Alert noDuration = new Alert(Alert.AlertType.WARNING, "Error, enter medicine duration!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to prescribe medicine!");
     Alert success = new Alert(Alert.AlertType.INFORMATION, "Medicine prescribed successfully!");
     
     private Doctor doc;
@@ -89,8 +90,8 @@ public class PrescribeMedicineController implements Initializable {
         String duration = durationTextField.getText();
         if (duration.isEmpty()){noDuration.show();return;}
         
-        this.doc.prescribeMed(medName, dosage, duration, this.pat.getID());
-        success.show();
+        if(this.doc.prescribeMed(medName, dosage, duration, this.pat.getID())){success.show();}
+        else {failure.show();}
         prescriptionTableView.setItems(pat.getPrescriptions());
     }
     

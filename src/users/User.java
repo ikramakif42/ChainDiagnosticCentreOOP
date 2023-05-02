@@ -332,7 +332,7 @@ public abstract class User implements Serializable{
         System.out.println(PolicyList);        
         return PolicyList;
     }
-
+    
     public static boolean isNumeric(String str) { 
         try {  
           Integer.parseInt(str);  

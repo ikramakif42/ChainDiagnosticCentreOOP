@@ -27,7 +27,7 @@ public abstract class Employee extends User implements Serializable{
     
     public String designation, department;
     protected Float salary;
-    final LocalDate DOJ;
+    protected final LocalDate DOJ;
     public String branchName;
     protected ArrayList<Schedule> scheduleRoster = new ArrayList<Schedule>();
 

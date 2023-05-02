@@ -222,7 +222,7 @@ public class Doctor extends Employee implements Serializable{
     }
     
     //Goal 5
-    public void assignTask(int toID, String task){
+    public boolean assignTask(int toID, String task){
         File f = null;
         FileOutputStream fos = null; 
         ObjectOutputStream oos = null;
@@ -238,6 +238,9 @@ public class Doctor extends Employee implements Serializable{
             }
             Task newTask = new Task(this.ID, toID, task);
             oos.writeObject(newTask);
+            System.out.println("Task written successfully!");
+            oos.close();
+            return true;
         } catch (IOException ex) {
             System.out.println(ex.toString());
         } finally {
@@ -247,7 +250,7 @@ public class Doctor extends Employee implements Serializable{
                 System.out.println(ex.toString());
             }
         }
-        System.out.println("Task written successfully!");
+        return false;
     }
     
     //Goal 6
@@ -348,6 +351,42 @@ public class Doctor extends Employee implements Serializable{
     }
     
     //Goal 8
+    public static ObservableList<TeleQuery> getQueryList() {
+        ObservableList<TeleQuery> queryList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "TeleQueryObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            TeleQuery tempQuery = null;
+            try{
+                System.out.println("Printing TQ objects");
+                while(true){
+                    tempQuery = (TeleQuery) ois.readObject();
+                    System.out.println("Populated query: "+tempQuery.getSenderID()+", "+tempQuery.getQuery());
+                    if (tempQuery.getUsertype().equals("Doctor")){
+                        queryList.add(tempQuery);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        return queryList;
+    }
     public boolean answerQuery(TeleQuery q){
         System.out.println("Updated Query: "+q.toString());
         try {

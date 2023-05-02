@@ -6,7 +6,9 @@ import java.time.LocalDate;
 public class Report implements Serializable {
     private static final long serialVersionUID = 13L;
     
-    public String title, author, type, body;
+    protected String title;
+    public String author, type;
+    protected String body;
     public int authorID;
     public LocalDate date;
 

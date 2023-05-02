@@ -37,6 +37,7 @@ public class AssignTaskController implements Initializable {
     Alert noType = new Alert(Alert.AlertType.WARNING, "Error, select user type!");
     Alert noName = new Alert(Alert.AlertType.WARNING, "Error, select user name!");
     Alert noTask = new Alert(Alert.AlertType.WARNING, "Error, select user task!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to assign task!");
     Alert success = new Alert(Alert.AlertType.INFORMATION, "Task assigned successfully!");
 
     @Override
@@ -80,8 +81,8 @@ public class AssignTaskController implements Initializable {
         
         String[] nameID = username.split(" ");
         int receiverID = Integer.parseInt(nameID[nameID.length-1]);
-        this.doc.assignTask(receiverID, task);
-        success.show();
+        if (this.doc.assignTask(receiverID, task)){success.show();}
+        else {failure.show();}
     }
 
     @FXML

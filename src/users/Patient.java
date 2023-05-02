@@ -461,7 +461,7 @@ public class Patient extends User implements Serializable{
     }
     
     //Goal 9
-    public boolean writeQuery(String usertype, String query) throws IOException {
+    public boolean writeQuery(String usertype, String query) {
         TeleQuery tq = new TeleQuery(this.ID, usertype, query);
         System.out.println("New TeleQuery is: "+tq.toString());
         File f = null;
@@ -550,7 +550,7 @@ public class Patient extends User implements Serializable{
         System.out.println("Latest appt: "+this.getID()+" "+latestAppt);
         return latestAppt;
     }
-    public static ObservableList<Patient> getPatients(){
+    public static ObservableList<Patient> getPatients() {
         ObservableList<Patient> patientList = FXCollections.observableArrayList();
         File f = null;
         FileInputStream fis = null;      

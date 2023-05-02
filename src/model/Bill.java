@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import users.User;
 
 public class Bill implements Serializable {
     private static final long serialVersionUID = 13L;

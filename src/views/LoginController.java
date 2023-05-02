@@ -32,6 +32,7 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passwordField;
     Alert idError = new Alert(Alert.AlertType.WARNING, "Error, enter a valid ID!");
+    Alert noPass = new Alert(Alert.AlertType.WARNING, "Error, enter password!");
     Alert someError = new Alert(Alert.AlertType.WARNING, "Error, enter proper login info!");
     Alert noUser = new Alert(Alert.AlertType.WARNING, "Error, user not found");
     Alert wrongPW = new Alert(Alert.AlertType.WARNING, "Error, wrong password");
@@ -43,8 +44,9 @@ public class LoginController implements Initializable {
     @FXML
     private void userLogin(ActionEvent event) throws IOException {
         if (userIDTextField.getText() == null || userIDTextField.getText().trim().isEmpty() || !User.isNumeric(userIDTextField.getText())){
-            idError.show();return;
+            idError.show();
         }
+        else if (passwordField.getText() == null || passwordField.getText().trim().isEmpty()) {noPass.show();}
         else {
         int id = Integer.parseInt(userIDTextField.getText());
         String pass = passwordField.getText();

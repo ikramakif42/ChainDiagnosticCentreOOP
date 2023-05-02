@@ -33,7 +33,12 @@
          </font>
       </Button>
       <Button layoutX="221.0" layoutY="311.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
-      <Button layoutX="240.0" layoutY="169.0" mnemonicParsing="false" onAction="#viewScheduleOnClick" text="My Schedule">
+      <Button layoutX="240.0" layoutY="207.0" mnemonicParsing="false" onAction="#viewScheduleOnClick" text="My Schedule">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="240.0" layoutY="131.0" mnemonicParsing="false" onAction="#viewPoliciesOnClick" text="View Policies">
          <font>
             <Font size="17.0" />
          </font>

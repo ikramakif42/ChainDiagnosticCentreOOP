@@ -15,6 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeTableColumn;
 import javafx.stage.Stage;
 import users.HROfficer;
 
@@ -25,6 +30,21 @@ import users.HROfficer;
  */
 public class ViewEmployeeComplaintsController implements Initializable {
     private HROfficer HR;
+    
+    @FXML
+    private javafx.scene.control.TreeTableView<?> LoadComplaintTreeTableView;  
+    @FXML
+    private TreeTableColumn<?, ?> NameTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> DesignationTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> DeptTableColumn; 
+    @FXML
+    private TreeTableColumn<?, ?> IDTableColumn;
+    @FXML
+    private TextArea DetailsTextArea;
+    @FXML
+    private TextField SubjectTextField;
 
 
     /**
@@ -42,9 +62,6 @@ public class ViewEmployeeComplaintsController implements Initializable {
         this.HR = HR;
     }    
 
-    @FXML
-    private void EmployeeComplaintsOnClick(ActionEvent event) {
-    }
 
     @FXML
     private void ReturnEmployeeCompliants(ActionEvent event) throws IOException {
@@ -59,6 +76,10 @@ public class ViewEmployeeComplaintsController implements Initializable {
         Stage HRStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         HRStage.setScene(HRScene);
         HRStage.show();
+    }
+
+    @FXML
+    private void LoadOnClick(ActionEvent event) {
     }
     
 }

@@ -31,7 +31,7 @@
             <TextField fx:id="ContractNumberTextField" layoutX="44.0" layoutY="97.0" promptText="Contract Number" />
             <TextField fx:id="AddressTextField" layoutX="44.0" layoutY="151.0" promptText="Address" />
             <Button layoutX="29.0" layoutY="423.0" mnemonicParsing="false" onAction="#ReturnUpdateEmployeeRecordOnClick" text="Return" textFill="#fd0707" />
-            <TreeTableView fx:id="RecordProfileTableView" layoutX="252.0" layoutY="22.0" prefHeight="200.0" prefWidth="413.0">
+            <TreeTableView fx:id="RecordProfileTreeTableView" layoutX="252.0" layoutY="22.0" prefHeight="200.0" prefWidth="413.0">
               <columns>
                   <TreeTableColumn fx:id="EmployeeIDTableColumn" prefWidth="75.0" text="Employee ID" />
                   <TreeTableColumn fx:id="NameTableColumn" prefWidth="106.00006103515625" text="Name" />

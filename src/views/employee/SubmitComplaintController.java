@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -22,9 +22,11 @@ public class SubmitComplaintController implements Initializable {
     private TextField complaintSubjectTextField;
     @FXML
     private TextArea complaintTextArea;
-    @FXML
-    private Label errorLabel;
     private Employee employee;
+    Alert noSub = new Alert(Alert.AlertType.WARNING, "Error, enter complaint subject!");
+    Alert noDetails = new Alert(Alert.AlertType.WARNING, "Error, enter complaint details!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to submit complaint!");
+    Alert success = new Alert(Alert.AlertType.WARNING, "Complaint submitted successfully!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,12 +43,13 @@ public class SubmitComplaintController implements Initializable {
     @FXML
     private void submitComplaintOnClick(ActionEvent event) {
         String subject = complaintSubjectTextField.getText();
-        if (subject.isEmpty()){errorLabel.setText("Error, enter subject!");return;}
+        if (subject.isEmpty()){noSub.show();return;}
         String details = complaintTextArea.getText();
-        if (details.isEmpty()){errorLabel.setText("Error, enter details!");return;}
+        if (details.isEmpty()){noDetails.show();return;}
         
-        this.employee.submitComplaint(subject, details);
-        errorLabel.setText("Complaint submitted successfully!");
+        if (this.employee.submitComplaint(subject, details)) {success.show();}
+        else {failure.show();return;}
+        
         complaintSubjectTextField.clear();
         complaintTextArea.clear();
     }

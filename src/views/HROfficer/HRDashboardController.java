@@ -21,14 +21,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import users.HROfficer;
 import users.User;
-import views.HROfficer.AddNewEmployeeController;
-import views.HROfficer.CreateReportsOnEmployeesController;
-import views.HROfficer.HandleResignationsController;
-import views.HROfficer.ManageApplicationController;
-import views.HROfficer.UpdateEmployeeCompensationController;
-import views.HROfficer.UpdateHospitalPoliciesProceduresController;
-import views.HROfficer.UpdateRecordProfileController;
-import views.HROfficer.ViewEmployeeComplaintsController;
 
 
 public class HRDashboardController implements Initializable {

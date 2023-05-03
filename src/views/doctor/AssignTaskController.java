@@ -14,12 +14,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Task;
 import users.Doctor;
 import users.Nurse;
 import users.LabTechnician;
@@ -35,8 +34,11 @@ public class AssignTaskController implements Initializable {
     private ComboBox<String> userNameComboBox;
     @FXML
     private TextArea taskTextArea;
-    @FXML
-    private Label errorLabel;
+    Alert noType = new Alert(Alert.AlertType.WARNING, "Error, select user type!");
+    Alert noName = new Alert(Alert.AlertType.WARNING, "Error, select user name!");
+    Alert noTask = new Alert(Alert.AlertType.WARNING, "Error, select user task!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to assign task!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Task assigned successfully!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,19 +71,18 @@ public class AssignTaskController implements Initializable {
 
     @FXML
     private void assignTaskOnClick(ActionEvent event) {
-        errorLabel.setText("");
         String usertype = userTypeComboBox.getSelectionModel().getSelectedItem();
-        if (usertype==null){errorLabel.setText("Error, select user type");return;}
+        if (usertype==null){noType.show();return;}
         String username = userNameComboBox.getSelectionModel().getSelectedItem();
-        if (username==null){errorLabel.setText("Error, select user name");return;}
+        if (username==null){noName.show();return;}
         String task = taskTextArea.getText();
-        if (task.isEmpty()){errorLabel.setText("Error, enter task");return;}
+        if (task.isEmpty()){noTask.show();return;}
         System.out.println(usertype+" "+username+" "+task);
         
         String[] nameID = username.split(" ");
         int receiverID = Integer.parseInt(nameID[nameID.length-1]);
-        this.doc.assignTask(receiverID, task);
-        errorLabel.setText("Task assigned successfully!");
+        if (this.doc.assignTask(receiverID, task)){success.show();}
+        else {failure.show();}
     }
 
     @FXML

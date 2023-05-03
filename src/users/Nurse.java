@@ -1,62 +1,62 @@
-package users;
+    package users;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.LocalDate;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import model.Appointment;
-import model.Bill;
-import model.Schedule;
-import model.Task;
+    import java.io.File;
+    import java.io.FileInputStream;
+    import java.io.IOException;
+    import java.io.ObjectInputStream;
+    import java.io.Serializable;
+    import java.time.LocalDate;
+    import javafx.collections.FXCollections;
+    import javafx.collections.ObservableList;
+    import model.Appointment;
+    import model.Bill;
+    import model.Schedule;
+    import model.Task;
 
-public class Nurse extends Employee implements Serializable{
-    private static final long serialVersionUID = 13L;
-    
-    public ObservableList<Task> getTaskList(){
-        ObservableList<Task> taskList = FXCollections.observableArrayList();
-        File f = null;
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        String path = "TaskObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            Task tempTask = null;
+    public class Nurse extends Employee implements Serializable{
+        private static final long serialVersionUID = 13L;
+
+        public ObservableList<Task> getTaskList(){
+            ObservableList<Task> taskList = FXCollections.observableArrayList();
+            File f = null;
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            String path = "TaskObjects.bin";
             try {
-                System.out.println("Printing Task objects");
-                while (true) {
-                    tempTask = (Task) ois.readObject();
-                    System.out.println("Populated query: " + tempTask.getSenderID() + ", " + tempTask.getTaskDetails());
-                    System.out.println(this.ID);
-                    if (tempTask.getReceiverID() == this.ID) {
-                        taskList.add(tempTask);
+                f = new File(path);
+                fis = new FileInputStream(f);
+                ois = new ObjectInputStream(fis);
+                Task tempTask = null;
+                try {
+                    System.out.println("Printing Task objects");
+                    while (true) {
+                        tempTask = (Task) ois.readObject();
+                        System.out.println("Populated query: " + tempTask.getSenderID() + ", " + tempTask.getTaskDetails());
+                        System.out.println(this.ID);
+                        if (tempTask.getReceiverID() == this.ID) {
+                            taskList.add(tempTask);
+                        }
                     }
+                } catch (IOException | ClassNotFoundException e) {
+                    System.out.println(e.toString());
+                    System.out.println("IOException | ClassNotFoundException in reading bin file");
                 }
-            } catch (IOException | ClassNotFoundException e) {
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        } finally {
-            try {
-                if (ois != null) {
-                    ois.close();
-                }
+                System.out.println("End of file\n");
             } catch (IOException ex) {
+                System.out.println("IOException on entire file handling");
+            } finally {
+                try {
+                    if (ois != null) {
+                        ois.close();
+                    }
+                } catch (IOException ex) {
+                }
             }
+            return taskList;
         }
-        return taskList;
-    }
-    
-    public Nurse(String designation, String department, Float salary, LocalDate DOJ, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
-        super(designation, department, salary, DOJ, branchName, name, ID, password, email, gender, contactNo, address, DOB);
+        
+    public Nurse(String designation, String department, Float salary, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
+        super(designation, department, salary, branchName, name, ID, password, email, gender, contactNo, address, DOB);
         this.scheduleRoster = super.scheduleRoster;
     }
     

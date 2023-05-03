@@ -159,6 +159,21 @@ public class PatientDashboardController implements Initializable {
     }
     
     @FXML
+    private void viewPoliciesOnClick(ActionEvent event) throws IOException {
+        Parent policy = null;
+        FXMLLoader policyLoader = new FXMLLoader(getClass().getResource("PatientViewPolicy.fxml"));
+        policy = (Parent) policyLoader.load();
+        Scene policyScene = new Scene(policy);
+
+        PatientViewPolicyController vs = policyLoader.getController();
+        vs.setPatient(this.patient);
+
+        Stage policyStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        policyStage.setScene(policyScene);
+        policyStage.show();
+    }
+    
+    @FXML
     private void logOut(ActionEvent event) {
         Parent login=null;
         try {

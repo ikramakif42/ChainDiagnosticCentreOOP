@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -24,9 +25,12 @@ public class SubmitResignationController implements Initializable {
     private DatePicker resignationDatePicker;
     @FXML
     private TextArea resignationTextArea;
-    @FXML
-    private Label errorLabel;
     private Employee employee;
+    Alert resigned = new Alert(Alert.AlertType.WARNING, "Error, already submitted resignation!");
+    Alert noDate = new Alert(Alert.AlertType.WARNING, "Error, select resignation date!");
+    Alert noDetails = new Alert(Alert.AlertType.WARNING, "Error, enter resignation details!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to submit resignation!");
+    Alert success = new Alert(Alert.AlertType.WARNING, "Resignation submitted successfully!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,14 +55,14 @@ public class SubmitResignationController implements Initializable {
 
     @FXML
     private void submitResignationOnClick(ActionEvent event) {
-        if (this.employee.isResigned()){errorLabel.setText("Error, already submitted!");return;}
+        if (this.employee.isResigned()){resigned.show();return;}
         LocalDate date = resignationDatePicker.getValue();
-        if (date==null){errorLabel.setText("Error, select date!");return;}
+        if (date==null){noDate.show();return;}
         String details = resignationTextArea.getText();
-        if (details.isEmpty()){errorLabel.setText("Error, enter details!!");return;}
+        if (details.isEmpty()){noDetails.show();return;}
         
-        this.employee.submitResignation(date, details);
-        errorLabel.setText("Resignation submitted successfully!");
+        if (this.employee.submitResignation(date, details)){success.show();}
+        else {failure.show();}
         
         resignationDatePicker.setValue(null);
         resignationTextArea.clear();

@@ -24,7 +24,6 @@ public class ConfirmCancelApptController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 
     public Patient getPatient() {
@@ -45,7 +44,7 @@ public class ConfirmCancelApptController implements Initializable {
     
     @FXML
     private void cancelApptOnClick(ActionEvent event) throws IOException {
-        if(Appointment.cancelAppt(this.appt)){success.show();}
+        if(this.patient.cancelAppt(this.appt)){success.show();}
         else{failure.show();}
     }
 

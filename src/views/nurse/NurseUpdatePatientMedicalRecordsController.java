@@ -7,6 +7,7 @@ package views.nurse;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,10 +17,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.Nurse;
+import users.Patient;
 
 /**
  * FXML Controller class
@@ -28,20 +31,47 @@ import users.Nurse;
  */
 public class NurseUpdatePatientMedicalRecordsController implements Initializable {
 
-    @FXML
     private TextField nurseUpdatePatientName;
-    @FXML
     private TextField nurseUpdatePatientId;
     @FXML
     private TextArea nurseUpdatePatientMedicalRecordTextArea;
     
     private Nurse nurse;
+    
+    private Patient patient;
+    @FXML
+    private TextArea nursePatientMedicalRecordTextArea;
+    @FXML
+    private Label nurseUpdatePatientNameLabel;
+    @FXML
+    private Label nurseUpdatePatientIDLabel;
+
+    public NurseUpdatePatientMedicalRecordsController(Nurse nurse, Patient patient) {
+        this.nurse = nurse;
+        this.patient = patient;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+     
+    ArrayList<String> historyList = patient.getMedicalRecords();
+    nurseUpdatePatientNameLabel.setText(patient.getName());
+    nurseUpdatePatientIDLabel.setText(String.valueOf( patient.getID()));
+    for (String s: historyList){
+        nursePatientMedicalRecordTextArea.appendText(s + "\n");
+        
+    }
     }    
 
     public Nurse getNurse() {

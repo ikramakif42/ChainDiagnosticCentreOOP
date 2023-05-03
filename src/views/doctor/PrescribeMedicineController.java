@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,13 +40,16 @@ public class PrescribeMedicineController implements Initializable {
     @FXML
     private Label patientAgeLabel;
     @FXML
-    private Label errorLabel;
-    @FXML
     private TextField medNameTextField;
     @FXML
     private TextField dosageTextField;
     @FXML
     private TextField durationTextField;
+    Alert noName = new Alert(Alert.AlertType.WARNING, "Error, enter medicine name!");
+    Alert noDosage = new Alert(Alert.AlertType.WARNING, "Error, enter medicine dosage!");
+    Alert noDuration = new Alert(Alert.AlertType.WARNING, "Error, enter medicine duration!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to prescribe medicine!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Medicine prescribed successfully!");
     
     private Doctor doc;
     private Patient pat;
@@ -80,14 +84,14 @@ public class PrescribeMedicineController implements Initializable {
     @FXML
     private void addNewPrescriptionOnClick(ActionEvent event) {
         String medName = medNameTextField.getText();
-        if (medName.isEmpty()){errorLabel.setText("Error, enter medicine name!");return;}
+        if (medName.isEmpty()){noName.show();return;}
         String dosage = dosageTextField.getText();
-        if (dosage.isEmpty()){errorLabel.setText("Error, enter medicine dosage!");return;}
+        if (dosage.isEmpty()){noDosage.show();return;}
         String duration = durationTextField.getText();
-        if (duration.isEmpty()){errorLabel.setText("Error, enter medicine duration!");return;}
+        if (duration.isEmpty()){noDuration.show();return;}
         
-        this.doc.prescribeMed(medName, dosage, duration, this.pat.getID());
-        errorLabel.setText("Medicine prescribed successfully!");
+        if(this.doc.prescribeMed(medName, dosage, duration, this.pat.getID())){success.show();}
+        else {failure.show();}
         prescriptionTableView.setItems(pat.getPrescriptions());
     }
     

@@ -39,7 +39,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="633.0" layoutY="573.0" mnemonicParsing="false" onAction="#payBillsOnClick" text="Pay Selected BIlls" />
+      <Button layoutX="634.0" layoutY="573.0" mnemonicParsing="false" onAction="#payBillsOnClick" text="Pay Selected BIll" />
       <RadioButton fx:id="allStatusRadioButton" layoutX="585.0" layoutY="98.0" mnemonicParsing="false" text="All" toggleGroup="$billStatusTG" />
    </children>
 </AnchorPane>

@@ -19,9 +19,8 @@
       <Label layoutX="57.0" layoutY="238.0" text="Date:" />
       <Label layoutX="57.0" layoutY="298.0" text="Time:" />
       <ComboBox fx:id="timeComboBox" layoutX="149.0" layoutY="293.0" onMouseClicked="#populateTimeOnClick" prefWidth="150.0" />
-      <Label fx:id="errorLabel" layoutX="102.0" layoutY="353.0" prefHeight="21.0" prefWidth="168.0" />
-      <Button layoutX="41.0" layoutY="404.0" mnemonicParsing="false" onAction="#returnToMyScheduleOnClick" prefHeight="71.0" prefWidth="105.0" text="Return to my schedule" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="214.0" layoutY="404.0" mnemonicParsing="false" onAction="#confirmApptOnClick" prefHeight="71.0" prefWidth="113.0" text="Confirm appointment" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="41.0" layoutY="374.0" mnemonicParsing="false" onAction="#returnToMyScheduleOnClick" prefHeight="71.0" prefWidth="105.0" text="Return to my schedule" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="214.0" layoutY="374.0" mnemonicParsing="false" onAction="#confirmApptOnClick" prefHeight="71.0" prefWidth="113.0" text="Confirm appointment" textAlignment="CENTER" wrapText="true" />
       <Label layoutX="57.0" layoutY="123.0" text="Dept:" />
       <ComboBox fx:id="deptComboBox" layoutX="149.0" layoutY="118.0" prefWidth="150.0" />
       <DatePicker fx:id="datePicker" layoutX="148.0" layoutY="233.0" prefHeight="31.0" prefWidth="150.0" />

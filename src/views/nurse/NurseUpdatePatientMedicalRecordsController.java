@@ -30,7 +30,7 @@ import users.Patient;
  * @author User
  */
 public class NurseUpdatePatientMedicalRecordsController implements Initializable {
-
+    
     private TextField nurseUpdatePatientName;
     private TextField nurseUpdatePatientId;
     @FXML
@@ -45,39 +45,39 @@ public class NurseUpdatePatientMedicalRecordsController implements Initializable
     private Label nurseUpdatePatientNameLabel;
     @FXML
     private Label nurseUpdatePatientIDLabel;
-
+    
     public NurseUpdatePatientMedicalRecordsController(Nurse nurse, Patient patient) {
         this.nurse = nurse;
         this.patient = patient;
     }
-
+    
     public Patient getPatient() {
         return patient;
     }
-
+    
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
-    ArrayList<String> historyList = patient.getMedicalRecords();
-    nurseUpdatePatientNameLabel.setText(patient.getName());
-    nurseUpdatePatientIDLabel.setText(String.valueOf( patient.getID()));
-    for (String s: historyList){
-        nursePatientMedicalRecordTextArea.appendText(s + "\n");
         
-    }
+        ArrayList<String> historyList = patient.getMedicalRecords();
+        nurseUpdatePatientNameLabel.setText(patient.getName());
+        nurseUpdatePatientIDLabel.setText(String.valueOf(patient.getID()));
+        for (String s : historyList) {
+            nursePatientMedicalRecordTextArea.appendText(s + "\n");
+            
+        }
     }    
-
+    
     public Nurse getNurse() {
         return nurse;
     }
-
+    
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
     }
@@ -85,23 +85,23 @@ public class NurseUpdatePatientMedicalRecordsController implements Initializable
     @FXML
     private void nurseUpdatePatientSaveOnClick(ActionEvent event) {
         String s = nurseUpdatePatientMedicalRecordTextArea.getText();
-        patient.updatePersonalInfo(s);
+//        this.patient.updatePersonalInfo(s,s,s,s);
+//        this.patient.setMedicalRecords(medicalRecords);
         nursePatientMedicalRecordTextArea.appendText(s + "\n");
         
-        
     }
-
+    
     @FXML
     private void nurseUpdatePatientBackToPatientListOnClick(ActionEvent event) throws IOException {
         Parent nurseViewPatientList = null;
         FXMLLoader nurseLoader = new FXMLLoader(getClass().getResource("NursePatientList.fxml"));
         nurseViewPatientList = (Parent) nurseLoader.load();
         Scene nurseViewPatientListScene = new Scene(nurseViewPatientList);
-
+        
         NursePatientListController n = nurseLoader.getController();
         n.setNurse(this.nurse);
-
-        Stage nurseStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        
+        Stage nurseStage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
         nurseStage.setScene(nurseViewPatientListScene);
         nurseStage.show();
         

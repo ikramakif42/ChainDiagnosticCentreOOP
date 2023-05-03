@@ -31,10 +31,10 @@
             <TextArea fx:id="InfoTextArea" layoutX="355.0" layoutY="24.0" prefHeight="200.0" prefWidth="253.0" promptText="information" />
             <Line endX="14.333343505859375" endY="177.66665649414062" layoutX="255.0" layoutY="168.0" startX="14.333343505859375" startY="-117.66664123535156" stroke="WHITE" strokeWidth="3.0" />
             <Button layoutX="602.0" layoutY="454.0" mnemonicParsing="false" onAction="#ReturnManageApplicationOnClick" prefHeight="25.0" prefWidth="68.0" text="Return" textFill="#ed1212" />
-            <TableView fx:id="dateofleave" layoutX="33.0" layoutY="61.0" prefHeight="200.0" prefWidth="269.0">
+            <TableView fx:id="DateOfLeaveTableView" layoutX="33.0" layoutY="61.0" prefHeight="200.0" prefWidth="269.0">
               <columns>
-                <TableColumn fx:id="EmployeeName" prefWidth="138.00002670288086" text="Employee Name" />
-                <TableColumn fx:id="DateofLeave" prefWidth="129.3332977294922" text="Date of Leave" />
+                <TableColumn fx:id="EmployeeNameTableColumn" prefWidth="138.00002670288086" text="Employee Name" />
+                <TableColumn fx:id="DateofLeaveTableColumn" prefWidth="129.3332977294922" text="Date of Leave" />
               </columns>
             </TableView>
          </children></AnchorPane>

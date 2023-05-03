@@ -94,8 +94,10 @@ public class AddNewEmployeeController implements Initializable {
         
         String designation = DesignationTextField.getText();
         if (designation.isEmpty()) {failureNull.show();return;}
+        
         String department = DepartmentTextField.getText();
         if (designation.isEmpty()) {failureNull.show();return;}
+        
         String salaryValue = SalaryTextField.getText();
         if (salaryValue.isEmpty()) {failureNull.show();return;}
         Float salary = 0f;

@@ -43,16 +43,15 @@ public class NursePatientListController implements Initializable {
     @FXML
     private TableColumn<Patient, String> nursePatientNameTable;
     @FXML
-    private TableColumn<Patient, Integer> nursePatientIdTable;
+    private TableColumn<Patient,Integer> nursePatientIdTable;
     @FXML
-    private TableColumn<Patient, Integer> nursePatientAgeTable;
+    private TableColumn<Patient,Integer> nursePatientAgeTable;
     @FXML
     private TableColumn<Patient, String> nursePatientContactTable;
     @FXML
     private TextField nurseSearchPatientListnurseSearchPatientListByIDOnClickTextField;
-
+    
     private Patient tempPatient;
-
     /**
      * Initializes the controller class.
      */
@@ -60,29 +59,19 @@ public class NursePatientListController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Callback<TableColumn.CellDataFeatures<Patient, Integer>, ObservableValue<Integer>> ageCVF = feature -> {
             Patient pat = feature.getValue();
-
             LocalDate birthdate = pat.getDOB();
             int age = Period.between(birthdate, LocalDate.now()).getYears();
             return new SimpleObjectProperty<Integer>(age);
         };
-
-        nursePatientIdTable.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("ID"));
-        nursePatientNameTable.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
+        
+        nursePatientIdTable.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("ID"));
+        nursePatientNameTable.setCellValueFactory(new PropertyValueFactory<Patient,String>("name"));
         nursePatientAgeTable.setCellValueFactory(ageCVF);
-        nursePatientContactTable.setCellValueFactory(new PropertyValueFactory<Patient, String>("contactNo"));
+        nursePatientContactTable.setCellValueFactory(new PropertyValueFactory<Patient,String>("contactNo"));
         nursePatientListTable.setItems(Patient.getPatients());
-
+        
         // TODO
-    }
-
-    @FXML
-    private void handleRowSelect(MouseEvent event) {
-        Patient selectedPatient = nursePatientListTable.getSelectionModel().getSelectedItem();
-        if (selectedPatient != null) {
-            System.out.println("selected patient" + selectedPatient.email);
-            // do something with the selected patient's values
-        }
-    }
+    }    
 
     public Nurse getNurse() {
         return nurse;
@@ -91,7 +80,7 @@ public class NursePatientListController implements Initializable {
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
     }
-
+    
     @FXML
     private void nurseUpdatePatientOnClick(ActionEvent event) throws IOException {
         Parent root = null;
@@ -101,23 +90,22 @@ public class NursePatientListController implements Initializable {
         root = (Parent) scheduleLoader.load();
 
         Scene scheduleScene = new Scene(root);
-        Stage scheduleStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         scheduleStage.setScene(scheduleScene);
         scheduleStage.show();
 
     }
 
     @FXML
-    private void nurseSchedulePatientOnClick(ActionEvent event) throws IOException {
-        Parent nurseSchedulePatient = null;
+    private void nurseSchedulePatientOnClick(ActionEvent event) throws IOException {Parent nurseSchedulePatient= null;
         FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("NurseScheduleAppointmentPatient.fxml"));
-        nurseSchedulePatient = (Parent) scheduleLoader.load();
+        nurseSchedulePatient= (Parent) scheduleLoader.load();
         Scene nurseViewPatientListScene = new Scene(nurseSchedulePatient);
 
         NurseScheduleAppointmentPatientController n = scheduleLoader.getController();
         n.setNurse(this.nurse);
 
-        Stage nurseScheduleStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage nurseScheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         nurseScheduleStage.setScene(nurseViewPatientListScene);
         nurseScheduleStage.show();
     }
@@ -131,7 +119,7 @@ public class NursePatientListController implements Initializable {
         NursePatientBillController n = nursePatientBillLoader.getController();
         n.setNurse(this.nurse);
 
-        Stage nursePatientBillStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage nursePatientBillStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         nursePatientBillStage.setScene(nursePatientBilltScene);
         nursePatientBillStage.show();
     }
@@ -145,7 +133,7 @@ public class NursePatientListController implements Initializable {
         NurseReviewPrescriptionRefillsController n = nursePatientPrescriptionLoader.getController();
         n.setNurse(this.nurse);
 
-        Stage nursePatientPrescriptionStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage nursePatientPrescriptionStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         nursePatientPrescriptionStage.setScene(nursePatientPrescriptionScene);
         nursePatientPrescriptionStage.show();
     }
@@ -159,10 +147,11 @@ public class NursePatientListController implements Initializable {
         NurseViewLabReportsController n = nursePatientLabReportsLoader.getController();
         n.setNurse(this.nurse);
 
-        Stage nursePatientLabReportsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage nursePatientLabReportsStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         nursePatientLabReportsStage.setScene(nursePatientLabReportsScene);
         nursePatientLabReportsStage.show();
     }
+
 
     @FXML
     private void nursePatientListToDashboardOnClick(ActionEvent event) throws IOException {
@@ -174,7 +163,7 @@ public class NursePatientListController implements Initializable {
         NurseDashboardController nu = nurseLoader.getController();
         nu.setNurse(this.nurse);
 
-        Stage nurseStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage nurseStage  = (Stage)((Node)event.getSource()).getScene().getWindow();
         nurseStage.setScene(nurseScene);
         nurseStage.show();
 
@@ -182,7 +171,7 @@ public class NursePatientListController implements Initializable {
 
     @FXML
     private void nurseSearchPatientListByIDOnClick(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -190,5 +179,5 @@ public class NursePatientListController implements Initializable {
         Patient patient = nursePatientListTable.getSelectionModel().getSelectedItem();
         tempPatient = patient;
     }
-
+        
 }

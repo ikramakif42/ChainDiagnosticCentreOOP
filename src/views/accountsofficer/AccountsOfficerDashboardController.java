@@ -148,12 +148,12 @@ public class AccountsOfficerDashboardController implements Initializable {
     private void viewPastRecords(ActionEvent event) throws IOException {
         Parent bills = null;
         FXMLLoader officerLoader = new FXMLLoader(
-            getClass().getResource("AccountsOfficerPatientBills.fxml")
+            getClass().getResource("AccountsOfficerPastRecords.fxml")
         );
         bills = (Parent) officerLoader.load();
         Scene employeeListScene = new Scene(bills);
         
-        AccountsOfficerPatientBillsController e = officerLoader.getController();
+        AccountsOfficerPastRecordsController e = officerLoader.getController();
         e.setOfficer(this.officer);
         
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();

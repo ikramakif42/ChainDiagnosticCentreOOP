@@ -198,8 +198,8 @@ public class AccountsOfficer extends Employee implements Serializable {
                        ;
                     }
                     else{
-                    System.out.println("Populated bill: "+tempBill.toString());
-                         billList.add((Bill)tempBill);
+                        System.out.println("Populated bill: "+tempBill.toString());
+                        billList.add((Bill)tempBill);
 
                     }
 

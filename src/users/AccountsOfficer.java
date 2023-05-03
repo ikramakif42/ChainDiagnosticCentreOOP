@@ -51,11 +51,11 @@ public class AccountsOfficer extends Employee implements Serializable {
                 while(true){
                     tempBill = (Bill) ois.readObject();
                     if (!(tempBill.isPaidStatus())){
-                        ;
+                        billList.add((Bill)tempBill);
                     }
                     else{
                     System.out.println("Populated bill: "+tempBill.toString());
-                    billList.add((Bill)tempBill);
+
                     }
 
                 }
@@ -194,10 +194,13 @@ public class AccountsOfficer extends Employee implements Serializable {
                 System.out.println("Printing objects");
                 while(true){
                     tempBill = (Bill) ois.readObject();
-                    boolean paidCheck = tempBill.isPaidStatus();
-                    if (paidCheck){
+                    if (!(tempBill.isPaidStatus())){
+                       ;
+                    }
+                    else{
                     System.out.println("Populated bill: "+tempBill.toString());
-                    billList.add((Bill)tempBill);
+                         billList.add((Bill)tempBill);
+
                     }
 
                 }

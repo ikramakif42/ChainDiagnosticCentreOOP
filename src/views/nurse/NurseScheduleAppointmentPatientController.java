@@ -7,7 +7,6 @@ package views.nurse;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,14 +16,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import users.Doctor;
 import users.Nurse;
-
 
 /**
  * FXML Controller class
@@ -34,23 +29,11 @@ import users.Nurse;
 public class NurseScheduleAppointmentPatientController implements Initializable {
 
     @FXML
-    private TableView<Doctor> nurseSheduleAppointmentPatientTable;
+    private TableView<?> nurseSheduleAppointmentPatientTable;
     @FXML
     private TextField nurseSheduleAppointmentPatientSearchTextField;
  
     private Nurse nurse;
-    @FXML
-    private Label nurseScheduleAppointmentPatientNameLabel;
-    @FXML
-    private Label nurseScheduleAppointmentPatientIdLabel;
-    @FXML
-    private TableColumn<Doctor,String > nurseScheduleAppointmentDocNameTableCol;
-    @FXML
-    private TableColumn<Doctor,String> nurseScheduleAppointmentDeptTableCol;
-    @FXML
-    private TableColumn<Doctor, LocalDate> nurseScheduleAppointmentDateTableCol;
-    @FXML
-    private TableColumn<Doctor, String> nurseScheduleAppointmentTimeTableCol;
     
     
     /**
@@ -58,10 +41,6 @@ public class NurseScheduleAppointmentPatientController implements Initializable 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        nurseScheduleAppointmentPatientNameLabel.setText(patient.getName());
-        nurseScheduleAppointmentPatientIdLabel.setText(String.valueOf(patient.getID()));
         // TODO
     }    
 

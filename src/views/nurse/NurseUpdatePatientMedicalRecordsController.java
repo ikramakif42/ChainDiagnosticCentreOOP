@@ -84,6 +84,11 @@ public class NurseUpdatePatientMedicalRecordsController implements Initializable
     
     @FXML
     private void nurseUpdatePatientSaveOnClick(ActionEvent event) {
+        String s = nurseUpdatePatientMedicalRecordTextArea.getText();
+        patient.updatePersonalInfo(s);
+        nursePatientMedicalRecordTextArea.appendText(s + "\n");
+        
+        
     }
 
     @FXML

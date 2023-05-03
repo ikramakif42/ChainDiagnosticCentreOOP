@@ -15,7 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import users.HROfficer;
 
@@ -27,6 +31,18 @@ import users.HROfficer;
 public class ManageApplicationController implements Initializable {
 
     private HROfficer HR;
+    @FXML
+    private TableView<HROfficer> DateOfLeaveTableView;
+    @FXML
+    private TableColumn<HROfficer, String> EmployeeNameTableColumn;
+    @FXML
+    private TableColumn<HROfficer, Integer> DateofLeaveTableColumn;
+    @FXML
+    private TextArea InfoTextAreaTextArea;
+    
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error,Update Manage Application failed!");
+    Alert failureNull = new Alert(Alert.AlertType.WARNING, "Error, fill up all fields!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Update Manage Application successful!");
 
 
     /**
@@ -44,16 +60,13 @@ public class ManageApplicationController implements Initializable {
         this.HR = HR;
     }
 
-    @FXML
-    private void LeaveButtonOnClick(ActionEvent event) {
-    }
-
-    private void ReturnButtonOnClick(ActionEvent event) throws IOException {
-       
-    }
 
     @FXML
     private void ViewApplicationOnClick(ActionEvent event) {
+        
+         String name = EmployeeNameTableColumn.getText();
+        if (name.isEmpty()) {failureNull.show();return;}
+        
     }
 
     @FXML

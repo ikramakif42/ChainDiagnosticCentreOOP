@@ -586,5 +586,9 @@ public class Patient extends User implements Serializable{
         System.out.println(patientList);
         return patientList;
     }
+
+    public void updatePersonalInfo(String s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

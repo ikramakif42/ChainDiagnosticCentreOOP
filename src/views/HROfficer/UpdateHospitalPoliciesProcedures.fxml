@@ -43,7 +43,7 @@
             <Button layoutX="44.0" layoutY="330.0" mnemonicParsing="false" onAction="#LoadUpdatePolicesButtonOnClick" prefHeight="44.0" prefWidth="193.0" text="Update Policies" />
             <TableView fx:id="policyTableView" layoutX="22.0" layoutY="75.0" prefHeight="200.0" prefWidth="369.0">
               <columns>
-                <TableColumn fx:id="numberTableColumn" prefWidth="55.333343505859375" text="SerialNo" />
+                <TableColumn fx:id="SerialNoTableColumn" prefWidth="55.333343505859375" text="SerialNo" />
                 <TableColumn fx:id="detailsTableColumn" prefWidth="312.6666259765625" text="Details" />
               </columns>
             </TableView>

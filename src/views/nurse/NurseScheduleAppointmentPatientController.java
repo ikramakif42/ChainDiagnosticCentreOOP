@@ -60,8 +60,8 @@ public class NurseScheduleAppointmentPatientController implements Initializable 
     public void initialize(URL url, ResourceBundle rb) {
         
         
-        nurseScheduleAppointmentPatientNameLabel.setText(patient.getName());
-        nurseScheduleAppointmentPatientIdLabel.setText(String.valueOf(patient.getID()));
+//        nurseScheduleAppointmentPatientNameLabel.setText(Patient.getName());
+//        nurseScheduleAppointmentPatientIdLabel.setText(String.valueOf(Patient.getID()));
         // TODO
     }    
 

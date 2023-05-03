@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -30,9 +31,12 @@ public class LeaveApplicationController implements Initializable {
     private DatePicker leaveEndDatePicker;
     @FXML
     private TextArea leaveApplicationTextArea;
-    @FXML
-    private Label errorLabel;
     private Employee employee;
+    Alert noType = new Alert(Alert.AlertType.WARNING, "Error, select leave type!");
+    Alert noDates = new Alert(Alert.AlertType.WARNING, "Error, select leave dates!");
+    Alert noDetails = new Alert(Alert.AlertType.WARNING, "Error, enter leave application details!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, failed to submit leave application!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Leave application submitted successfully!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,15 +75,15 @@ public class LeaveApplicationController implements Initializable {
     @FXML
     private void submitApplicationOnClick(ActionEvent event) {
         String type = leaveRequestTypeComboBox.getSelectionModel().getSelectedItem();
-        if (type==null){errorLabel.setText("Error, select leave request type!");return;}
+        if (type==null){noType.show();return;}
         LocalDate start = leaveStartDatePicker.getValue();
         LocalDate end = leaveEndDatePicker.getValue();
-        if(start==null || end==null){errorLabel.setText("Error, select leave dates!");return;}
+        if(start==null || end==null){noDates.show();return;}
         String details = leaveApplicationTextArea.getText();
-        if (details.isEmpty()){errorLabel.setText("Error, enter application details!");return;}
+        if (details.isEmpty()){noDetails.show();return;}
         
-        this.employee.submitLeaveApplication(start, end, type, details);
-        errorLabel.setText("Leave Application submitted successfully!");
+        if (this.employee.submitLeaveApplication(start, end, type, details)){success.show();}
+        else {failure.show();}
         
         leaveRequestTypeComboBox.getSelectionModel().clearSelection();
         leaveStartDatePicker.setValue(null);

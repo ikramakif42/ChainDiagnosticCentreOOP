@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +28,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Appointment;
-import model.TeleQuery;
 import users.Doctor;
 import users.Patient;
 import users.User;
@@ -58,9 +56,10 @@ public class DoctorMyAppointmentsController implements Initializable {
     private DatePicker endDatePicker;
     @FXML
     private TextField IDSearchTextField;
+    
     private Doctor doc;
-    Alert success = new Alert(Alert.AlertType.INFORMATION, "Appointment cancelled!");
-    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, appointment cancel failed!");
+    Alert noAppt = new Alert(Alert.AlertType.WARNING, "Error, select an appointment first!");
+    Alert past = new Alert(Alert.AlertType.WARNING, "Error, cannot cancel past appointment!");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,7 +79,7 @@ public class DoctorMyAppointmentsController implements Initializable {
         Callback<TableColumn.CellDataFeatures<Appointment, LocalDate>, ObservableValue<LocalDate>> apptCVF = feature -> {
             Appointment appt = feature.getValue();
             Patient tempPat = (Patient) User.getInstance(appt.getPatientID(), "Patient");
-            LocalDate latestAppt = tempPat.getLatestAppt(Appointment.getApptList(tempPat.getID()));
+            LocalDate latestAppt = tempPat.getLatestAppt(tempPat.getApptList());
             return new SimpleObjectProperty<>(latestAppt);
         };
         
@@ -121,7 +120,7 @@ public class DoctorMyAppointmentsController implements Initializable {
 
     public void setDoc(Doctor doc) {
         this.doc = doc;
-        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
+        ObservableList<Appointment> apptList = this.doc.getApptList();
         System.out.println(apptList);
         patientTableView.setItems(apptList);
         
@@ -172,7 +171,7 @@ public class DoctorMyAppointmentsController implements Initializable {
         nameSearchTextField.clear();
         IDSearchTextField.clear();
         
-        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
+        ObservableList<Appointment> apptList = this.doc.getApptList();
         ObservableList<Appointment> newApptList = FXCollections.observableArrayList();
         LocalDate startDate = startDatePicker.getValue();
         LocalDate endDate = endDatePicker.getValue();
@@ -188,20 +187,29 @@ public class DoctorMyAppointmentsController implements Initializable {
     
     @FXML
     private void clearFiltersOnClick(ActionEvent event) {
-        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
+        ObservableList<Appointment> apptList = this.doc.getApptList();
         System.out.println(apptList);
         patientTableView.setItems(apptList);
     }
 
-
     @FXML
-    private void confirmCancelOnClick(ActionEvent event) {
+    private void confirmCancelOnClick(ActionEvent event) throws IOException {
         Appointment toCancel = patientTableView.getSelectionModel().getSelectedItem();
-        if(Appointment.cancelAppt(toCancel)){success.show();}
-        else{failure.show();}
+        if (toCancel==null){noAppt.show();return;}
+        else if (toCancel.getDate().isBefore(LocalDate.now())) {past.show();}
         
-        ObservableList<Appointment> apptList = Appointment.getApptList(this.doc.getID());
-        patientTableView.setItems(apptList);
+        Parent cancel = null;
+        FXMLLoader cancelLoader = new FXMLLoader(getClass().getResource("ConfirmCancelAppt.fxml"));
+        cancel = (Parent) cancelLoader.load();
+        Scene cancelScene = new Scene(cancel);
+
+        ConfirmCancelApptController cc = cancelLoader.getController();
+        cc.setDoc(this.doc);
+        cc.setAppt(toCancel);
+
+        Stage cancelStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        cancelStage.setScene(cancelScene);
+        cancelStage.show();
     }
 
     @FXML

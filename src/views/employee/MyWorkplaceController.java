@@ -103,6 +103,37 @@ public class MyWorkplaceController implements Initializable {
         resignStage.setScene(resignScene);
         resignStage.show();
     }
+    
+    
+    @FXML
+    private void viewScheduleOnClick(ActionEvent event) throws IOException {
+        Parent schedule = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("ViewSchedule.fxml"));
+        schedule = (Parent) scheduleLoader.load();
+        Scene scheduleScene = new Scene(schedule);
+
+        ViewScheduleController vs = scheduleLoader.getController();
+        vs.setEmployee(this.employee);
+
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
+    }
+    
+    @FXML
+    private void viewPoliciesOnClick(ActionEvent event) throws IOException {
+        Parent policy = null;
+        FXMLLoader policyLoader = new FXMLLoader(getClass().getResource("ViewSchedule.fxml"));
+        policy = (Parent) policyLoader.load();
+        Scene policyScene = new Scene(policy);
+
+        ViewPolicyController vs = policyLoader.getController();
+        vs.setEmployee(this.employee);
+
+        Stage policyStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        policyStage.setScene(policyScene);
+        policyStage.show();
+    }
 
     @FXML
     private void returnToDashboardOnClick(ActionEvent event) throws IOException {
@@ -200,21 +231,6 @@ public class MyWorkplaceController implements Initializable {
                 labStage.show();        
                 break;
         }
-    }
-
-    @FXML
-    private void viewScheduleOnClick(ActionEvent event) throws IOException {
-        Parent schedule = null;
-        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("ViewSchedule.fxml"));
-        schedule = (Parent) scheduleLoader.load();
-        Scene scheduleScene = new Scene(schedule);
-
-        ViewScheduleController vs = scheduleLoader.getController();
-        vs.setEmployee(this.employee);
-
-        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        scheduleStage.setScene(scheduleScene);
-        scheduleStage.show();
     }
     
 }

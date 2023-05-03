@@ -34,7 +34,6 @@ public class ViewLabReportController implements Initializable {
     @FXML
     private TextArea detailsTextArea;
     private Patient patient;
-    
     Alert noReport = new Alert(AlertType.WARNING, "Error, select a report to view!");
 
     @Override

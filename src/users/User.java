@@ -169,8 +169,7 @@ public abstract class User implements Serializable{
                 System.out.println("Printing objects");
                 while(true){
                     tempPol = (Policy) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempPol.toString());
+                    System.out.println("Policy stored :"+tempPol.toString());
                     policyList.add(tempPol);
                 }
             }
@@ -333,7 +332,7 @@ public abstract class User implements Serializable{
         System.out.println(PolicyList);        
         return PolicyList;
     }
-
+    
     public static boolean isNumeric(String str) { 
         try {  
           Integer.parseInt(str);  

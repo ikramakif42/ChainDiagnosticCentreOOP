@@ -1,9 +1,6 @@
 package views.patient;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -22,8 +19,6 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.AppendableObjectOutputStream;
-import model.LoginInfo;
 import users.Patient;
 import users.User;
 

@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
 import model.Complaint;
@@ -26,7 +27,7 @@ public abstract class Employee extends User implements Serializable{
     
     public String designation, department;
     protected Float salary;
-    final LocalDate DOJ;
+    protected final LocalDate DOJ;
     public String branchName;
     protected ArrayList<Schedule> scheduleRoster = new ArrayList<Schedule>();
 
@@ -81,12 +82,9 @@ public abstract class Employee extends User implements Serializable{
 
     public void setScheduleRoster(ArrayList<Schedule> scheduleRoster) {
         this.scheduleRoster = scheduleRoster;
-    }    
+    }
 
-
-    
-
-    public void submitLeaveApplication(LocalDate start, LocalDate end, String type, String details) {
+    public boolean submitLeaveApplication(LocalDate start, LocalDate end, String type, String details) {
         LeaveApplication leave = new LeaveApplication(start, end, type, details, this.getID());
         File f = null;
         FileOutputStream fos = null; 
@@ -102,6 +100,9 @@ public abstract class Employee extends User implements Serializable{
                 oos = new ObjectOutputStream(fos);               
             }
             oos.writeObject(leave);
+            System.out.println("Leave application written successfully!");
+            oos.close();
+            return true;
         } catch (IOException ex) {
             System.out.println(ex.toString());
         } finally {
@@ -111,9 +112,10 @@ public abstract class Employee extends User implements Serializable{
                 System.out.println(ex.toString());
             }
         }
-        System.out.println("Leave application written successfully!");
-    }    
-    public void submitLoanApplication(float amount, LocalDate date, String duration, String type, String details) {
+        return false;
+    }
+    
+    public boolean submitLoanApplication(float amount, LocalDate date, String duration, String type, String details) {
         LoanApplication loan = new LoanApplication(amount, date, duration, type, details, this.getID());
         File f = null;
         FileOutputStream fos = null; 
@@ -129,6 +131,9 @@ public abstract class Employee extends User implements Serializable{
                 oos = new ObjectOutputStream(fos);               
             }
             oos.writeObject(loan);
+            System.out.println("Loan application written successfully!");
+            oos.close();
+            return true;
         } catch (IOException ex) {
             System.out.println(ex.toString());
         } finally {
@@ -138,9 +143,10 @@ public abstract class Employee extends User implements Serializable{
                 System.out.println(ex.toString());
             }
         }
-        System.out.println("Loan application written successfully!");
+        return false;
     } 
-    public void submitComplaint(String subject, String details) {
+    
+    public boolean submitComplaint(String subject, String details) {
         Complaint complaint = new Complaint(this.getID(), subject, details);
         File f = null;
         FileOutputStream fos = null; 
@@ -156,6 +162,9 @@ public abstract class Employee extends User implements Serializable{
                 oos = new ObjectOutputStream(fos);               
             }
             oos.writeObject(complaint);
+            System.out.println("Complaint written successfully!");
+            oos.close();
+            return true;
         } catch (IOException ex) {
             System.out.println(ex.toString());
         } finally {
@@ -165,9 +174,10 @@ public abstract class Employee extends User implements Serializable{
                 System.out.println(ex.toString());
             }
         }
-        System.out.println("Loan application written successfully!");
+        return false;
     }
-    public void submitResignation(LocalDate date, String details) {
+    
+    public boolean submitResignation(LocalDate date, String details) {
         Resignation resignation = new Resignation(this.getID(), date, details);
         File f = null;
         FileOutputStream fos = null; 
@@ -183,6 +193,9 @@ public abstract class Employee extends User implements Serializable{
                 oos = new ObjectOutputStream(fos);               
             }
             oos.writeObject(resignation);
+            System.out.println("Resignation written successfully!");
+            oos.close();
+            return true;
         } catch (IOException ex) {
             System.out.println(ex.toString());
         } finally {
@@ -192,8 +205,9 @@ public abstract class Employee extends User implements Serializable{
                 System.out.println(ex.toString());
             }
         }
-        System.out.println("Resignation written successfully!");
+        return false;
     }
+    
     public boolean isResigned() {
         File file = null;
         FileInputStream fis = null;
@@ -233,4 +247,5 @@ public abstract class Employee extends User implements Serializable{
         }
         return false;
     }
+    
 }

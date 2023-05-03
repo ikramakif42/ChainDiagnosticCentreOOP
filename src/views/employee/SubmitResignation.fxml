@@ -19,6 +19,5 @@
       </Button>
       <Button layoutX="40.0" layoutY="433.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to My Workplace" />
       <DatePicker fx:id="resignationDatePicker" layoutX="200.0" layoutY="45.0" />
-      <Label fx:id="errorLabel" layoutX="317.0" layoutY="439.0" prefHeight="21.0" prefWidth="247.0" />
    </children>
 </AnchorPane>

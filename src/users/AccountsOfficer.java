@@ -51,6 +51,9 @@ public class AccountsOfficer extends Employee implements Serializable {
                 while(true){
                     tempBill = (Bill) ois.readObject();
                     if (!(tempBill.isPaidStatus())){
+                        ;
+                    }
+                    else{
                     System.out.println("Populated bill: "+tempBill.toString());
                     billList.add((Bill)tempBill);
                     }
@@ -175,7 +178,47 @@ public class AccountsOfficer extends Employee implements Serializable {
     };   
     
     public void manageRestockOrders(){};
-    public void viewPastRecords(){};
+    
+    public static ObservableList<Bill> viewPastRecords(){
+        ObservableList<Bill> billList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "BillObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Bill tempBill = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempBill = (Bill) ois.readObject();
+                    boolean paidCheck = tempBill.isPaidStatus();
+                    if (paidCheck){
+                    System.out.println("Populated bill: "+tempBill.toString());
+                    billList.add((Bill)tempBill);
+                    }
+
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(billList);        
+        return billList;    
+    };
+    
     public void createReport(){};
     public void updateOldReport(){};
     public void approveLoanApplications(){};
@@ -217,8 +260,5 @@ public class AccountsOfficer extends Employee implements Serializable {
         System.out.println(accountsOfficerList);        
         return accountsOfficerList;
     }    
-
-
-
     
 }

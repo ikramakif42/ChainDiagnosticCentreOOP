@@ -54,7 +54,7 @@ public class AccountsOfficerPatientBillsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         billPatientID.setCellValueFactory(new PropertyValueFactory<Bill, Integer>("patientID"));
-        billStart.setCellValueFactory(new PropertyValueFactory<Bill, LocalDate>("date"));
+        billStart.setCellValueFactory(new PropertyValueFactory<Bill, LocalDate>("createdDate"));
         billDue.setCellValueFactory(new PropertyValueFactory<Bill, LocalDate>("dueDate"));
         billAmount.setCellValueFactory(new PropertyValueFactory<Bill, Float>("amount"));        
         billDescription.setCellValueFactory(new PropertyValueFactory<Bill, String>("details"));
@@ -72,8 +72,17 @@ public class AccountsOfficerPatientBillsController implements Initializable {
     }
 
     @FXML
-    private void ediBill(ActionEvent event) {
-        
+    private void ediBill(ActionEvent event) throws IOException {
+        Parent root = null;
+        FXMLLoader scheduleLoader = new FXMLLoader(getClass().getResource("AccountsOfficerEditBill.fxml"));
+        AccountsOfficerEditBillController q = new AccountsOfficerEditBillController(this.officer, this.tempBill);
+        scheduleLoader.setController(q);
+        root = (Parent) scheduleLoader.load();
+
+        Scene scheduleScene = new Scene(root);
+        Stage scheduleStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        scheduleStage.setScene(scheduleScene);
+        scheduleStage.show();
     }
 
     @FXML

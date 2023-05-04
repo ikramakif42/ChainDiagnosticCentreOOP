@@ -15,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,23 +39,16 @@ public class UpdateHospitalPoliciesProceduresController implements Initializable
     @FXML
     private TableView<Policy> policyTableView;
     @FXML
-    private TableColumn<Policy, Integer> SerialNoTableColumn;
+    private TableColumn<Policy, Integer> numberTableColumn;
     @FXML
     private TableColumn<Policy, String> detailsTableColumn;
-    @FXML
-    private TextArea detailsTextAreaTextArea;
-    
-    Alert SerialNoError = new Alert(Alert.AlertType.WARNING, "Error, enter valid SerialNo!");
-    Alert failure = new Alert(Alert.AlertType.WARNING, "Error,Update Policies failed!");
-    Alert failureNull = new Alert(Alert.AlertType.WARNING, "Error, fill up all fields!");
-    Alert success = new Alert(Alert.AlertType.INFORMATION, "Update Hospital Policies successful!");
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        SerialNoTableColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
+        numberTableColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         detailsTableColumn.setCellValueFactory(new PropertyValueFactory<>("content"));
         policyTableView.setItems(User.viewPolicies());
     }

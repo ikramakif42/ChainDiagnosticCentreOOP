@@ -6,8 +6,10 @@
 package views.accountsofficer;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
@@ -46,36 +48,70 @@ public class AccountsOfficerDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+//        File f = null;
+//        FileOutputStream fos = null;      
+//        ObjectOutputStream oos = null;
+//        LocalDate today = LocalDate.now();
+//        LocalDate date2 = LocalDate.of(2023, 5, 10);
+//        try {
+//            f = new File("BillObjects.bin");
+//            if(f.exists()){
+//                fos = new FileOutputStream(f,true);
+//                oos = new AppendableObjectOutputStream(fos);                
+//            }
+//            else{
+//                fos = new FileOutputStream(f);
+//                oos = new ObjectOutputStream(fos);               
+//            }
+//            
+//        Bill test1 = new Bill(today, date2, true, (float)22.34, "A Paid Bill", 138, 202);
+//        Bill test2 = new Bill(today, date2, true, (float)28.37, "Another Paid Bill", 130, 444);
+//        Bill test3 = new Bill(today, date2, true, (float)12.24, "Anotherer Paid Bill", 148, 111);
+//            
+//        oos.writeObject(test1);
+//        oos.writeObject(test2);
+//        oos.writeObject(test3);
+//            
+//            
+//        } catch (IOException ex) {
+//                System.out.println(ex.toString());
+//                System.out.println("IOException | ClassNotFoundException in reading bin file");
+//        }
+//        System.out.println("Hello World2! Initialised");
+
         File f = null;
-        FileOutputStream fos = null;      
-        ObjectOutputStream oos = null;
-        LocalDate date1 = LocalDate.of(2023, 4, 29);
-        LocalDate date2 = LocalDate.of(2023, 5, 10);
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "BillObjects.bin";
         try {
-            f = new File("BillObjects.bin");
-            if(f.exists()){
-                fos = new FileOutputStream(f,true);
-                oos = new AppendableObjectOutputStream(fos);                
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Bill tempBill = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempBill = (Bill) ois.readObject();
+                    System.out.println(tempBill);
+
+                }
             }
-            else{
-                fos = new FileOutputStream(f);
-                oos = new ObjectOutputStream(fos);               
-            }
-            
-        Bill test1 = new Bill(date1, date2, false, (float)22.34, "A Bill", 138, 202);
-        Bill test2 = new Bill(date1, date2, false, (float)28.37, "Another Bill", 130, 444);
-        Bill test3 = new Bill(date1, date2, false, (float)12.24, "Anotherer Bill", 148, 111);
-            
-        oos.writeObject(test1);
-        oos.writeObject(test2);
-        oos.writeObject(test3);
-            
-            
-        } catch (IOException ex) {
-                System.out.println(ex.toString());
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
                 System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
         }
-        System.out.println("Hello World2! Initialised");
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }  
+
+
+
     }
     
     public AccountsOfficer getOfficer() {
@@ -109,7 +145,21 @@ public class AccountsOfficerDashboardController implements Initializable {
     }
 
     @FXML
-    private void viewPastRecords(ActionEvent event) {
+    private void viewPastRecords(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerPastRecords.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        Scene employeeListScene = new Scene(bills);
+        
+        AccountsOfficerPastRecordsController e = officerLoader.getController();
+        e.setOfficer(this.officer);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();
+        
     }
 
     @FXML

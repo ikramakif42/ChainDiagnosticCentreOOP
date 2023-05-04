@@ -22,7 +22,6 @@ import model.Schedule;
 
 public class Director extends Employee implements Serializable {
     private static final long serialVersionUID = 13L;
-    private int stockOptions;
     
     
     public Director(String designation, String department, Float salary, String branchName, String name, int ID, String password, String email, String gender, String contactNo, String address, LocalDate DOB) {
@@ -30,14 +29,6 @@ public class Director extends Employee implements Serializable {
         this.scheduleRoster = super.scheduleRoster;
     }
 
-    public int getStockOptions() {
-        return stockOptions;
-    }
-
-    public void setStockOptions(int stockOptions) {
-        this.stockOptions = stockOptions;
-    }
-    
     @Override
     public String toString() {
         return "Director: " + "Desig="+designation+" Dept= "+department+" Salary= "+salary+" DOJ= "+DOJ+" branch= "+branchName+" Name= "+name+" ID= "+ID+" pass= "+password+" mail= "+email+" gender"+gender+" contact= "+contactNo+" addr= "+address+" DOJ= "+DOB;

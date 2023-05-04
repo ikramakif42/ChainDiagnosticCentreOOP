@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import users.Pharmacist;
 import views.doctor.DoctorDashboardController;
+import views.employee.MyWorkplaceController;
 
 /**
  * FXML Controller class
@@ -137,6 +138,22 @@ public class PharmacistDashboardController implements Initializable {
         Stage pharmaMedsAlertStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         pharmaMedsAlertStage.setScene(pharmaMedsAlertScene);
         pharmaMedsAlertStage.show();
+    }
+
+    @FXML
+    private void pharmaMyWorkplaceOnClick(ActionEvent event) throws IOException {
+        Parent empDashboard = null;
+        FXMLLoader empLoader = new FXMLLoader(getClass().getResource("/views/employee/MyWorkplace.fxml"));
+        empDashboard = (Parent) empLoader.load();
+        Scene empScene = new Scene(empDashboard);
+
+        MyWorkplaceController emp = empLoader.getController();
+        emp.setEmployee(this.pharmacist);
+
+        Stage empStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        empStage.setScene(empScene);
+        empStage.show();
+
     }
     
 }

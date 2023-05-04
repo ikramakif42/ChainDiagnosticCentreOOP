@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import users.Nurse;
 import views.doctor.DoctorDashboardController;
+import views.employee.MyWorkplaceController;
 
 
 
@@ -114,6 +115,22 @@ public class NurseDashboardController implements Initializable {
         Stage nurseTaskStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         nurseTaskStage.setScene(nurseViewPatientListScene);
         nurseTaskStage.show();
+    }
+
+    @FXML
+    private void nurseMyWorkplaceOnClick(ActionEvent event) throws IOException {
+        Parent empDashboard = null;
+        FXMLLoader empLoader = new FXMLLoader(getClass().getResource("/views/employee/MyWorkplace.fxml"));
+        empDashboard = (Parent) empLoader.load();
+        Scene empScene = new Scene(empDashboard);
+
+        MyWorkplaceController emp = empLoader.getController();
+        emp.setEmployee(this.nurse);
+
+        Stage empStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        empStage.setScene(empScene);
+        empStage.show();
+
     }
     
 }

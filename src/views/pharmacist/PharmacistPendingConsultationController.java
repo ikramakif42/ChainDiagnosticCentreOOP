@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -34,6 +35,12 @@ public class PharmacistPendingConsultationController implements Initializable {
     
     private Pharmacist pharmacist;
     private Pharmacist Pharmacist;
+    @FXML
+    private TableColumn<?, ?> pharmaPendConsPatientNameTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaPendConsPatientIDTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaPendConsPatientStatusTableView;
     /**
      * Initializes the controller class.
      */

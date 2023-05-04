@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -40,6 +41,8 @@ public class AccountsOfficerRestockController implements Initializable {
     private TableColumn<MedRestock, Boolean> orderStatus;
     private AccountsOfficer officer;
     private MedRestock tempRes;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Marked as Ordered.");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Marked as Unordered.");
 
     public AccountsOfficer getOfficer() {
         return officer;

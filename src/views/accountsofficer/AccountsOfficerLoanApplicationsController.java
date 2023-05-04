@@ -49,8 +49,8 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
     private TableColumn<LoanApplication, String> loanDuration;
     @FXML
     private TableColumn<LoanApplication, Integer> loanApplicant;
-    Alert a = new Alert(Alert.AlertType.INFORMATION, "Delete Successful");
-    Alert b = new Alert(Alert.AlertType.WARNING, "Delete Unsuccessful");
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Accepted, Email sent to Applicant.");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Denied, Email sent to Applicant.");
     
     public AccountsOfficer getOfficer() {
         return officer;
@@ -85,6 +85,7 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
     private void denyLoan(ActionEvent event) {        
         AccountsOfficer.approveLoanApplications(tempLoan.getApplicantID());
         accountsLoanApplicationTableView.setItems(AccountsOfficer.viewLoanApplications());
+        b.show();
     }
 
     @FXML
@@ -107,6 +108,7 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
     private void acceptLoan(ActionEvent event) {        
         AccountsOfficer.approveLoanApplications(tempLoan.getApplicantID());
         accountsLoanApplicationTableView.setItems(AccountsOfficer.viewLoanApplications());
+        a.show();
     }
 
     @FXML

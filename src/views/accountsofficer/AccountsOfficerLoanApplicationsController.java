@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.LoanApplication;
 import users.AccountsOfficer;
@@ -82,7 +83,8 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
 
     @FXML
     private void denyLoan(ActionEvent event) {        
-
+        AccountsOfficer.approveLoanApplications(tempLoan.getApplicantID());
+        accountsLoanApplicationTableView.setItems(AccountsOfficer.viewLoanApplications());
     }
 
     @FXML
@@ -103,9 +105,15 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
 
     @FXML
     private void acceptLoan(ActionEvent event) {        
+        AccountsOfficer.approveLoanApplications(tempLoan.getApplicantID());
+        accountsLoanApplicationTableView.setItems(AccountsOfficer.viewLoanApplications());
+    }
+
+    @FXML
+    private void clickedLoan(MouseEvent event) {
         LoanApplication app = accountsLoanApplicationTableView.getSelectionModel().getSelectedItem();
         tempLoan = app;
-        System.out.println(app.getApplicantID());        
+        System.out.println(app.getApplicantID()); 
     }
     
 }

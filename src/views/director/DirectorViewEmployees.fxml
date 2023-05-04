@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.director.DirectorViewEmployeesController">
    <children>
-      <Button layoutX="14.0" layoutY="708.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="14.0" layoutY="708.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <TableView fx:id="employeeTableView" layoutX="41.0" layoutY="26.0" onMouseClicked="#clickedEmployee" prefHeight="550.0" prefWidth="1226.0">
          <columns>
             <TableColumn fx:id="employeeIDTableColumn" prefWidth="88.80001831054688" text="Employee ID" />

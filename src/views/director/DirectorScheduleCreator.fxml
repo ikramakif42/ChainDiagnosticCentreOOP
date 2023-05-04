@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <Label layoutX="144.0" layoutY="55.0" text="Day:" />
       <Button layoutX="218.0" layoutY="222.0" mnemonicParsing="false" onAction="#saveTaskInSchedule" prefHeight="26.0" prefWidth="55.0" text="Save" />
       <Label layoutX="142.0" layoutY="88.0" text="Time:" />

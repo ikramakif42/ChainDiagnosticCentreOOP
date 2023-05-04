@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerPastRecordsController">
    <children>
-      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <TextField fx:id="IDSearchTextField" layoutX="186.0" layoutY="40.0" />
       <Label layoutX="55.0" layoutY="45.0" text="Search by ID:" />
       <TableView fx:id="accountsBillsTableView" layoutX="25.0" layoutY="87.0" prefHeight="550.0" prefWidth="846.0">

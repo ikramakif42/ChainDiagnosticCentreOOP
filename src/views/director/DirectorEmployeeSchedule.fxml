@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="55.0" layoutY="675.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="55.0" layoutY="675.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <TableView fx:id="employeeTaskTableView" layoutX="55.0" layoutY="45.0" prefHeight="550.0" prefWidth="806.0">
          <columns>
             <TableColumn fx:id="employeeTask" minWidth="0.0" prefWidth="404.0" text="Task" />

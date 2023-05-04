@@ -18,7 +18,7 @@
          </columns>
       </TableView>
       <Button layoutX="141.0" layoutY="609.0" mnemonicParsing="false" onAction="#ediBill" prefHeight="26.0" prefWidth="66.0" text="Edit" />
-      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <Button layoutX="41.0" layoutY="609.0" mnemonicParsing="false" onAction="#createBill" prefHeight="26.0" prefWidth="79.0" text="Create Bill" />
       <Button layoutX="233.0" layoutY="609.0" mnemonicParsing="false" onAction="#markAsPaid" prefHeight="26.0" prefWidth="95.0" text="Mark As Paid" />
    </children>

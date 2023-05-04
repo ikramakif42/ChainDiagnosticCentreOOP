@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerLoanApplicationsController">
    <children>
-      <TableView fx:id="accountsLoanApplicationTableView" layoutX="56.0" layoutY="33.0" prefHeight="550.0" prefWidth="789.0">
+      <TableView fx:id="accountsLoanApplicationTableView" layoutX="56.0" layoutY="33.0" onMouseClicked="#clickedLoan" prefHeight="550.0" prefWidth="789.0">
          <columns>
             <TableColumn fx:id="loanType" prefWidth="86.39999389648438" text="Type" />
             <TableColumn fx:id="loanAmount" minWidth="0.0" prefWidth="88.80000305175781" text="Amount" />
@@ -18,7 +18,7 @@
          </columns>
       </TableView>
       <Button layoutX="141.0" layoutY="605.0" mnemonicParsing="false" onAction="#denyLoan" prefHeight="26.0" prefWidth="66.0" text="Deny" />
-      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <Button layoutX="55.0" layoutY="605.0" mnemonicParsing="false" onAction="#acceptLoan" prefHeight="26.0" prefWidth="66.0" text="Accept" />
    </children>
 </AnchorPane>

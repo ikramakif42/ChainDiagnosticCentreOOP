@@ -17,6 +17,32 @@ public class LoanApplication extends Application implements Serializable {
         this.duration = duration;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public int getApplicantID() {
+        return applicantID;
+    }
+
+    public void setApplicantID(int applicantID) {
+        this.applicantID = applicantID;
+    }
+
+    
+    
     public float getAmount() {
         return amount;
     }
@@ -43,7 +69,7 @@ public class LoanApplication extends Application implements Serializable {
 
     @Override
     public String toString() {
-        return "LoanApplication: " + "applicantID=" + applicantID+ "type="+ type + ", details=" + details + ", amount=" + amount + ", date=" + date + ", duration=" + duration;
+        return "LoanApplication: " + "applicantID=" + applicantID + ", type="+ type + ", details=" + details + ", amount=" + amount + ", date=" + date + ", duration=" + duration;
     }
            
 }

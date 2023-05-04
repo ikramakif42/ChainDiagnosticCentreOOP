@@ -18,9 +18,9 @@
       </Label>
       <TableView fx:id="pharmaPendingConsultationList" layoutX="68.0" layoutY="136.0" prefHeight="250.0" prefWidth="514.0">
         <columns>
-          <TableColumn prefWidth="151.19997864961624" text="Patient's Name" />
-          <TableColumn prefWidth="152.8000030517578" text="ID" />
-            <TableColumn prefWidth="208.79989624023438" text="Status" />
+          <TableColumn fx:id="pharmaPendConsPatientNameTableView" prefWidth="151.19997864961624" text="Patient's Name" />
+          <TableColumn fx:id="pharmaPendConsPatientIDTableView" prefWidth="152.8000030517578" text="ID" />
+            <TableColumn fx:id="pharmaPendConsPatientStatusTableView" prefWidth="208.79989624023438" text="Status" />
         </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="466.0" mnemonicParsing="false" onAction="#pharmaPendingConsultationBackToDashOnClick" text="Go Back To Dashboard" />

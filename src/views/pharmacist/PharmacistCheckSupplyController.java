@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import users.Pharmacist;
@@ -30,6 +31,14 @@ public class PharmacistCheckSupplyController implements Initializable {
     private TableView<?> pharmaDrugSupplyTableList;
 
     private Pharmacist pharmacist;
+    @FXML
+    private TableColumn<?, ?> pharmaSupplyDrugNameTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaSupplyDrugQuantityTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaSupplyDeptTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaSupplyDrugReqTableView;
     /**
      * Initializes the controller class.
      */

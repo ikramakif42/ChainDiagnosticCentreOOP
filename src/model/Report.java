@@ -12,15 +12,18 @@ public class Report implements Serializable {
     public int authorID;
     public LocalDate date;
 
-    
-    public Report(String title, String author, String type, String body, int authorID) {
+    public Report(String title, String author, String type, String body, int authorID, LocalDate date) {
         this.title = title;
         this.author = author;
         this.type = type;
         this.body = body;
         this.authorID = authorID;
-        this.date = LocalDate.now();
-    }    
+        this.date = date;
+    }
+
+
+
+
     
     
     public String getTitle() {

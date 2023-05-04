@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Line?>
@@ -27,22 +25,16 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="45.0" layoutY="82.0" mnemonicParsing="false" onAction="#BillingInformationOnClick" prefHeight="37.0" prefWidth="159.0" text="Billing Information" />
-            <TableView layoutX="380.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="PatientBillingTableColumn" layoutX="62.0" layoutY="66.0" prefHeight="229.0" prefWidth="237.0">
               <columns>
-                <TableColumn prefWidth="195.99996948242188" text="Billing Information" />
+                  <TableColumn fx:id="IDTableColumn" prefWidth="112.66665267944336" text="ID" />
+                  <TableColumn fx:id="NameTableColumn" prefWidth="122.66667175292969" text="Name" />
               </columns>
             </TableView>
             <Button layoutX="32.0" layoutY="442.0" mnemonicParsing="false" onAction="#ReturnPatientbillingInfoOnClick" text="Return" textFill="#ff1414" />
-            <DatePicker layoutX="39.0" layoutY="221.0" promptText="Date" />
-            <MenuButton layoutX="40.0" layoutY="173.0" mnemonicParsing="false" onAction="#TypeOfTestOnClick" prefHeight="25.0" prefWidth="165.0" text="Type Of Test">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
-            <Button layoutX="262.0" layoutY="335.0" mnemonicParsing="false" onAction="#SubmitBillingInfoOnClick" prefHeight="51.0" prefWidth="129.0" text="Submit" />
+            <Button layoutX="467.0" layoutY="309.0" mnemonicParsing="false" onAction="#SubmitBillingInfoOnClick" prefHeight="37.0" prefWidth="130.0" text="Submit" />
             <Line endX="24.000030517578125" endY="117.66665649414062" layoutX="262.0" layoutY="135.0" startX="24.000030517578125" startY="-81.66667175292969" stroke="WHITE" strokeWidth="3.0" />
+            <TextArea fx:id="BillingInfoTextArea" layoutX="459.0" layoutY="100.0" prefHeight="173.0" prefWidth="160.0" promptText="Billing Info" />
          </children></AnchorPane>
    </center>
 </BorderPane>

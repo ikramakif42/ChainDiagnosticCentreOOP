@@ -34,6 +34,7 @@ import users.User;
 public class UpdateHospitalPoliciesProceduresController implements Initializable {
 
     private HROfficer HR;
+    private Policy selectedPolicy;
     @FXML
     private TextArea detailsTextArea;
     @FXML
@@ -42,6 +43,12 @@ public class UpdateHospitalPoliciesProceduresController implements Initializable
     private TableColumn<Policy, Integer> numberTableColumn;
     @FXML
     private TableColumn<Policy, String> detailsTableColumn;
+    
+    Alert SerialNoError = new Alert(Alert.AlertType.WARNING, "Error, enter valid SerialNo!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error,Update Policies failed!");
+    Alert failureNull = new Alert(Alert.AlertType.WARNING, "Error, fill up all fields!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Update Hospital Policies successful!");
+
 
     /**
      * Initializes the controller class.
@@ -64,13 +71,43 @@ public class UpdateHospitalPoliciesProceduresController implements Initializable
     
     
     @FXML
-    private void LoadUpdatePolicesButtonOnClick(ActionEvent event) {
+    private void LoadUpdatePolicesButtonOnClick(ActionEvent event) throws IOException {
+        
+        
+        
+        
+        Policy selectedPolicy = policyTableView.getSelectionModel().getSelectedItem();
+        
+        
+        if (selectedPolicy==null){
+             {failureNull.show();return;}
+        }
+        detailsTextArea.setText(selectedPolicy.getContent());
+            
+        
+        
     }
+
+    public Policy getSelectedPolicy() {
+        return selectedPolicy;
+    }
+
+    public void setSelectedPolicy(Policy selectedPolicy) {
+        this.selectedPolicy = selectedPolicy;
+    }
+    
 
     
 
     @FXML
-    private void ConfirmButtonOnClick(ActionEvent event) {
+    private void ConfirmButtonOnClick(ActionEvent event) throws IOException {
+        String newDetalis = detailsTextArea.getText();
+        
+        if (selectedPolicy==null)
+        {return;}
+        selectedPolicy.setContent(newDetalis);
+        if(this.HR.UpdatePolicies(selectedPolicy)){success.show();}
+        else{failure.show();}
     }
 
     @FXML

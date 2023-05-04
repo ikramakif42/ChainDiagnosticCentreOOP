@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,13 +23,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="39.0" layoutY="51.0" mnemonicParsing="false" onAction="#OrderSupplyOnClick" prefHeight="50.0" prefWidth="167.0" text="Order Supply" />
-            <TextField layoutX="43.0" layoutY="155.0" promptText="Required Supplies">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="43.0" layoutY="224.0" promptText="Quantity">
+            <TextField layoutX="57.0" layoutY="190.0" promptText="Required Supplies">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -38,6 +33,9 @@
                   <Font name="System Bold" size="12.0" />
                </font></Button>
             <Button layoutX="26.0" layoutY="420.0" mnemonicParsing="false" onAction="#ReturnOderSupReqOnClick" text="Return" textFill="#ff0f0f" />
+            <TextField fx:id="QuantityTextField" layoutX="57.0" layoutY="147.0" prefHeight="25.0" prefWidth="161.0" promptText="Quantity" />
+            <TextField fx:id="NameTextField" layoutX="57.0" layoutY="92.0" prefHeight="25.0" prefWidth="162.0" promptText="Name" />
+            <DatePicker fx:id="DatePicker" layoutX="57.0" layoutY="229.0" prefHeight="25.0" prefWidth="158.0" promptText="Date Picker" />
          </children></AnchorPane>
    </center>
 </BorderPane>

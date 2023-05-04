@@ -29,6 +29,36 @@ import users.HROfficer;
 public class UpdateRecordProfileController implements Initializable {
     
     private HROfficer HR;
+    @FXML
+    private TextField EmailTextField;
+    private TextField ContractTextField;
+    @FXML
+    private TextField AddressTextField;
+    private TextField DesignationTextField;
+    @FXML
+    private TextField DepartmentTextField;
+    @FXML
+    private TextField BranchNameTextField;
+    @FXML
+    private TreeTableView<HROfficer> RecordProfileTreeTableView;
+    @FXML
+    private TreeTableColumn<?, ?> EmployeeIDTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> NameTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> DesiganationTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> DepartmentTableColumn;
+    
+    
+    Alert emailError = new Alert(Alert.AlertType.WARNING, "Error, valid email address!");
+    Alert failure = new Alert(Alert.AlertType.WARNING, "Error, Update Profile failed!");
+    Alert failureNull = new Alert(Alert.AlertType.WARNING, "Error, fill up all fields!");
+    Alert success = new Alert(Alert.AlertType.INFORMATION, "Update Record Profile successful!");
+    @FXML
+    private TextField ContractNumberTextField;
+    @FXML
+    private TextField DesiganationTextField;
 
 
 
@@ -52,11 +82,31 @@ public class UpdateRecordProfileController implements Initializable {
     }
 
     @FXML
-    private void UpdateRecordOnClick(ActionEvent event) {
+    private void UpdateRecordOnClick(ActionEvent event) {  
     }
+    
 
     @FXML
     private void SaveupdaterecordOnClick(ActionEvent event) {
+        
+        String email = EmailTextField.getText();
+        if (email.isEmpty()) {failureNull.show();return;}
+        if (!email.contains("@")){emailError.show();return;}
+        
+        String contact = ContractTextField.getText();
+        if (contact.isEmpty()) {failureNull.show();return;}
+        
+        String address = AddressTextField.getText();
+        if (address.isEmpty()) {failureNull.show();return;}
+        
+        String designation = DesignationTextField.getText();
+        if (designation.isEmpty()) {failureNull.show();return;}
+        
+        String department = DepartmentTextField.getText();
+        if (designation.isEmpty()) {failureNull.show();return;}
+        
+        String branchName = BranchNameTextField.getText();
+        if (branchName.isEmpty()) {failureNull.show();return;}
     }
 
     @FXML

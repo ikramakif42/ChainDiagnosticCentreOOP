@@ -10,6 +10,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -69,6 +72,10 @@ public class PharmacistBillingInformationController implements Initializable {
     private Label pharmaBillInfoPatientNameLabel;
     @FXML
     private Label pharmaBillInfoPatientAgeLabel;
+    
+    Alert dateError = new Alert(Alert.AlertType.WARNING, "Error, no date is Selected!");
+    Alert paymentError = new Alert(Alert.AlertType.WARNING, "Error, no payment status is Selected!");
+    
     /**
      * Initializes the controller class.
      */
@@ -131,7 +138,53 @@ public class PharmacistBillingInformationController implements Initializable {
     }
 
     @FXML
-    private void pharmacistBillApplyFilterOnClick(ActionEvent event) {
+    private void pharmaApplyDateFilter(ActionEvent event) {
+        ObservableList<Bill> pharmaApplyDateList = Pharmacist.getPatientBills(selectedPatient.getID());
+        ObservableList<Bill> newList = FXCollections.observableArrayList();
+        LocalDate startDate = pharmacistBillFilterbyDateStart.getValue();
+        LocalDate endDate = pharmacistBillFilterbyDateEnd.getValue();
+        if (startDate==null || endDate == null){dateError.show();return;} 
+        for (Bill tempBill : pharmaApplyDateList) {
+          if (tempBill.getCreatedDate().isAfter(startDate) && tempBill.getCreatedDate().isBefore(endDate)){
+            newList.add(tempBill);
+            }
+          }
+          pharmaBillStatusTableList.setItems(newList);
     }
-    
+
+    @FXML
+    private void pharmaApplyPaymentFilter(ActionEvent event) {
+        ObservableList<Bill> pharmaApplyDateList = Pharmacist.getPatientBills(selectedPatient.getID());
+        ObservableList<Bill> newList = FXCollections.observableArrayList();
+        LocalDate startDate = pharmacistBillFilterbyDateStart.getValue();
+        LocalDate endDate = pharmacistBillFilterbyDateEnd.getValue();
+        boolean paidStatus;
+        if (pharmacistBillFilterbyPaid.isSelected()){
+            paidStatus= true;
+            
+        
+        }
+        else if(pharmacistBillFilterbyDateDue.isSelected()){
+            paidStatus= false;
+        }
+        else{
+            paymentError.show();
+            return;
+        }
+        for (Bill tempBill : pharmaApplyDateList) {
+          if (tempBill.isPaidStatus()== paidStatus){
+            newList.add(tempBill);
+            }
+          }
+          pharmaBillStatusTableList.setItems(newList);
+
+    }
+
+    @FXML
+    private void pharmaApplyClearFilter(ActionEvent event) {
+          pharmaBillStatusTableList.setItems(Nurse.getPatientBills(selectedPatient.getID()));
+    }
+
 }
+    
+

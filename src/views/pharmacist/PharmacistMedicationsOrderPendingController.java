@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import users.Pharmacist;
@@ -34,6 +35,14 @@ public class PharmacistMedicationsOrderPendingController implements Initializabl
     
     private Pharmacist pharmacist;
     private Pharmacist Pharmacist;
+    @FXML
+    private TableColumn<?, ?> pharmaMedOrderPendPatientNameTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaMedOrderPendPatientIDTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaMedOrderPendPendingTableView;
+    @FXML
+    private TableColumn<?, ?> pharmaMedOrderPendPatientContactTableView;
 
     /**
      * Initializes the controller class.

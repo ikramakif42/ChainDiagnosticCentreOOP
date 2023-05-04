@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import users.Nurse;
@@ -31,6 +32,14 @@ public class NurseReviewPrescriptionRefillsController implements Initializable {
     private TableView<?> nursePrescriptionRefillstListTable;
     
     private Nurse nurse;
+    @FXML
+    private TableColumn<?, ?> nursePrescriptionRefillsPatientNameTableView;
+    @FXML
+    private TableColumn<?, ?> nursePrescriptionRefillsPatientIDTableView;
+    @FXML
+    private TableColumn<?, ?> nursePrescriptionRefillsPendingTableView;
+    @FXML
+    private TableColumn<?, ?> nursePrescriptionRefillsPatientContactTableView;
 
     /**
      * Initializes the controller class.

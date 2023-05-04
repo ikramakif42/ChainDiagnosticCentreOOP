@@ -11,10 +11,10 @@
    <children>
       <TableView fx:id="pharmaViewPatientListTable" prefHeight="554.0" prefWidth="497.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="110.0" text="Patient's Name" />
-          <TableColumn prefWidth="84.79998779296875" text="ID" />
-            <TableColumn prefWidth="75.0" text="Age" />
-            <TableColumn prefWidth="225.79998779296875" text="Latest Appointments" />
+          <TableColumn fx:id="pharmaViewPatientPatientNameTableView" prefWidth="149.59997254610062" text="Patient's Name" />
+          <TableColumn fx:id="pharmaViewPatientPatientIDTableView" prefWidth="95.20004272460938" text="ID" />
+            <TableColumn fx:id="pharmaViewPatientPatientAgeTableView" prefWidth="84.80006408691406" text="Age" />
+            <TableColumn fx:id="pharmaViewPatientPatientContactTableView" prefWidth="167.2000732421875" text="Contact" />
         </columns>
       </TableView>
       <Button layoutX="550.0" layoutY="166.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingOnClick" prefHeight="82.0" prefWidth="193.0" style="-fx-background-color: orange;" text="Medications Order Pending" textAlignment="CENTER" textFill="#16595b" wrapText="true">

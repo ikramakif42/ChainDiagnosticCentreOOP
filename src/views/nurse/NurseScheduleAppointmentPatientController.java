@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -34,6 +36,18 @@ public class NurseScheduleAppointmentPatientController implements Initializable 
     private TextField nurseSheduleAppointmentPatientSearchTextField;
  
     private Nurse nurse;
+    @FXML
+    private TableColumn<?, ?> nurseDocNameTableView;
+    @FXML
+    private TableColumn<?, ?> nurseDeptTableView;
+    @FXML
+    private TableColumn<?, ?> nurseDateTableView;
+    @FXML
+    private TableColumn<?, ?> nurseTimeTableView;
+    @FXML
+    private Label nurseScheduleApptPatientNameLabel;
+    @FXML
+    private Label nurseScheduleApptPatientIdLabel;
     
     
     /**

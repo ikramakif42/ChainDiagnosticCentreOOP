@@ -7,6 +7,7 @@ package views.pharmacist;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +21,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Bill;
+import users.Nurse;
 import users.Pharmacist;
 
 /**
@@ -31,7 +35,7 @@ import users.Pharmacist;
 public class PharmacistBillingInformationController implements Initializable {
 
     @FXML
-    private TableView<?> pharmaBillStatusTableList;
+    private TableView<Bill> pharmaBillStatusTableList;
     @FXML
     private RadioButton pharmacistBillFilterbyPaid;
     @FXML
@@ -46,20 +50,28 @@ public class PharmacistBillingInformationController implements Initializable {
     private Pharmacist pharmacist;
     private Pharmacist Pharmacist;
     @FXML
-    private TableColumn<?, ?> pharmacistPatientBillDateofBillTableView;
+    private TableColumn<Bill, LocalDate> pharmacistPatientBillDateofBillTableView;
     @FXML
-    private TableColumn<?, ?> pharmacistPatientBillDueDateTableView;
+    private TableColumn<Bill, LocalDate> pharmacistPatientBillDueDateTableView;
     @FXML
-    private TableColumn<?, ?> pharmacistPatientBillStatusTableView;
+    private TableColumn<Bill, Boolean> pharmacistPatientBillStatusTableView;
     @FXML
-    private TableColumn<?, ?> pharmacistPatientBillAmountTableView;
+    private TableColumn<Bill, Float> pharmacistPatientBillAmountTableView;
     @FXML
-    private TableColumn<?, ?> pharmacistPatientBillDetailsTableView;
+    private TableColumn<Bill, String> pharmacistPatientBillDetailsTableView;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        pharmacistPatientBillDateofBillTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("createdDate"));
+        pharmacistPatientBillDueDateTableView.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("dueDate"));
+        pharmacistPatientBillStatusTableView.setCellValueFactory(new PropertyValueFactory<Bill,Boolean>("paidStatus"));
+        pharmacistPatientBillAmountTableView.setCellValueFactory(new PropertyValueFactory<Bill,Float>("amount"));
+        pharmacistPatientBillDetailsTableView.setCellValueFactory(new PropertyValueFactory<Bill,String>("details"));
+        // TODO
+        
+        System.out.println(Bill.getAllPendingBills());
         
     
         // TODO
@@ -71,6 +83,7 @@ public class PharmacistBillingInformationController implements Initializable {
 
     public void setPharmacist(Pharmacist pharmacist) {
         this.pharmacist = pharmacist;
+        pharmaBillStatusTableList.setItems(Pharmacist.getPatientBills());
     }
 
     @FXML

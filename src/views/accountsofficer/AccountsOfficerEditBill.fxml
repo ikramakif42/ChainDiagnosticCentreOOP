@@ -7,15 +7,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerEditBillController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="145.0" layoutY="56.0" text="Amount:" />
-      <Button layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
-      <TextField fx:id="amountField" layoutX="196.0" layoutY="51.0" />
-      <Button layoutX="224.0" layoutY="260.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="26.0" prefWidth="55.0" text="Save" />
-      <Label layoutX="132.0" layoutY="94.0" text="Due Date:" />
-      <Label layoutX="113.0" layoutY="130.0" text="Description:" />
-      <TextArea fx:id="descriptionField" layoutX="22.0" layoutY="154.0" prefHeight="87.0" prefWidth="447.0" />
-      <DatePicker fx:id="dueDate" layoutX="196.0" layoutY="90.0" />
+      <Label layoutX="139.0" layoutY="112.0" text="Amount:" />
+      <Button layoutX="18.0" layoutY="318.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
+      <TextField fx:id="amountField" layoutX="200.0" layoutY="108.0" prefHeight="26.0" prefWidth="175.0" />
+      <Button layoutX="228.0" layoutY="317.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="26.0" prefWidth="55.0" text="Save" />
+      <Label layoutX="136.0" layoutY="151.0" text="Due Date:" />
+      <Label layoutX="117.0" layoutY="187.0" text="Description:" />
+      <TextArea fx:id="descriptionField" layoutX="26.0" layoutY="211.0" prefHeight="87.0" prefWidth="447.0" />
+      <DatePicker fx:id="dueDate" layoutX="200.0" layoutY="147.0" />
+      <Label fx:id="billedByLabel" layoutX="200.0" layoutY="76.0" prefHeight="18.0" prefWidth="175.0" text="---" />
+      <Label fx:id="patientIDLabel" layoutX="200.0" layoutY="52.0" prefHeight="18.0" prefWidth="175.0" text="---" />
+      <Label fx:id="createdOn" layoutX="200.0" layoutY="25.0" prefHeight="18.0" prefWidth="175.0" text="---" />
+      <Label layoutX="127.0" layoutY="25.0" text="Created on:" />
+      <Label layoutX="130.0" layoutY="52.0" text="Patient ID:" />
+      <Label layoutX="113.0" layoutY="76.0" text="Billed by (ID):" />
    </children>
 </AnchorPane>

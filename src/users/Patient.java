@@ -186,6 +186,7 @@ public class Patient extends User implements Serializable{
         System.out.println(prescriptionList);
         return prescriptionList;
     }
+    
     public boolean updatePersonalInfo(String newName, String newEmail, String newAddr, String newContactNo){
         try {
             File file = new File("PatientObjects.bin");
@@ -243,6 +244,61 @@ public class Patient extends User implements Serializable{
         }
         return false;
     }
+    
+    public boolean updateMedicalRecord(String newRecord){
+        try {
+            File file = new File("PatientObjects.bin");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Patient> patientList = new ArrayList<>();
+            try{
+                while(true){
+                    Patient tempPat = (Patient) ois.readObject();
+                    System.out.println(tempPat);
+                    patientList.add(tempPat);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+            System.out.println(patientList);
+
+            for (Patient currentPat : patientList) {
+                if (currentPat.getID()==this.ID) {
+                    currentPat.getMedicalRecords().add(newRecord);
+                }
+            }
+
+            System.out.println(patientList);
+            if(file.delete()){
+                System.out.println("Deleted Patients File!");
+                File f = new File("PatientObjects.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (Patient currentPat : patientList) {
+                    oos.writeObject(currentPat);
+                }
+                oos.close();
+                System.out.println("Fixed Patients File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }    
     
     //Goal 3
     public ObservableList<LabReport> getReportList() {

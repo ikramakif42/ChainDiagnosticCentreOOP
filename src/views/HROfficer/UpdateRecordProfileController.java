@@ -15,16 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
 import javafx.stage.Stage;
 import users.HROfficer;
-import users.User;
 
 
 
@@ -66,7 +59,7 @@ public class UpdateRecordProfileController implements Initializable {
     private TextField ContractNumberTextField;
     @FXML
     private TextField DesiganationTextField;
-    
+
 
 
     /**
@@ -84,13 +77,12 @@ public class UpdateRecordProfileController implements Initializable {
         this.HR = HR;
     }
 
+    @FXML
+    private void EmployeeRecordOnClick(ActionEvent event) {
+    }
 
     @FXML
-    private void UpdateRecordOnClick(ActionEvent event) {
-        
-          
-        
-       
+    private void UpdateRecordOnClick(ActionEvent event) {  
     }
     
 

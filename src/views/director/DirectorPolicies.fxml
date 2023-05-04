@@ -14,6 +14,6 @@
          </columns>
       </TableView>
       <Button layoutX="96.0" layoutY="602.0" mnemonicParsing="false" onAction="#editPolicy" prefHeight="26.0" prefWidth="66.0" text="Edit" />
-      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
    </children>
 </AnchorPane>

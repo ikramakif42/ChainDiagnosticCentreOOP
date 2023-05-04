@@ -232,5 +232,13 @@ public class MyWorkplaceController implements Initializable {
                 break;
         }
     }
+
+    public void setPharmacist(Pharmacist Pharmacist) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setNurse(Nurse nurse) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

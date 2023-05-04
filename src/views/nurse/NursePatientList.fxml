@@ -38,12 +38,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="550.0" layoutY="375.0" mnemonicParsing="false" onAction="#nursePatientPrescriptionOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="Review Prescription Refills" textFill="#133151">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="550.0" layoutY="458.0" mnemonicParsing="false" onAction="#nursePatientLabReportsOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="View Lab Reports" textFill="#133151">
+      <Button layoutX="550.0" layoutY="387.0" mnemonicParsing="false" onAction="#nursePatientLabReportsOnClick" prefHeight="65.0" prefWidth="322.0" style="-fx-background-color: orange;" text="View Lab Reports" textFill="#133151">
          <font>
             <Font size="14.0" />
          </font>

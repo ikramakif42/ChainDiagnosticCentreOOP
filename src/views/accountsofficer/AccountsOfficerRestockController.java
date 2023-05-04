@@ -5,13 +5,24 @@
  */
 package views.accountsofficer;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import model.MedRestock;
+import users.AccountsOfficer;
 
 /**
  * FXML Controller class
@@ -21,32 +32,73 @@ import javafx.scene.control.TableView;
 public class AccountsOfficerRestockController implements Initializable {
 
     @FXML
-    private TableView<?> medRestockTableView;
+    private TableView<MedRestock> medRestockTableView;
     @FXML
-    private TableColumn<?, ?> medName;
+    private TableColumn<MedRestock, String> medName;
     @FXML
-    private TableColumn<?, ?> medQuantity;
+    private TableColumn<MedRestock, Integer> medQuantity;
     @FXML
-    private TableColumn<?, ?> medQuantity1;
+    private TableColumn<MedRestock, Boolean> orderStatus;
+    private AccountsOfficer officer;
+    private MedRestock tempRes;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Marked as Ordered.");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Marked as Unordered.");
 
+    public AccountsOfficer getOfficer() {
+        return officer;
+    }
+
+    public void setOfficer(AccountsOfficer officer) {
+        this.officer = officer;
+    }
+    
+    
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    medName.setCellValueFactory(new PropertyValueFactory<MedRestock, String>("medName"));
+    medQuantity.setCellValueFactory(new PropertyValueFactory<MedRestock, Integer>("Quantity"));
+    orderStatus.setCellValueFactory(new PropertyValueFactory<MedRestock, Boolean>("ordered"));
+    
+    medRestockTableView.setItems(AccountsOfficer.viewRestocks());
     }    
 
     @FXML
     private void markAsOrdered(ActionEvent event) {
+        AccountsOfficer.manageRestockOrders(tempRes, true);
+        medRestockTableView.setItems(AccountsOfficer.viewRestocks());        
+        
     }
 
     @FXML
-    private void returnToDashboardOnClick(ActionEvent event) {
+    private void returnToDashboardOnClick(ActionEvent event) throws IOException {
+        Parent directorDashboard = null;
+        FXMLLoader directorLoader = new FXMLLoader(getClass().getResource("AccountsOfficerDashboard.fxml"));
+        directorDashboard = (Parent) directorLoader.load();
+        Scene directorScene = new Scene(directorDashboard);
+
+        AccountsOfficerDashboardController di = directorLoader.getController();
+        di.setOfficer(officer);
+
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        directorStage.setScene(directorScene);
+        directorStage.show();        
     }
 
     @FXML
     private void markAsUnordered(ActionEvent event) {
+        AccountsOfficer.manageRestockOrders(tempRes, false);
+        medRestockTableView.setItems(AccountsOfficer.viewRestocks());        
+    }
+
+    @FXML
+    private void clickedRestock(MouseEvent event) {
+        MedRestock restock = medRestockTableView.getSelectionModel().getSelectedItem();
+        tempRes = restock;
     }
     
 }

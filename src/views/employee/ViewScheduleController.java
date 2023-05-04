@@ -42,7 +42,6 @@ public class ViewScheduleController implements Initializable {
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("day"));
         timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         detailsTableColumn.setCellValueFactory(new PropertyValueFactory<>("task"));
-        taskTableView.setItems((ObservableList<Schedule>) this.employee.getScheduleRoster());
         
         startDatePicker.setDayCellFactory(dp -> new DateCell(){
             @Override
@@ -74,6 +73,7 @@ public class ViewScheduleController implements Initializable {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+        taskTableView.setItems((ObservableList<Schedule>) this.employee.getScheduleRoster());
     }
 
     @FXML

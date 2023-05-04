@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.AppendableObjectOutputStream;
 import model.Bill;
+import model.LoanApplication;
 import model.MedRestock;
 import users.AccountsOfficer;
 import views.LoginController;
@@ -56,7 +57,7 @@ public class AccountsOfficerDashboardController implements Initializable {
 //        LocalDate today = LocalDate.now();
 //        LocalDate date2 = LocalDate.of(2023, 5, 10);
 //        try {
-//            f = new File("RestockRequests.bin");
+//            f = new File("LoanApplicationObjects.bin");
 //            if(f.exists()){
 //                fos = new FileOutputStream(f,true);
 //                oos = new AppendableObjectOutputStream(fos);                
@@ -66,9 +67,9 @@ public class AccountsOfficerDashboardController implements Initializable {
 //                oos = new ObjectOutputStream(fos);               
 //            }
 //            
-//        MedRestock test1 = new MedRestock("Ibuprofen", 2, false);
-//        MedRestock test2 = new MedRestock("Napa", 3, false);
-//        MedRestock test3 = new MedRestock("Montene", 1, false);        
+//        LoanApplication test1 = new LoanApplication((float) 200, date2, "2 Months", "Emergency", "Family health issue", 256);
+//        LoanApplication test2 = new LoanApplication((float)215, today, "7 Months", "Emergency", "Personal health issue", 218);
+//        LoanApplication test3 = new LoanApplication((float) 235, date2, "1 Month", "Emergency", "final fantasy xvi releasing", 245);
 //            
 //        oos.writeObject(test1);
 //        oos.writeObject(test2);
@@ -196,7 +197,21 @@ public class AccountsOfficerDashboardController implements Initializable {
     }
 
     @FXML
-    private void viewSalary(ActionEvent event) {
+    private void viewSalary(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader directorLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerSalary.fxml")
+        );
+        parent = (Parent) directorLoader.load();
+        Scene scene = new Scene(parent);
+        
+        AccountsOfficerSalaryController e = directorLoader.getController();
+        e.setOfficer(this.officer);
+        
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(scene);
+        directorStage.show();   
     }
     
 }

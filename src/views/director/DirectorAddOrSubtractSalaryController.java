@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -48,7 +49,10 @@ public class DirectorAddOrSubtractSalaryController implements Initializable {
     private RadioButton subtractRadioButton;
     @FXML
     private ToggleGroup addSub;
-
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Successful");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Unsuccessful");
+    
+    
     public DirectorAddOrSubtractSalaryController(Director director, Employee tempEmployee) {
         this.director = director;
         this.tempEmployee = tempEmployee;
@@ -100,8 +104,13 @@ public class DirectorAddOrSubtractSalaryController implements Initializable {
         
         tempEmployee.setSalary(newSal);
         employeeSalary.setText(String.valueOf(newSal));
-        Director.editPersonalInfo(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), newSal, tempEmployee.getDepartment(), tempEmployee.getDesignation());
-        
+        boolean success = Director.editPersonalInfo(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), newSal, tempEmployee.getDepartment(), tempEmployee.getDesignation());
+                if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }        
         
     }
 

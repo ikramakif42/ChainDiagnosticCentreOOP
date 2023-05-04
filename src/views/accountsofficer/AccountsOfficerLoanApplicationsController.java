@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.LoanApplication;
 import users.AccountsOfficer;
@@ -48,8 +49,8 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
     private TableColumn<LoanApplication, String> loanDuration;
     @FXML
     private TableColumn<LoanApplication, Integer> loanApplicant;
-    Alert a = new Alert(Alert.AlertType.INFORMATION, "Delete Successful");
-    Alert b = new Alert(Alert.AlertType.WARNING, "Delete Unsuccessful");
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Accepted, Email sent to Applicant.");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Denied, Email sent to Applicant.");
     
     public AccountsOfficer getOfficer() {
         return officer;
@@ -82,7 +83,9 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
 
     @FXML
     private void denyLoan(ActionEvent event) {        
-
+        AccountsOfficer.approveLoanApplications(tempLoan.getApplicantID());
+        accountsLoanApplicationTableView.setItems(AccountsOfficer.viewLoanApplications());
+        b.show();
     }
 
     @FXML
@@ -103,9 +106,16 @@ public class AccountsOfficerLoanApplicationsController implements Initializable 
 
     @FXML
     private void acceptLoan(ActionEvent event) {        
+        AccountsOfficer.approveLoanApplications(tempLoan.getApplicantID());
+        accountsLoanApplicationTableView.setItems(AccountsOfficer.viewLoanApplications());
+        a.show();
+    }
+
+    @FXML
+    private void clickedLoan(MouseEvent event) {
         LoanApplication app = accountsLoanApplicationTableView.getSelectionModel().getSelectedItem();
         tempLoan = app;
-        System.out.println(app.getApplicantID());        
+        System.out.println(app.getApplicantID()); 
     }
     
 }

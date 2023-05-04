@@ -9,7 +9,7 @@
    <children>
       <Button layoutX="48.0" layoutY="602.0" mnemonicParsing="false" onAction="#openReportView" prefHeight="26.0" prefWidth="66.0" text="Details" />
       <Button layoutX="141.0" layoutY="603.0" mnemonicParsing="false" onAction="#openFinanceReportCreator" text="Create Finance Report" />
-      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Return to Dashboard" />
+      <Button layoutX="14.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToDashboardOnClick" text="Back" />
       <TableView fx:id="FinanceReportTableView" layoutX="48.0" layoutY="34.0" onMouseClicked="#clickedReport" prefHeight="550.0" prefWidth="673.0">
          <columns>
             <TableColumn fx:id="FinanceReportTitle" minWidth="0.0" prefWidth="163.20001983642578" text="Title" />

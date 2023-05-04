@@ -359,7 +359,6 @@ public class AccountsOfficer extends Employee implements Serializable {
         return branchReportList;
     }
     
-    
     public static boolean createReport(Report newFinanceReport){
         File f = null;
         FileOutputStream fos = null;      
@@ -388,7 +387,6 @@ public class AccountsOfficer extends Employee implements Serializable {
         }      
     
     };
-    
     
     public static ObservableList<LoanApplication> viewLoanApplications(){
         ObservableList<LoanApplication> loanList = FXCollections.observableArrayList();
@@ -426,8 +424,65 @@ public class AccountsOfficer extends Employee implements Serializable {
                
     };
     
-    public static void approveLoanApplications(){
-    };
+    public static boolean approveLoanApplications(int curID){
+        try {
+            String path = "LoanApplicationObjects.bin";
+            File file = new File(path);
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<LoanApplication> l = new ArrayList<>();
+            
+            
+            try{
+                while(true){
+                    LoanApplication tempL = (LoanApplication) ois.readObject();
+                    System.out.println(tempL);
+                    
+                    if (tempL.getApplicantID() == curID){;}
+                    
+                    else{
+                        
+                    l.add(tempL);
+                    
+                    }
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            
+            ois.close();
+            System.out.println(l);
+
+            if(file.delete()){
+                System.out.println("Deleted File!");
+                File f = new File(path);
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (LoanApplication currentL : l) {
+                    oos.writeObject(currentL);
+                }
+                oos.close();
+                System.out.println("Fixed File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Policy.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Policy.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;      
+      };
+    
     
     public static ObservableList<Employee>  viewEmployees(){
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();

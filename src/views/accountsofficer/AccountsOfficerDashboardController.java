@@ -31,6 +31,7 @@ import model.LoanApplication;
 import model.MedRestock;
 import users.AccountsOfficer;
 import views.LoginController;
+import views.employee.MyWorkplaceController;
 
 /**
  * FXML Controller class
@@ -50,14 +51,14 @@ public class AccountsOfficerDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+//        
 //        File f = null;
 //        FileOutputStream fos = null;      
 //        ObjectOutputStream oos = null;
 //        LocalDate today = LocalDate.now();
 //        LocalDate date2 = LocalDate.of(2023, 5, 10);
 //        try {
-//            f = new File("LoanApplicationObjects.bin");
+//            f = new File("RestockRequests.bin");
 //            if(f.exists()){
 //                fos = new FileOutputStream(f,true);
 //                oos = new AppendableObjectOutputStream(fos);                
@@ -67,9 +68,9 @@ public class AccountsOfficerDashboardController implements Initializable {
 //                oos = new ObjectOutputStream(fos);               
 //            }
 //            
-//        LoanApplication test1 = new LoanApplication((float) 200, date2, "2 Months", "Emergency", "Family health issue", 256);
-//        LoanApplication test2 = new LoanApplication((float)215, today, "7 Months", "Emergency", "Personal health issue", 218);
-//        LoanApplication test3 = new LoanApplication((float) 235, date2, "1 Month", "Emergency", "final fantasy xvi releasing", 245);
+//        MedRestock test1 = new MedRestock("Ibuprofen", 10, false);
+//        MedRestock test2 = new MedRestock("Napa", 10, false);
+//        MedRestock test3 = new MedRestock("Montene", 10, false);
 //            
 //        oos.writeObject(test1);
 //        oos.writeObject(test2);
@@ -93,6 +94,8 @@ public class AccountsOfficerDashboardController implements Initializable {
         
     public void setOfficer(AccountsOfficer officer) {
         this.officer = officer;
+        accountsIDLabel.setText(String.valueOf(officer.getID()));
+        accountsNameLabel.setText(officer.getName());        
     }
 
     @FXML
@@ -212,6 +215,21 @@ public class AccountsOfficerDashboardController implements Initializable {
         Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         directorStage.setScene(scene);
         directorStage.show();   
+    }
+
+    @FXML
+    private void myWorkplace(ActionEvent event) throws IOException {
+        Parent empDashboard = null;
+        FXMLLoader empLoader = new FXMLLoader(getClass().getResource("/views/employee/MyWorkplace.fxml"));
+        empDashboard = (Parent) empLoader.load();
+        Scene empScene = new Scene(empDashboard);
+
+        MyWorkplaceController emp = empLoader.getController();
+        emp.setEmployee(this.officer);
+
+        Stage empStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        empStage.setScene(empScene);
+        empStage.show();        
     }
     
 }

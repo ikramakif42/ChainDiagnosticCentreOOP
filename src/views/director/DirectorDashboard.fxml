@@ -12,13 +12,14 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button layoutX="168.0" layoutY="224.0" mnemonicParsing="false" onAction="#viewEmployees" text="Employees" />
-      <Button layoutX="168.0" layoutY="266.0" mnemonicParsing="false" onAction="#viewReports" prefHeight="26.0" prefWidth="74.0" text="Reports" />
-      <Button layoutX="169.0" layoutY="310.0" mnemonicParsing="false" onAction="#viewPolicies" prefHeight="26.0" prefWidth="74.0" text="Policies" />
-      <Button layoutX="168.0" layoutY="395.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="74.0" text="Log Out" />
+      <Button layoutX="147.0" layoutY="223.0" mnemonicParsing="false" onAction="#viewEmployees" prefHeight="26.0" prefWidth="114.0" text="Employees" />
+      <Button layoutX="147.0" layoutY="265.0" mnemonicParsing="false" onAction="#viewReports" prefHeight="26.0" prefWidth="114.0" text="Reports" />
+      <Button layoutX="148.0" layoutY="309.0" mnemonicParsing="false" onAction="#viewPolicies" prefHeight="26.0" prefWidth="114.0" text="Policies" />
+      <Button layoutX="167.0" layoutY="408.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="74.0" text="Log Out" />
       <Label layoutX="109.0" layoutY="121.0" text="User ID:" />
       <Label layoutX="109.0" layoutY="152.0" text="Name:" />
       <Label fx:id="directorIDLabel" layoutX="212.0" layoutY="121.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
       <Label fx:id="directorNameLabel" layoutX="212.0" layoutY="152.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
+      <Button layoutX="147.0" layoutY="350.0" mnemonicParsing="false" onAction="#myWorkplace" prefHeight="26.0" prefWidth="114.0" text="My Workplace" />
    </children>
 </AnchorPane>

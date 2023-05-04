@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -47,6 +48,8 @@ public class AccountsOfficerAddOrSubtractSalaryController implements Initializab
     private ToggleGroup addSub;
     @FXML
     private RadioButton subtractRadioButton;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Successful");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Unsuccessful");
 
     public AccountsOfficer getOfficer() {
         return officer;
@@ -89,7 +92,13 @@ public class AccountsOfficerAddOrSubtractSalaryController implements Initializab
         
         tempEmployee.setSalary(newSal);
         employeeSalary.setText(String.valueOf(newSal));
-        AccountsOfficer.updateSalaries(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), newSal, tempEmployee.getDepartment(), tempEmployee.getDesignation());
+        boolean success = AccountsOfficer.updateSalaries(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), newSal, tempEmployee.getDepartment(), tempEmployee.getDesignation());
+        if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }        
                 
     }
 

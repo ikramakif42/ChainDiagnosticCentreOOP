@@ -34,9 +34,9 @@
       <Label layoutX="45.0" layoutY="78.0" text="Patient ID:" />
       <Label layoutX="45.0" layoutY="107.0" text="Patient Name:" />
       <Label layoutX="45.0" layoutY="135.0" text="Patient Age:" />
-      <Label layoutX="143.0" layoutY="78.0" text="____" />
-      <Label layoutX="143.0" layoutY="107.0" text="____" />
-      <Label layoutX="143.0" layoutY="139.0" text="____" />
+      <Label fx:id="nurseBillInfoPatientIdLabel" layoutX="143.0" layoutY="78.0" text="____" />
+      <Label fx:id="nurseBillInfoPatientNameLabel" layoutX="143.0" layoutY="107.0" text="____" />
+      <Label fx:id="nurseBillInfoPatientAgeLabel" layoutX="143.0" layoutY="139.0" text="____" />
       <Label layoutX="344.0" layoutY="88.0" text="Filter By Date:" />
       <Label layoutX="344.0" layoutY="136.0" text="Filter By:" />
       <DatePicker fx:id="nurseFilterByDateStart" layoutX="454.0" layoutY="83.0" prefHeight="26.0" prefWidth="102.0" />
@@ -48,6 +48,8 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="nurseFilterByDue" layoutX="531.0" layoutY="136.0" mnemonicParsing="false" text="Due" toggleGroup="$filterByPaid" />
-      <Button layoutX="623.0" layoutY="132.0" mnemonicParsing="false" onAction="#nurseApplyFilter" prefHeight="31.0" prefWidth="116.0" text="Apply Filters" />
+      <Button layoutX="623.0" layoutY="132.0" mnemonicParsing="false" onAction="#nurseApplyDateFilter" prefHeight="31.0" prefWidth="116.0" text="Apply Date Filter" />
+      <Button layoutX="745.0" layoutY="132.0" mnemonicParsing="false" onAction="#nurseApplyPaymentFilter" prefHeight="31.0" prefWidth="142.0" text="Apply Payment Filter" />
+      <Button layoutX="687.0" layoutY="170.0" mnemonicParsing="false" onAction="#nurseBillInfoClearFilter" prefHeight="31.0" prefWidth="116.0" text="Clear Filter" />
    </children>
 </AnchorPane>

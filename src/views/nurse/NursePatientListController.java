@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -52,6 +53,9 @@ public class NursePatientListController implements Initializable {
     private TextField nurseSearchPatientListnurseSearchPatientListByIDOnClickTextField;
     
     private Patient tempPatient;
+   
+    Alert noPatient = new Alert(Alert.AlertType.WARNING, "Error, select a patient from table first!");
+
     /**
      * Initializes the controller class.
      */
@@ -112,12 +116,17 @@ public class NursePatientListController implements Initializable {
 
     @FXML
     private void nursePatientBillOnClick(ActionEvent event) throws IOException {
+        Patient selectedPatient = nursePatientListTable.getSelectionModel().getSelectedItem();
+        if (selectedPatient == null){noPatient.show();
+        return;
+        }
         FXMLLoader nursePatientBillLoader = new FXMLLoader(getClass().getResource("NursePatientBill.fxml"));
         Parent nursePatientBill = (Parent) nursePatientBillLoader.load();
         Scene nursePatientBilltScene = new Scene(nursePatientBill);
 
         NursePatientBillController n = nursePatientBillLoader.getController();
         n.setNurse(this.nurse);
+        n.setSelectedPatient(selectedPatient);
 
         Stage nursePatientBillStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         nursePatientBillStage.setScene(nursePatientBilltScene);

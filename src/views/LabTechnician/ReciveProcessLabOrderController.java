@@ -15,6 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.stage.Stage;
 import users.LabTechnician;
 import users.User;
@@ -27,8 +31,21 @@ import users.User;
 public class ReciveProcessLabOrderController implements Initializable {
     
     
-    private LabTechnician labTechnician;
+    
     private LabTechnician LabTechnician;
+    private LabTechnician labTechnician;
+    @FXML
+    private TreeTableView<?> PatientTableView;
+    @FXML
+    private TreeTableColumn<?, ?> TestNameTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> PriorityTableColumn;
+    @FXML
+    private TextField TitleTextField;
+    @FXML
+    private TextField TypeTextField;
+    @FXML
+    private TextArea BodyTextArea;
     
     /**
      * Initializes the controller class.
@@ -44,6 +61,11 @@ public class ReciveProcessLabOrderController implements Initializable {
 
     public void setLabTechnician(LabTechnician labTechnician) {
         this.labTechnician = labTechnician;
+    }
+    
+    
+    @FXML
+    private void AddReportOnClick(ActionEvent event) {
     }
     
     @FXML
@@ -65,8 +87,5 @@ public class ReciveProcessLabOrderController implements Initializable {
         labStage.show(); 
     }
 
-    @FXML
-    private void laborderOnClick(ActionEvent event) {
-    }
     
 }

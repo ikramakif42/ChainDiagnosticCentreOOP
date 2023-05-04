@@ -36,7 +36,7 @@ import users.User;
 public class UpdateRecordProfileController implements Initializable {
     
     private HROfficer HR;
-     @FXML
+    @FXML
     private TextField EmailTextField;
     private TextField ContractTextField;
     @FXML
@@ -88,6 +88,15 @@ public class UpdateRecordProfileController implements Initializable {
     @FXML
     private void UpdateRecordOnClick(ActionEvent event) {
         
+          
+        
+       
+    }
+    
+
+    @FXML
+    private void SaveupdaterecordOnClick(ActionEvent event) {
+        
         String email = EmailTextField.getText();
         if (email.isEmpty()) {failureNull.show();return;}
         if (!email.contains("@")){emailError.show();return;}
@@ -106,15 +115,6 @@ public class UpdateRecordProfileController implements Initializable {
         
         String branchName = BranchNameTextField.getText();
         if (branchName.isEmpty()) {failureNull.show();return;}
-        
-       
-        
-       
-    }
-    
-
-    @FXML
-    private void SaveupdaterecordOnClick(ActionEvent event) {
     }
 
     @FXML

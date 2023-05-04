@@ -15,7 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.stage.Stage;
 import users.HROfficer;
 
@@ -40,8 +44,6 @@ public class UpdateRecordProfileController implements Initializable {
     @FXML
     private TextField BranchNameTextField;
     @FXML
-    private TreeTableView<HROfficer> RecordProfileTreeTableView;
-    @FXML
     private TreeTableColumn<?, ?> EmployeeIDTableColumn;
     @FXML
     private TreeTableColumn<?, ?> NameTableColumn;
@@ -49,7 +51,7 @@ public class UpdateRecordProfileController implements Initializable {
     private TreeTableColumn<?, ?> DesiganationTableColumn;
     @FXML
     private TreeTableColumn<?, ?> DepartmentTableColumn;
-    
+
     
     Alert emailError = new Alert(Alert.AlertType.WARNING, "Error, valid email address!");
     Alert failure = new Alert(Alert.AlertType.WARNING, "Error, Update Profile failed!");
@@ -59,6 +61,8 @@ public class UpdateRecordProfileController implements Initializable {
     private TextField ContractNumberTextField;
     @FXML
     private TextField DesiganationTextField;
+    @FXML
+    private TreeTableView<?> RecordProfileTableView;
 
 
 
@@ -77,9 +81,6 @@ public class UpdateRecordProfileController implements Initializable {
         this.HR = HR;
     }
 
-    @FXML
-    private void EmployeeRecordOnClick(ActionEvent event) {
-    }
 
     @FXML
     private void UpdateRecordOnClick(ActionEvent event) {  

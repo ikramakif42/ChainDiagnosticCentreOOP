@@ -24,10 +24,8 @@
             <TableColumn fx:id="employeeAddressTableColumn" prefWidth="140.8000244140626" text="Address" />
          </columns>
       </TableView>
-      <TextField fx:id="nameSearchTextField" layoutX="172.0" layoutY="606.0" />
-      <Label layoutX="41.0" layoutY="611.0" text="Search by Name:" />
-      <TextField fx:id="IDSearchTextField" layoutX="467.0" layoutY="606.0" />
-      <Label layoutX="347.0" layoutY="611.0" text="Search by ID:" />
+      <TextField fx:id="searchField" layoutX="150.0" layoutY="606.0" prefHeight="26.0" prefWidth="439.0" />
+      <Label layoutX="41.0" layoutY="611.0" text="Search:" />
       <Button layoutX="650.0" layoutY="606.0" mnemonicParsing="false" onAction="#addOrSubtractSalary" text="Add/Subtract Salary" textAlignment="CENTER" />
    </children>
 </AnchorPane>

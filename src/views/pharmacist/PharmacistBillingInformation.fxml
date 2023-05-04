@@ -42,12 +42,14 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="pharmacistBillFilterbyDateDue" layoutX="449.0" layoutY="105.0" mnemonicParsing="false" selected="true" text="Due" toggleGroup="$filterByPaid" />
-      <Button layoutX="589.0" layoutY="101.0" mnemonicParsing="false" onAction="#pharmacistBillApplyFilterOnClick" text="Apply Filters" />
+      <Button layoutX="589.0" layoutY="101.0" mnemonicParsing="false" onAction="#pharmaApplyDateFilter" text="Apply Date Filter" />
       <DatePicker fx:id="pharmacistBillFilterbyDateStart" layoutX="403.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" />
       <Label layoutX="534.0" layoutY="68.0" text="- to -" />
       <DatePicker fx:id="pharmacistBillFilterbyDateEnd" layoutX="571.0" layoutY="63.0" prefHeight="26.0" prefWidth="118.0" />
       <Label fx:id="pharmaBillInfoPatientIdLabel" layoutX="135.0" layoutY="69.0" text="____" />
       <Label fx:id="pharmaBillInfoPatientNameLabel" layoutX="135.0" layoutY="96.0" text="____" />
       <Label fx:id="pharmaBillInfoPatientAgeLabel" layoutX="135.0" layoutY="123.0" text="____" />
+      <Button layoutX="706.0" layoutY="101.0" mnemonicParsing="false" onAction="#pharmaApplyPaymentFilter" text="Apply Payment Filter" />
+      <Button layoutX="643.0" layoutY="132.0" mnemonicParsing="false" onAction="#pharmaApplyClearFilter" text="Clear Filter" />
    </children>
 </AnchorPane>

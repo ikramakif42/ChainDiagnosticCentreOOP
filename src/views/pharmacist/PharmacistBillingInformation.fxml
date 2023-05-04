@@ -43,11 +43,11 @@
       </RadioButton>
       <RadioButton fx:id="pharmacistBillFilterbyDateDue" layoutX="449.0" layoutY="105.0" mnemonicParsing="false" selected="true" text="Due" toggleGroup="$filterByPaid" />
       <Button layoutX="589.0" layoutY="101.0" mnemonicParsing="false" onAction="#pharmacistBillApplyFilterOnClick" text="Apply Filters" />
-      <DatePicker fx:id="pharmacistBillFilterbyDateStart" layoutX="433.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" />
-      <Label layoutX="575.0" layoutY="68.0" text="- to -" />
-      <DatePicker fx:id="pharmacistBillFilterbyDateEnd" layoutX="630.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" />
-      <Label layoutX="135.0" layoutY="69.0" text="____" />
-      <Label layoutX="135.0" layoutY="96.0" text="____" />
-      <Label layoutX="135.0" layoutY="123.0" text="____" />
+      <DatePicker fx:id="pharmacistBillFilterbyDateStart" layoutX="403.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" />
+      <Label layoutX="534.0" layoutY="68.0" text="- to -" />
+      <DatePicker fx:id="pharmacistBillFilterbyDateEnd" layoutX="571.0" layoutY="63.0" prefHeight="26.0" prefWidth="118.0" />
+      <Label fx:id="pharmaBillInfoPatientIdLabel" layoutX="135.0" layoutY="69.0" text="____" />
+      <Label fx:id="pharmaBillInfoPatientNameLabel" layoutX="135.0" layoutY="96.0" text="____" />
+      <Label fx:id="pharmaBillInfoPatientAgeLabel" layoutX="135.0" layoutY="123.0" text="____" />
    </children>
 </AnchorPane>

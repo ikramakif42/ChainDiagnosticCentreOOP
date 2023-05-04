@@ -10,6 +10,7 @@
     import javafx.collections.ObservableList;
     import model.Appointment;
     import model.Bill;
+import model.Report;
     import model.Schedule;
     import model.Task;
 
@@ -172,5 +173,43 @@
         }
         System.out.println(billList);        
         return billList;
+    }
+    public static ObservableList<Report> viewBranchReports(){
+        ObservableList<Report> branchReportList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "ReportObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Report tempBr = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempBr = (Report) ois.readObject();
+  
+                    if (tempBr.type.equals("Branch")){
+                        System.out.println(tempBr);
+                    branchReportList.add(tempBr);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(branchReportList);
+        return branchReportList;
     }
 }

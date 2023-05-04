@@ -125,20 +125,6 @@ public class NursePatientListController implements Initializable {
     }
 
     @FXML
-    private void nursePatientPrescriptionOnClick(ActionEvent event) throws IOException {
-        FXMLLoader nursePatientPrescriptionLoader = new FXMLLoader(getClass().getResource("NurseReviewPrescriptionRefills.fxml"));
-        Parent nursePatientPrescription = (Parent) nursePatientPrescriptionLoader.load();
-        Scene nursePatientPrescriptionScene = new Scene(nursePatientPrescription);
-
-        NurseReviewPrescriptionRefillsController n = nursePatientPrescriptionLoader.getController();
-        n.setNurse(this.nurse);
-
-        Stage nursePatientPrescriptionStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
-        nursePatientPrescriptionStage.setScene(nursePatientPrescriptionScene);
-        nursePatientPrescriptionStage.show();
-    }
-
-    @FXML
     private void nursePatientLabReportsOnClick(ActionEvent event) throws IOException {
         FXMLLoader nursePatientLabReportsLoader = new FXMLLoader(getClass().getResource("NurseViewLabReports.fxml"));
         Parent nursePatientLabReports = (Parent) nursePatientLabReportsLoader.load();

@@ -15,10 +15,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import model.Prescription;
+import users.Patient;
 import users.Pharmacist;
 
 /**
@@ -27,28 +30,33 @@ import users.Pharmacist;
  * @author User
  */
 public class PharmacistMedicationsOrderPendingController implements Initializable {
-
+    Alert noOrder = new Alert(Alert.AlertType.WARNING, "Error, select a refill request to approve or decline!");
+    Alert approve = new Alert(Alert.AlertType.INFORMATION, "APPROVED!");
+    Alert decline = new Alert(Alert.AlertType.INFORMATION, "DECLINED!");
     @FXML
-    private TableView<?> pharmaMedOrderPendingtListTable;
+    private TableView<Prescription> pharmaMedOrderPendingtListTable;
     @FXML
     private Button pharmaMedOrderDeclineAll;
     
     private Pharmacist pharmacist;
     private Pharmacist Pharmacist;
     @FXML
-    private TableColumn<?, ?> pharmaMedOrderPendPatientNameTableView;
+    private TableColumn<Prescription, String> pharmaMedOrderPendPatientNameTableView;
     @FXML
-    private TableColumn<?, ?> pharmaMedOrderPendPatientIDTableView;
+    private TableColumn<Prescription,Integer> pharmaMedOrderPendPatientIDTableView;
     @FXML
-    private TableColumn<?, ?> pharmaMedOrderPendPendingTableView;
+    private TableColumn<Prescription,String> pharmaMedOrderPendPatientContactTableView;
     @FXML
-    private TableColumn<?, ?> pharmaMedOrderPendPatientContactTableView;
+    private TableColumn<Prescription,String> pharmaMedOrderPendAddressTableView;
+    
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
         
         // TODO
     }    
@@ -63,10 +71,21 @@ public class PharmacistMedicationsOrderPendingController implements Initializabl
 
     @FXML
     private void pharmaMedOrderApproveSelectedOnClick(ActionEvent event) {
+        Prescription selectedOrder = pharmaMedOrderPendingtListTable.getSelectionModel().getSelectedItem();
+        if (selectedOrder == null){noOrder.show();
+        return;}
+        Pharmacist.resolveRefillRequest(selectedOrder);
+        approve.show();
+        
     }
 
     @FXML
     private void pharmaMedOrderDeclineSelectedOnClick(ActionEvent event) {
+        Prescription selectedOrder = pharmaMedOrderPendingtListTable.getSelectionModel().getSelectedItem();
+        if (selectedOrder == null){noOrder.show();
+        return;}
+        Pharmacist.resolveRefillRequest(selectedOrder);
+        decline.show();
     }
 
     @FXML

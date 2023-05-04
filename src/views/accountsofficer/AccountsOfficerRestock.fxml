@@ -7,11 +7,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.accountsofficer.AccountsOfficerRestockController">
    <children>
-      <TableView fx:id="medRestockTableView" layoutX="96.0" layoutY="38.0" prefHeight="550.0" prefWidth="578.0">
+      <TableView fx:id="medRestockTableView" layoutX="96.0" layoutY="38.0" onMouseClicked="#clickedRestock" prefHeight="550.0" prefWidth="578.0">
          <columns>
             <TableColumn fx:id="medName" minWidth="0.0" prefWidth="278.3999710083008" text="Medication Name" />
             <TableColumn fx:id="medQuantity" prefWidth="117.60003662109375" text="Quantity" />
-            <TableColumn fx:id="medQuantity1" prefWidth="182.39999389648438" text="Ordered?" />
+            <TableColumn fx:id="orderStatus" prefWidth="182.39999389648438" text="Ordered?" />
          </columns>
       </TableView>
       <Button layoutX="96.0" layoutY="602.0" mnemonicParsing="false" onAction="#markAsOrdered" prefHeight="26.0" prefWidth="110.0" text="Mark as Ordered" />

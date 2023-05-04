@@ -17,7 +17,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
 import model.Bill;
+import model.MedRestock;
 import model.Policy;
+import model.Report;
 import model.Schedule;
 
 public class AccountsOfficer extends Employee implements Serializable {
@@ -177,7 +179,102 @@ public class AccountsOfficer extends Employee implements Serializable {
         return false;      
     };   
     
-    public void manageRestockOrders(){};
+    public static ObservableList<MedRestock> viewRestocks(){
+        ObservableList<MedRestock> restockList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "RestockRequests.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            MedRestock tempRestock = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempRestock = (MedRestock) ois.readObject();
+                    restockList.add((MedRestock)tempRestock);
+
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(restockList);        
+        return restockList;    
+    };
+    
+    public static boolean manageRestockOrders(MedRestock curRes, boolean v){
+            try {
+            String path = "RestockRequests.bin";
+            File file = new File(path);
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<MedRestock> r = new ArrayList<>();
+            
+            try{
+                while(true){
+                    MedRestock tempR = (MedRestock) ois.readObject();
+                    System.out.println(tempR);
+                    r.add(tempR);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            
+            ois.close();
+            System.out.println(r);
+
+            for (MedRestock currentR : r) {
+                boolean nameCheck = currentR.getMedName().equals(curRes.getMedName());
+                boolean statusCheck = currentR.isOrdered() == curRes.isOrdered();
+                
+                if (nameCheck & statusCheck){
+                    currentR.setOrdered(v);
+                }
+            }
+
+            System.out.println(r);
+            if(file.delete()){
+                System.out.println("Deleted File!");
+                File f = new File(path);
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (MedRestock currentR : r) {
+                    oos.writeObject(currentR);
+                }
+                oos.close();
+                System.out.println("Fixed File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Policy.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Policy.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;      
+    };
     
     public static ObservableList<Bill> viewPastRecords(){
         ObservableList<Bill> billList = FXCollections.observableArrayList();
@@ -222,9 +319,51 @@ public class AccountsOfficer extends Employee implements Serializable {
         return billList;    
     };
     
+    public static ObservableList<Report> viewFinanceReports(){
+        ObservableList<Report> branchReportList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "ReportObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            Report tempBr = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempBr = (Report) ois.readObject();
+  
+                    if (tempBr.type.equals("Finance")){
+                        System.out.println(tempBr);
+                    branchReportList.add(tempBr);
+                    }
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(branchReportList);
+        return branchReportList;
+    }
+    
+    
     public void createReport(){};
-    public void updateOldReport(){};
+    public void editReport(){};
+    public void viewLoanApplications(){};
     public void approveLoanApplications(){};
+    public void viewEmployees(){};
     public void updateSalaries(){};
     
     public static ObservableList<Employee> getAllAccounts(){

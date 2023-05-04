@@ -138,7 +138,8 @@ import model.Report;
         return apptList;
     }
     
-    public static ObservableList<Bill> getPatientBills(){
+    public static ObservableList<Bill> getPatientBills(int id) {
+        
         ObservableList<Bill> billList = FXCollections.observableArrayList();
         File f = null;
         FileInputStream fis = null;      
@@ -153,9 +154,11 @@ import model.Report;
                 System.out.println("Printing objects");
                 while(true){
                     tempBill = (Bill) ois.readObject();
-                    System.out.println("Populate Employee (Doctor):");
-                    System.out.println(tempBill.toString());
-                    billList.add((Bill)tempBill);
+                    if (tempBill.getPatientID()== id){
+                    System.out.println("Populated bill: "+tempBill.toString());
+                    billList.add(tempBill);
+                    }
+
                 }
             }
             catch(IOException | ClassNotFoundException e){

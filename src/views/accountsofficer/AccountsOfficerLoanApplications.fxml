@@ -9,12 +9,12 @@
    <children>
       <TableView fx:id="accountsLoanApplicationTableView" layoutX="56.0" layoutY="33.0" prefHeight="550.0" prefWidth="789.0">
          <columns>
-            <TableColumn fx:id="loanApplicantName" minWidth="0.0" prefWidth="99.20000839233398" text="Applicant" />
             <TableColumn fx:id="loanType" prefWidth="86.39999389648438" text="Type" />
             <TableColumn fx:id="loanAmount" minWidth="0.0" prefWidth="88.80000305175781" text="Amount" />
             <TableColumn fx:id="loanStart" prefWidth="84.0" text="Start Date" />
-            <TableColumn fx:id="loanEnd" prefWidth="108.79998779296875" text="End Date" />
-            <TableColumn fx:id="loanDetails" prefWidth="322.3999877929688" text="Details" />
+            <TableColumn fx:id="loanDuration" prefWidth="108.79998779296875" text="Duration" />
+            <TableColumn fx:id="loanDetails" prefWidth="319.20001220703125" text="Details" />
+            <TableColumn fx:id="loanApplicant" prefWidth="101.59991455078125" text="Applicant" />
          </columns>
       </TableView>
       <Button layoutX="141.0" layoutY="605.0" mnemonicParsing="false" onAction="#denyLoan" prefHeight="26.0" prefWidth="66.0" text="Deny" />

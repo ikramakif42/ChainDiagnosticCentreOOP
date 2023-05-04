@@ -27,6 +27,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.AppendableObjectOutputStream;
 import model.Bill;
+import model.LoanApplication;
+import model.MedRestock;
 import users.AccountsOfficer;
 import views.LoginController;
 
@@ -48,13 +50,14 @@ public class AccountsOfficerDashboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
 //        File f = null;
 //        FileOutputStream fos = null;      
 //        ObjectOutputStream oos = null;
 //        LocalDate today = LocalDate.now();
 //        LocalDate date2 = LocalDate.of(2023, 5, 10);
 //        try {
-//            f = new File("BillObjects.bin");
+//            f = new File("LoanApplicationObjects.bin");
 //            if(f.exists()){
 //                fos = new FileOutputStream(f,true);
 //                oos = new AppendableObjectOutputStream(fos);                
@@ -64,9 +67,9 @@ public class AccountsOfficerDashboardController implements Initializable {
 //                oos = new ObjectOutputStream(fos);               
 //            }
 //            
-//        Bill test1 = new Bill(today, date2, true, (float)22.34, "A Paid Bill", 138, 202);
-//        Bill test2 = new Bill(today, date2, true, (float)28.37, "Another Paid Bill", 130, 444);
-//        Bill test3 = new Bill(today, date2, true, (float)12.24, "Anotherer Paid Bill", 148, 111);
+//        LoanApplication test1 = new LoanApplication((float) 200, date2, "2 Months", "Emergency", "Family health issue", 256);
+//        LoanApplication test2 = new LoanApplication((float)215, today, "7 Months", "Emergency", "Personal health issue", 218);
+//        LoanApplication test3 = new LoanApplication((float) 235, date2, "1 Month", "Emergency", "final fantasy xvi releasing", 245);
 //            
 //        oos.writeObject(test1);
 //        oos.writeObject(test2);
@@ -79,36 +82,6 @@ public class AccountsOfficerDashboardController implements Initializable {
 //        }
 //        System.out.println("Hello World2! Initialised");
 
-        File f = null;
-        FileInputStream fis = null;      
-        ObjectInputStream ois = null;
-        String path = "BillObjects.bin";
-        try {
-            f = new File(path);
-            fis = new FileInputStream(f);
-            ois = new ObjectInputStream(fis);
-            Bill tempBill = null;
-            try{
-                System.out.println("Printing objects");
-                while(true){
-                    tempBill = (Bill) ois.readObject();
-                    System.out.println(tempBill);
-
-                }
-            }
-            catch(IOException | ClassNotFoundException e){
-                System.out.println(e.toString());
-                System.out.println("IOException | ClassNotFoundException in reading bin file");
-            }
-            System.out.println("End of file\n");
-        } catch (IOException ex) {
-            System.out.println("IOException on entire file handling");
-        }
-        finally {
-            try {
-                if(ois != null) ois.close();
-            } catch (IOException ex) { }
-        }  
 
 
 
@@ -141,7 +114,20 @@ public class AccountsOfficerDashboardController implements Initializable {
     }
 
     @FXML
-    private void viewRestocks(ActionEvent event) {
+    private void viewRestocks(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerRestock.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        Scene employeeListScene = new Scene(bills);
+        
+        AccountsOfficerRestockController e = officerLoader.getController();
+        e.setOfficer(this.officer);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();
     }
 
     @FXML
@@ -164,18 +150,68 @@ public class AccountsOfficerDashboardController implements Initializable {
 
     @FXML
     private void logOut(ActionEvent event) {
+        Parent login=null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(AccountsOfficerDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();        
     }
 
     @FXML
-    private void viewReports(ActionEvent event) {
+    private void viewReports(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerFinanceReports.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        Scene employeeListScene = new Scene(bills);
+        
+        AccountsOfficerFinanceReportsController e = officerLoader.getController();
+        e.setOfficer(this.officer);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();        
     }
 
     @FXML
-    private void viewLoanApplications(ActionEvent event) {
+    private void viewLoanApplications(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerLoanApplications.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        Scene employeeListScene = new Scene(bills);
+        
+        AccountsOfficerLoanApplicationsController e = officerLoader.getController();
+        e.setOfficer(this.officer);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();                
     }
 
     @FXML
-    private void viewSalary(ActionEvent event) {
+    private void viewSalary(ActionEvent event) throws IOException {
+        Parent parent = null;
+        FXMLLoader directorLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerSalary.fxml")
+        );
+        parent = (Parent) directorLoader.load();
+        Scene scene = new Scene(parent);
+        
+        AccountsOfficerSalaryController e = directorLoader.getController();
+        e.setOfficer(this.officer);
+        
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(scene);
+        directorStage.show();   
     }
     
 }

@@ -29,6 +29,7 @@ import model.Report;
 import model.Schedule;
 import users.Director;
 import views.LoginController;
+import views.employee.MyWorkplaceController;
 
 /**
  * FXML Controller class
@@ -171,6 +172,21 @@ public class DirectorDashboardController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene1);
         window.show();
+    }
+
+    @FXML
+    private void myWorkplace(ActionEvent event) throws IOException {
+        Parent empDashboard = null;
+        FXMLLoader empLoader = new FXMLLoader(getClass().getResource("/views/employee/MyWorkplace.fxml"));
+        empDashboard = (Parent) empLoader.load();
+        Scene empScene = new Scene(empDashboard);
+
+        MyWorkplaceController emp = empLoader.getController();
+        emp.setEmployee(this.director);
+
+        Stage empStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        empStage.setScene(empScene);
+        empStage.show();        
     }
     
 }

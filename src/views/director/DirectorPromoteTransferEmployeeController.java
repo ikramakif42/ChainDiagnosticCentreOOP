@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -38,6 +39,8 @@ public class DirectorPromoteTransferEmployeeController implements Initializable 
     private TextField curDesig;
     private Director director;
     private Employee tempEmployee;
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Successful");
+    Alert b = new Alert(Alert.AlertType.WARNING, "Unsuccessful");
 
     public DirectorPromoteTransferEmployeeController(Director director, Employee tempEmployee) {
         this.director = director;
@@ -90,7 +93,13 @@ public class DirectorPromoteTransferEmployeeController implements Initializable 
 
     @FXML
     private void saveButton(ActionEvent event) {
-        Director.editPersonalInfo(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), tempEmployee.getSalary(), newDepartmentSelection.getValue(), newDesignationSelection.getValue());
+        boolean success = Director.editPersonalInfo(tempEmployee.getID(), tempEmployee.getName(), tempEmployee.getEmail(), tempEmployee.getContactNo(), tempEmployee.getAddress(), tempEmployee.getSalary(), newDepartmentSelection.getValue(), newDesignationSelection.getValue());
+        if (success){
+            a.show();
+        }
+        else {
+            b.show();
+        }        
     }
 
     @FXML

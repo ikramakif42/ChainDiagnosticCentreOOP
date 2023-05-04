@@ -15,7 +15,7 @@
       <Button layoutX="155.0" layoutY="202.0" mnemonicParsing="false" onAction="#viewBills" prefHeight="26.0" prefWidth="114.0" text="Patient Bills" />
       <Button layoutX="155.0" layoutY="239.0" mnemonicParsing="false" onAction="#viewRestocks" prefHeight="26.0" prefWidth="114.0" text="Restock Orders" />
       <Button layoutX="155.0" layoutY="274.0" mnemonicParsing="false" onAction="#viewPastRecords" prefHeight="26.0" prefWidth="114.0" text="Past Records" />
-      <Button layoutX="154.0" layoutY="456.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="114.0" text="Log Out" />
+      <Button layoutX="155.0" layoutY="467.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="114.0" text="Log Out" />
       <Label layoutX="109.0" layoutY="121.0" text="User ID:" />
       <Label layoutX="109.0" layoutY="152.0" text="Name:" />
       <Label fx:id="accountsIDLabel" layoutX="212.0" layoutY="121.0" prefHeight="21.0" prefWidth="183.0" text="- - - -" />
@@ -23,5 +23,6 @@
       <Button layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#viewReports" prefHeight="26.0" prefWidth="114.0" text="Finance Reports" />
       <Button layoutX="155.0" layoutY="345.0" mnemonicParsing="false" onAction="#viewLoanApplications" prefHeight="26.0" prefWidth="114.0" text="Loan Applications" />
       <Button layoutX="155.0" layoutY="380.0" mnemonicParsing="false" onAction="#viewSalary" prefHeight="26.0" prefWidth="114.0" text="Salary" />
+      <Button layoutX="155.0" layoutY="417.0" mnemonicParsing="false" onAction="#myWorkplace" prefHeight="26.0" prefWidth="114.0" text="My Workplace" />
    </children>
 </AnchorPane>

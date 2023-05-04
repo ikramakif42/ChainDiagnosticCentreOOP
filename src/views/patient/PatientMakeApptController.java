@@ -140,7 +140,7 @@ public class PatientMakeApptController implements Initializable {
         
         success.show();
         doc = null;
-        deptComboBox.getItems().clear();
+        deptComboBox.getSelectionModel().clearSelection();
         doctorComboBox.getItems().clear();
         datePicker.getEditor().clear();
         datePicker.setValue(null);

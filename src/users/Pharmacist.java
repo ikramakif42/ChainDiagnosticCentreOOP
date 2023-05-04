@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.Bill;
 import model.Schedule;
 
 public class Pharmacist extends Employee implements Serializable{
@@ -59,5 +60,9 @@ public class Pharmacist extends Employee implements Serializable{
         System.out.println(pharmacistList);        
         return pharmacistList;
     }     
+
+    public ObservableList<Bill> getPatientBills() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

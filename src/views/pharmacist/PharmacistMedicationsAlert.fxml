@@ -17,8 +17,8 @@
       </Label>
       <TableView fx:id="pharmaMedsAlertTable" layoutX="9.0" layoutY="165.0" prefHeight="200.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="272.0" text="Medicine" />
-          <TableColumn prefWidth="325.0" text="How many are prescribed?" />
+          <TableColumn fx:id="pharmaMedAlertMedNameTableView" prefWidth="272.0" text="Medicine" />
+          <TableColumn fx:id="pharmaMedAlertNoOfPrescribedTableView" prefWidth="325.0" text="How many are prescribed?" />
         </columns>
       </TableView>
       <Button layoutX="31.0" layoutY="400.0" mnemonicParsing="false" onAction="#pharmaSendMedAlertsOnClick" prefHeight="68.0" prefWidth="187.0" style="-fx-background-color: orange;" text="Send Alerts of Selected Medicines" textAlignment="CENTER" wrapText="true">

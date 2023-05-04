@@ -17,9 +17,9 @@
       </Label>
       <TableView fx:id="nurseStockTableList" prefHeight="450.0" prefWidth="401.0">
         <columns>
-          <TableColumn prefWidth="108.79998624324799" text="Drugs" />
-            <TableColumn prefWidth="135.20001983642578" text="Quantity" />
-            <TableColumn prefWidth="154.4000244140625" text="Expiration Date" />
+          <TableColumn fx:id="nurseStockDrugsNameTableView" prefWidth="108.79998624324799" text="Drugs" />
+            <TableColumn fx:id="nurseStockDrugsQuantityTableView" prefWidth="135.20001983642578" text="Quantity" />
+            <TableColumn fx:id="nurseStockDrugsExpirationTableView" prefWidth="154.4000244140625" text="Expiration Date" />
         </columns>
       </TableView>
       <Button layoutX="518.0" layoutY="154.0" mnemonicParsing="false" onAction="#nurseStockRequestOnClick" style="-fx-background-color: orange;" text="Request">

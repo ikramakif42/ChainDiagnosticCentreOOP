@@ -42,5 +42,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button layoutX="438.0" layoutY="256.0" mnemonicParsing="false" onAction="#pharmaMyWorkplaceOnClick" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: turquoise;" text="My Workplace" textAlignment="CENTER" textFill="#280808" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

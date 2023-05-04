@@ -11,9 +11,9 @@
    <children>
       <TableView fx:id="pharmaDrugsDisplayTableList" layoutY="76.0" prefHeight="298.0" prefWidth="600.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
         <columns>
-          <TableColumn prefWidth="203.0" text="Medicine's Name " />
-            <TableColumn prefWidth="146.0" text="Quantity" />
-            <TableColumn prefWidth="177.0" text="Expiration Date" />
+          <TableColumn fx:id="pharmaDrugsInvMedNameTableView" prefWidth="203.0" text="Medicine's Name " />
+            <TableColumn fx:id="pharmaDrugsInvQuantityTableView" prefWidth="146.0" text="Quantity" />
+            <TableColumn fx:id="pharmaDrugsInvMedExpTableView" prefWidth="177.0" text="Expiration Date" />
         </columns>
       </TableView>
       <Label layoutX="61.0" layoutY="23.0" prefHeight="17.0" prefWidth="371.0" text="                   Drugs Inventory" textAlignment="CENTER" textFill="#0c6379" wrapText="true">

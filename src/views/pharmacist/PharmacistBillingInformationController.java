@@ -8,6 +8,7 @@ package views.pharmacist;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,6 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Bill;
 import users.Nurse;
+import users.Patient;
 import users.Pharmacist;
 
 /**
@@ -48,7 +51,8 @@ public class PharmacistBillingInformationController implements Initializable {
     private DatePicker pharmacistBillFilterbyDateEnd;
 
     private Pharmacist pharmacist;
-    private Pharmacist Pharmacist;
+//    private Pharmacist Pharmacist;
+    private Patient selectedPatient;
     @FXML
     private TableColumn<Bill, LocalDate> pharmacistPatientBillDateofBillTableView;
     @FXML
@@ -59,6 +63,12 @@ public class PharmacistBillingInformationController implements Initializable {
     private TableColumn<Bill, Float> pharmacistPatientBillAmountTableView;
     @FXML
     private TableColumn<Bill, String> pharmacistPatientBillDetailsTableView;
+    @FXML
+    private Label pharmaBillInfoPatientIdLabel;
+    @FXML
+    private Label pharmaBillInfoPatientNameLabel;
+    @FXML
+    private Label pharmaBillInfoPatientAgeLabel;
     /**
      * Initializes the controller class.
      */
@@ -71,11 +81,30 @@ public class PharmacistBillingInformationController implements Initializable {
         pharmacistPatientBillDetailsTableView.setCellValueFactory(new PropertyValueFactory<Bill,String>("details"));
         // TODO
         
-        System.out.println(Bill.getAllPendingBills());
+//        System.out.println(Bill.getAllPendingBills());
+//        pharmaBillStatusTableList.setItems(Pharmacist.getPatientBills());
         
     
         // TODO
     }    
+
+    public Patient getSelectedPatient() {
+        return selectedPatient;
+    }
+
+    public void setSelectedPatient(Patient selectedPatient) {
+        this.selectedPatient = selectedPatient;
+        pharmaBillInfoPatientIdLabel.setText(String.valueOf(selectedPatient.getID()));
+        pharmaBillInfoPatientNameLabel.setText(selectedPatient.getName());
+        int age = Period.between(selectedPatient.getDOB(), LocalDate.now()).getYears();
+
+        pharmaBillInfoPatientAgeLabel.setText(String.valueOf(age));
+        pharmaBillStatusTableList.setItems(Pharmacist.getPatientBills(selectedPatient.getID()));
+
+        
+        
+    }
+    
 
     public Pharmacist getPharmacist() {
         return pharmacist;
@@ -83,7 +112,7 @@ public class PharmacistBillingInformationController implements Initializable {
 
     public void setPharmacist(Pharmacist pharmacist) {
         this.pharmacist = pharmacist;
-        pharmaBillStatusTableList.setItems(Pharmacist.getPatientBills());
+        
     }
 
     @FXML
@@ -94,7 +123,7 @@ public class PharmacistBillingInformationController implements Initializable {
         Scene pharmaViewPatientListScene = new Scene(pharmaViewPatientList);
 
         PharmacistViewPatientController ph = pharmaLoader.getController();
-        ph.setPharmacist(this.Pharmacist);
+        ph.setPharmacist(this.pharmacist);
 
         Stage pharmaStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         pharmaStage.setScene(pharmaViewPatientListScene);

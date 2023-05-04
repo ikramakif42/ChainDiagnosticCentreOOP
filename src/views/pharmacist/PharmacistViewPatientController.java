@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,7 +40,7 @@ public class PharmacistViewPatientController implements Initializable {
     private TableView<Patient> pharmaViewPatientListTable;
     
     private Pharmacist pharmacist;
-    private Pharmacist Pharmacist;
+//    private Pharmacist Pharmacist;
     @FXML
     private TableColumn<Patient,String> pharmaViewPatientPatientNameTableView;
     @FXML
@@ -49,6 +50,8 @@ public class PharmacistViewPatientController implements Initializable {
     @FXML
     private TableColumn<Patient,String> pharmaViewPatientPatientContactTableView;
     
+    Alert noPatient = new Alert(Alert.AlertType.WARNING, "Error, select a patient from table first!");
+
     
 
     /**
@@ -87,7 +90,7 @@ public class PharmacistViewPatientController implements Initializable {
         Scene pharmaMedsOrderPendScene = new Scene(pharmaMedsOrderPend);
 
         PharmacistMedicationsOrderPendingController ph = pharmaMedsOrderPendLoader.getController();
-        ph.setPharmacist(this.Pharmacist);
+        ph.setPharmacist(this.pharmacist);
 
         Stage pharmaMedsOrderPendStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         pharmaMedsOrderPendStage.setScene(pharmaMedsOrderPendScene);
@@ -96,13 +99,18 @@ public class PharmacistViewPatientController implements Initializable {
 
     @FXML
     private void pharmaViewBillOnClick(ActionEvent event) throws IOException {
+        Patient selectedPatient = pharmaViewPatientListTable.getSelectionModel().getSelectedItem();
+        if (selectedPatient == null){noPatient.show();
+        return;
+        }
         Parent pharmaViewBill = null;
         FXMLLoader pharmaViewBillLoader = new FXMLLoader(getClass().getResource("PharmacistBillingInformation.fxml"));
         pharmaViewBill = (Parent) pharmaViewBillLoader.load();
         Scene pharmaViewBillScene = new Scene(pharmaViewBill);
 
         PharmacistBillingInformationController ph = pharmaViewBillLoader.getController();
-        ph.setPharmacist(this.Pharmacist);
+        ph.setPharmacist(this.pharmacist);
+        ph.setSelectedPatient(selectedPatient);
 
         Stage pharmaViewBillStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
         pharmaViewBillStage.setScene(pharmaViewBillScene);

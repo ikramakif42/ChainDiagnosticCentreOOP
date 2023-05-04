@@ -28,6 +28,6 @@
             <Font size="37.0" />
          </font>
       </Label>
-      <Button layoutX="67.0" layoutY="602.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="205.0" text="Return to my workplace" />
+      <Button layoutX="67.0" layoutY="602.0" mnemonicParsing="false" onAction="#returnToMyWorkplaceOnClick" prefHeight="31.0" prefWidth="205.0" text="Return to my workplace" />
    </children>
 </AnchorPane>

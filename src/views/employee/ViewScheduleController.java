@@ -1,5 +1,6 @@
 package views.employee;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -7,13 +8,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Schedule;
 import users.Employee;
 
@@ -73,7 +79,9 @@ public class ViewScheduleController implements Initializable {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
-        taskTableView.setItems((ObservableList<Schedule>) this.employee.getScheduleRoster());
+        ObservableList<Schedule> setList = FXCollections.observableArrayList();
+        setList.addAll(this.employee.getScheduleRoster());
+        taskTableView.setItems(setList);
     }
 
     @FXML
@@ -96,6 +104,21 @@ public class ViewScheduleController implements Initializable {
             }
         }
         taskTableView.setItems(newList);
+    }
+
+    @FXML
+    private void returnToMyWorkplaceOnClick(ActionEvent event) throws IOException {
+        Parent empDashboard = null;
+        FXMLLoader empLoader = new FXMLLoader(getClass().getResource("MyWorkplace.fxml"));
+        empDashboard = (Parent) empLoader.load();
+        Scene empScene = new Scene(empDashboard);
+
+        MyWorkplaceController emp = empLoader.getController();
+        emp.setEmployee(this.employee);
+
+        Stage empStage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+        empStage.setScene(empScene);
+        empStage.show();
     }
     
 }

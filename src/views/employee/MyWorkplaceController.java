@@ -123,7 +123,7 @@ public class MyWorkplaceController implements Initializable {
     @FXML
     private void viewPoliciesOnClick(ActionEvent event) throws IOException {
         Parent policy = null;
-        FXMLLoader policyLoader = new FXMLLoader(getClass().getResource("ViewSchedule.fxml"));
+        FXMLLoader policyLoader = new FXMLLoader(getClass().getResource("ViewPolicy.fxml"));
         policy = (Parent) policyLoader.load();
         Scene policyScene = new Scene(policy);
 

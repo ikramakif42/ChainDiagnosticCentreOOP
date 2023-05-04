@@ -524,7 +524,7 @@ public class Patient extends User implements Serializable{
         FileOutputStream fos = null; 
         ObjectOutputStream oos = null;
         try {
-            f = new File("AppointmentObjects.bin");
+            f = new File("TeleQueryObjects.bin");
             if(f.exists()){
                 fos = new FileOutputStream(f,true);
                 oos = new AppendableObjectOutputStream(fos);                
@@ -641,6 +641,66 @@ public class Patient extends User implements Serializable{
         }
         System.out.println(patientList);
         return patientList;
+    }
+
+    public boolean payBill(Bill toPay) {
+        try {
+            File file = new File("BillObjects.bin");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Bill> billList = new ArrayList<>();
+            try{
+                while(true){
+                    Bill temp = (Bill) ois.readObject();
+                    billList.add(temp);
+                }
+            }
+            catch (EOFException eof){
+                System.out.println("End of file");
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            ois.close();
+            System.out.println(billList);
+
+            for (Bill temp : billList) {
+                if (temp.getPatientID()==toPay.getPatientID()) {
+                    if (Float.compare(temp.getAmount(),toPay.getAmount())==0){
+                        if (temp.getCreatedDate().equals(toPay.getCreatedDate())){
+                            if (temp.getDetails().equals(toPay.getDetails())){
+                                temp.setPaidStatus(true);
+                            }
+                        }
+                    }
+                }
+            }
+
+            System.out.println(billList);
+            if(file.delete()){
+                System.out.println("Deleted Bills File!");
+                File f = new File("BillObjects.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for (Bill temp : billList) {
+                    oos.writeObject(temp);
+                }
+                oos.close();
+                System.out.println("Fixed Bills File!");
+                return true;
+            }
+            else{
+                System.out.println("Could not delete file");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
 }

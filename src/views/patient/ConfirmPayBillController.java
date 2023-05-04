@@ -26,6 +26,7 @@ public class ConfirmPayBillController implements Initializable {
     private Patient patient;
     private Bill toPay;
     Alert wrongPW = new Alert(AlertType.WARNING, "Error, wrong password!");
+    Alert failure = new Alert(AlertType.WARNING, "Error, pay bill failed!");
     Alert paid = new Alert(AlertType.INFORMATION, "Pay bill successful!");
 
     @Override
@@ -53,7 +54,8 @@ public class ConfirmPayBillController implements Initializable {
         String pw = passwordField.getText();
         if (User.userLogin(this.patient.getID(), pw)==4){
             this.toPay.setPaidStatus(true);
-            paid.show();
+            if (this.patient.payBill(toPay)){paid.show();}
+            else {failure.show();}
         }
         else {wrongPW.show();}
     }

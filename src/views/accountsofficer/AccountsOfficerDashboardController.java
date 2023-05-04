@@ -149,14 +149,50 @@ public class AccountsOfficerDashboardController implements Initializable {
 
     @FXML
     private void logOut(ActionEvent event) {
+        Parent login=null;
+        try {
+            login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(AccountsOfficerDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene1 = new Scene(login);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene1);
+        window.show();        
     }
 
     @FXML
-    private void viewReports(ActionEvent event) {
+    private void viewReports(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerFinanceReports.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        Scene employeeListScene = new Scene(bills);
+        
+        AccountsOfficerFinanceReportsController e = officerLoader.getController();
+        e.setOfficer(this.officer);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();        
     }
 
     @FXML
-    private void viewLoanApplications(ActionEvent event) {
+    private void viewLoanApplications(ActionEvent event) throws IOException {
+        Parent bills = null;
+        FXMLLoader officerLoader = new FXMLLoader(
+            getClass().getResource("AccountsOfficerLoanApplications.fxml")
+        );
+        bills = (Parent) officerLoader.load();
+        Scene employeeListScene = new Scene(bills);
+        
+        AccountsOfficerLoanApplicationsController e = officerLoader.getController();
+        e.setOfficer(this.officer);
+        
+        Stage directorStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        directorStage.setScene(employeeListScene);
+        directorStage.show();                
     }
 
     @FXML

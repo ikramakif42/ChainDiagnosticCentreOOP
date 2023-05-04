@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.AppendableObjectOutputStream;
 import model.Bill;
+import model.LoanApplication;
 import model.MedRestock;
 import model.Policy;
 import model.Report;
@@ -359,10 +360,75 @@ public class AccountsOfficer extends Employee implements Serializable {
     }
     
     
-    public void createReport(){};
-    public void editReport(){};
-    public void viewLoanApplications(){};
+    public static boolean createReport(Report newFinanceReport){
+        File f = null;
+        FileOutputStream fos = null;      
+        ObjectOutputStream oos = null;
+        try {
+            f = new File("ReportObjects.bin");
+            if(f.exists()){
+                fos = new FileOutputStream(f,true);
+                oos = new AppendableObjectOutputStream(fos); 
+                oos.writeObject(newFinanceReport);
+                return true;
+            }
+            else{
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);     
+                oos.writeObject(newFinanceReport);
+                return true;
+            }          
+        
+                        
+        } catch (IOException ex) {
+                System.out.println(ex.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+                return false;
+
+        }      
+    
+    };
+    
+    
+    public static ObservableList<LoanApplication> viewLoanApplications(){
+        ObservableList<LoanApplication> loanList = FXCollections.observableArrayList();
+        File f = null;
+        FileInputStream fis = null;      
+        ObjectInputStream ois = null;
+        String path = "LoanApplicationObjects.bin";
+        try {
+            f = new File(path);
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+            LoanApplication tempLoan = null;
+            try{
+                System.out.println("Printing objects");
+                while(true){
+                    tempLoan = (LoanApplication) ois.readObject();
+                    System.out.println("Populated bill: "+tempLoan.toString());
+                    loanList.add((LoanApplication)tempLoan);
+                }
+            }
+            catch(IOException | ClassNotFoundException e){
+                System.out.println(e.toString());
+                System.out.println("IOException | ClassNotFoundException in reading bin file");
+            }
+            System.out.println("End of file\n");
+        } catch (IOException ex) {
+            System.out.println("IOException on entire file handling");
+        }
+        finally {
+            try {
+                if(ois != null) ois.close();
+            } catch (IOException ex) { }
+        }
+        System.out.println(loanList);        
+        return loanList;        
+               
+    };
+    
     public void approveLoanApplications(){};
+    
     public void viewEmployees(){};
     public void updateSalaries(){};
     

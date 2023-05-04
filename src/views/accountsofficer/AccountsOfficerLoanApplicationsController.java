@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import model.LoanApplication;
+import users.AccountsOfficer;
 
 /**
  * FXML Controller class
@@ -19,22 +21,33 @@ import javafx.scene.control.TableView;
  * @author Kazi
  */
 public class AccountsOfficerLoanApplicationsController implements Initializable {
+    
+    private AccountsOfficer officer;
+    @FXML
+    private TableView<LoanApplication> accountsLoanApplicationTableView;
+    @FXML
+    private TableColumn<LoanApplication, ?> loanApplicantName;
+    @FXML
+    private TableColumn<LoanApplication, ?> loanType;
+    @FXML
+    private TableColumn<LoanApplication, ?> loanAmount;
+    @FXML
+    private TableColumn<LoanApplication, ?> loanStart;
+    @FXML
+    private TableColumn<LoanApplication, ?> loanEnd;
+    @FXML
+    private TableColumn<LoanApplication, ?> loanDetails;
 
-    @FXML
-    private TableView<?> accountsLoanApplicationTableView;
-    @FXML
-    private TableColumn<?, ?> loanApplicantName;
-    @FXML
-    private TableColumn<?, ?> loanType;
-    @FXML
-    private TableColumn<?, ?> loanAmount;
-    @FXML
-    private TableColumn<?, ?> loanStart;
-    @FXML
-    private TableColumn<?, ?> loanEnd;
-    @FXML
-    private TableColumn<?, ?> loanDetails;
+    public AccountsOfficer getOfficer() {
+        return officer;
+    }
 
+    public void setOfficer(AccountsOfficer officer) {
+        this.officer = officer;
+    }
+
+    
+    
     /**
      * Initializes the controller class.
      */

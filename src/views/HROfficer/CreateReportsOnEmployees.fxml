@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.HROfficer.CreateReportsOnEmployeesController">
+   <top>
+      <AnchorPane prefHeight="157.0" prefWidth="681.0" style="-fx-background-color: #0D1824;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="225.0" layoutY="70.0" text="Create reports on employees" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="479.0" prefWidth="681.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="35.0" layoutY="312.0" mnemonicParsing="false" onAction="#SelectEmployeeOnClick" prefHeight="42.0" prefWidth="257.0" text="Select Employee" />
+            <Line endX="-0.999969482421875" endY="164.00003051757812" layoutX="329.0" layoutY="85.0" startX="-0.999969482421875" startY="-16.666641235351562" stroke="WHITE" strokeWidth="3.0" />
+            <Button layoutX="35.0" layoutY="422.0" mnemonicParsing="false" onAction="#ReturnCreateOnEmployee" text="Return" textFill="#fb1313" />
+            <Button layoutX="429.0" layoutY="335.0" mnemonicParsing="false" onAction="#SubmitCreateReportOnClick" prefHeight="37.0" prefWidth="148.0" text=" Submit Report" />
+            <TableView fx:id="EmployeeTableView" layoutX="27.0" layoutY="90.0" prefHeight="200.0" prefWidth="273.0">
+              <columns>
+                <TableColumn fx:id="IDTableColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="NameTableColumn" prefWidth="100.6666488647461" text="Name" />
+                  <TableColumn fx:id="DesignationTableColumn" prefWidth="95.33332824707031" text="Designation" />
+              </columns>
+            </TableView>
+            <ComboBox layoutX="22.0" layoutY="33.0" onAction="#ReportTypeOnClick" prefWidth="150.0" promptText="Type" />
+            <TextField fx:id="EnterTitleTextField" layoutX="410.0" layoutY="77.0" prefHeight="25.0" prefWidth="185.0" promptText="Enter Title" />
+            <TextArea fx:id="EnterDetalisTextArea" layoutX="410.0" layoutY="129.0" prefHeight="151.0" prefWidth="186.0" promptText="Enter Detalis" />
+         </children></AnchorPane>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.patient.UpdatePersonalInfoController">
+   <children>
+      <Label layoutX="79.0" layoutY="58.0" text="Personal Info">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="123.0" text="Name:" />
+      <TextField fx:id="nameTextField" layoutX="143.0" layoutY="118.0" />
+      <Label layoutX="79.0" layoutY="162.0" text="ID:" />
+      <Label fx:id="IDLabel" layoutX="143.0" layoutY="162.0" prefHeight="21.0" prefWidth="187.0" text="- - - -" />
+      <Label layoutX="79.0" layoutY="201.0" text="Email:" />
+      <TextField fx:id="emailTextField" layoutX="143.0" layoutY="196.0" />
+      <Label layoutX="387.0" layoutY="123.0" text="Contact No:" />
+      <TextField fx:id="contactNoTextField" layoutX="487.0" layoutY="118.0" />
+      <Label layoutX="387.0" layoutY="162.0" text="Address:" />
+      <Label fx:id="DOBLabel" layoutX="487.0" layoutY="201.0" prefHeight="21.0" prefWidth="187.0" text="- - - -" />
+      <Label layoutX="387.0" layoutY="201.0" text="Date of Birth:" />
+      <TextField fx:id="addressTextField" layoutX="487.0" layoutY="157.0" />
+      <Button layoutX="560.0" layoutY="321.0" mnemonicParsing="false" onAction="#updatePersonalInfoOnClick" text="Save Changes" />
+      <Label layoutX="206.0" layoutY="314.0" prefHeight="46.0" prefWidth="127.0" text="Enter Password to confirm changes:" wrapText="true" />
+      <PasswordField fx:id="passwordField" layoutX="342.0" layoutY="322.0" />
+      <Button layoutX="52.0" layoutY="310.0" mnemonicParsing="false" onAction="#returnToMyProfileOnClick" prefHeight="54.0" prefWidth="98.0" text="Return to My Profile" textAlignment="CENTER" wrapText="true" />
+      <Label layoutX="79.0" layoutY="242.0" text="Gender:" />
+      <Label fx:id="genderLabel" layoutX="143.0" layoutY="242.0" prefHeight="21.0" prefWidth="187.0" text="- - - -" />
+   </children>
+</AnchorPane>

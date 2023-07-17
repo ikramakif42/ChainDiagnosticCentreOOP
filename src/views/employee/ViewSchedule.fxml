@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.employee.ViewScheduleController">
+   <children>
+      <TableView fx:id="taskTableView" layoutX="67.0" layoutY="182.0" prefHeight="380.0" prefWidth="715.0">
+        <columns>
+          <TableColumn fx:id="dateTableColumn" prefWidth="147.0" text="Date" />
+          <TableColumn fx:id="timeTableColumn" prefWidth="117.0" text="Time" />
+            <TableColumn fx:id="detailsTableColumn" prefWidth="450.0" text="Task Details" />
+        </columns>
+      </TableView>
+      <Label layoutX="348.0" layoutY="56.0" text="Filter by date:" />
+      <DatePicker fx:id="startDatePicker" layoutX="459.0" layoutY="51.0" prefHeight="31.0" prefWidth="128.0" />
+      <Label layoutX="596.0" layoutY="56.0" text="- to -" />
+      <DatePicker fx:id="endDatePicker" layoutX="644.0" layoutY="51.0" prefHeight="31.0" prefWidth="128.0" />
+      <Button layoutX="615.0" layoutY="113.0" mnemonicParsing="false" onAction="#clearFiltersOnClick" text="Clear Date Filter" />
+      <Button layoutX="388.0" layoutY="113.0" mnemonicParsing="false" onAction="#applyFiltersOnClick" text="Apply Date Filter" />
+      <Label layoutX="67.0" layoutY="67.0" text="My Schedule">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Button layoutX="67.0" layoutY="602.0" mnemonicParsing="false" onAction="#returnToMyWorkplaceOnClick" prefHeight="31.0" prefWidth="205.0" text="Return to my workplace" />
+   </children>
+</AnchorPane>

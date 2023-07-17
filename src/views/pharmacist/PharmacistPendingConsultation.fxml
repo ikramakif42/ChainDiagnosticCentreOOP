@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistPendingConsultationController">
+   <children>
+      <Label layoutX="173.0" layoutY="24.0" prefHeight="17.0" prefWidth="255.0" text="Pending Consultations" textFill="#172a61">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="pharmaPendingConsultationList" layoutX="68.0" layoutY="136.0" prefHeight="250.0" prefWidth="514.0">
+        <columns>
+          <TableColumn fx:id="pharmaPendConsPatientNameTableView" prefWidth="151.19997864961624" text="Patient's Name" />
+          <TableColumn fx:id="pharmaPendConsPatientIDTableView" prefWidth="152.8000030517578" text="ID" />
+            <TableColumn fx:id="pharmaPendConsPatientStatusTableView" prefWidth="208.79989624023438" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="14.0" layoutY="466.0" mnemonicParsing="false" onAction="#pharmaPendingConsultationBackToDashOnClick" text="Go Back To Dashboard" />
+      <Button layoutX="395.0" layoutY="407.0" mnemonicParsing="false" onAction="#pharmaPendingConsultationsGiveConsultOnClick" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: orange;" text="Give Consultations:" textFill="#175197">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="25.0" layoutY="70.0" text="Patient's Name:" />
+      <Label layoutX="25.0" layoutY="96.0" text="Patient's ID:" />
+      <Label layoutX="141.0" layoutY="70.0" text="____" />
+      <Label layoutX="141.0" layoutY="96.0" text="____" />
+      <Label layoutX="266.0" layoutY="70.0" text="Filter By:" />
+      <RadioButton layoutX="341.0" layoutY="70.0" mnemonicParsing="false" selected="true" text="Pending">
+         <toggleGroup>
+            <ToggleGroup fx:id="filterByPending" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="428.0" layoutY="70.0" mnemonicParsing="false" text="Resolved" toggleGroup="$filterByPending" />
+      <RadioButton layoutX="527.0" layoutY="70.0" mnemonicParsing="false" text="All" toggleGroup="$filterByPending" />
+      <Button layoutX="457.0" layoutY="101.0" mnemonicParsing="false" text="Apply Filter" />
+   </children>
+</AnchorPane>

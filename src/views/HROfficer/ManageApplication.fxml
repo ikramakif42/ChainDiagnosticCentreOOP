@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.HROfficer.ManageApplicationController">
+   <top>
+      <AnchorPane prefHeight="149.0" prefWidth="684.0" style="-fx-background-color: #0D1824;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="231.0" layoutY="45.0" text="Manage applications " textFill="#e69292">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="392.0" prefWidth="684.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="41.0" layoutY="298.0" mnemonicParsing="false" onAction="#ViewApplicationOnClick" prefHeight="25.0" prefWidth="254.0" text="View Application" />
+            <Button layoutX="354.0" layoutY="399.0" mnemonicParsing="false" onAction="#RejectaaplicationOnClick" prefHeight="25.0" prefWidth="255.0" text="Reject" />
+            <Button layoutX="356.0" layoutY="356.0" mnemonicParsing="false" onAction="#ApproveOnClick" prefHeight="25.0" prefWidth="252.0" text="Approve" />
+            <TextArea fx:id="InfoTextArea" layoutX="355.0" layoutY="24.0" prefHeight="200.0" prefWidth="253.0" promptText="information" />
+            <Line endX="14.333343505859375" endY="177.66665649414062" layoutX="255.0" layoutY="168.0" startX="14.333343505859375" startY="-117.66664123535156" stroke="WHITE" strokeWidth="3.0" />
+            <Button layoutX="602.0" layoutY="454.0" mnemonicParsing="false" onAction="#ReturnManageApplicationOnClick" prefHeight="25.0" prefWidth="68.0" text="Return" textFill="#ed1212" />
+            <TableView fx:id="dateofleave" layoutX="33.0" layoutY="61.0" prefHeight="200.0" prefWidth="269.0">
+              <columns>
+                <TableColumn fx:id="EmployeeName" prefWidth="138.00002670288086" text="Employee Name" />
+                <TableColumn fx:id="DateofLeave" prefWidth="129.3332977294922" text="Date of Leave" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+   </center>
+</BorderPane>

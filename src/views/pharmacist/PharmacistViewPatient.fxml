@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.pharmacist.PharmacistViewPatientController">
+   <children>
+      <TableView fx:id="pharmaViewPatientListTable" prefHeight="554.0" prefWidth="497.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="pharmaViewPatientPatientNameTableView" prefWidth="149.59997254610062" text="Patient's Name" />
+          <TableColumn fx:id="pharmaViewPatientPatientIDTableView" prefWidth="95.20004272460938" text="ID" />
+            <TableColumn fx:id="pharmaViewPatientPatientAgeTableView" prefWidth="84.80006408691406" text="Age" />
+            <TableColumn fx:id="pharmaViewPatientPatientContactTableView" prefWidth="167.2000732421875" text="Contact" />
+        </columns>
+      </TableView>
+      <Button layoutX="550.0" layoutY="166.0" mnemonicParsing="false" onAction="#pharmaMedOrderPendingOnClick" prefHeight="82.0" prefWidth="193.0" style="-fx-background-color: orange;" text="Medications Order Pending" textAlignment="CENTER" textFill="#16595b" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="550.0" layoutY="327.0" mnemonicParsing="false" onAction="#pharmaViewBillOnClick" prefHeight="82.0" prefWidth="194.0" style="-fx-background-color: orange;" text="View Billing Information" textAlignment="CENTER" textFill="#15898d" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="556.0" prefHeight="54.0" prefWidth="166.0" text="      Patients List" textAlignment="CENTER" textFill="#c714cc" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="565.0" layoutY="455.0" mnemonicParsing="false" onAction="#pharmaGoBackToDashOnClick" prefHeight="54.0" prefWidth="178.0" text="Go Back to Dashboard" />
+   </children>
+</AnchorPane>
